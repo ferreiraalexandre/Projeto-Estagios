@@ -1,0 +1,40 @@
+@charset "utf-8";
+body {
+  font-family: 'Open Sans', 'sans-serif';
+}
+.navbar-default{background:#3285D1;border-color: #3285D1;}
+.navbar-default .navbar-nav > li > a{color:#FFF;}
+.nav > li > a{margin:15px; font-size: 17px; color:#FFF;}
+.nav .open > a, .nav .open > a:hover, 
+.nav .open > a:focus,
+.nav > li > a:hover, .nav > li > a:focus{background-color:transparent !important;}
+
+.navbar-brand{    
+    margin: 15px !important;
+    padding: 13px !important;
+    color: #fff !important;
+    font-size: 2em !important;
+    font-weight: bold !Important;
+    }
+    
+.navbar-toggle{margin-top:20px !important;}
+.dropdown-menu{background:#fff !important;}
+.navbar-login
+{
+    width: 350px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
+
