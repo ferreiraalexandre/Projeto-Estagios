@@ -1,80 +1,22 @@
-<!DOCTYPE html>
-<html>
+<html ng-app="projeto-estagios">  
 <head>
-<meta charset="utf-8">
-<title>Projeto Estágios</title>
-<link rel="stylesheet" href="projeto/css/bootstrap.css">
-<link rel="stylesheet" href="projeto/css/angular-ui-tree.min.css">
-<link rel="stylesheet" href="projeto/css/menu.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+        <meta charset="utf-8">
+        <title>Projeto Estágios</title>  
+        <link rel="stylesheet" href="projeto/css/bootstrap.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css">
+        <link rel="stylesheet" href="projeto/menu/menu.css">
+        
 </head>
-	<body>
-		<div class="container">			
-		  <nav class="navbar navbar-default nav-menu">
-		    <div class="navbar-header">
-		        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".button-menu">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">I AM Mahesh</a>
-			</div>
-			
-			<div class="collapse navbar-collapse button-menu">
-				<ul class="nav navbar-nav ">
-		            <li><a href="#"><i class="fa fa-home"></i> HOME</a></li>
-		            <li><a href="#">BILLER</a></li>
-		            <li><a href="#">USERS</a></li>
-		            <li><a href="#">OFFICES</a></li>
-				</ul>
-		        
-		        <ul class="nav navbar-nav navbar-right">
-		                <li class="dropdown">
-		                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-		                        <span class="glyphicon glyphicon-user"></span> 
-		                        <strong>Mahesh</strong>
-		                        <span class="glyphicon glyphicon-chevron-down"></span>
-		                    </a>
-		                    <ul class="dropdown-menu">
-		                        <li>
-		                            <div class="navbar-login">
-		                                <div class="row">
-		                                    <div class="col-lg-4">
-		                                        <p class="text-center">
-		                                            <span class="glyphicon glyphicon-user icon-size"></span>
-		                                        </p>
-		                                    </div>
-		                                    <div class="col-lg-8">
-		                                        <p class="text-left"><strong>Mahesh</strong></p>
-		                                        <p class="text-left small">justdemo@gmail.com</p>
-		                                        <p class="text-left">
-		                                            <a href="#" class="btn btn-primary btn-block btn-sm">Logout</a>
-		                                        </p>
-		                                    </div>
-		                                </div>
-		                            </div>
-		                        </li>
-		                        <li class="divider"></li>
-		                        <li>
-		                            <div class="navbar-login navbar-login-session">
-		                                <div class="row">
-		                                    <div class="col-lg-12">
-		                                        <p>
-		                                        	<a href="#" class="btn btn-primary btn-block">My Profile</a>
-		                                            <a href="#" class="btn btn-danger btn-block">Change Password</a>
-		                                        </p>
-		                                    </div>
-		                                </div>
-		                            </div>
-		                        </li>
-		                    </ul>
-		                </li>
-		            </ul>
-		             
-			</div>
-		
-		  </nav>
-		</div>
-
-	</body>
+    <body ng-controller="MyCtrl">
+       
+        <div class="gridStyle" ng-grid="gridOptions"></div>
+       
+        <script src="projeto/js/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+        <script src="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
+        <script src="projeto/js/module.js"></script>
+        <script src="projeto/menu/menu.js"></script>
+    </body>
 </html>
