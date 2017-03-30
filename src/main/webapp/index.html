@@ -1,22 +1,19 @@
-<html ng-app="projeto-estagios">  
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    
-        <meta charset="utf-8">
-        <title>Projeto Estágios</title>  
-        <link rel="stylesheet" href="projeto/css/bootstrap.css">
-        <link rel="stylesheet" href="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css">
-        <link rel="stylesheet" href="projeto/menu/menu.css">
-        
-</head>
-    <body ng-controller="MyCtrl">
-       
-        <div class="gridStyle" ng-grid="gridOptions"></div>
-       
-        <script src="projeto/js/jquery.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-        <script src="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
-        <script src="projeto/js/module.js"></script>
-        <script src="projeto/menu/menu.js"></script>
-    </body>
+<!DOCTYPE html>
+<html ng-app="projeto-estagios">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="projeto/css/ng-grid.css"/>
+		<link rel="stylesheet" type="text/css" href="projeto/menu/menu.css"/>
+	</head>
+
+	<body ng-controller="projetoController">
+	
+		<div class="gridStyle" ng-grid="gridOptions"></div>
+
+		<script src="projeto/js/jquery.js"></script>
+		<script src="projeto/js/angular.js"></script>
+		<script src="projeto/js/ng-grid.min.js"></script>
+		<script src="projeto/js/module.js"></script>
+		<script src="projeto/menu/menu.js"></script>
+	</body>
 </html>

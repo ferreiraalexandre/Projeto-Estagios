@@ -1,4 +1,4 @@
-var app = angular.module("projeto-estagios", []);
+var app = angular.module("projeto-estagios", ['ngGrid']);
 
 app.factory('service', function() {
 	var valor = {};
