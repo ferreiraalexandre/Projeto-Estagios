@@ -30,54 +30,145 @@ angular.module('demoApp', ['ngMaterial', 'md.data.table'])
     page: 1
   };
   
-  $scope.desserts = {
+  $scope.estagios = {
     "count": 9,
     "data": [
       {
         "nome": "Andre Felipe",
-        "instituicao": "Senai",
         "curso": "GT em Análise e Desenvolvimento de Sistemas",
+        "empresa" : "TOTVS",
+      	"dataInicio" : "10/05/2015",
+      	"dataFim" : "12/06/2016",
+      	"rescisao" : "",
+      	"aditivo" : "18/10/2016",
+      	"visita" : "02/03/2015",
+      	"orientador" : "Ademir",
+      	"situacao" : "Matriculado",
+      	"sgn" : "Sim",
+      	"instituicao": "Senai",
+      	"obrigatorio": "Não",
+      	
       }, {
         "nome": "Carlos Henrique da Silva",
-        "instituicao": "IEL",
         "curso": "GT em Análise e Desenvolvimento de Sistemas",
+        "empresa" : "TOTVS",
+      	"dataInicio" : "10/05/2015",
+      	"dataFim" : "12/06/2016",
+      	"rescisao" : "",
+      	"aditivo" : "18/10/2016",
+      	"visita" : "02/03/2015",
+      	"orientador" : "Ademir",
+      	"situacao" : "Matriculado",
+      	"sgn" : "Sim",
+      	"instituicao": "Senai",
+      	"obrigatorio": "Não",
       }, {
         "nome": "Carolina Wiest Marcelino",
-        "instituicao": "Senai",
         "curso": "GT em Análise e Desenvolvimento de Sistemas",
+        "empresa" : "TOTVS",
+      	"dataInicio" : "10/05/2015",
+      	"dataFim" : "12/06/2016",
+      	"rescisao" : "",
+      	"aditivo" : "18/10/2016",
+      	"visita" : "02/03/2015",
+      	"orientador" : "Ademir",
+      	"situacao" : "Matriculado",
+      	"sgn" : "Sim",
+      	"instituicao": "Senai",
+      	"obrigatorio": "Não",
       }, {
         "nome": "David Bento",
-        "instituicao": "AC Serviços de Recrutamento e seleção LTDA ME",
         "curso": "CT em Eletrotécnica",
+        "empresa" : "TOTVS",
+      	"dataInicio" : "10/05/2015",
+      	"dataFim" : "12/06/2016",
+      	"rescisao" : "",
+      	"aditivo" : "18/10/2016",
+      	"visita" : "02/03/2015",
+      	"orientador" : "Ademir",
+      	"situacao" : "Matriculado",
+      	"sgn" : "Sim",
+      	"instituicao": "Senai",
+      	"obrigatorio": "Não",
       }, {
         "nome": "Denis Sales de Lima",
-        "instituicao": "Senai",
         "curso": "CT em Fabricação Mecânica",
+        "empresa" : "TOTVS",
+      	"dataInicio" : "10/05/2015",
+      	"dataFim" : "12/06/2016",
+      	"rescisao" : "",
+      	"aditivo" : "18/10/2016",
+      	"visita" : "02/03/2015",
+      	"orientador" : "Ademir",
+      	"situacao" : "Matriculado",
+      	"sgn" : "Sim",
+      	"instituicao": "Senai",
+      	"obrigatorio": "Não",
       }, {
         "nome": "Elison Padilha Feliciano",
-        "instituicao": "IEL",
         "curso": "GT em Análise e Desenvolvimento de Sistemas",
+        "empresa" : "TOTVS",
+      	"dataInicio" : "10/05/2015",
+      	"dataFim" : "12/06/2016",
+      	"rescisao" : "",
+      	"aditivo" : "18/10/2016",
+      	"visita" : "02/03/2015",
+      	"orientador" : "Ademir",
+      	"situacao" : "Matriculado",
+      	"sgn" : "Sim",
+      	"instituicao": "Senai",
+      	"obrigatorio": "Não",
       }, {
         "nome": "Igor Francisco Fortes",
-        "instituicao": "Senai",
         "curso": "GT em Análise e Desenvolvimento de Sistemas",
+        "empresa" : "TOTVS",
+      	"dataInicio" : "10/05/2015",
+      	"dataFim" : "12/06/2016",
+      	"rescisao" : "",
+      	"aditivo" : "18/10/2016",
+      	"visita" : "02/03/2015",
+      	"orientador" : "Ademir",
+      	"situacao" : "Matriculado",
+      	"sgn" : "Sim",
+      	"instituicao": "Senai",
+      	"obrigatorio": "Não",
       }, {
         "nome": "Jackson Peterson Pereira Maciel",
-        "instituicao": "Senai",
         "curso": "CT em Fabricação Mecânica",
+        "empresa" : "TOTVS",
+      	"dataInicio" : "10/05/2015",
+      	"dataFim" : "12/06/2016",
+      	"rescisao" : "",
+      	"aditivo" : "18/10/2016",
+      	"visita" : "02/03/2015",
+      	"orientador" : "Ademir",
+      	"situacao" : "Matriculado",
+      	"sgn" : "Sim",
+      	"instituicao": "Senai",
+      	"obrigatorio": "Não",
       }, {
         "nome": "Wander Vinicius Capote Santos",
-        "instituicao": "Senai",
         "curso": "GT em Análise e Desenvolvimento de Sistemas",
+        "empresa" : "TOTVS",
+      	"dataInicio" : "10/05/2015",
+      	"dataFim" : "12/06/2016",
+      	"rescisao" : "",
+      	"aditivo" : "18/10/2016",
+      	"visita" : "02/03/2015",
+      	"orientador" : "Ademir",
+      	"situacao" : "Matriculado",
+      	"sgn" : "Sim",
+      	"instituicao": "Senai",
+      	"obrigatorio": "Não",
       }
     ]
   };
   
-  $scope.editObs = function (event, dessert) {
+  $scope.editObs = function (event, estagio) {
     event.stopPropagation(); // in case autoselect is enabled
     
     var editDialog = {
-      modelValue: dessert.obs,
+      modelValue: estagio.obs,
       placeholder: 'Adicionar observações',
       save: function (input) {
         if(input.$modelValue === 'Donald Trump') {
@@ -85,9 +176,9 @@ angular.module('demoApp', ['ngMaterial', 'md.data.table'])
           return $q.reject();
         }
         if(input.$modelValue === 'Bernie Sanders') {
-          return dessert.obs = 'FEEL THE BERN!'
+          return estagio.obs = 'FEEL THE BERN!'
         }
-        dessert.obs = input.$modelValue;
+        estagio.obs = input.$modelValue;
       },
       targetEvent: event,
       title: 'Adicionar observações',
@@ -121,6 +212,10 @@ angular.module('demoApp', ['ngMaterial', 'md.data.table'])
     return ['AC Serviços de Recrutamento e seleção LTDA ME', 'Senai', 'IEL'];
   };
   
+  $scope.getOpcao = function () {
+	    return ['Sim', 'Não'];
+	  };
+  
   $scope.loadStuff = function () {
     $scope.promise = $timeout(function () {
       // loading
@@ -139,4 +234,8 @@ angular.module('demoApp', ['ngMaterial', 'md.data.table'])
     console.log('page: ', page);
     console.log('limit: ', limit);
   }
+  
+  function AppCtrl($scope) {
+	    $scope.currentNavItem = 'page1';
+	  }
 }]);
