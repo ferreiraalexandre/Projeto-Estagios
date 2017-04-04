@@ -1,13 +1,12 @@
-angular.module('demoApp', ['ngMaterial', 'md.data.table'])
 
-.config(['$mdThemingProvider', function ($mdThemingProvider) {
+app.config(['$mdThemingProvider', function ($mdThemingProvider) {
     'use strict';
     
     $mdThemingProvider.theme('default')
       .primaryPalette('blue');
 }])
 
-.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeout', function ($mdEditDialog, $q, $scope, $timeout) {
+app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeout', function ($mdEditDialog, $q, $scope, $timeout) {
   'use strict';
   
   $scope.selected = [];
@@ -26,7 +25,7 @@ angular.module('demoApp', ['ngMaterial', 'md.data.table'])
   
   $scope.query = {
     order: 'name',
-    limit: 5,
+    limit: 10,
     page: 1
   };
   
@@ -235,7 +234,10 @@ angular.module('demoApp', ['ngMaterial', 'md.data.table'])
     console.log('limit: ', limit);
   }
   
-  function AppCtrl($scope) {
-	    $scope.currentNavItem = 'page1';
-	  }
 }]);
+
+app.controller('AppCtrl', AppCtrl);
+
+function AppCtrl($scope) {
+  $scope.currentNavItem = 'page1';
+}

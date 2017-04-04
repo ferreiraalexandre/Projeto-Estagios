@@ -26,3 +26,9 @@ md-card:first-child {
   min-width: 300px;
   flex: 0 0 auto;
 }
+
+.navBardemoBasicUsage md-content .ext-content {
+  padding: 50px;
+  margin: 20px;
+  background-color: #FFF2E0; 
+}

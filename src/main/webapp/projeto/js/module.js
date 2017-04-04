@@ -1,4 +1,4 @@
-var app = angular.module("projeto-estagios", ['ngGrid']);
+var app = angular.module("projeto-estagios", ['ngMaterial', 'md.data.table']);
 
 app.factory('service', function() {
 	var valor = {};
