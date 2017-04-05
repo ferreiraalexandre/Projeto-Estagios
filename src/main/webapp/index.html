@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="http://rawgit.com/daniel-nagy/md-data-table/master/dist/md-data-table.css">
+    <link rel="stylesheet" href="projeto/css/bootstrap.css">
     <link rel="stylesheet" href="projeto/css/index2.css">
     
          
@@ -18,6 +19,54 @@
 	<body layout="column">
    		    
     <md-content laout="column" flex ng-controller="nutritionController">
+     
+      <div class="navbar navbar-default navbar-fixed-top" id="navbarMenu" role="navigation">
+	  	<div class="container"> 
+	    	<ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span> 
+                        <strong>Dados</strong>
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="navbar-login">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <p class="text-center">
+                                            <span class="glyphicon glyphicon-user icon-size"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <p class="text-left"><strong>Marcia</strong></p>
+                                        <p class="text-left small">Marcia@senai.com</p>
+                                        <p class="text-left">
+                                            <a href="#" class="btn btn-primary btn-block btn-sm">Atualizar Dados</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+	                        <li class="divider"></li>
+	                        <li>
+	                            <div class="navbar-login navbar-login-session">
+	                                <div class="row">
+	                                    <div class="col-lg-12">
+	                                        <p>
+	                                            <a href="#" class="btn btn-danger btn-block">Sair</a>
+	                                        </p>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </li>
+	                    </ul>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+      
+    
     <!--   
       <md-card>
         <div layout="row" layout-wrap class="checkboxes">
@@ -115,6 +164,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
     <script src="http://rawgit.com/daniel-nagy/md-data-table/master/dist/md-data-table.js"></script>
+    <script src="projeto/js/jquery.js"></script>
+    <script src="projeto/js/bootstrap.js"></script>
     <script src="projeto/js/module.js"></script>
     <script src="projeto/js/index2.js"></script>
     
