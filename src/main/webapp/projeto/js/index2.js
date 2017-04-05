@@ -1,10 +1,13 @@
 
-app.config(['$mdThemingProvider', function ($mdThemingProvider) {
+
+app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvider) {
     'use strict';
     
     $mdThemingProvider.theme('default')
       .primaryPalette('blue');
 }])
+
+
 
 app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeout', function ($mdEditDialog, $q, $scope, $timeout) {
   'use strict';
@@ -25,7 +28,7 @@ app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeou
   
   $scope.query = {
     order: 'name',
-    limit: 10,
+    limit: 5,
     page: 1
   };
   
@@ -235,9 +238,3 @@ app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeou
   }
   
 }]);
-
-app.controller('AppCtrl', AppCtrl);
-
-function AppCtrl($scope) {
-  $scope.currentNavItem = 'page1';
-}

@@ -11,7 +11,6 @@ md-toolbar.md-table-toolbar.alternate {
   color: #1e88e5;
   background-color: #e3f2fd;
 }
-
 md-toolbar.md-table-toolbar.alternate .md-toolbar-tools {
   font-size: 16px;
 }
@@ -25,10 +24,4 @@ md-card:first-child {
   padding: 16px;
   min-width: 300px;
   flex: 0 0 auto;
-}
-
-.navBardemoBasicUsage md-content .ext-content {
-  padding: 50px;
-  margin: 20px;
-  background-color: #FFF2E0; 
 }
