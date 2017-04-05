@@ -6,12 +6,12 @@ md-content {
 body > md-toolbar {
   z-index: 3;
 }
-
-md-toolbar.md-table-toolbar.alternate {
-  color: #1e88e5;
-  background-color: #e3f2fd;
+md-nav-bar md-nav-ink-bar {
+    background: rgb(33,150,243) !important;
 }
-
+md-nav-bar span.ng-scope{
+color: rgb(33,150,243) !important;
+}
 md-toolbar.md-table-toolbar.alternate .md-toolbar-tools {
   font-size: 16px;
 }
