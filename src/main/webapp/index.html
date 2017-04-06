@@ -129,7 +129,6 @@
             <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
           </div>
         </md-toolbar>
-        
         <md-table-container>
           <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
             <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
