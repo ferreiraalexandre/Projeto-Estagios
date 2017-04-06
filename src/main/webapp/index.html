@@ -22,11 +22,13 @@
      
       <div class="navbar navbar-default navbar-fixed-top" id="navbarMenu" role="navigation">
 	  	<div class="container"> 
+	  	 <a class="navbar-brand" href=""><img src="projeto/img/Logo.png"></a>
+	  	
 	    	<ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="glyphicon glyphicon-user"></span> 
-                        <strong>Dados</strong>
+                        <strong>Usuário</strong>
                         <span class="glyphicon glyphicon-chevron-down"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -188,7 +190,7 @@
         <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{estagios.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
       </md-card>
     </md-content>
-    
+    <div class="footer"><p class="denvelopers">Copyright © 2017 | Alexandre Ferreira da Silva, Caio Ricardo Lessin, Eduardo Fabrício Pacheco e Jeronimo Fleith de Lima</p></div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
