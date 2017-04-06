@@ -53,7 +53,6 @@ md-card:first-child {
 }
 
 #navbarMenu{
-<<<<<<< HEAD
   background-color: #20B2AA;	
 }
 
@@ -87,11 +86,8 @@ a.dropdown-toggle{
   height: 100%;
   width: auto;
 }
-}
 
-  background-color: #017338;	
-}
-a.dropdown-toggle{
+.dropdown-toggle{
 	color:white !important;
 }
 .denvelopers{
@@ -116,37 +112,5 @@ a.dropdown-toggle{
   height: 100%;
   width: auto;
 }
-}
-=======
-  background-color: #017338;	
-}
-a.dropdown-toggle{
-	color:white !important;
-}
-.denvelopers{
-	padding-top:15px;
-	text-align: center;
-	color:white;
-	font-size:x-small;
-}
-.footer{
-	position: fixed;
-	bottom:0;
-	height:5%;
-	width:100%;
-	background-color:#017338;
-<<<<<<< HEAD
-}
 
-.navbar-brand {
-  padding: 0px;
 }
-
-.navbar-brand>img {
-  height: 100%;
-  width: auto;
-}
-=======
-}
->>>>>>> branch 'master' of https://github.com/ferreiraalexandre/Projeto-Estagios.git
->>>>>>> branch 'master' of https://github.com/ferreiraalexandre/Projeto-Estagios.git
