@@ -122,6 +122,14 @@
 		    <ng-md-icon icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
 		    <ng-md-icon icon="remove" style="fill: #abcdef" size="36"></ng-md-icon> 
 		   
+		   <md-input-container>
+		        <md-select ng-model="selectedItem" md-selected-text="getSelectedText()">
+		          <md-optgroup label="items">
+		            <md-option ng-value="item" ng-repeat="item in items">Buscar por {{item}}</md-option>
+		          </md-optgroup>
+		        </md-select>
+     	   </md-input-container>
+		   
 		    <div flex="" class="flex"></div>
 		  </div>
 	   </md-toolbar>

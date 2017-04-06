@@ -14,6 +14,16 @@ app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeou
   
   $scope.selected = [];
   $scope.limitOptions = [5, 10, 15];
+  $scope.items = ['Nome', 'Curso', 'Empresa'];
+  $scope.selectedItem;
+  
+  $scope.getSelectedText = function() {
+      if ($scope.selectedItem !== undefined) {
+        return "Buscar por " + $scope.selectedItem;
+      } else {
+        return "Buscar por Nome";
+      }
+    };
   
   $scope.options = {
     rowSelection: true,
@@ -236,5 +246,6 @@ app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeou
     console.log('page: ', page);
     console.log('limit: ', limit);
   }
+  
   
 }]);
