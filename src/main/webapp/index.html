@@ -16,7 +16,7 @@
          
   </head>
 
-	<body layout="column">
+<body layout="column">
    		    
     <md-content laout="column" flex ng-controller="nutritionController">
      
@@ -64,10 +64,41 @@
 	                </li>
 	            </ul>
 	        </div>
-	    </div>
-      
-    
-    <!--   
+		</div>
+		
+		
+			
+				<div class="container-fluid" id="menu">
+					<div class="navbar-header">
+						<button aria-controls="bs-navbar" aria-expanded="false"
+							class="collapsed navbar-toggle" data-target="#bs-navbar"
+							data-toggle="collapse" type="button">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a href="../" class="navbar-brand">Estágios</a>
+					</div>
+					<nav class="collapse navbar-collapse" id="bs-navbar">
+						<ul class="nav navbar-nav">
+							<li><a href="../Relatórios/">Menu 1</a></li>
+							<li><a href="../components/">Menu2</a></li>
+							<li><a href="../javascript/">Menu 3</a></li>
+							<li><a href="../customize/">Menu 4</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="http://themes.getbootstrap.com"
+								onclick="ga(&quot;send&quot;,&quot;event&quot;,&quot;Navbar&quot;,&quot;Community links&quot;,&quot;Themes&quot;)">Relatórios</a></li>
+							<li><a href="http://expo.getbootstrap.com"
+								onclick="ga(&quot;send&quot;,&quot;event&quot;,&quot;Navbar&quot;,&quot;Community links&quot;,&quot;Expo&quot;)">Cadastro</a></li>
+							<li><a href="http://blog.getbootstrap.com"
+								onclick="ga(&quot;send&quot;,&quot;event&quot;,&quot;Navbar&quot;,&quot;Community links&quot;,&quot;Blog&quot;)">Novo</a></li>
+						</ul>
+					</nav>
+				</div>
+			
+			
+	 <!--   
       <md-card>
         <div layout="row" layout-wrap class="checkboxes">
           <md-checkbox ng-model="options.rowSelection">Row Selection</md-checkbox>
