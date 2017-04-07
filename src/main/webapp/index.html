@@ -135,6 +135,25 @@
 		  </div>
 	   </md-toolbar>
     
+   <md-grid-list md-cols="2"  md-row-height="64px">
+  		<md-grid-tile>
+  			<ng-md-icon icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
+		    <ng-md-icon icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
+		    <ng-md-icon icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
+  		</md-grid-tile>
+  		
+  		<md-grid-tile>
+	  		<md-input-container>
+			        <md-select ng-model="selectedItem" md-selected-text="getSelectedText()">
+			          <md-optgroup label="items">
+			            <md-option ng-value="item" ng-repeat="item in items">Buscar por {{item}}</md-option>
+			          </md-optgroup>
+			        </md-select>
+	     	 </md-input-container> 
+	     	 <ng-md-icon icon="search" style="fill: #abcdef" size="36"></ng-md-icon> 		
+  		</md-grid-tile>
+
+	</md-grid-list>
         
         <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
           <div class="md-toolbar-tools">
