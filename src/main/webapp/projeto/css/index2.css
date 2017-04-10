@@ -94,4 +94,24 @@ a{
   width: auto;
 }
 
+#listaEsquerda{
+	margin-left: 24px;
+}
+
+#listaDireita,#iconSearch{
+	margin-right: 24px;
+}
+
+#iconRemove{
+	margin-right:auto;
+}
+
+#iconCreate,#iconRemove{
+	margin-left: 30px;
+}
+
+#buscarContainer{
+	margin-left: auto;
+}
+
 }

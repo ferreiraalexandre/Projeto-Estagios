@@ -115,42 +115,23 @@
       </md-card>
       -->
       <md-card>
-          
-      <md-toolbar class="md-table-toolbar md-default" ng-hide="selected.length || filter.show" aria-hidden="false">
-		  <div class="md-toolbar-tools">
-		    <ng-md-icon icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
-		    <ng-md-icon icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
-		    <ng-md-icon icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
-		     
-		   
-		   <md-input-container>
-		        <md-select ng-model="selectedItem" md-selected-text="getSelectedText()">
-		          <md-optgroup label="items">
-		            <md-option ng-value="item" ng-repeat="item in items">Buscar por {{item}}</md-option>
-		          </md-optgroup>
-		        </md-select>
-     	   </md-input-container>
-		   
-		    <div flex="" class="flex"></div>
-		  </div>
-	   </md-toolbar>
-    
+              
    <md-grid-list md-cols="2"  md-row-height="64px">
-  		<md-grid-tile>
-  			<ng-md-icon icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
-		    <ng-md-icon icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
-		    <ng-md-icon icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
+  		<md-grid-tile id="listaEsquerda">
+  			<ng-md-icon id="iconAdd" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
+		    <ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
+		    <ng-md-icon id="iconRemove" icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
   		</md-grid-tile>
   		
-  		<md-grid-tile>
-	  		<md-input-container>
+  		<md-grid-tile id="listaDireita">
+	  		<md-input-container id="buscarContainer">
 			        <md-select ng-model="selectedItem" md-selected-text="getSelectedText()">
 			          <md-optgroup label="items">
 			            <md-option ng-value="item" ng-repeat="item in items">Buscar por {{item}}</md-option>
 			          </md-optgroup>
 			        </md-select>
 	     	 </md-input-container> 
-	     	 <ng-md-icon icon="search" style="fill: #abcdef" size="36"></ng-md-icon> 		
+	     	 <ng-md-icon id="iconSearch" icon="search" style="fill: #abcdef" size="36"></ng-md-icon> 		
   		</md-grid-tile>
 
 	</md-grid-list>
