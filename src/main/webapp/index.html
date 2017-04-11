@@ -118,7 +118,10 @@
               
    <md-grid-list md-cols="2"  md-row-height="64px">
   		<md-grid-tile id="listaEsquerda">
-  			<ng-md-icon id="iconAdd" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
+  			<md-button   ng-click="addItem($event)" >
+      		 	<ng-md-icon id="iconAdd" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
+    		</md-button>
+  			
 		    <ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
 		    <ng-md-icon id="iconRemove" icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
   		</md-grid-tile>
