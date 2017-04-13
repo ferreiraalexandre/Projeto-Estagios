@@ -9,7 +9,7 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 
 
 
-app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeout', function ($mdEditDialog, $q, $scope, $timeout) {
+app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', function ($mdEditDialog, $q, $scope, $timeout, $mdDialog) {
   'use strict';
   
   $scope.selected = [];
@@ -246,6 +246,18 @@ app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeou
     console.log('page: ', page);
     console.log('limit: ', limit);
   }
+  
+  
+  $scope.addItem = function (event) {
+	    $mdDialog.show({
+	      clickOutsideToClose: true,
+	      controllerAs: 'ctrl',
+	      focusOnOpen: false,
+	      targetEvent: event,
+	      templateUrl: 'modalEstagio.html',
+	    }).then($scope.getDesserts);
+	  };
+
   
   
 }]);
