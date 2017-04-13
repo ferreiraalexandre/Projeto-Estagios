@@ -122,20 +122,45 @@
       		 	<ng-md-icon id="iconAdd" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
     		</md-button>
   			
-		    <ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
-		    <ng-md-icon id="iconRemove" icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
+  			<md-button >
+		    	<ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
+		    </md-button>
+		    
+		    <md-button  id="buttonRemove" >
+		    	<ng-md-icon id="iconRemove" icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
+  			</md-button>
+  			
   		</md-grid-tile>
   		
   		<md-grid-tile id="listaDireita">
-	  		<md-input-container id="buscarContainer">
-			        <md-select ng-model="selectedItem" md-selected-text="getSelectedText()">
-			          <md-optgroup label="items">
-			            <md-option ng-value="item" ng-repeat="item in items">Buscar por {{item}}</md-option>
-			          </md-optgroup>
-			        </md-select>
-	     	 </md-input-container> 
-	     	 <ng-md-icon id="iconSearch" icon="search" style="fill: #abcdef" size="36"></ng-md-icon> 		
+  		
+  		 	<md-card-content>
+		      <div layout="row">
+		       
+		        <md-input-container>
+		          <label>Buscar por</label>
+		          <input>
+		        </md-input-container>
+		
+		        <md-input-container>
+		          <label>Nome</label>
+		          <md-select ng-model="ctrl.userState">
+		            <md-option><em>None</em></md-option>
+		            <md-option ng-repeat="item in items" ng-value="item" >
+		              {{item}}
+		            </md-option>
+		          </md-select>
+		        </md-input-container>
+
+	     	 	<md-button >
+	     	 		<ng-md-icon id="iconSearch" icon="search" style="fill: #abcdef" size="36"></ng-md-icon> 		
+  			 	</md-button>
+  			 	
+		      </div>
+    		</md-card-content>
   		</md-grid-tile>
+  	
+  		
 
 	</md-grid-list>
         
