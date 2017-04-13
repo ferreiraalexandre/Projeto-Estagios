@@ -53,7 +53,7 @@ md-card:first-child {
 }
 
 #navbarMenu{
-  background-color: #20B2AA;	
+  background-color: #267ED5 !important;	
 }
 
 #menu{
@@ -80,9 +80,11 @@ md-card:first-child {
 	bottom:0;
 	height:5%;
 	width:100%;
-	background-color:#017338;
+	background-color:#267ED5;
 }
-
+a{
+	color:#313b3f !important;
+}
 .navbar-brand {
   padding: 0px;
 }
@@ -90,6 +92,18 @@ md-card:first-child {
 .navbar-brand>img {
   height: 100%;
   width: auto;
+}
+
+#listaEsquerda{
+	margin-left: 24px;
+}
+
+#listaDireita,#iconSearch{
+	margin-right: 24px;
+}
+
+#buttonRemove{
+	margin-right:auto;
 }
 
 }

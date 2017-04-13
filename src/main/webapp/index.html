@@ -27,9 +27,9 @@
 	    	<ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-user"></span> 
-                        <strong>Usuário</strong>
-                        <span class="glyphicon glyphicon-chevron-down"></span>
+                        <span class="glyphicon glyphicon-user" style="color:white;"></span> 
+                        <strong style="color:white;">Usuário</strong>
+                        <span class="glyphicon glyphicon-chevron-down" style="color:white;"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
@@ -70,7 +70,7 @@
 		
 		
 			
-				<div class="container-fluid" id="menu">
+				<div class="container-fluid" id="menu" style="color:#313b3f;">
 					<div class="navbar-header">
 						<button aria-controls="bs-navbar" aria-expanded="false"
 							class="collapsed navbar-toggle" data-target="#bs-navbar"
@@ -115,25 +115,54 @@
       </md-card>
       -->
       <md-card>
-          
-      <md-toolbar class="md-table-toolbar md-default" ng-hide="selected.length || filter.show" aria-hidden="false">
-		  <div class="md-toolbar-tools">
-		    <ng-md-icon icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
-		    <ng-md-icon icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
-		    <ng-md-icon icon="remove" style="fill: #abcdef" size="36"></ng-md-icon> 
-		   
-		   <md-input-container>
-		        <md-select ng-model="selectedItem" md-selected-text="getSelectedText()">
-		          <md-optgroup label="items">
-		            <md-option ng-value="item" ng-repeat="item in items">Buscar por {{item}}</md-option>
-		          </md-optgroup>
-		        </md-select>
-     	   </md-input-container>
-		   
-		    <div flex="" class="flex"></div>
-		  </div>
-	   </md-toolbar>
-    
+              
+   <md-grid-list md-cols="2"  md-row-height="64px">
+  		<md-grid-tile id="listaEsquerda">
+  			<md-button   ng-click="addItem($event)" >
+      		 	<ng-md-icon id="iconAdd" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
+    		</md-button>
+  			
+  			<md-button >
+		    	<ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
+		    </md-button>
+		    
+		    <md-button  id="buttonRemove" >
+		    	<ng-md-icon id="iconRemove" icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
+  			</md-button>
+  			
+  		</md-grid-tile>
+  		
+  		<md-grid-tile id="listaDireita">
+  		
+  		 	<md-card-content>
+		      <div layout="row">
+		       
+		        <md-input-container>
+		          <label>Buscar por</label>
+		          <input>
+		        </md-input-container>
+		
+		        <md-input-container>
+		          <label>Nome</label>
+		          <md-select ng-model="ctrl.userState">
+		            <md-option><em>None</em></md-option>
+		            <md-option ng-repeat="item in items" ng-value="item" >
+		              {{item}}
+		            </md-option>
+		          </md-select>
+		        </md-input-container>
+
+	     	 	<md-button >
+	     	 		<ng-md-icon id="iconSearch" icon="search" style="fill: #abcdef" size="36"></ng-md-icon> 		
+  			 	</md-button>
+  			 	
+		      </div>
+    		</md-card-content>
+  		</md-grid-tile>
+  	
+  		
+
+	</md-grid-list>
         
         <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
           <div class="md-toolbar-tools">
