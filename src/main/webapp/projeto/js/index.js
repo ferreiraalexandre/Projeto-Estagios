@@ -254,7 +254,7 @@ app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeou
 	      controllerAs: 'ctrl',
 	      focusOnOpen: false,
 	      targetEvent: event,
-	      templateUrl: 'modalEstagio.html',
+	      templateUrl: 'projeto/estagio/modalEstagio.html',
 	    }).then($scope.getDesserts);
 	  };
 
