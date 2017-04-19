@@ -1,4 +1,10 @@
 
+// função para carregas as telas de instituições, cadastros, etc...
+function carregamento (url, callback){
+	    $("#carregamentos").load(url,callback);
+}
+
+
 
 app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvider) {
     'use strict';
