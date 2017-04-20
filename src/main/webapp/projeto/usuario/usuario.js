@@ -1,3 +1,9 @@
+app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvider) {
+    'use strict';
+    
+    $mdThemingProvider.theme('default')
+      .primaryPalette('blue');
+}])
 
 app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', function ($mdEditDialog, $q, $scope, $timeout, $mdDialog) {
   'use strict';
@@ -32,8 +38,8 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     page: 1
   };
   
-  $scope.estagios = {
-    "count": 9,
+  $scope.usuarios = {
+    "count": 1,
     "data": [
       {
         "nome": "Andre Felipe",
@@ -75,11 +81,11 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     ]
   };
   
-  $scope.editObs = function (event, estagio) {
+  $scope.editObs = function (event, usuario) {
     event.stopPropagation(); // in case autoselect is enabled
     
     var editDialog = {
-      modelValue: estagio.obs,
+      modelValue: usuario.obs,
       placeholder: 'Adicionar observações',
       save: function (input) {
         if(input.$modelValue === 'Donald Trump') {
@@ -87,9 +93,9 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
           return $q.reject();
         }
         if(input.$modelValue === 'Bernie Sanders') {
-          return estagio.obs = 'FEEL THE BERN!'
+          return usuario.obs = 'FEEL THE BERN!'
         }
-        estagio.obs = input.$modelValue;
+        usuario.obs = input.$modelValue;
       },
       targetEvent: event,
       title: 'Adicionar observações',
@@ -153,7 +159,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	      controllerAs: 'ctrl',
 	      focusOnOpen: false,
 	      targetEvent: event,
-	      templateUrl: 'projeto/estagio/modalEstagio.html',
+	      templateUrl: 'projeto/usuario/modalusuario.html',
 	    }).then($scope.getDesserts);
 	  };
 
