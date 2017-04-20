@@ -8,9 +8,10 @@
     <title>Projeto Estágios</title>
     
 	<link rel="stylesheet" href="projeto/css/angular-material.css">
-    <link rel="stylesheet" href="projeto/css/naterial-icons">
+    <link rel="stylesheet" href="projeto/css/material-icons.css">
     <link rel="stylesheet" href="projeto/css/md-data-table.css">
-	<link rel="stylesheet" href="projeto/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="projeto/css/bootstrap.css">-->
     <link rel="stylesheet" href="projeto/css/index.css">
     
   </head>
@@ -65,7 +66,7 @@
 				<md-content class="md-padding">
 					<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
 					<md-nav-item md-nav-click="goto('page1')" name="page1">Estágio</md-nav-item>
-					<md-nav-item md-nav-click="goto('page2')" name="page2">Unidade De Ensino</md-nav-item>
+					<md-nav-item md-nav-click="menuClick('/unidadeEnsino')" name="page2">Unidade De Ensino</md-nav-item>
 					<md-nav-item md-nav-click="menuClick('/usuario')" name="page3">Usuário</md-nav-item>
 				</md-content>
 			</div>
