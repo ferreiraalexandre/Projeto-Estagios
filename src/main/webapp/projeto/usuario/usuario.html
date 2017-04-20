@@ -47,7 +47,7 @@
       <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
         <tr md-row>
           <th md-column md-order-by="nome"><span>Nome</span></th>
-          <th md-column md-order-by="cnpj" md-desc><span>CNPJ</span></th>
+          <th md-column md-order-by="cnpj" md-desc><span>CPF</span></th>
           <th md-column md-order-by="instituicao"><span>Instituições</span></th>
           <th md-column md-order-by="obs"><md-icon>comments</md-icon><span>Observações</span></th>
         </tr>
@@ -55,7 +55,7 @@
       <tbody md-body>
         <tr md-row md-select="usuario" md-on-select="logItem" md-auto-select="options.autoSelect" ng-disabled="usuario.calories.value > 400" ng-repeat="usuario in usuarios.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
           <td md-cell>{{usuario.nome}}</td>
-          <td md-cell>{{usuario.cnpj}}</td>
+          <td md-cell>{{usuario.cpf}}</td>
                      
            <td md-cell>
             <md-select ng-model="usuario.instituicao" placeholder="Other">

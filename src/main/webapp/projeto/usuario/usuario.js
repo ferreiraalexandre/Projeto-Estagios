@@ -43,39 +43,39 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     "data": [
       {
         "nome": "Andre Felipe",
-        "cnpj": "454564489489",
+        "cpf": "454564489489",
        	"instituicao": "Senai",      	
       }, {
           "nome": "Andre Felipe",
-          "cnpj": "454564489489",
+          "cpf": "454564489489",
          	"instituicao": "Senai",
       }, {
           "nome": "Andre Felipe",
-          "cnpj": "454564489489",
+          "cpf": "454564489489",
          	"instituicao": "Senai",
       }, {
           "nome": "Andre Felipe",
-          "cnpj": "454564489489",
+          "cpf": "454564489489",
          	"instituicao": "Senai",
       }, {
           "nome": "Andre Felipe",
-          "cnpj": "454564489489",
+          "cpf": "454564489489",
          	"instituicao": "Senai",
       }, {
           "nome": "Andre Felipe",
-          "cnpj": "454564489489",
+          "cpf": "454564489489",
          	"instituicao": "Senai",
       }, {
           "nome": "Andre Felipe",
-          "cnpj": "454564489489",
+          "cpf": "454564489489",
          	"instituicao": "Senai",
       }, {
           "nome": "Andre Felipe",
-          "cnpj": "454564489489",
+          "cpf": "454564489489",
          	"instituicao": "Senai",
       }, {
           "nome": "Andre Felipe",
-          "cnpj": "454564489489",
+          "cpf": "454564489489",
          	"instituicao": "Senai",
       }
     ]
@@ -159,7 +159,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	      controllerAs: 'ctrl',
 	      focusOnOpen: false,
 	      targetEvent: event,
-	      templateUrl: 'projeto/usuario/modalusuario.html',
+	      templateUrl: 'projeto/usuario/modalUsuario.html',
 	    }).then($scope.getDesserts);
 	  };
 
