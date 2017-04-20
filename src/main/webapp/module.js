@@ -10,6 +10,7 @@ app.config(function($routeProvider) {
 	$routeProvider
 	.when('/usuario', {
 		templateUrl : 'projeto/usuario/usuario.html',
+		controller : 'usuarioController'
 	})
 
 });
