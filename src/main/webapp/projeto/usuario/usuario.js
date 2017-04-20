@@ -1,5 +1,4 @@
 
-
 app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvider) {
     'use strict';
     
@@ -9,7 +8,7 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 
 
 
-app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog','$location', function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, $location) {
+app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', function ($mdEditDialog, $q, $scope, $timeout, $mdDialog) {
   'use strict';
   
   $scope.selected = [];
@@ -258,9 +257,6 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	    }).then($scope.getDesserts);
 	  };
 
-		$scope.menuClick = function (link) {
-			$location.path(link);
-		};
-
+  
   
 }]);

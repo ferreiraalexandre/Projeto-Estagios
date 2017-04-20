@@ -1,12 +1,15 @@
-var app = angular.module("projeto-estagios", ['ngMaterial', 'md.data.table', 'ngMdIcons']);
+var app = angular.module("projeto-estagios", ['ngMaterial', 'md.data.table', 'ngMdIcons', 'ngRoute']);
 
 app.config(function($routeProvider) {
 
-
 	$routeProvider
 	.when('/', {
-		templateUrl : 'index.html',
-		controller: 'DashboardCtrl'
+		templateUrl : 'tabela.html',
+	})
+
+	$routeProvider
+	.when('/usuario', {
+		templateUrl : 'projeto/usuario/usuario.html',
 	})
 
 });
