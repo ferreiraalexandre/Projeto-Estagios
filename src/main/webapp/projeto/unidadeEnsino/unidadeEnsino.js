@@ -1,4 +1,3 @@
-
 app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvider) {
     'use strict';
     
@@ -6,9 +5,7 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-
-
-app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', function ($mdEditDialog, $q, $scope, $timeout, $mdDialog) {
+app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', function ($mdEditDialog, $q, $scope, $timeout, $mdDialog) {
   'use strict';
   
   $scope.selected = [];
@@ -45,18 +42,18 @@ app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeou
     "count": 1,
     "data": [
       {
-        "unidade": "Senai Norte I",
-        "cnpj": "12.523.654/0001-20",
-              	
+        "instituicao": "SENAI Norte I",
+        "cnpj": "45.456.448/9489-12",
+       	      	
       }
     ]
   };
   
-  $scope.editObs = function (event, unidade) {
+  $scope.editObs = function (event, unidadeEnsino) {
     event.stopPropagation(); // in case autoselect is enabled
     
     var editDialog = {
-      modelValue: unidade.obs,
+      modelValue: unidadeEnsino.obs,
       placeholder: 'Adicionar observações',
       save: function (input) {
         if(input.$modelValue === 'Donald Trump') {
@@ -64,9 +61,9 @@ app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeou
           return $q.reject();
         }
         if(input.$modelValue === 'Bernie Sanders') {
-          return unidade.obs = 'FEEL THE BERN!'
+          return unidadeEnsino.obs = 'FEEL THE BERN!'
         }
-        unidade.obs = input.$modelValue;
+        unidadeEnsino.obs = input.$modelValue;
       },
       targetEvent: event,
       title: 'Adicionar observações',
@@ -124,7 +121,7 @@ app.controller('nutritionController', ['$mdEditDialog', '$q', '$scope', '$timeou
   }
   
   
-  $scope.addUnidadeEnsino = function (event) {
+  $scope.addItem = function (event) {
 	    $mdDialog.show({
 	      clickOutsideToClose: true,
 	      controllerAs: 'ctrl',

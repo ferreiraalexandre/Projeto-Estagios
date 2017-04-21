@@ -1,107 +1,69 @@
- <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="http://rawgit.com/daniel-nagy/md-data-table/master/dist/md-data-table.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="projeto/css/index.css">
- 
- 
- <md-card>
-   <md-grid-list md-cols="2"  md-row-height="64px">
-  		<md-grid-tile id="listaEsquerda">
-  			<md-button   ng-click="addItem($event)" >
-      		 	<ng-md-icon id="iconAdd" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
-    		</md-button>
-  			<md-button >
-		    	<ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
-		    </md-button>
-		    <md-button  id="buttonRemove" >
-		    	<ng-md-icon id="iconRemove" icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
-  			</md-button>
-  		</md-grid-tile>
-  		<md-grid-tile id="listaDireita">
-  		
-  		 	<md-card-content>
-		      <div layout="row">
-		       
-		        <md-input-container>
-		          <label>Buscar por</label>
-		          <input>
-		        </md-input-container>
-		
-		        <md-input-container>
-		          <label>Nome</label>
-		          <md-select ng-model="ctrl.userState">
-		            <md-option><em>None</em></md-option>
-		            <md-option ng-repeat="item in items" ng-value="item" >
-		              {{item}}
-		            </md-option>
-		          </md-select>
-		        </md-input-container>
+<meta charset="utf-8">
+<md-card>
+  
+  <md-grid-list md-cols="2"  md-row-height="64px">
+    <md-grid-tile id="listaEsquerda">
+      <md-button  ng-click="addItem($event)" >
+      	<ng-md-icon id="iconAdd" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
+      </md-button>
 
-	     	 	<md-button >
-	     	 		<ng-md-icon id="iconSearch" icon="search" style="fill: #abcdef" size="36"></ng-md-icon> 		
-  			 	</md-button>
-  			 	
-		      </div>
-    		</md-card-content>
-  		</md-grid-tile>
+      <md-button >
+      	<ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
+      </md-button>
 
-	</md-grid-list>
-        
-        <md-toolbar class="md-table-toolbar alternate" ng-show="options.rowSelection && selected.length">
-          <div class="md-toolbar-tools">
-            <span>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</span>
-          </div>
-        </md-toolbar>
-        <md-table-container>
-          <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
-            <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
-              <tr md-row>
-                <th md-column md-order-by="unidade"><span>Unidade</span></th>
-                <th md-column md-order-by="cnpj" md-desc><span>CNPJ</span></th>
-                <th md-column md-order-by="obs">
-                  <md-icon>comments</md-icon>
-                  <span>Observa��es</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody md-body>
-              <tr md-row md-select="unidade" md-on-select="logItem" md-auto-select="options.autoSelect" ng-disabled="estagio.calories.value > 400" ng-repeat="estagio in estagios.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-                <td md-cell>{{unidade.unidade}}</td>
-                <td md-cell>{{unidade.cnpj}}</td>
-                 <td md-cell>
-                  <md-select ng-model="estagio.instituicao" placeholder="Other">
-                    <md-option ng-value="type" ng-repeat="type in getInstituicaoes()">{{type}}</md-option>
-                  </md-select>
-                </td>
-                
-                 <td md-cell>
-                  <md-select ng-model="estagio.obrigatorio" placeholder="Other">
-                    <md-option ng-value="type" ng-repeat="type in getOpcao()">{{type}}</md-option>
-                  </md-select>
-                </td>
-                
-                <td md-cell ng-click="editObs($event, estagio)" ng-class="{'md-placeholder': !estagio.obs}">
-                  {{estagio.obs || 'Add a obs'}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </md-table-container>
+      <md-button  id="buttonRemove" >
+        <ng-md-icon id="iconRemove" icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
+      </md-button>
+    </md-grid-tile>
 
-        <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{estagios.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination"></md-table-pagination>
-      </md-card>
-      
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
-    <script src="http://rawgit.com/daniel-nagy/md-data-table/master/dist/md-data-table.js"></script>
-    <script src="projeto/js/jquery.js"></script>
-    <script src="projeto/js/bootstrap.js"></script>
-    <script src="projeto/js/module.js"></script>
-    <script src="projeto/unidadeEnsino/unidadeEnsino.js"></script>
-   
-    
+    <md-grid-tile id="listaDireita">
+      <md-card-content>
+        <div layout="row">
+          <md-input-container>
+            <label>Buscar por</label>
+            <input>
+          </md-input-container>
+
+          <md-input-container>
+            <label>Nome</label>
+            <md-select ng-model="ctrl.userState">
+              <md-option><em>None</em></md-option>
+              <md-option ng-repeat="item in items" ng-value="item" >
+                {{item}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-button >
+            <ng-md-icon id="iconSearch" icon="search" style="fill: #abcdef" size="36"></ng-md-icon>     
+          </md-button>
+        </div>
+      </md-card-content>
+    </md-grid-tile>
+  </md-grid-list>
+
+  <md-table-container>
+    <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
+      <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+        <tr md-row>
+          <th md-column md-order-by="nome"><span>Instituição</span></th>
+          <th md-column md-order-by="cnpj" md-desc><span>CNPJ</span></th>
+          <th md-column md-order-by="obs"><md-icon>comments</md-icon><span>Observações</span></th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select="unidadeEnsino" md-on-select="logItem" md-auto-select="options.autoSelect" ng-disabled="unidadeEnsino.calories.value > 400" ng-repeat="unidadeEnsino in unidadeEnsino.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+          <td md-cell>{{unidadeEnsino.instituicao}}</td>
+          <td md-cell>{{unidadeEnsino.cnpj}}</td>
+                     
+          
+          <td md-cell ng-click="editObs($event, unidadeEnsino)" ng-class="{'md-placeholder': !unidadeEnsino.obs}">{{unidadeEnsino.obs || 'Add a obs'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+
+  <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{unidadeEnsino.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">
+  </md-table-pagination>
+  
+</md-card>
