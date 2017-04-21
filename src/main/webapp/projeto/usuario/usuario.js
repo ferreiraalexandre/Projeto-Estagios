@@ -156,12 +156,29 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.addItem = function (event) {
 	    $mdDialog.show({
 	      clickOutsideToClose: true,
-	      controllerAs: 'ctrl',
+	      controllerAs: 'usuario',
 	      focusOnOpen: false,
 	      targetEvent: event,
 	      templateUrl: 'projeto/usuario/modalUsuario.html',
 	    }).then($scope.getDesserts);
 	  };
+
+	/* Função de adicionar novos usuario */
+	$scope.novoUsuario = function(){
+		
+			$http({
+				url: url + "rest/entry/saveEntry",
+				data: $scope.usuario,
+				method: "POST"
+			}).then(function successCallback(response){
+				bootbox.alert("Usuario salvo com sucesso!");
+				window.setTimeout(function() {
+					window.location.reload();
+				}, 2000);
+			}, function errorCallback(response) {
+				console.log(response);
+			})
+	}
 
   
   
