@@ -7,7 +7,7 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 
 app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', function ($mdEditDialog, $q, $scope, $timeout, $mdDialog) {
   'use strict';
-  
+
   $scope.selected = [];
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
@@ -165,9 +165,9 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 
 	/* Função de adicionar novos usuario */
 	$scope.novoUsuario = function(){
-		
+		var url = location.origin = "http://localhost:8080/projeto/";
 			$http({
-				url: url + "rest/entry/saveEntry",
+				url: url + "rest/usuario/salva",
 				data: $scope.usuario,
 				method: "POST"
 			}).then(function successCallback(response){
