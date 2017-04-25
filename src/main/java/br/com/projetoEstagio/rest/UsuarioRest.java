@@ -1,5 +1,6 @@
 package br.com.projetoEstagio.rest;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -16,9 +17,11 @@ public class UsuarioRest extends UtilRest {
 	}
 	
 	@POST
-	@Path("/salva/{id}")
+	@Path("/salva")
+	@Consumes("application/json")
 	@Produces("application/json")
-	public Response getListFilterCategory(@PathParam("id") String idCategory){
+	public Response salva( String idCategory){
+		System.out.println("teste");
 		return null;
 		
 	}

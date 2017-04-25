@@ -1,6 +1,6 @@
 var app = angular.module("projeto-estagios", ['ngMaterial', 'md.data.table', 'ngMdIcons', 'ngRoute', 'ui.mask', 'ngResource']);
 
-app.pathRest = '../rest';
+app.pathRest = 'rest';
 
 app.config(function($routeProvider) {
 

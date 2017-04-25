@@ -165,8 +165,8 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 
 
 	//Função de adicionar novos usuario
-	$scope.novoUsuario = function () {
-		UsuarioService.postUsuario($scope.usuario, function (response) {
+	$scope.novoUsuario = function (data) {
+		UsuarioService.postUsuario(data, function (response) {
 			//ToastService.alert('Usuario adicionada com sucesso!', undefined, 'bottom left', 3000);
 			
 		}),

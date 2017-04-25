@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 
-<md-dialog role="dialog" tabindex="-1" aria-describedby="dialog_63" class="md-transition-in" aria-label="Add Dessert ..." style="">
+<md-dialog ng-controller="usuarioController" role="dialog" tabindex="-1" aria-describedby="dialog_63" class="md-transition-in" aria-label="Add Dessert ..." style="">
   <md-dialog-content class="md-dialog-content" id="dialog_63">
     
     <h2 class="md-title">Cadastrar Usuário</h2>
@@ -49,7 +49,7 @@
   
   <div class="md-actions">
         
-    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="novoUsuario()"><span>Adicionar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="novoUsuario(usuario)"><span>Adicionar</span></button>
     <button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
   </div>
   
