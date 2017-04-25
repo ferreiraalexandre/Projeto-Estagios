@@ -1,5 +1,8 @@
-app.factory('UsuarioService', function ($resource) {
-    return $resource(pathRest + '/usuario', {}, {
-        postUsuario: { method: 'POST', params: {data: 'data'}, isArray: false},
-    })
-});
+
+app.factory('UsuarioService',['$resource',  function ($resource) {
+	  return $resource(app.pathRest + '/usuario', {}, {
+		  postUsuario: { method: 'POST', params: {method: 'salva' , id: '@id'}}, 
+		   
+
+	  })
+	}]);

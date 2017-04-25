@@ -163,33 +163,17 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	    }).then($scope.getDesserts);
 	  };
 
-//	/* Função de adicionar novos usuario */
-//	$scope.novoUsuario = function(){
-//		var url = location.origin = "http://localhost:8080/projeto/";
-//			$http({
-//				url: url + "rest/usuario/salva",
-//				data: $scope.usuario,
-//				method: "POST"
-//			}).then(function successCallback(response){
-//				bootbox.alert("Usuario salvo com sucesso!");
-//				window.setTimeout(function() {
-//					window.location.reload();
-//				}, 2000);
-//			}, function errorCallback(response) {
-//				console.log(response);
-//			})
-//	}
 
-		//Função de adicionar novos usuario
-		$scope.novoUsuario = function () {
-			UsuarioService.postUsuario($scope.usuario, function (response) {
-				ToastService.alert('Usuario adicionada com sucesso!', undefined, 'bottom left', 3000);
-				
-			}),
-				function (error) {
-
-				};
-		};
+	//Função de adicionar novos usuario
+	$scope.novoUsuario = function () {
+		UsuarioService.postUsuario($scope.usuario, function (response) {
+			//ToastService.alert('Usuario adicionada com sucesso!', undefined, 'bottom left', 3000);
+			
+		}),
+			function (error) {
+	
+			};
+	};
   
   
 }]);
