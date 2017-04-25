@@ -2,14 +2,14 @@
 <link rel="stylesheet" href="projeto/estagio/estagio.css">
 
 
-<md-dialog add-item-dialog="" role="dialog" tabindex="-1" aria-describedby="dialog_63" class="md-transition-in" aria-label="Add Dessert ..." style="">
+<md-dialog ng-controller="unidadeEnsinoController" add-item-dialog="" role="dialog" tabindex="-1" aria-describedby="dialog_63" class="md-transition-in" aria-label="Add Dessert ..." style="">
   <md-dialog-content class="md-dialog-content" id="dialog_63">
     
     <h2 class="md-title">Cadastrar Unidade de Ensino</h2>
     
     <!-- ngIf: item.form.$submitted && item.form.$invalid -->
     
-    <form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
+    <form name="item.form" ng-submit="unidade.addItem()">
       <div layout="row" class="input-row layout-row">
         <md-input-container flex="" class="flex">
           <label for="input_55">Unidade de Ensino</label>
@@ -30,8 +30,9 @@
   </md-dialog-content>
   
   <div class="md-actions">
-    <button class="md-primary md-button md-ink-ripple" type="button" ng-transclude="" ng-click="ctrl.addItem()" ng-disabled="item.form.$invalid" aria-label="Add Item" aria-disabled="true" disabled="disabled"><span>Adicionar</span></button>
-    <button class="md-primary md-button md-ink-ripple" type="button" ng-transclude="" ng-click="ctrl.cancel()" aria-label="Cancel"><span>Cancelar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button" ng-transclude="" ng-click="novaUnidade(unidade)"><span>Adicionar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button" ng-transclude="" ng-click="ctrl.cancel()" 
+    aria-label="Cancel"><span>Cancelar</span></button>
   </div>
   
 <div class="md-dialog-focus-trap" tabindex="0"></div></md-dialog>
