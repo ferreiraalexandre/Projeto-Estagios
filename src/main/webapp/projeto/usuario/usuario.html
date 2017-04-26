@@ -53,7 +53,7 @@
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row md-select="usuario" md-on-select="logItem" md-auto-select="options.autoSelect" ng-disabled="usuario.calories.value > 400" ng-repeat="usuario in usuarios.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+        <tr md-row md-select="usuario" md-on-select="logItem" md-auto-select="options.autoSelect" ng-disabled="usuario.calories.value > 400" ng-repeat="usuario in usuarios | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
           <td md-cell>{{usuario.nome}}</td>
           <td md-cell>{{usuario.cpf}}</td>
                      

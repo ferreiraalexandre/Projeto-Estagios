@@ -1,6 +1,6 @@
 package br.com.projeto.exception;
 
-import br.com.projetoEstagio.rest.ObjectException;
+import br.com.projetoEstagio.restUtil.ObjectException;
 
 public class PrincipalException extends Exception {
 

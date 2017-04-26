@@ -1,4 +1,4 @@
-package br.com.projetoEstagio.rest;
+package br.com.projetoEstagio.restUtil;
 
 public class ObjectException {
 

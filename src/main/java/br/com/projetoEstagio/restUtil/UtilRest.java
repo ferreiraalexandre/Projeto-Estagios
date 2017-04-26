@@ -1,4 +1,4 @@
-package br.com.projetoEstagio.rest;
+package br.com.projetoEstagio.restUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;

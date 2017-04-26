@@ -1,8 +1,9 @@
 package br.com.projetoEstagio.service;
 
+import java.util.List;
+
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.jpa.UsuarioJPA;
-
 
 public class UsuarioService {
 
@@ -12,4 +13,10 @@ public class UsuarioService {
 		return user;
 	}
 
+	public List<Usuario> listUsuario() throws Exception {
+		UsuarioJPA listUsuario = new UsuarioJPA();
+		return listUsuario.list();
+	}
+
+	
 }

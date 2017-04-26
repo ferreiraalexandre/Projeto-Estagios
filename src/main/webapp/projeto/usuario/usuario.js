@@ -37,50 +37,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     limit: 5,
     page: 1
   };
-  
-  $scope.usuarios = {
-    "count": 1,
-    "data": [
-      {
-        "nome": "Andre Felipe",
-        "cpf": "454564489489",
-       	"instituicao": "Senai",      	
-      }, {
-          "nome": "Andre Felipe",
-          "cpf": "454564489489",
-         	"instituicao": "Senai",
-      }, {
-          "nome": "Andre Felipe",
-          "cpf": "454564489489",
-         	"instituicao": "Senai",
-      }, {
-          "nome": "Andre Felipe",
-          "cpf": "454564489489",
-         	"instituicao": "Senai",
-      }, {
-          "nome": "Andre Felipe",
-          "cpf": "454564489489",
-         	"instituicao": "Senai",
-      }, {
-          "nome": "Andre Felipe",
-          "cpf": "454564489489",
-         	"instituicao": "Senai",
-      }, {
-          "nome": "Andre Felipe",
-          "cpf": "454564489489",
-         	"instituicao": "Senai",
-      }, {
-          "nome": "Andre Felipe",
-          "cpf": "454564489489",
-         	"instituicao": "Senai",
-      }, {
-          "nome": "Andre Felipe",
-          "cpf": "454564489489",
-         	"instituicao": "Senai",
-      }
-    ]
-  };
-  
+    
   $scope.editObs = function (event, usuario) {
     event.stopPropagation(); // in case autoselect is enabled
     
@@ -164,7 +121,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	  };
 
 
-	//Função de adicionar novos usuario
+	//Função de adicionar novos usuario no Banco de Dados
 	$scope.novoUsuario = function (data) {
 		UsuarioService.postUsuario(data, function (response) {
 			//ToastService.alert('Usuario adicionada com sucesso!', undefined, 'bottom left', 3000);
@@ -175,5 +132,14 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			};
 	};
   
-  
+	//Busca usuários do banco e lista na tabela
+	$scope.getUsuario = function () {
+		UsuarioService.getList(function (response) {
+			$scope.usuarios = response.data;	
+		});
+
+	};
+
+	//Chama função para buscar usuarios
+	$scope.getUsuario();
 }]);
