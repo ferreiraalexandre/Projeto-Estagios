@@ -1,7 +1,6 @@
 package br.com.projetoEstagio.jpa;
 
 
-import java.util.List;
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.interfaces.UsuarioInterface;
 
