@@ -5,7 +5,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', function ($mdEditDialog, $q, $scope, $timeout, $mdDialog) {
+app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UnidadeEnsinoService',
+                                           function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, UnidadeEnsinoService) {
   'use strict';
   
   $scope.selected = [];
@@ -130,7 +131,15 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	      templateUrl: 'projeto/unidadeEnsino/modalUnidade.html',
 	    }).then($scope.getDesserts);
 	  };
-
+  $scope.novaUnidade = function (data) {
+	  UnidadeEnsinoService.postUnidade(data, function (response) {
+			//ToastService.alert('Usuario adicionada com sucesso!', undefined, 'bottom left', 3000);
+			
+		}),
+			function (error) {
+	
+			};
+	};
   
   
 }]);

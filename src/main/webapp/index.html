@@ -1,29 +1,21 @@
 <html ng-app="projeto-estagios">
-
   <head>
-    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Projeto Estágios</title>
-    
 	<link rel="stylesheet" href="projeto/css/angular-material.css">
     <link rel="stylesheet" href="projeto/css/material-icons.css">
     <link rel="stylesheet" href="projeto/css/md-data-table.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" href="projeto/css/bootstrap.css">-->
     <link rel="stylesheet" href="projeto/estagio/estagio.css">
-    
   </head>
-
 	<body layout="column">
-				
 		<md-content laout="column" flex ng-controller="estagioController">
-		 
 			<div class="navbar navbar-default navbar-fixed-top" id="navbarMenu" role="navigation">
 				<div class="container"> 
 					<a class="navbar-brand" href=""><img src="projeto/img/Logo.png"></a>
-				
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -61,7 +53,6 @@
 					</ul>
 				</div>
 			</div>
-				
 			<div class="container-fluid" id="menu" style="color:#313b3f;">
 				<md-content class="md-padding">
 					<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
@@ -70,8 +61,6 @@
 					<md-nav-item md-nav-click="menuClick('/usuario')" name="page3">Usuário</md-nav-item>
 				</md-content>
 			</div>
-				
-					
 			<!--   NÃO REMOVER
 			<md-card>
 				<div layout="row" layout-wrap class="checkboxes">
@@ -86,14 +75,10 @@
 				</div>
 			</md-card>
 			-->
-		  
 			<div ng-view>
-	 
 			</div>
-			
 		</md-content>
 		<div class="footer"><p class="denvelopers">Copyright © 2017 | Alexandre Ferreira da Silva, Caio Ricardo Lessin, Eduardo Fabrício Pacheco e Jeronimo Fleith de Lima</p></div>
-		
 		<script src="projeto/js/angular.min.js"></script>
 		<script src="projeto/js/angular-route/angular-route.min.js"></script>
 		<script src="projeto/js/angular-resource.min.js"></script>
@@ -102,11 +87,9 @@
 		<script src="projeto/js/angular-messages.min.js"></script>
 		<script src="projeto/js/angular-material.min.js"></script>
 		<script src="projeto/js/angular-material-icons.min.js"></script>
-		<script src="projeto/js/md-data-table.js"></script>
-		
+		<script src="projeto/js/md-data-table.js"></script>		
 		<script src="projeto/js/ui-bootstrap-tpls.min.js"></script>
 		<script src="projeto/js/angular-mask.min.js"></script>
-		
 		<script src="projeto/js/jquery.js"></script>
 		<script src="projeto/js/bootstrap.js"></script>
 		<script src="module.js"></script>
@@ -114,6 +97,5 @@
 		<script src="projeto/estagio/estagio.js"></script>
 		<script src="projeto/usuario/usuario.js"></script>
 		<script src="projeto/unidadeEnsino/unidadeEnsino.js"></script>
-		
 	</body> 
 </html>
