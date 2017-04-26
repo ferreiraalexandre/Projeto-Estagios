@@ -4,11 +4,10 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
 import javax.ws.rs.core.Response;
 
-
 import br.com.projetoEstagio.entity.UnidadeEnsino;
+import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.UnidadeEnsinoService;
 
 @Path("/unidadeEnsino")
