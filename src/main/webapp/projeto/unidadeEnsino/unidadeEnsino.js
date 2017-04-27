@@ -39,16 +39,6 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
     page: 1
   };
   
-  $scope.unidadeEnsino = {
-    "count": 1,
-    "data": [
-      {
-        "instituicao": "SENAI Norte I",
-        "cnpj": "45.456.448/9489-12",
-       	      	
-      }
-    ]
-  };
   
   $scope.editObs = function (event, unidadeEnsino) {
     event.stopPropagation(); // in case autoselect is enabled
@@ -140,6 +130,17 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	
 			};
 	};
+	
+	//Busca unidades de ensino do banco e lista na tabela
+	$scope.getUnidadeEnsino = function () {
+		UnidadeEnsinoService.getList(function (response) {
+			$scope.unidadeEnsino = response.data;	
+		});
+
+	};
+
+	//Chama função para buscar unidades de ensino
+	$scope.getUnidadeEnsino();
   
   
 }]);

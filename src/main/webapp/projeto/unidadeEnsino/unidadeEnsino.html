@@ -48,16 +48,12 @@
         <tr md-row>
           <th md-column md-order-by="nome"><span>Instituição</span></th>
           <th md-column md-order-by="cnpj" md-desc><span>CNPJ</span></th>
-          <th md-column md-order-by="obs"><md-icon>comments</md-icon><span>Observações</span></th>
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row md-select="unidadeEnsino" md-on-select="logItem" md-auto-select="options.autoSelect" ng-disabled="unidadeEnsino.calories.value > 400" ng-repeat="unidadeEnsino in unidadeEnsino.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
-          <td md-cell>{{unidadeEnsino.instituicao}}</td>
+        <tr md-row md-select="unidadeEnsino" md-on-select="logItem" md-auto-select="options.autoSelect" ng-disabled="unidadeEnsino.calories.value > 400" ng-repeat="unidadeEnsino in unidadeEnsino | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+          <td md-cell>{{unidadeEnsino.nome}}</td>
           <td md-cell>{{unidadeEnsino.cnpj}}</td>
-                     
-          
-          <td md-cell ng-click="editObs($event, unidadeEnsino)" ng-class="{'md-placeholder': !unidadeEnsino.obs}">{{unidadeEnsino.obs || 'Add a obs'}}</td>
         </tr>
       </tbody>
     </table>
