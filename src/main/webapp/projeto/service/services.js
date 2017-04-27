@@ -11,7 +11,23 @@ app.factory('UsuarioService',['$resource',  function ($resource) {
 app.factory('UnidadeEnsinoService',['$resource',  function ($resource) {
 	  return $resource(app.pathRest + '/unidadeEnsino/:method/:id', {}, {
 		  postUnidade: { method: 'POST', params: {method: 'salva'}}, 
+		  getList: {method: 'GET', params: {method: 'buscar'}, isArray: false}
 		   
 
 	  })
 	}]);
+
+app.service('ToastService',function($mdToast){
+	  this.alert = function(text,action,position,delay){
+
+	    var toast = $mdToast.simple()
+	    .textContent(text)
+	    .position(position)
+	    .hideDelay(delay);
+
+	    if(action){ toast.action(action); }
+
+	    return $mdToast.show(toast);
+	  };
+
+});

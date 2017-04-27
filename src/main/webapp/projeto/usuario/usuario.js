@@ -5,8 +5,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UsuarioService',  
-                            function ($mdEditDialog,   $q,   $scope,   $timeout,   $mdDialog,   UsuarioService) {
+app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UsuarioService','ToastService',  
+                            function ($mdEditDialog,   $q,   $scope,   $timeout,   $mdDialog,   UsuarioService,  ToastService) {
 
   $scope.selected = [];
   $scope.limitOptions = [5, 10, 15];
@@ -124,7 +124,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	//Função de adicionar novos usuario no Banco de Dados
 	$scope.novoUsuario = function (data) {
 		UsuarioService.postUsuario(data, function (response) {
-			//ToastService.alert('Usuario adicionada com sucesso!', undefined, 'bottom left', 3000);
+		ToastService.alert('Usuario adicionada com sucesso!', undefined, 'top right', 3000);
 			
 		}),
 			function (error) {
