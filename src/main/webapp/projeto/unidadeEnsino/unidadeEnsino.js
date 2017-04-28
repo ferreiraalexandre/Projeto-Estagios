@@ -121,22 +121,27 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	      templateUrl: 'projeto/unidadeEnsino/modalUnidade.html',
 	    }).then($scope.getDesserts);
 	  };
-  $scope.novaUnidade = function (data) {
-	  UnidadeEnsinoService.postUnidade(data, function (response) {
-			//ToastService.alert('Usuario adicionada com sucesso!', undefined, 'bottom left', 3000);
-			
-		}),
-			function (error) {
 	
-			};
-	};
-	
+		
 	//Busca unidades de ensino do banco e lista na tabela
 	$scope.getUnidadeEnsino = function () {
 		UnidadeEnsinoService.getList(function (response) {
 			$scope.unidadeEnsino = response.data;	
 		});
-
+		$scope.novaUnidade = function (data) {
+			UnidadeEnsinoService.postUnidade(data, function (response) {
+				//ToastService.alert('Usuario adicionada com sucesso!', undefined, 'bottom left', 3000);
+				$scope.getUnidadeEnsino();
+				 $mdDialog.cancel();
+			}),
+			function (error) {
+				
+			};
+			//$scope.unidadeEnsino.push(data);
+			delete $scope.unidade;
+			
+		};
+		
 	};
 
 	//Chama função para buscar unidades de ensino
