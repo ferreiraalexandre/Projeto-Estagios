@@ -54,7 +54,7 @@
   
   <div class="md-actions">
         
-    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="novoUsuario(usuario)"><span>Adicionar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="novoUsuario(usuario)" ng.disabled="!usuario.nome"><span>Adicionar</span></button>
     <button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
   </div>
   

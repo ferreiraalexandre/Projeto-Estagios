@@ -1,4 +1,4 @@
-var app = angular.module("projeto-estagios", ['ngMaterial', 'md.data.table', 'ngMdIcons', 'ngRoute', 'ui.mask', 'ngResource']);
+var app = angular.module("projeto-estagios", ['ngMaterial', 'ngMessages','md.data.table', 'ngMdIcons', 'ngRoute', 'ui.mask', 'ngResource']);
 
 app.pathRest = 'rest';
 
