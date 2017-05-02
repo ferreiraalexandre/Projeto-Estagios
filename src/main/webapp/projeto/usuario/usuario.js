@@ -8,7 +8,7 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UsuarioService','ToastService',  
                             function ($mdEditDialog,   $q,   $scope,   $timeout,   $mdDialog,   UsuarioService,  ToastService) {
 
-  $scope.selected = [];
+  $scope.selecionados = [];
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
@@ -110,7 +110,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   }
   
   
-  $scope.addItem = function (event) {
+  $scope.addUsuario = function (event) {
 	    $mdDialog.show({
 	      clickOutsideToClose: true,
 	      controllerAs: 'usuario',
@@ -126,7 +126,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		UsuarioService.postUsuario(data, function (response) {
 		$mdDialog.cancel();
 		$scope.getUsuario();
-		ToastService.alert('Usuario adicionada com sucesso!', undefined, 'top right', 3000);
+		ToastService.alert('Usuario adicionada com sucesso!', undefined, 'botton right', 3000);
 			
 		}),
 			function (error) {
@@ -153,6 +153,9 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			};
 	};
 
+	$scope.editUsuario = function(){
+		console.log($scope.selecionados);
+	}
 
 	//Fechar modal no botão cancelar
 	$scope.cancel = function () {
