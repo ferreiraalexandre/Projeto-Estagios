@@ -124,6 +124,8 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	//Função de adicionar novos usuario no Banco de Dados
 	$scope.novoUsuario = function (data) {
 		UsuarioService.postUsuario(data, function (response) {
+		$mdDialog.cancel();
+		$scope.getUsuario();
 		ToastService.alert('Usuario adicionada com sucesso!', undefined, 'top right', 3000);
 			
 		}),
@@ -131,13 +133,30 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	
 			};
 	};
-  
+  	
 	//Busca usuários do banco e lista na tabela
 	$scope.getUsuario = function () {
 		UsuarioService.getList(function (response) {
 			$scope.usuarios = response.data;	
 		});
 
+	};
+	
+	//Edita usuário
+	$scope.editUsuario = function (data) {
+		UserService.putUser(data.user, function (response) {
+			ToastService.alert('Usuário editado com sucesso!', undefined, 'bottom left', 3000);
+			$scope.users = ArrayService.edit(data.index, data.user, $scope.users);
+		}),
+			function (error) {
+
+			};
+	};
+
+
+	//Fechar modal no botão cancelar
+	$scope.cancel = function () {
+		$mdDialog.cancel();
 	};
 
 	//Chama função para buscar usuarios
