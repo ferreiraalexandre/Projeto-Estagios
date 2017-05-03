@@ -10,6 +10,8 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
   'use strict';
   
   $scope.selected = [];
+  $scope.teste = [];
+  
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
@@ -121,6 +123,20 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	      templateUrl: 'projeto/unidadeEnsino/modalUnidade.html',
 	    }).then($scope.getDesserts);
 	  };
+	  
+	  
+	  $scope.novaUnidade = function (data) {
+			UnidadeEnsinoService.postUnidade(data, function (response) {
+				$mdDialog.cancel();
+				$scope.getUnidadeEnsino();
+				ToastService.alert('Unidadde adicionada com sucesso!', undefined, 'top right', 3000);
+		}),
+			function (error) {
+				
+				};
+			
+		};
+		
 	
 		
 	//Busca unidades de ensino do banco e lista na tabela
@@ -128,21 +144,31 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		UnidadeEnsinoService.getList(function (response) {
 			$scope.unidadeEnsino = response.data;	
 		});
-		$scope.novaUnidade = function (data) {
-			UnidadeEnsinoService.postUnidade(data, function (response) {
-				//ToastService.alert('Usuario adicionada com sucesso!', undefined, 'bottom left', 3000);
-				$scope.getUnidadeEnsino();
-				 $mdDialog.cancel();
-			}),
-			function (error) {
-				
-			};
-			//$scope.unidadeEnsino.push(data);
-			delete $scope.unidade;
+	};
+	
+	
+	//Fechar modal no botão cancelar
+	$scope.cancel = function () {
+		$mdDialog.cancel();
+	};
+	
+	$scope.deleteUnidade = function(){
+		console.log($scope.selected);
+		
+		 for (var i = 0; i < $scope.selected.length; i++) {
+			 $scope.teste.push($scope.selected[i].id);
+		} 
+		 
+		 
+		 
+		 UnidadeEnsinoService.deleteUnidade(20, function(response){
+			 
+		 });
 			
-		};
 		
 	};
+		
+	
 
 	//Chama função para buscar unidades de ensino
 	$scope.getUnidadeEnsino();

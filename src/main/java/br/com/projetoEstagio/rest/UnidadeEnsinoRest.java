@@ -3,6 +3,7 @@ package br.com.projetoEstagio.rest;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -40,6 +41,23 @@ public class UnidadeEnsinoRest extends UtilRest {
 	@Path("/buscar")
 	@Produces("application/json")
 	public Response list() {
+
+		try{
+			UnidadeEnsinoService service = new UnidadeEnsinoService(); 
+
+			List<UnidadeEnsino> e = service.listUnidade();
+
+			return getResponseList(e);
+		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
+	
+	@POST
+	@Path("/deletar")
+	@Consumes("application/*")
+	@Produces("application/*")
+	public Response delete(String json) {
 
 		try{
 			UnidadeEnsinoService service = new UnidadeEnsinoService(); 
