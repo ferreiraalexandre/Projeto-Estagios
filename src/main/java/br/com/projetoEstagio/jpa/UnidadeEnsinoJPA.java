@@ -15,6 +15,9 @@ public class UnidadeEnsinoJPA  extends JPAAbstract<UnidadeEnsino, Long> implemen
 	public List<UnidadeEnsino> list(){
 		return this.list("");
 	}
+	public void deleteUnidadeEnsino(long id){
+		this.remove(id);
+	}
 
 
 }

@@ -18,9 +18,13 @@ public class UnidadeEnsinoService {
 		return listUnidade.list();
 	}
 	
-	public void deleteUnidade(UnidadeEnsino unid) throws Exception{
+	public void deleteUnidade(List unid) throws Exception{
 		UnidadeEnsinoJPA uni = new UnidadeEnsinoJPA();
-		//uni.remove();
+		for (int i = 0; i < unid.size(); i++) {
+			Long ids = (long) unid.get(i);
+			uni.deleteUnidadeEnsino(ids);
+		}
+		
 		
 	}
 

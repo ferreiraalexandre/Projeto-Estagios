@@ -126,6 +126,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	  $scope.novaUnidade = function (data) {
 			UnidadeEnsinoService.postUnidade(data, function (response) {
 				$mdDialog.cancel();
+				location.reload();
 				$scope.getUnidadeEnsino();
 				ToastService.alert('Unidadde adicionada com sucesso!', undefined, 'top right', 3000);
 		}),

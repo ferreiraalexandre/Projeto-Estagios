@@ -61,13 +61,14 @@ public class UnidadeEnsinoRest extends UtilRest {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response delete(@PathParam ("id") List id) {
-
+		
 		try{
-			UnidadeEnsinoService service = new UnidadeEnsinoService(); 
+			UnidadeEnsinoService service = new UnidadeEnsinoService();
+			
+			service.deleteUnidade(id);
+			
 
-			List<UnidadeEnsino> e = service.listUnidade();
-
-			return getResponseList(e);
+			return getResponseRemove();
 		} catch (Exception e) {
 			return getResponseError(e);
 		}
