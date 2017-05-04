@@ -12,6 +12,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
+  $scope.usuario = {};
   
   $scope.getSelectedText = function() {
       if ($scope.selectedItem !== undefined) {
@@ -110,16 +111,15 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   }
   
   
-  $scope.addUsuario = function (event) {
-	    $mdDialog.show({
+  $scope.addUsuario = function (event) { 
+	  $mdDialog.show({
 	      clickOutsideToClose: true,
-	      controllerAs: 'usuario',
+	      controllerAs: 'usuarioController',
 	      focusOnOpen: false,
 	      targetEvent: event,
 	      templateUrl: 'projeto/usuario/modalUsuario.html',
 	    }).then($scope.getDesserts);
 	  };
-
 
 	//Função de adicionar novos usuario no Banco de Dados
 	$scope.novoUsuario = function (data) {
@@ -143,18 +143,13 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	};
 	
 	//Edita usuário
-	$scope.editUsuario = function (data) {
-		UserService.putUser(data.user, function (response) {
-			ToastService.alert('Usuário editado com sucesso!', undefined, 'bottom left', 3000);
-			$scope.users = ArrayService.edit(data.index, data.user, $scope.users);
-		}),
-			function (error) {
-
-			};
-	};
-
-	$scope.editUsuario = function(){
-		console.log($scope.selecionados);
+	$scope.editUsuario = function(data){
+		console.log(data);
+	//	$scope.usuarioEdit = $scope.selecionados ;
+		$scope.usuario.nome = 'Nome';
+		$scope.usuario.cpf = '12345678901';
+		
+		$scope.addUsuario();
 	}
 
 	//Fechar modal no botão cancelar

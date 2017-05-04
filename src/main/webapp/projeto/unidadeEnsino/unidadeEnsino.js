@@ -9,9 +9,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
                                            function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, UnidadeEnsinoService) {
   'use strict';
   
-  $scope.selected = [];
-  $scope.teste = [];
-  
+  $scope.selected = [];  
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
@@ -152,16 +150,17 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		$mdDialog.cancel();
 	};
 	
-	$scope.deleteUnidade = function(){
-		console.log($scope.selected);
-		
-		 for (var i = 0; i < $scope.selected.length; i++) {
-			 $scope.teste.push($scope.selected[i].id);
+	$scope.deleteUnidade = function(){	
+		var arrayId = []; 
+		for (var i = 0; i < $scope.selected.length; i++) {
+			arrayId.push($scope.selected[i].id);
 		} 
 		 
+		 var listId ={
+				 data:arrayId,
+				 };
 		 
-		 
-		 UnidadeEnsinoService.deleteUnidade(20, function(response){
+		 UnidadeEnsinoService.deleteUnidade(listId, function(response){
 			 
 		 });
 			

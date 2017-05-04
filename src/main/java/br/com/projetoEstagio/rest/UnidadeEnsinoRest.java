@@ -7,8 +7,11 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+
+import org.codehaus.jettison.json.JSONArray;
 
 import br.com.projetoEstagio.entity.UnidadeEnsino;
 import br.com.projetoEstagio.entity.Usuario;
@@ -53,11 +56,11 @@ public class UnidadeEnsinoRest extends UtilRest {
 		}
 	}
 	
-	@POST
-	@Path("/deletar")
-	@Consumes("application/*")
-	@Produces("application/*")
-	public Response delete(String json) {
+	@DELETE
+	@Path("/deletar/{id}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response delete(@PathParam ("id") List id) {
 
 		try{
 			UnidadeEnsinoService service = new UnidadeEnsinoService(); 

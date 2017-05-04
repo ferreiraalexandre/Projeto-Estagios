@@ -1,27 +1,27 @@
 <meta charset="utf-8">
 
-<md-dialog ng-controller="usuarioController" role="dialog" tabindex="-1" aria-describedby="dialog_63" class="md-transition-in" aria-label="Add Dessert ..." style="">
+<md-dialog  role="dialog" tabindex="-1" aria-describedby="dialog_63" class="md-transition-in" aria-label="Add Dessert ..." style="">
   <md-dialog-content class="md-dialog-content" id="dialog_63">
     
     <h2 class="md-title">Cadastrar Usuário</h2>
     
     <!-- ngIf: item.form.$submitted && item.form.$invalid -->
     
-    <form name="usuarioForm" ng-submit="usuario.addItem()">
-      <div layout="row" class="input-row layout-row">
+    <form name="usuarioForm" ng-submit="usuario.addItem()" >
+      <div layout="row" class="input-row layout-row" >
         <md-input-container class="flex">
           <label for="input_55">Nome</label>
-          <input name="name" ng-model="usuario.nome" required="" id="input_55" aria-required="true" aria-invalid="true" ng-trim="false">
+          <input name="name" ng-model="usuario.nome"  id="input_55" aria-required="true" aria-invalid="true" ng-trim="false">
         </md-input-container>
         <md-input-container class="flex">
           <label for="input_55">CPF</label>
-          <input name="cpf" ng-model="usuario.cpf" required="" ui-mask="999.999.999-99" id="input_55" aria-required="true" aria-invalid="true" ng-trim="false">
+          <input name="cpf" ng-model="usuario.cpf"  ui-mask="999.999.999-99" id="input_55" aria-required="true" aria-invalid="true" ng-trim="false">
         </md-input-container>        
       </div>
       <div>
         <md-input-container class="flex">
           <label for="input_55">Email</label>
-          <input name="email" ng-model="usuario.email" required="" ng-pattern="/^.+@.+\..+$/" id="input_55" aria-invalid="true" ng-trim="false">
+          <input name="email" ng-model="usuario.email" ng-pattern="/^.+@.+\..+$/" id="input_55" aria-invalid="true" ng-trim="false">
           <div ng-messages="usuarioForm.email.$error" role="alert">
           <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
             Insira um email válido
