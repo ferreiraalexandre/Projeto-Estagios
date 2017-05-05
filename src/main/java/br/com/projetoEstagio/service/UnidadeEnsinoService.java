@@ -20,9 +20,11 @@ public class UnidadeEnsinoService {
 	
 	public void deleteUnidade(List unid) throws Exception{
 		UnidadeEnsinoJPA uni = new UnidadeEnsinoJPA();
-		for (int i = 0; i < unid.size(); i++) {
-			Long ids = (long) unid.get(i);
-			uni.deleteUnidadeEnsino(ids);
+		String abc = (String) unid.get(0);
+		String[] unidade = abc.split(",");
+		for (int i = 0; i < unidade.length; i++) {
+			long w = Long.parseLong(unidade[i]);
+			uni.deleteUnidadeEnsino(w);
 		}
 		
 		
