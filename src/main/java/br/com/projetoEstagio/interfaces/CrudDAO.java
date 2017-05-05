@@ -84,8 +84,9 @@ public interface CrudDAO<E, ID> {
 	 * 
 	 * @param id
 	 *            instancia do tipo da chave primaria do banco de dados.
+	 * @return 
 	 */
-	public void remove(ID id);
+	public Boolean remove(ID id);
 
 	/**
 	 * 

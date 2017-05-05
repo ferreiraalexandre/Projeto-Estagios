@@ -215,7 +215,7 @@ public class JPAAbstract<E, ID> extends JPAConnection implements CrudDAO<E, ID> 
 	 * @param id
 	 *            instancia do tipo da chave primaria do banco de dados.
 	 */
-	public void remove(ID id){
+	public Boolean remove(ID id){
 
 		E e = this.getObject(id);
 
@@ -232,6 +232,8 @@ public class JPAAbstract<E, ID> extends JPAConnection implements CrudDAO<E, ID> 
 		em.close();
 
 		this.closeConection();
+		
+		return true;
 	}
 
 	/**

@@ -157,7 +157,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		} 
 		 
 		 var listId ={
-				 data:arrayId,
+				 data: JSON.stringify(arrayId),
 				 };
 		 
 		 UnidadeEnsinoService.deleteUnidade(listId, function(response){
