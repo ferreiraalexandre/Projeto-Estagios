@@ -32,12 +32,10 @@ public class UnidadeEnsinoService {
 			
 
 			String[] unidade;
-			//String[] unidade = abc.split(",");
-			for (int i = 0; i < unidade.length; i++) {
-				long w = Long.parseLong(unidade);
-			
-			System.out.print(w);
+			for (int i = 0; i < unid.length(); i++) {
 				
+				long w = Long.parseLong(unid);
+			
 						
 				uni.deleteUnidadeEnsino(w);
 			
