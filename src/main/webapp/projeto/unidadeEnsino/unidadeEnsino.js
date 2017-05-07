@@ -151,15 +151,16 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		$mdDialog.cancel();
 	};
 	
-	$scope.deleteUnidade = function(){	
+	$scope.deleteUnidade = function(){	// Ver aqui!!!!!
 		var arrayId = []; 
 		for (var i = 0; i < $scope.selected.length; i++) {
 			arrayId.push($scope.selected[i].id);
 		} 
 		 
-		 var listId ={
-				 data:arrayId,
-				 };
+		 		var listId ={
+			     data: JSON.stringify(arrayId),
+			     };
+			
 		 
 		 UnidadeEnsinoService.deleteUnidade(listId, function(response){
 			 

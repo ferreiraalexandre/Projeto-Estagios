@@ -12,7 +12,7 @@ app.factory('UnidadeEnsinoService',['$resource',  function ($resource) {
 	  return $resource(app.pathRest + '/unidadeEnsino/:method/:data', {}, {
 		  postUnidade: { method: 'POST', params: {method: 'salva'}}, 
 		  getList: {method: 'GET', params: {method: 'buscar'}, isArray: false},
-		  deleteUnidade: { method: 'DELETE', params: {method: 'deletar'}}
+		  deleteUnidade: { method: 'DELETE', params: {method: 'deletar'}, isArray: true}
 		   
 
 	  })
