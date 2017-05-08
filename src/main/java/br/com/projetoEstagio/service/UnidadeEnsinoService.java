@@ -2,7 +2,7 @@ package br.com.projetoEstagio.service;
 
 import java.util.List;
 
-import org.codehaus.jettison.json.JSONArray;
+import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.UnidadeEnsino;
 import br.com.projetoEstagio.jpa.UnidadeEnsinoJPA;
@@ -20,16 +20,28 @@ public class UnidadeEnsinoService {
 		return listUnidade.list();
 	}
 	
-	public Boolean deleteUnidade(JSONArray id) throws Exception{
+	public void deleteUnidade(JSONArray unid) throws Exception{
 		UnidadeEnsinoJPA uni = new UnidadeEnsinoJPA();
+		/*String abc = (String) unid.get(0);
+		String[] unidade = abc.split(",");
+		for (int i = 0; i < unidade.length; i++) {
+			long w = Long.parseLong(unidade[i]);
 		
-			Boolean retorno = false;
-			for (int i = 0; i < id.length(); i++) {
-				retorno =	uni.remove(id.getLong(i));
-			}
+						
+			uni.deleteUnidadeEnsino(unid); */
 			
-			return retorno;
+
+			String[] unidade;
+			for (int i = 0; i < unid.length(); i++) {
+				
+				long w = Long.parseLong(unid);
+			
+						
+				uni.deleteUnidadeEnsino(w);
+			
 		}
+		
+		
+	}
+
 }
-
-

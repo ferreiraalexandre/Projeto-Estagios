@@ -126,6 +126,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	  $scope.novaUnidade = function (data) {
 			UnidadeEnsinoService.postUnidade(data, function (response) {
 				$mdDialog.cancel();
+				location.reload();
 				$scope.getUnidadeEnsino();
 				ToastService.alert('Unidadde adicionada com sucesso!', undefined, 'top right', 3000);
 		}),
@@ -150,15 +151,16 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		$mdDialog.cancel();
 	};
 	
-	$scope.deleteUnidade = function(){	
+	$scope.deleteUnidade = function(){	// Ver aqui!!!!!
 		var arrayId = []; 
 		for (var i = 0; i < $scope.selected.length; i++) {
 			arrayId.push($scope.selected[i].id);
 		} 
 		 
-		 var listId ={
-				 data: JSON.stringify(arrayId),
-				 };
+		 		var listId ={
+			     data: JSON.stringify(arrayId),
+			     };
+			
 		 
 		 UnidadeEnsinoService.deleteUnidade(listId, function(response){
 			 

@@ -11,13 +11,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import org.codehaus.jettison.json.JSONArray;
+import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.UnidadeEnsino;
-import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.UnidadeEnsinoService;
-import br.com.projetoEstagio.service.UsuarioService;
 
 @Path("/unidadeEnsino")
 public class UnidadeEnsinoRest extends UtilRest {
@@ -65,9 +63,9 @@ public class UnidadeEnsinoRest extends UtilRest {
 		try{
 			UnidadeEnsinoService service = new UnidadeEnsinoService(); 
 
-			Boolean e = service.deleteUnidade(id);
+			service.deleteUnidade(id);
 
-			return getResponseList(e);
+			return getResponseRemove();
 		} catch (Exception e) {
 			return getResponseError(e);
 		}
