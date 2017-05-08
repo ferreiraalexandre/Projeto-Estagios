@@ -12,7 +12,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
-  $scope.usuario = {};
+  $scope.usuariosModal;
   
   $scope.getSelectedText = function() {
       if ($scope.selectedItem !== undefined) {
@@ -110,17 +110,23 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     console.log('limit: ', limit);
   }
   
-  
-  $scope.addUsuario = function (event) { 
-	  $mdDialog.show({
-	      clickOutsideToClose: true,
-	      controllerAs: 'usuarioController',
-	      focusOnOpen: false,
-	      targetEvent: event,
+ //Abrir Modal
+  $scope.abrirModal = function(event) {
+	    $mdDialog.show({
+	      controller: ModalController,
+	      scope: $scope,
 	      templateUrl: 'projeto/usuario/modalUsuario.html',
-	    }).then($scope.getDesserts);
-	  };
-
+	      parent: angular.element(document.body),
+	      targetEvent: event,
+	      clickOutsideToClose:true
+	    })
+	        .then(function(resposta) {
+	        	"fechar"
+	          }, function() {
+	        	  "fechar"
+	          });
+	    };
+  
 	//Função de adicionar novos usuario no Banco de Dados
 	$scope.novoUsuario = function (data) {
 		UsuarioService.postUsuario(data, function (response) {
@@ -144,19 +150,25 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	
 	//Edita usuário
 	$scope.editUsuario = function(data){
-		console.log(data);
-	//	$scope.usuarioEdit = $scope.selecionados ;
-		$scope.usuario.nome = 'Nome';
-		$scope.usuario.cpf = '12345678901';
-		
-		$scope.addUsuario();
+	//	$scope.usuario=data[0];
+		$scope.abrirModal();
 	}
+	
+	function ModalController($scope, $mdDialog) {
 
-	//Fechar modal no botão cancelar
-	$scope.cancel = function () {
-		$mdDialog.cancel();
-	};
+	    $scope.usuario=$scope.selecionados[0];
+	  
+		$scope.hide = function() {
+	      $mdDialog.hide();
+	    };
+
+	    $scope.cancel = function() {
+	      $mdDialog.cancel();
+	    };
+	
+	  }
 
 	//Chama função para buscar usuarios
 	$scope.getUsuario();
+
 }]);
