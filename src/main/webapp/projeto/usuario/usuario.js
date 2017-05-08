@@ -114,32 +114,15 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.abrirModal = function(event) {
 	    $mdDialog.show({
 	      controller: ModalController,
-	      scope: $scope,
 	      templateUrl: 'projeto/usuario/modalUsuario.html',
-	      parent: angular.element(document.body),
 	      targetEvent: event,
-	      clickOutsideToClose:true
-	    })
-	        .then(function(resposta) {
-	        	"fechar"
-	          }, function() {
-	        	  "fechar"
-	          });
-	    };
-  
-	//Função de adicionar novos usuario no Banco de Dados
-	$scope.novoUsuario = function (data) {
-		UsuarioService.postUsuario(data, function (response) {
-		$mdDialog.cancel();
-		$scope.getUsuario();
-		ToastService.alert('Usuario adicionada com sucesso!', undefined, 'botton right', 3000);
-			
-		}),
-			function (error) {
-	
-			};
-	};
-  	
+	      clickOutsideToClose:true,
+	      locals : {
+              retornoModal : $scope
+          }
+	    }).then();
+  };
+    	
 	//Busca usuários do banco e lista na tabela
 	$scope.getUsuario = function () {
 		UsuarioService.getList(function (response) {
@@ -147,16 +130,12 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		});
 
 	};
-	
-	//Edita usuário
-	$scope.editUsuario = function(data){
-	//	$scope.usuario=data[0];
-		$scope.abrirModal();
-	}
-	
-	function ModalController($scope, $mdDialog) {
-
-	    $scope.usuario=$scope.selecionados[0];
+		
+	//Controller da modal
+	function ModalController($scope, $mdDialog,retornoModal) {
+		if(retornoModal.selecionados.length==1){
+			$scope.usuario=retornoModal.selecionados[0];			
+		}
 	  
 		$scope.hide = function() {
 	      $mdDialog.hide();
@@ -165,7 +144,20 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	    $scope.cancel = function() {
 	      $mdDialog.cancel();
 	    };
-	
+		    
+		//Função de adicionar novos usuario no Banco de Dados
+		$scope.novoUsuario = function (data) {
+			UsuarioService.postUsuario(data, function (response) {
+			$mdDialog.cancel();
+			$scope.getUsuario();
+			ToastService.alert('Usuario adicionada com sucesso!', undefined, 'botton right', 3000);
+				
+			}),
+				function (error) {
+		
+				};
+		};
+
 	  }
 
 	//Chama função para buscar usuarios
