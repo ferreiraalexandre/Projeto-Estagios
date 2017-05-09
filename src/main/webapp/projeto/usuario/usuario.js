@@ -120,7 +120,12 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	      locals : {
               retornoModal : $scope
           }
-	    }).then();
+	    })
+        .then(function(novoUsuario) {
+        	$scope.getUsuario();
+        }, function() {
+         //Adicionar mensagem de erro aqui
+        });
   };
     	
 	//Busca usuários do banco e lista na tabela
@@ -134,7 +139,10 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	//Controller da modal
 	function ModalController($scope, $mdDialog,retornoModal) {
 		if(retornoModal.selecionados.length==1){
+			$scope.title = "Editar Usuário";
 			$scope.usuario=retornoModal.selecionados[0];			
+		}else{
+			$scope.title = "Adicionar Usuário";
 		}
 	  
 		$scope.hide = function() {
@@ -148,8 +156,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		//Função de adicionar novos usuario no Banco de Dados
 		$scope.novoUsuario = function (data) {
 			UsuarioService.postUsuario(data, function (response) {
-			$mdDialog.cancel();
-			$scope.getUsuario();
+			$mdDialog.hide(data);
 			ToastService.alert('Usuario adicionada com sucesso!', undefined, 'botton right', 3000);
 				
 			}),
