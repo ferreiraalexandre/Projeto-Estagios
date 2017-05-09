@@ -126,9 +126,9 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	  $scope.novaUnidade = function (data) {
 			UnidadeEnsinoService.postUnidade(data, function (response) {
 				$mdDialog.cancel();
-				location.reload();
+//				location.reload();
 				$scope.getUnidadeEnsino();
-				ToastService.alert('Unidadde adicionada com sucesso!', undefined, 'top right', 3000);
+				ToastService.alert('Unidadde adicionada com sucesso!', undefined, 'bottom left', 3000);
 		}),
 			function (error) {
 				
@@ -158,12 +158,12 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		} 
 		 
 		 		var listId ={
-			     data: JSON.stringify(arrayId),
+		 				data: JSON.stringify(arrayId),
 			     };
 			
 		 
 		 UnidadeEnsinoService.deleteUnidade(listId, function(response){
-			 
+			 ToastService.alert('Unidadde adicionada com sucesso!', undefined, 'top right', 3000);
 		 });
 			
 		

@@ -22,25 +22,9 @@ public class UnidadeEnsinoService {
 	
 	public void deleteUnidade(JSONArray unid) throws Exception{
 		UnidadeEnsinoJPA uni = new UnidadeEnsinoJPA();
-		/*String abc = (String) unid.get(0);
-		String[] unidade = abc.split(",");
-		for (int i = 0; i < unidade.length; i++) {
-			long w = Long.parseLong(unidade[i]);
-		
-						
-			uni.deleteUnidadeEnsino(unid); */
-			
-
-			String[] unidade;
 			for (int i = 0; i < unid.length(); i++) {
-				
-				long w = Long.parseLong(unid);
-			
-						
-				uni.deleteUnidadeEnsino(w);
-			
-		}
-		
+				uni.deleteUnidadeEnsino(unid.getLong(i));
+			}
 		
 	}
 
