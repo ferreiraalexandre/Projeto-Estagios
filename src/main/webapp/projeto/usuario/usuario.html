@@ -3,15 +3,15 @@
   
   <md-grid-list md-cols="2"  md-row-height="64px" >
     <md-grid-tile id="listaEsquerda">
-      <md-button ng-click="abrirModal($event)" >
+      <md-button ng-click="abrirModal($event)" ng-disabled="buttonAddDisabled">
       	<ng-md-icon id="adicionar" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
       </md-button>
 
-      <md-button ng-click="abrirModal($event)" >
+      <md-button ng-click="abrirModal($event)" ng-disabled="buttonEditDisabled">
       	<ng-md-icon id="editar" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
       </md-button>
 
-      <md-button ng-click="deleteUsuario()" id="buttonRemove">
+      <md-button ng-click="deleteUsuario()" id="buttonRemove" ng-disabled="buttonRemoveDisabled">
         <ng-md-icon id="iconRemove" icon="delete" style="fill: #abcdef" size="36"></ng-md-icon>
       </md-button>
     </md-grid-tile>
@@ -53,7 +53,7 @@
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row md-select="usuario" md-on-select="logItem" md-auto-select="options.autoSelect" ng-disabled="usuario.calories.value > 400" ng-repeat="usuario in usuarios | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+        <tr md-row md-select="usuario" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-disabled="usuario.calories.value > 400" ng-repeat="usuario in usuarios | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
           <td md-cell>{{usuario.nome}}</td>
           <td md-cell>{{usuario.cpf}}</td>
                      

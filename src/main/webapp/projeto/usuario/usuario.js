@@ -185,8 +185,19 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 				};
 		};
 
-
 	  }
+	$scope.deleteUsuario = function(){	// Ver aqui!!!!!
+		var arrayId = []; 
+		for (var i = 0; i < $scope.selecionados.length; i++) {
+			arrayId.push($scope.selecionados[i].id);
+		}
+		var listId ={
+				data: JSON.stringify(arrayId),
+		};
+		UsuarioService.deleteUsuario(listId, function(response){
+			ToastService.alert('Usuário removido com sucesso!', undefined, 'top right', 3000);
+		});
+	};
 
 	//Chama função para buscar usuarios
 	$scope.getUsuario();

@@ -13,7 +13,10 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
+<<<<<<< HEAD
   $scope.unidadesModal;
+=======
+>>>>>>> branch 'master' of https://github.com/ferreiraalexandre/Projeto-Estagios.git
   $scope.buttonAddDisabled = false;
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;

@@ -3,16 +3,30 @@
   
   <md-grid-list md-cols="2"  md-row-height="64px">
     <md-grid-tile id="listaEsquerda">
+<<<<<<< HEAD
       <md-button  ng-click="abrirModal($event)" ng-disabled="buttonAddDisabled" >
       	<ng-md-icon id="adicionar" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
+=======
+      <md-button  ng-click="addItem($event)" ng-disabled="buttonAddDisabled">
+      	<ng-md-icon id="iconAdd" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
+>>>>>>> branch 'master' of https://github.com/ferreiraalexandre/Projeto-Estagios.git
       </md-button>
 
+<<<<<<< HEAD
       <md-button ng-click="abrirModal($event)" ng-disabled="buttonEditDisabled">
       	<ng-md-icon id="editar" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
+=======
+      <md-button ng-disabled="buttonEditDisabled">
+      	<ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
+>>>>>>> branch 'master' of https://github.com/ferreiraalexandre/Projeto-Estagios.git
       </md-button>
       
       <md-button ng-click="deleteUnidade()" id="buttonRemove" ng-disabled="buttonRemoveDisabled">
+<<<<<<< HEAD
         <ng-md-icon id="remover" icon="delete" style="fill: #abcdef" size="36"></ng-md-icon>
+=======
+        <ng-md-icon id="iconRemove" icon="delete" style="fill: #abcdef" size="36"></ng-md-icon>
+>>>>>>> branch 'master' of https://github.com/ferreiraalexandre/Projeto-Estagios.git
       </md-button>
     </md-grid-tile>
 
@@ -51,7 +65,11 @@
         </tr>
       </thead>
       <tbody md-body>
+<<<<<<< HEAD
         <tr md-row md-select="unidadeEnsino" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-disabled="unidadeEnsino.calories.value > 400" ng-repeat="unidadeEnsino in unidades | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+=======
+        <tr md-row md-select="unidadeEnsino" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-disabled="unidadeEnsino.calories.value > 400" ng-repeat="unidadeEnsino in unidadeEnsino | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+>>>>>>> branch 'master' of https://github.com/ferreiraalexandre/Projeto-Estagios.git
           <td md-cell>{{unidadeEnsino.nome}}</td>
           <td md-cell>{{unidadeEnsino.cnpj}}</td>
         </tr>
