@@ -18,4 +18,8 @@ public class UsuarioJPA  extends JPAAbstract<Usuario, Long> implements UsuarioIn
 	public void deleteUsuario(long id){
 		this.remove(id);
 	}
+
+	public Usuario editarUsuario(Usuario usu) {
+		return this.edit(usu);
+	}
 }

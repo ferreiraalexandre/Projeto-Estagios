@@ -122,6 +122,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
           }
 	    })
         .then(function(novoUsuario) {
+        	$scope.selecionados = [];
         	$scope.getUsuario();
         }, function() {
          //Adicionar mensagem de erro aqui
@@ -159,8 +160,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		$scope.novoUsuario = function (data) {
 			UsuarioService.postUsuario(data, function (response) {
 			$mdDialog.hide(data);
-			ToastService.alert('Usuario adicionada com sucesso!', undefined, 'botton right', 3000);
-			$scope.usuarioForm.$setPristine();
+			ToastService.alert(response.message, undefined, 'bottom right', 3000);
 				
 			}),
 				function (error) {
@@ -172,8 +172,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		$scope.editarUsuario = function (data) {
 			UsuarioService.putUsuario(data, function (response) {
 			$mdDialog.hide(data);
-			ToastService.alert('Usuario editado com sucesso!', undefined, 'botton right', 3000);
-			$scope.usuarioForm.$setPristine();
+			ToastService.alert(response.message, undefined, 'bottom right', 3000);
 				
 			}),
 				function (error) {

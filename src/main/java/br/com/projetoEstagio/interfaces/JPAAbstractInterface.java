@@ -14,7 +14,7 @@ import javax.persistence.EntityManager;
  * @param <ID>
  *            Tipo da chave primaria
  */
-public interface CrudDAO<E, ID> {
+public interface JPAAbstractInterface<E, ID> {
 
 	/**
 	 * 

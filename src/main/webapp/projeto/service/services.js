@@ -1,13 +1,9 @@
 
 app.factory('UsuarioService',['$resource',  function ($resource) {
-	
 	  return $resource(app.pathRest + '/usuario/:method/:data', {}, {
 		  postUsuario: { method: 'POST', params: {method: 'salva'}}, 
 		  getList: 	{ method: 'GET', params: {method: 'buscar'}, isArray: false },
-<<<<<<< HEAD
 		  putUsuario: { method: 'PUT', params: {method: 'editar'}},
-=======
->>>>>>> branch 'master' of https://github.com/ferreiraalexandre/Projeto-Estagios.git
 		  deleteUsuario: { method: 'DELETE', params: {method: 'deletar'}, isArray: true}
 
 	  })

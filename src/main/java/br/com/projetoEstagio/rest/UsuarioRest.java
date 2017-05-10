@@ -62,7 +62,7 @@ public class UsuarioRest extends UtilRest {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response delete(@PathParam ("id") JSONArray id) {
-		System.out.println("************ 1 ****************");
+
 		try{
 			UsuarioService service = new UsuarioService(); 
 
@@ -80,12 +80,12 @@ public class UsuarioRest extends UtilRest {
 	public Response editar(String json) {
 
 		try{
+			Usuario usu = getObjectMapper().readValue(json, Usuario.class);
+			
 			UsuarioService service = new UsuarioService(); 
-
-			List<Usuario> e = service.listUsuario();
-
-			return getResponseList(e);
-		} catch (Exception e) {
+					
+			return getResponseEdit(service.editarUsuario(usu));
+		}catch(Exception e){
 			return getResponseError(e);
 		}
 	}

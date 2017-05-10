@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import br.com.projetoEstagio.connection.JPAConnection;
-import br.com.projetoEstagio.interfaces.CrudDAO;
+import br.com.projetoEstagio.interfaces.JPAAbstractInterface;
 
 import javax.persistence.Query;
 
@@ -25,7 +25,7 @@ import javax.persistence.Query;
  * @param <ID>
  *            Tipo da chave primaria
  */
-public class JPAAbstract<E, ID> extends JPAConnection implements CrudDAO<E, ID> {
+public class JPAAbstract<E, ID> extends JPAConnection implements JPAAbstractInterface<E, ID> {
 
 	/**
 	 * Atributo que armazena o .class da entity.
