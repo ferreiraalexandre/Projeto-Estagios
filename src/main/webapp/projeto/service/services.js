@@ -1,9 +1,10 @@
 
 app.factory('UsuarioService',['$resource',  function ($resource) {
-	  return $resource(app.pathRest + '/usuario/:method/:id', {}, {
+	
+	  return $resource(app.pathRest + '/usuario/:method/:data', {}, {
 		  postUsuario: { method: 'POST', params: {method: 'salva'}}, 
-		  getList: 	{ method: 'GET', params: {method: 'buscar'}, isArray: false }
-		   
+		  getList: 	{ method: 'GET', params: {method: 'buscar'}, isArray: false },
+		  deleteUsuario: { method: 'DELETE', params: {method: 'deletar'}, isArray: true}
 
 	  })
 	}]);

@@ -15,5 +15,7 @@ public class UsuarioJPA  extends JPAAbstract<Usuario, Long> implements UsuarioIn
 	public List<Usuario> list(){
 		return this.list("");
 	}
-
+	public void deleteUsuario(long id){
+		this.remove(id);
+	}
 }

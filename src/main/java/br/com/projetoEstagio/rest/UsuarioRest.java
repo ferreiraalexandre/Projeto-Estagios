@@ -3,15 +3,19 @@ package br.com.projetoEstagio.rest;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-
 import javax.ws.rs.core.Response;
+
+import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.restUtil.UtilRest;
+import br.com.projetoEstagio.service.UnidadeEnsinoService;
 import br.com.projetoEstagio.service.UsuarioService;
 
 @Path("/usuario")
@@ -48,6 +52,22 @@ public class UsuarioRest extends UtilRest {
 			List<Usuario> e = service.listUsuario();
 
 			return getResponseList(e);
+		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
+	@DELETE
+	@Path("/deletar/{id}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response delete(@PathParam ("id") JSONArray id) {
+		System.out.println("************ 1 ****************");
+		try{
+			UsuarioService service = new UsuarioService(); 
+
+			service.deleteUsuario(id);
+
+			return getResponseRemove();
 		} catch (Exception e) {
 			return getResponseError(e);
 		}
