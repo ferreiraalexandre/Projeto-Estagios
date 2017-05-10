@@ -13,6 +13,9 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
+  $scope.buttonAddDisabled = false;
+  $scope.buttonEditDisabled = true;
+  $scope.buttonRemoveDisabled = true;
   
   $scope.getSelectedText = function() {
       if ($scope.selectedItem !== undefined) {
@@ -98,9 +101,11 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
     }, 2000);
   }
   
-  $scope.logItem = function (item) {
-    console.log(item.name, 'was selected');
-  };
+  $scope.buttonEnable = function (item) {
+	    $scope.buttonAddDisabled = $scope.selected.length > 0;
+	    $scope.buttonEditDisabled = !($scope.selected.length == 1);
+	    $scope.buttonRemoveDisabled = $scope.selected.length == 0;
+	  };
   
   $scope.logOrder = function (order) {
     console.log('order: ', order);

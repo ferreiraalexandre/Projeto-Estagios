@@ -13,6 +13,9 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
   $scope.usuariosModal;
+  $scope.buttonAddDisabled = false;
+  $scope.buttonEditDisabled = true;
+  $scope.buttonRemoveDisabled = true;
   
   $scope.getSelectedText = function() {
       if ($scope.selectedItem !== undefined) {
@@ -97,8 +100,10 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     }, 2000);
   }
   
-  $scope.logItem = function (item) {
-    console.log(item.name, 'was selected');
+  $scope.buttonEnable = function (item) {
+    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
+    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
+    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
   };
   
   $scope.logOrder = function (order) {
@@ -180,8 +185,19 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 				};
 		};
 
-
 	  }
+	$scope.deleteUsuario = function(){	// Ver aqui!!!!!
+		var arrayId = []; 
+		for (var i = 0; i < $scope.selecionados.length; i++) {
+			arrayId.push($scope.selecionados[i].id);
+		}
+		var listId ={
+				data: JSON.stringify(arrayId),
+		};
+		UsuarioService.deleteUsuario(listId, function(response){
+			ToastService.alert('Usuário removido com sucesso!', undefined, 'top right', 3000);
+		});
+	};
 
 	//Chama função para buscar usuarios
 	$scope.getUsuario();
