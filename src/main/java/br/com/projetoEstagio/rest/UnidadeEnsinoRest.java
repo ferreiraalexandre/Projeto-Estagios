@@ -6,6 +6,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -14,8 +15,10 @@ import javax.ws.rs.core.Response;
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.UnidadeEnsino;
+import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.UnidadeEnsinoService;
+import br.com.projetoEstagio.service.UsuarioService;
 
 @Path("/unidadeEnsino")
 public class UnidadeEnsinoRest extends UtilRest {
@@ -67,6 +70,22 @@ public class UnidadeEnsinoRest extends UtilRest {
 
 			return getResponseRemove();
 		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
+	
+	@PUT
+	@Path("/editar")
+	@Produces("application/json")
+	public Response editar(String json) {
+
+		try{
+			UnidadeEnsino uni = getObjectMapper().readValue(json, UnidadeEnsino.class);
+			
+			UnidadeEnsinoService service = new UnidadeEnsinoService(); 
+					
+			return getResponseEdit(service.editarUnidade(uni));
+		}catch(Exception e){
 			return getResponseError(e);
 		}
 	}

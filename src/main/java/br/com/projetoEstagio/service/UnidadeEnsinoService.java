@@ -5,7 +5,9 @@ import java.util.List;
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.UnidadeEnsino;
+import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.jpa.UnidadeEnsinoJPA;
+import br.com.projetoEstagio.jpa.UsuarioJPA;
 
 public class UnidadeEnsinoService {
 
@@ -26,6 +28,12 @@ public class UnidadeEnsinoService {
 				uni.deleteUnidadeEnsino(unid.getLong(i));
 			}
 		
+	}
+	
+	public Object editarUnidade(UnidadeEnsino uni) {
+		UnidadeEnsinoJPA unid = new UnidadeEnsinoJPA();
+		unid.editarUnidade(uni);
+		return unid;
 	}
 
 }

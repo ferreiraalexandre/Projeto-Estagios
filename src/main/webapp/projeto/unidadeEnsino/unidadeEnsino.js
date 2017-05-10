@@ -5,14 +5,18 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UnidadeEnsinoService',
-                                           function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, UnidadeEnsinoService) {
-  'use strict';
+app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UnidadeEnsinoService','ToastService',
+                                           function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, UnidadeEnsinoService, ToastService) {
   
-  $scope.selected = [];  
+  
+  $scope.selecionados = [];  
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
+  $scope.unidadesModal;
+  $scope.buttonAddDisabled = false;
+  $scope.buttonEditDisabled = true;
+  $scope.buttonRemoveDisabled = true;
   
   $scope.getSelectedText = function() {
       if ($scope.selectedItem !== undefined) {
@@ -35,7 +39,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
   
   $scope.query = {
     order: 'name',
-    limit: 5,
+    limit: 10,
     page: 1
   };
   
@@ -98,9 +102,11 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
     }, 2000);
   }
   
-  $scope.logItem = function (item) {
-    console.log(item.name, 'was selected');
-  };
+  $scope.buttonEnable = function (item) {
+	    $scope.buttonAddDisabled = $scope.selected.length > 0;
+	    $scope.buttonEditDisabled = !($scope.selected.length == 1);
+	    $scope.buttonRemoveDisabled = $scope.selected.length == 0;
+	  };
   
   $scope.logOrder = function (order) {
     console.log('order: ', order);
@@ -111,25 +117,58 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
     console.log('limit: ', limit);
   }
   
-  
-  $scope.addItem = function (event) {
-	    $mdDialog.show({
-	      clickOutsideToClose: true,
-	      controllerAs: 'ctrl',
-	      focusOnOpen: false,
-	      targetEvent: event,
-	      templateUrl: 'projeto/unidadeEnsino/modalUnidade.html',
-	    }).then($scope.getDesserts);
+  //Abrir Modal
+	  $scope.abrirModal = function(event) {
+		    $mdDialog.show({
+		      controller: ModalController,
+		      templateUrl: 'projeto/unidadeEnsino/modalUnidade.html',
+		      targetEvent: event,
+		      clickOutsideToClose:true,
+		      locals : {
+	              retornoModal : $scope
+	          }
+		    })
+	        .then(function(novaUnidade) {
+	        	$scope.selecionados = [];
+	        	$scope.getUnidadeEnsino();
+	        }, function() {
+	         //Adicionar mensagem de erro aqui
+	        });
 	  };
+	  
+		//Busca unidade do banco e lista na tabela
+			$scope.getUnidadeEnsino = function () {
+				UnidadeEnsinoService.getList(function (response) {
+					$scope.unidades = response.data;	
+				});
+	
+			};
+			
+			//Controller da modal
+			function ModalController($scope, $mdDialog,retornoModal) {
+				if(retornoModal.selecionados.length==1){
+					$scope.editar = true;
+					$scope.title = "Editar Unidade de Ensino";
+					$scope.unidade=retornoModal.selecionados[0];			
+				}else{
+					$scope.title = "Adicionar Unidade de Ensino";
+					$scope.novo = true;
+				}
+			  
+				$scope.hide = function() {
+			      $mdDialog.hide();
+			    };
+
+			    $scope.cancel = function() {
+			      $mdDialog.cancel();
+			    };
 	  
 	  
 	  $scope.novaUnidade = function (data) {
 			UnidadeEnsinoService.postUnidade(data, function (response) {
-				$mdDialog.cancel();
-//				location.reload();
-				$scope.getUnidadeEnsino();
-				ToastService.alert('Unidadde adicionada com sucesso!', undefined, 'bottom left', 3000);
-				$scope.formUnidade.$setPristine();
+				$mdDialog.hide(data);
+				ToastService.alert(response.message, undefined, 'bottom right', 3000);
+				
 		}),
 			function (error) {
 				
@@ -139,18 +178,19 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		
 	
 		
-	//Busca unidades de ensino do banco e lista na tabela
-	$scope.getUnidadeEnsino = function () {
-		UnidadeEnsinoService.getList(function (response) {
-			$scope.unidadeEnsino = response.data;	
-		});
-	};
-	
-	
-	//Fechar modal no botão cancelar
-	$scope.cancel = function () {
-		$mdDialog.cancel();
-	};
+		//Função de editar usuario no Banco de Dados
+		$scope.editarUnidade = function (data) {
+			UnidadeEnsinoService.putUnidade(data, function (response) {
+			$mdDialog.hide(data);
+			ToastService.alert(response.message, undefined, 'bottom right', 3000);
+				
+			}),
+				function (error) {
+		
+				};
+		};
+		
+			}
 	
 	$scope.deleteUnidade = function(){	// Ver aqui!!!!!
 		var arrayId = []; 

@@ -5,7 +5,7 @@
 <md-dialog ng-controller="unidadeEnsinoController" add-item-dialog="" role="dialog" tabindex="-1" aria-describedby="dialog_63" class="md-transition-in" aria-label="Add Dessert ..." style="">
   <md-dialog-content class="md-dialog-content" id="dialog_63">
     
-    <h2 class="md-title">Cadastrar Unidade de Ensino</h2>
+    <h2 class="md-title">{{title}}</h2>
     
     <!-- ngIf: item.form.$submitted && item.form.$invalid -->
     
@@ -30,9 +30,9 @@
   </md-dialog-content>
   
   <div class="md-actions">
-    <button class="md-primary md-button md-ink-ripple" type="button"  ng-click="novaUnidade(unidade)" ng-disabled="formUnidade.$invalid"><span>Adicionar</span></button>
-    <button class="md-primary md-button md-ink-ripple" type="button"  ng-click="ctrl.cancel()" 
-    aria-label="Cancel"><span>Cancelar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button"  ng-click="novaUnidade(unidade)" ng-show="novo" ng-disabled="formUnidade.$invalid"><span>Adicionar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="editarUnidade(unidade)" ng-show="editar"><span>Salvar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
   </div>
   
 <div class="md-dialog-focus-trap" tabindex="0"></div></md-dialog>

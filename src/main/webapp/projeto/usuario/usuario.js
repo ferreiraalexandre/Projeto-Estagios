@@ -13,6 +13,9 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
   $scope.usuariosModal;
+  $scope.buttonAddDisabled = false;
+  $scope.buttonEditDisabled = true;
+  $scope.buttonRemoveDisabled = true;
   
   $scope.getSelectedText = function() {
       if ($scope.selectedItem !== undefined) {
@@ -35,7 +38,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   
   $scope.query = {
     order: 'name',
-    limit: 5,
+    limit: 10,
     page: 1
   };
     
@@ -97,8 +100,10 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     }, 2000);
   }
   
-  $scope.logItem = function (item) {
-    console.log(item.name, 'was selected');
+  $scope.buttonEnable = function (item) {
+    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
+    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
+    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
   };
   
   $scope.logOrder = function (order) {

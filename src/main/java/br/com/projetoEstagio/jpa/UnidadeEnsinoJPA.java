@@ -4,6 +4,7 @@ package br.com.projetoEstagio.jpa;
 import java.util.List;
 
 import br.com.projetoEstagio.entity.UnidadeEnsino;
+import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.interfaces.UnidadeEnsinoInterface;
 
 public class UnidadeEnsinoJPA  extends JPAAbstract<UnidadeEnsino, Long> implements UnidadeEnsinoInterface {
@@ -17,6 +18,10 @@ public class UnidadeEnsinoJPA  extends JPAAbstract<UnidadeEnsino, Long> implemen
 	}
 	public void deleteUnidadeEnsino(long id){
 		this.remove(id);
+	}
+	
+	public UnidadeEnsino editarUnidade(UnidadeEnsino uni) {
+		return this.edit(uni);
 	}
 
 
