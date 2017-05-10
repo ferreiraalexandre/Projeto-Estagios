@@ -158,6 +158,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			UsuarioService.postUsuario(data, function (response) {
 			$mdDialog.hide(data);
 			ToastService.alert('Usuario adicionada com sucesso!', undefined, 'botton right', 3000);
+			$scope.usuarioForm.$setPristine();
 				
 			}),
 				function (error) {

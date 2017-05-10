@@ -129,6 +129,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 //				location.reload();
 				$scope.getUnidadeEnsino();
 				ToastService.alert('Unidadde adicionada com sucesso!', undefined, 'bottom left', 3000);
+				$scope.formUnidade.$setPristine();
 		}),
 			function (error) {
 				
