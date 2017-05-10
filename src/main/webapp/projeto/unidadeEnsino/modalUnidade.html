@@ -13,14 +13,14 @@
       <div layout="row" class="input-row layout-row">
         <md-input-container flex="" class="flex">
           <label for="input_55">Unidade de Ensino</label>
-          <input name="nome" ng-model="unidade.nome" ng-trim="false">
+          <input name="nome" ng-model="unidade.nome" ng-required="true" ng-trim="false">
         </md-input-container>
       </div>
         
         <div layout="row" class="input-row layout-row">
         <md-input-container flex="" class="flex">
           <label for="input_55">CNPJ</label>
-          <input name="name" ng-model="unidade.cnpj" ui-mask="99.999.999/9999-99" ng-trim="false">
+          <input name="cnpj" ng-model="unidade.cnpj" ui-mask="99.999.999/9999-99" ng-required="true" ng-trim="false">
         </md-input-container>
       </div>
         
@@ -30,7 +30,7 @@
   </md-dialog-content>
   
   <div class="md-actions">
-    <button class="md-primary md-button md-ink-ripple" type="button"  ng-click="novaUnidade(unidade)"><span>Adicionar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button"  ng-click="novaUnidade(unidade)" ng-disabled="formUnidade.$invalid"><span>Adicionar</span></button>
     <button class="md-primary md-button md-ink-ripple" type="button"  ng-click="ctrl.cancel()" 
     aria-label="Cancel"><span>Cancelar</span></button>
   </div>
