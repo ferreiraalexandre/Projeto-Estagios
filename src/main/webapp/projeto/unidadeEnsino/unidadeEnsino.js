@@ -116,7 +116,37 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
     console.log('page: ', page);
     console.log('limit: ', limit);
   }
-  
+  //função de deletar
+  $scope.deleteUnidade = function(){	// Ver aqui!!!!!
+		var arrayId = []; 
+		for (var i = 0; i < $scope.selecionados.length; i++) {
+			arrayId.push($scope.selecionados[i].id);
+		}
+		var listId ={
+				data: JSON.stringify(arrayId),
+		};
+		UnidadeEnsinoService.deleteUnidade(listId, function(response){
+			ToastService.alert('Unidadde adicionada com sucesso!', undefined, 'top right', 3000);
+		});
+	};
+	//função de confirm pra deletar
+	$scope.showConfirm = function(ev) {
+		// Appending dialog to document.body to cover sidenav in docs app
+		var confirm = $mdDialog.confirm()
+		.title('EXCLUIR ')
+		.textContent('Tem certeza que deseja excluir a(s) Unidade(s) de Ensino?')
+		.targetEvent(ev)
+		.ok('SIM')
+		.cancel('NÃO');
+		
+		$mdDialog.show(confirm).then(function() {
+			$scope.deleteUnidade();
+			$scope.getUnidadeEnsino();
+			$scope.status = 'Deletado';
+		}, function() {
+			$scope.status = 'Deu erro ao deletar';
+		});
+	};
   //Abrir Modal
 	  $scope.abrirModal = function(event) {
 		    $mdDialog.show({
@@ -188,30 +218,10 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 				function (error) {
 		
 				};
-		};
-		
-			}
-	
-	$scope.deleteUnidade = function(){	// Ver aqui!!!!!
-		var arrayId = []; 
-		for (var i = 0; i < $scope.selected.length; i++) {
-			arrayId.push($scope.selected[i].id);
-		} 
-		 
-		 		var listId ={
-		 				data: JSON.stringify(arrayId),
-			     };
+		};	
+	}
 			
-		 
-		 UnidadeEnsinoService.deleteUnidade(listId, function(response){
-			 ToastService.alert('Unidadde adicionada com sucesso!', undefined, 'top right', 3000);
-		 });
 			
-		
-	};
-		
-	
-
 	//Chama função para buscar unidades de ensino
 	$scope.getUnidadeEnsino();
   

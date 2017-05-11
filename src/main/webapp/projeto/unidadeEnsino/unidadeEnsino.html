@@ -11,9 +11,10 @@
       	<ng-md-icon id="editar" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
       </md-button>
       
-      <md-button ng-click="deleteUnidade()" id="buttonRemove" ng-disabled="buttonRemoveDisabled">
-        <ng-md-icon id="remover" icon="delete" style="fill: #abcdef" size="36"></ng-md-icon>
-      </md-button>
+      <md-button id="buttonRemove" ng-click="showConfirm($event)">
+     	 <ng-md-icon id="iconRemove" icon="delete" style="fill: #abcdef" size="36"></ng-md-icon>
+   	  </md-button>
+      
     </md-grid-tile>
 
     <md-grid-tile id="listaDireita">
