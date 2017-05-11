@@ -38,10 +38,10 @@
       <div layout="row" class="input-row layout-row">
         <md-input-container>
           <label>Unidade de Ensino</label>
-          <md-select ng-model="usuario.userState">
+          <md-select ng-model="usuario.unidadeEnsino">
             <md-option><em>None</em></md-option>
-            <md-option ng-repeat="state in usuario.states" ng-value="state.abbrev" ng-required="true" ng-disabled="$index === 1">
-              {{state.abbrev}}
+            <md-option ng-repeat="unidadeEnsino in unidades" ng-value="unidadeEnsino.nome" ng-required="true">
+              {{unidadeEnsino.nome}}
             </md-option>
           </md-select>
         </md-input-container>

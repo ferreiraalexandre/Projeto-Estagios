@@ -5,8 +5,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UsuarioService','ToastService',  
-                            function ($mdEditDialog,   $q,   $scope,   $timeout,   $mdDialog,   UsuarioService,  ToastService) {
+app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UsuarioService', 'UnidadeEnsinoService', 'ToastService',  
+                            function ($mdEditDialog,   $q,   $scope,   $timeout,   $mdDialog,   UsuarioService,   UnidadeEnsinoService,   ToastService) {
 
   $scope.selecionados = [];
   $scope.limitOptions = [5, 10, 15];
@@ -139,6 +139,10 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		UsuarioService.getList(function (response) {
 			$scope.usuarios = response.data;	
 		});
+		
+		UnidadeEnsinoService.getList(function (response) {
+			$scope.unidades = response.data;	
+		});
 
 	};
 		
@@ -151,6 +155,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		}else{
 			$scope.title = "Adicionar Usuário";
 			$scope.novo = true;
+			$scope.unidades = retornoModal.unidades;
 		}
 	  
 		$scope.hide = function() {
