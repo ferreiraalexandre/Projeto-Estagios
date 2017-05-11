@@ -34,3 +34,30 @@ app.service('ToastService',function($mdToast){
 	  };
 
 });
+
+app.service('ArrayService',function(){
+
+	  this.add = function(array, data){
+
+	    if(array === null || array === undefined || array.length <= 0){
+	      array = [];
+	    };
+	    array.push(data);
+	    return array;
+	  };
+
+	  this.edit = function(index, data, array){
+	    array[index] = data;
+	    return array;
+	  };
+
+	  this.remove = function(index, array){
+
+	    if(index === null || index === undefined || array === null || array === undefined){
+	      return null;
+	    }else{
+	      array.splice(index, 1);
+	      return array;
+	    };
+	  };
+	});

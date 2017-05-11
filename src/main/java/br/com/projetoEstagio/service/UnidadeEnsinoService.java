@@ -5,9 +5,7 @@ import java.util.List;
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.UnidadeEnsino;
-import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.jpa.UnidadeEnsinoJPA;
-import br.com.projetoEstagio.jpa.UsuarioJPA;
 
 public class UnidadeEnsinoService {
 

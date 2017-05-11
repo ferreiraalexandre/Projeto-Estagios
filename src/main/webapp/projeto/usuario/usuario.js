@@ -200,7 +200,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 				data: JSON.stringify(arrayId),
 		};
 		UsuarioService.deleteUsuario(listId, function(response){
-			ToastService.alert('Usuário removido com sucesso!', undefined, 'top right', 3000);
+			ToastService.alert(response.message, undefined, 'bottom right', 3000);
 		});
 	};
 
