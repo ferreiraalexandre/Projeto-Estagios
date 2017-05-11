@@ -103,9 +103,9 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
   }
   
   $scope.buttonEnable = function (item) {
-	    $scope.buttonAddDisabled = $scope.selected.length > 0;
-	    $scope.buttonEditDisabled = !($scope.selected.length == 1);
-	    $scope.buttonRemoveDisabled = $scope.selected.length == 0;
+	    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
+	    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
+	    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
 	  };
   
   $scope.logOrder = function (order) {
