@@ -22,10 +22,12 @@ public class UnidadeEnsinoService {
 	
 	public void deleteUnidade(JSONArray unid) throws Exception{
 		UnidadeEnsinoJPA uni = new UnidadeEnsinoJPA();
-			for (int i = 0; i < unid.length(); i++) {
-				uni.deleteUnidadeEnsino(unid.getLong(i));
-			}
-		
+			
+			if(unid != null && unid.length() > 0){
+				for (int i = 0; i < unid.length(); i++) {
+					uni.deleteUnidadeEnsino(unid.getLong(i));
+				}
+			}		
 	}
 	
 	public Object editarUnidade(UnidadeEnsino uni) {

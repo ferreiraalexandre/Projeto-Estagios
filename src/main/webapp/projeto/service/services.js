@@ -14,7 +14,7 @@ app.factory('UnidadeEnsinoService',['$resource',  function ($resource) {
 		  postUnidade: { method: 'POST', params: {method: 'salva'}}, 
 		  getList: {method: 'GET', params: {method: 'buscar'}, isArray: false},
 		  putUnidade: { method: 'PUT', params: {method: 'editar'}},
-		  deleteUnidade: { method: 'DELETE', params: {method: 'deletar'}, isArray: true}
+		  deleteUnidade: { method: 'DELETE', params: {method: 'deletar'}, isArray: false}
 		   
 
 	  })

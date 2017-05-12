@@ -128,6 +128,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		};
 		UnidadeEnsinoService.deleteUnidade(listId, function(response){
 			ToastService.alert(response.message, undefined, 'bottom right', 3000);
+			$scope.unidades = ArrayService.remove(listId, $scope.unidades);
 		});
 	};
 	
@@ -142,7 +143,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		
 		$mdDialog.show(confirm).then(function() {
 			$scope.deleteUnidade();
-			$scope.getUnidadeEnsino();
+			//$scope.getUnidadeEnsino();
 			$scope.status = 'Deletado';
 		}, function() {
 			$scope.status = 'Deu erro ao deletar';
@@ -162,7 +163,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		    })
 	        .then(function(novaUnidade) {
 	        	$scope.selecionados = [];
-	        	$scope.getUnidadeEnsino();
+	        	//$scope.getUnidadeEnsino();
 	        }, function() {
 	         //Adicionar mensagem de erro aqui
 	        });
@@ -195,12 +196,12 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		      $mdDialog.cancel();
 		    };
 	  
-	  
+		   
 	  $scope.novaUnidade = function (data) {
 			UnidadeEnsinoService.postUnidade(data, function (response) {
 				$mdDialog.hide(data);
 				ToastService.alert(response.message, undefined, 'bottom right', 3000);
-				$scope.unidades = ArrayService.add($scope.unidades, response.data);
+				$scope.unidades = ArrayService.add(retornoModal.unidades, data);
 				
 		}),
 			function (error) {
@@ -223,7 +224,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	}
 			
 //////////////////////////////////////////////////////////////////////////////Chama função para buscar unidades de ensino
-	$scope.getUnidadeEnsino();
+		 $scope.getUnidadeEnsino();
   
   
 }]);
