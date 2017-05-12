@@ -12,7 +12,8 @@ public class UnidadeEnsinoService {
 	public Object addUnidadeEnsino(UnidadeEnsino uni) {
 		UnidadeEnsinoJPA user = new UnidadeEnsinoJPA();
 		user.addUnidadeEnsino(uni);
-		return user;
+		return user.list();
+	
 	}
 	
 	public List<UnidadeEnsino> listUnidade() throws Exception {
@@ -20,14 +21,16 @@ public class UnidadeEnsinoService {
 		return listUnidade.list();
 	}
 	
-	public void deleteUnidade(JSONArray unid) throws Exception{
+	public Object deleteUnidade(JSONArray unid) throws Exception{
 		UnidadeEnsinoJPA uni = new UnidadeEnsinoJPA();
 			
 			if(unid != null && unid.length() > 0){
 				for (int i = 0; i < unid.length(); i++) {
 					uni.deleteUnidadeEnsino(unid.getLong(i));
 				}
-			}		
+			}
+			
+			return uni.list();
 	}
 	
 	public Object editarUnidade(UnidadeEnsino uni) {

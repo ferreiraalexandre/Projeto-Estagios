@@ -114,7 +114,40 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     console.log('page: ', page);
     console.log('limit: ', limit);
   }
-  
+ 
+//////////função de deletar
+  $scope.deleteUsuario = function(){	
+		var arrayId = []; 
+		for (var i = 0; i < $scope.selecionados.length; i++) {
+			arrayId.push($scope.selecionados[i].id);
+		}
+		var listId ={
+				data: JSON.stringify(arrayId),
+		};
+			UsuarioService.deleteUsuario(listId, function(response){
+			ToastService.alert(response.message, undefined, 'bottom right', 3000);
+			$scope.usuarios = response.data;
+		});
+	};
+	
+////////////////////função de confirm pra deletar
+	$scope.showConfirm = function(ev) {
+		var confirm = $mdDialog.confirm()
+		.title('EXCLUIR ')
+		.textContent('Tem certeza que deseja excluir o(s) Usuário(s)?')
+		.targetEvent(ev)
+		.ok('SIM')
+		.cancel('NÃO');
+		
+		$mdDialog.show(confirm).then(function() {
+			$scope.deleteUsuario();
+			$scope.status = 'Deletado';
+		}, function() {
+			$scope.status = 'Deu erro ao deletar';
+		});
+	};
+
+   
  //Abrir Modal
   $scope.abrirModal = function(event) {
 	    $mdDialog.show({
@@ -172,6 +205,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			UsuarioService.postUsuario(data, function (response) {
 			$mdDialog.hide(data);
 			ToastService.alert(response.message, undefined, 'bottom right', 3000);
+			retornoModal.usuarios = response.data;
 				
 			}),
 				function (error) {
@@ -192,18 +226,6 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		};
 
 	  }
-	$scope.deleteUsuario = function(){	// Ver aqui!!!!!
-		var arrayId = []; 
-		for (var i = 0; i < $scope.selecionados.length; i++) {
-			arrayId.push($scope.selecionados[i].id);
-		}
-		var listId ={
-				data: JSON.stringify(arrayId),
-		};
-		UsuarioService.deleteUsuario(listId, function(response){
-			ToastService.alert(response.message, undefined, 'bottom right', 3000);
-		});
-	};
 
 	//Chama função para buscar usuarios
 	$scope.getUsuario();

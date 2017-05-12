@@ -4,7 +4,7 @@ app.factory('UsuarioService',['$resource',  function ($resource) {
 		  postUsuario: { method: 'POST', params: {method: 'salva'}}, 
 		  getList: 	{ method: 'GET', params: {method: 'buscar'}, isArray: false },
 		  putUsuario: { method: 'PUT', params: {method: 'editar'}},
-		  deleteUsuario: { method: 'DELETE', params: {method: 'deletar'}, isArray: true}
+		  deleteUsuario: { method: 'DELETE', params: {method: 'deletar'}, isArray: false}
 
 	  })
 	}]);

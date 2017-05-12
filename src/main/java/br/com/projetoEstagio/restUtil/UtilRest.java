@@ -40,9 +40,9 @@ public class UtilRest {
 				Response.Status.OK);
 	}
 
-	public Response getResponseRemove() {
+	public Response getResponseRemove(Object e) {
 		return this.getResponse(new RestResponse(
-				"Registro removido com sucesso.", null, null),
+				"Registro removido com sucesso.", null, e),
 				Response.Status.OK);
 	}
 

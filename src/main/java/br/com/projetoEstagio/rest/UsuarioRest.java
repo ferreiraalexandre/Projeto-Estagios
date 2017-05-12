@@ -66,9 +66,7 @@ public class UsuarioRest extends UtilRest {
 		try{
 			UsuarioService service = new UsuarioService(); 
 
-			service.deleteUsuario(id);
-
-			return getResponseRemove();
+			return getResponseRemove(service.deleteUsuario(id));
 		} catch (Exception e) {
 			return getResponseError(e);
 		}
