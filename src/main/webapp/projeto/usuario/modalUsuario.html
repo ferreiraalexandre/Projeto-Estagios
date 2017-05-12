@@ -39,7 +39,7 @@
         <md-input-container>
           <label>Unidade de Ensino</label>
           <md-select ng-model="usuario.unidadeEnsino">
-            <md-option ng-options="unidadeEnsino in unidades" ng-value="unidadeEnsino.id" ng-required="true">
+            <md-option ng-repeat="unidadeEnsino in unidades" ng-value="unidadeEnsino.id" ng-required="true">
               {{unidadeEnsino.nome}}
             </md-option>
           </md-select>

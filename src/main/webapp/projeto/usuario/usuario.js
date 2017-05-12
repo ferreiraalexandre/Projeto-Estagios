@@ -151,7 +151,8 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		if(retornoModal.selecionados.length==1){
 			$scope.editar = true;
 			$scope.title = "Editar Usuário";
-			$scope.usuario=retornoModal.selecionados[0];			
+			$scope.usuario=retornoModal.selecionados[0];
+			$scope.unidades = retornoModal.unidades;
 		}else{
 			$scope.title = "Adicionar Usuário";
 			$scope.novo = true;
