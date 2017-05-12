@@ -117,7 +117,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
     console.log('limit: ', limit);
   }
  
-/////////////////////////////////////////////////////////////////////////////função de deletar
+//////////função de deletar
   $scope.deleteUnidade = function(){	
 		var arrayId = []; 
 		for (var i = 0; i < $scope.selecionados.length; i++) {
@@ -132,7 +132,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		});
 	};
 	
-///////////////////////////////////////////////////////////////////////////função de confirm pra deletar
+////////////////////função de confirm pra deletar
 	$scope.showConfirm = function(ev) {
 		var confirm = $mdDialog.confirm()
 		.title('EXCLUIR ')
@@ -150,7 +150,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		});
 	};
 	
-///////////////////////////////////////////////////////////////////////////Abrir Modal
+//////////////////////////////////////Abrir Modal
 	  $scope.abrirModal = function(event) {
 		    $mdDialog.show({
 		      controller: ModalController,
@@ -169,7 +169,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	        });
 	  };
 	  
-///////////////////////////////////////////////////////////////////////////Busca unidade do banco e lista na tabela
+///////////////////////////////////////////Busca unidade do banco e lista na tabela
 		$scope.getUnidadeEnsino = function () {
 			UnidadeEnsinoService.getList(function (response) {
 				$scope.unidades = response.data;	
@@ -177,7 +177,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 
 		};
 			
-////////////////////////////////////////////////////////////////////////////Controller da modal
+///////////////////////////////////////////////////Controller da modal
 		function ModalController($scope, $mdDialog,retornoModal) {
 			if(retornoModal.selecionados.length==1){
 				$scope.editar = true;
@@ -210,7 +210,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 			
 		};
 		
-/////////////////////////////////////////////////////////////////////////////Função de editar usuario no Banco de Dados
+/////////////////////////////////////Função de editar usuario no Banco de Dados
 		$scope.editarUnidade = function (data) {
 			UnidadeEnsinoService.putUnidade(data, function (response) {
 			$mdDialog.hide(data);
@@ -223,8 +223,13 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		};	
 	}
 			
+<<<<<<< HEAD
 //////////////////////////////////////////////////////////////////////////////Chama função para buscar unidades de ensino
 		 $scope.getUnidadeEnsino();
+=======
+///////////////////////////////////////Chama função para buscar unidades de ensino
+	$scope.getUnidadeEnsino();
+>>>>>>> branch 'master' of https://github.com/ferreiraalexandre/Projeto-Estagios.git
   
   
 }]);
