@@ -36,7 +36,7 @@ public class UnidadeEnsinoService {
 	public Object editarUnidade(UnidadeEnsino uni) {
 		UnidadeEnsinoJPA unid = new UnidadeEnsinoJPA();
 		unid.editarUnidade(uni);
-		return unid;
+		return unid.list();
 	}
 
 }

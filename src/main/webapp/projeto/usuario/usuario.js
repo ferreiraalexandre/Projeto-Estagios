@@ -100,7 +100,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     }, 2000);
   }
   
-  $scope.buttonEnable = function (item) {
+  $scope.buttonEnable = function () {
     $scope.buttonAddDisabled = $scope.selecionados.length > 0;
     $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
     $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
@@ -114,6 +114,23 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     console.log('page: ', page);
     console.log('limit: ', limit);
   }
+  
+////////////////////função de confirm pra deletar
+  $scope.showConfirm = function(ev) {
+	  var confirm = $mdDialog.confirm()
+	  .title('EXCLUIR ')
+	  .textContent('Tem certeza que deseja excluir o(s) Usuário(s)?')
+	  .targetEvent(ev)
+	  .ok('SIM')
+	  .cancel('NÃO');
+	  
+	  $mdDialog.show(confirm).then(function() {
+		  $scope.deleteUsuario();
+		  $scope.status = 'Deletado';
+	  }, function() {
+		  $scope.status = 'Deu erro ao deletar';
+	  });
+  };
  
 //////////função de deletar
   $scope.deleteUsuario = function(){	
@@ -127,25 +144,11 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			UsuarioService.deleteUsuario(listId, function(response){
 			ToastService.alert(response.message, undefined, 'bottom right', 3000);
 			$scope.usuarios = response.data;
+			$scope.selecionados = []; 
+			$scope.buttonEnable();
 		});
 	};
 	
-////////////////////função de confirm pra deletar
-	$scope.showConfirm = function(ev) {
-		var confirm = $mdDialog.confirm()
-		.title('EXCLUIR ')
-		.textContent('Tem certeza que deseja excluir o(s) Usuário(s)?')
-		.targetEvent(ev)
-		.ok('SIM')
-		.cancel('NÃO');
-		
-		$mdDialog.show(confirm).then(function() {
-			$scope.deleteUsuario();
-			$scope.status = 'Deletado';
-		}, function() {
-			$scope.status = 'Deu erro ao deletar';
-		});
-	};
 
    
  //Abrir Modal
@@ -218,6 +221,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			UsuarioService.putUsuario(data, function (response) {
 			$mdDialog.hide(data);
 			ToastService.alert(response.message, undefined, 'bottom right', 3000);
+			retornoModal.unidades = response.data;
 				
 			}),
 				function (error) {

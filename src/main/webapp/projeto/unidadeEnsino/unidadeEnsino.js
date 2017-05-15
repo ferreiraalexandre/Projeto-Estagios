@@ -5,8 +5,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UnidadeEnsinoService','ToastService', 'ArrayService',
-                                           function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, UnidadeEnsinoService, ToastService,     ArrayService) {
+app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UnidadeEnsinoService','ToastService',
+                                           function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, UnidadeEnsinoService,   ToastService) {
   
   
   $scope.selecionados = [];  
@@ -102,7 +102,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
     }, 2000);
   }
   
-  $scope.buttonEnable = function (item) {
+  $scope.buttonEnable = function () {
 	    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
 	    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
 	    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
@@ -116,6 +116,23 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
     console.log('page: ', page);
     console.log('limit: ', limit);
   }
+  
+////////////////////função de confirm pra deletar
+  $scope.showConfirm = function(ev) {
+	  var confirm = $mdDialog.confirm()
+	  .title('EXCLUIR ')
+	  .textContent('Tem certeza que deseja excluir a(s) Unidade(s) de Ensino?')
+	  .targetEvent(ev)
+	  .ok('SIM')
+	  .cancel('NÃO');
+	  
+	  $mdDialog.show(confirm).then(function() {
+		  $scope.deleteUnidade();
+		  $scope.status = 'Deletado';
+	  }, function() {
+		  $scope.status = 'Deu erro ao deletar';
+	  });
+  };
  
 //////////função de deletar
   $scope.deleteUnidade = function(){	
@@ -129,25 +146,11 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		UnidadeEnsinoService.deleteUnidade(listId, function(response){
 			ToastService.alert(response.message, undefined, 'bottom right', 3000);
 			$scope.unidades = response.data;
+			$scope.selecionados = []; 
+			$scope.buttonEnable();
 		});
 	};
 	
-////////////////////função de confirm pra deletar
-	$scope.showConfirm = function(ev) {
-		var confirm = $mdDialog.confirm()
-		.title('EXCLUIR ')
-		.textContent('Tem certeza que deseja excluir a(s) Unidade(s) de Ensino?')
-		.targetEvent(ev)
-		.ok('SIM')
-		.cancel('NÃO');
-		
-		$mdDialog.show(confirm).then(function() {
-			$scope.deleteUnidade();
-			$scope.status = 'Deletado';
-		}, function() {
-			$scope.status = 'Deu erro ao deletar';
-		});
-	};
 	
 //////////////////////////////////////Abrir Modal
 	  $scope.abrirModal = function(event) {
@@ -213,6 +216,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 			UnidadeEnsinoService.putUnidade(data, function (response) {
 			$mdDialog.hide(data);
 			ToastService.alert(response.message, undefined, 'bottom right', 3000);
+			retornoModal.unidades = response.data;
 				
 			}),
 				function (error) {

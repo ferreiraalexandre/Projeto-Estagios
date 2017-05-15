@@ -33,7 +33,7 @@ public class UsuarioService {
 	public Object editarUsuario(Usuario usu) {
 		UsuarioJPA user = new UsuarioJPA();
 		user.editarUsuario(usu);
-		return user;
+		return user.list();
 	}
 	
 }
