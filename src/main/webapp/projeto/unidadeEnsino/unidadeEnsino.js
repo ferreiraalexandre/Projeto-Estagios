@@ -181,10 +181,11 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 			
 ///////////////////////////////////////////////////Controller da modal
 		function ModalController($scope, $mdDialog,retornoModal) {
+		
 			if(retornoModal.selecionados.length==1){
 				$scope.editar = true;
 				$scope.title = "Editar Unidade de Ensino";
-				$scope.unidade=retornoModal.selecionados[0];			
+				$scope.unidade = angular.copy(retornoModal.selecionados[0]);
 			}else{
 				$scope.title = "Adicionar Unidade de Ensino";
 				$scope.novo = true;
@@ -196,6 +197,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 
 		    $scope.cancel = function() {
 		      $mdDialog.cancel();
+
 		    };
 	  
 		   
