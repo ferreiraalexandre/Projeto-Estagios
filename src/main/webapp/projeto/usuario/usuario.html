@@ -37,22 +37,13 @@
           <th md-column md-order-by="nome"><span>Nome</span></th>
           <th md-column md-order-by="cnpj" md-desc><span>CPF</span></th>
           <th md-column md-order-by="instituicao"><span>Instituições</span></th>
-          <th md-column md-order-by="obs"><md-icon>comments</md-icon><span>Observações</span></th>
         </tr>
       </thead>
       <tbody md-body>
-        <!--tr md-row md-select="usuario" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-disabled="usuario.calories.value > 400" ng-repeat="usuario in usuarios | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit"-->
         <tr md-row="" md-select="usuario" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="usuario in usuarios | filter: query.filter" class="md-row">
           <td md-cell>{{usuario.nome}}</td>
           <td md-cell>{{usuario.cpf}}</td>
-                     
-           <td md-cell>
-            <md-select ng-model="usuario.instituicao" placeholder="Other">
-              <md-option ng-value="type" ng-repeat="type in getInstituicaoes()">{{type}}</md-option>
-            </md-select>
-          </td>
-          
-          <td md-cell ng-click="editObs($event, usuario)" ng-class="{'md-placeholder': !usuario.obs}">{{usuario.obs || 'Add a obs'}}</td>
+          <td md-cell>{{usuario.unidadeEnsino.nome}}</td>
         </tr>
       </tbody>
     </table>

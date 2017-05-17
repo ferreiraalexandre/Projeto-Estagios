@@ -16,15 +16,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.buttonAddDisabled = false;
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;
-  
-  $scope.getSelectedText = function() {
-      if ($scope.selectedItem !== undefined) {
-        return "Buscar por " + $scope.selectedItem;
-      } else {
-        return "Buscar por Nome";
-      }
-    };
-  
+    
   $scope.options = {
     rowSelection: true,
     multiSelect: true,
@@ -41,65 +33,15 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     limit: 10,
     page: 1
   };
-    
-  $scope.editObs = function (event, usuario) {
-    event.stopPropagation(); // in case autoselect is enabled
-    
-    var editDialog = {
-      modelValue: usuario.obs,
-      placeholder: 'Adicionar observações',
-      save: function (input) {
-        if(input.$modelValue === 'Donald Trump') {
-          input.$invalid = true;
-          return $q.reject();
-        }
-        if(input.$modelValue === 'Bernie Sanders') {
-          return usuario.obs = 'FEEL THE BERN!'
-        }
-        usuario.obs = input.$modelValue;
-      },
-      targetEvent: event,
-      title: 'Adicionar observações',
-      validators: {
-        'md-maxlength': 30
-      }
-    };
-    
-    var promise;
-    
-    if($scope.options.largeEditDialog) {
-      promise = $mdEditDialog.large(editDialog);
-    } else {
-      promise = $mdEditDialog.small(editDialog);
-    }
-    
-    promise.then(function (ctrl) {
-      var input = ctrl.getInput();
       
-      input.$viewChangeListeners.push(function () {
-        input.$setValidity('test', input.$modelValue !== 'test');
-      });
-    });
-  };
-  
   $scope.toggleLimitOptions = function () {
     $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
-  };
-  
-  $scope.getInstituicaoes = function () {
-    return ['AC Serviços de Recrutamento e seleção LTDA ME', 'Senai', 'IEL'];
   };
   
   $scope.getOpcao = function () {
 	    return ['Sim', 'Não'];
 	  };
-  
-  $scope.loadStuff = function () {
-    $scope.promise = $timeout(function () {
-      // loading
-    }, 2000);
-  }
-  
+    
   $scope.buttonEnable = function () {
     $scope.buttonAddDisabled = $scope.selecionados.length > 0;
     $scope.buttonEditDisabled = !($scope.selecionados.length == 1);

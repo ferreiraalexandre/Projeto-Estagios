@@ -1,9 +1,12 @@
 package br.com.projetoEstagio.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Usuario {
@@ -13,17 +16,21 @@ public class Usuario {
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "nome")
+	@Column(name = "nome", nullable = false)
 	private String nome;
 	
-	@Column(name = "cpf")
+	@Column(name = "cpf", nullable = false)
 	private String cpf;
 	
-	@Column(name = "email")
+	@Column(name = "email", nullable = false)
 	private String email;
 	
-	@Column(name = "senha")
+	@Column(name = "senha", nullable = false)
 	private String senha;
+	
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "UnidadeEnsinoId", nullable = false)
+	private UnidadeEnsino unidadeEnsino;
 
 	public Long getId() {
 		return id;
@@ -63,6 +70,14 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public UnidadeEnsino getUnidadeEnsino() {
+		return unidadeEnsino;
+	}
+
+	public void setUnidadeEnsino(UnidadeEnsino unidadeEnsino) {
+		this.unidadeEnsino = unidadeEnsino;
 	}
 	
 }

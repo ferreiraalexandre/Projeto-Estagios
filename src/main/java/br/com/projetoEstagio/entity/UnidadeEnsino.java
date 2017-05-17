@@ -1,13 +1,9 @@
 package br.com.projetoEstagio.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 
 @Entity
 public class UnidadeEnsino {
@@ -17,16 +13,11 @@ public class UnidadeEnsino {
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "nome")
+	@Column(name = "nome", nullable = false)
 	private String nome;
 	
-	@Column(name = "cnpj")
-	private String cnpj;
-	
-	@ManyToOne(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "UsuarioId")
-	private Usuario usuario;
-	
+	@Column(name = "cnpj", nullable = false)
+	private String cnpj;	
 	
 	public Long getId() {
 		return id;
@@ -51,15 +42,4 @@ public class UnidadeEnsino {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	
-	
 }

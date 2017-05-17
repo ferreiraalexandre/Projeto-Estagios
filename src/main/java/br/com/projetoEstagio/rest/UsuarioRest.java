@@ -34,18 +34,22 @@ public class UsuarioRest extends UtilRest {
 	public Response salva( String json){
 		JSONObject jsonObject = new JSONObject(json);
 		UnidadeEnsinoService unidadeService = new UnidadeEnsinoService();
+		Usuario usuario = new Usuario();
+		UsuarioService service = new UsuarioService(); 
 		
 		try{
-			if(!jsonObject.isNull("unidadeEnsino")){
-				long id = Long.parseLong( (String) jsonObject.get("unidadeEnsino"));
-				UnidadeEnsino uni = unidadeService.buscarPorId(id);
-				
-			}
-			Usuario usu = getObjectMapper().readValue(json, Usuario.class);
 			
-			UsuarioService service = new UsuarioService(); 
-					
-			return getResponseAdd(service.addUsuario(usu));
+			long idUnidade = jsonObject.optLong(("unidadeEnsino"));
+		
+			UnidadeEnsino unidade = unidadeService.buscarPorId(idUnidade);
+			
+			usuario.setCpf(jsonObject.optString("cpf"));
+			usuario.setEmail(jsonObject.optString("email"));
+			usuario.setNome(jsonObject.optString("nome"));
+			usuario.setSenha(jsonObject.getString("senha"));
+			usuario.setUnidadeEnsino(unidade);
+										
+			return getResponseAdd(service.addUsuario(usuario));
 		}catch(Exception e){
 			return getResponseError(e);
 		}
