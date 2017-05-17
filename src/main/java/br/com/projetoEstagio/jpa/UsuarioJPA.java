@@ -14,6 +14,15 @@ public class UsuarioJPA  extends JPAAbstract<Usuario, Long> implements UsuarioIn
 
 	public List<Usuario> list(){
 		return this.list("");
+	
+		
+		
+//		String hql = "SELECT a FROM " + AccountingOpenness.class.getSimpleName() + " a"
+//				+ " INNER JOIN a.cashPosting c"
+//				+ " LEFT JOIN c.financialOpenness f"
+//				+ " WHERE (f.conciliated = :conciliated OR f.conciliated IS NULL) AND a.externalCode IN (:externalCodes)";
+
+		
 	}
 	public void deleteUsuario(long id){
 		this.remove(id);

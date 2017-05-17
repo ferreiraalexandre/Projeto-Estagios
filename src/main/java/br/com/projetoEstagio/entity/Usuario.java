@@ -25,9 +25,6 @@ public class Usuario {
 	@Column(name = "senha")
 	private String senha;
 
-	@Column(name = "unidadeEnsino")
-	private int unidadeEnsino;
-
 	public Long getId() {
 		return id;
 	}
@@ -67,14 +64,5 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
-	public int getUnidadeEnsino() {
-		return unidadeEnsino;
-	}
-
-	public void setUnidadeEnsino(int unidadeEnsino) {
-		this.unidadeEnsino = unidadeEnsino;
-	}
-
 	
 }

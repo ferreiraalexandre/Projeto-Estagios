@@ -39,4 +39,10 @@ public class UnidadeEnsinoService {
 		return unid.list();
 	}
 
+	public UnidadeEnsino buscarPorId(long id) {
+		UnidadeEnsinoJPA unid = new UnidadeEnsinoJPA();
+		return unid.buscarPorId(id);
+		
+	}
+
 }
