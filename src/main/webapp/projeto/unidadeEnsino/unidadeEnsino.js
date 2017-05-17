@@ -11,7 +11,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
   
   $scope.selecionados = [];  
   $scope.limitOptions = [5, 10, 15];
-  $scope.items = ['Nome', 'Curso', 'Empresa'];
+  //$scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
   $scope.unidadesModal;
   $scope.buttonAddDisabled = false;
