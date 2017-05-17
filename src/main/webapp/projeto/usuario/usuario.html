@@ -19,24 +19,12 @@
     <md-grid-tile id="listaDireita">
       <md-card-content>
         <div layout="row">
-          <md-input-container>
-            <label>Buscar por</label>
-            <input>
+         <md-input-container>
+            <label>Buscar</label>
+            <form flex="" name="filter.form" class="flex">
+		      <input type="text" ng-model="query.filter"  class="">
+		    </form>
           </md-input-container>
-
-          <md-input-container>
-            <label>Nome</label>
-            <md-select ng-model="ctrl.userState">
-              <md-option><em>None</em></md-option>
-              <md-option ng-repeat="item in items" ng-value="item" >
-                {{item}}
-              </md-option>
-            </md-select>
-          </md-input-container>
-
-          <md-button >
-            <ng-md-icon id="iconSearch" icon="search" style="fill: #abcdef" size="36"></ng-md-icon>     
-          </md-button>
         </div>
       </md-card-content>
     </md-grid-tile>
@@ -53,7 +41,8 @@
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row md-select="usuario" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-disabled="usuario.calories.value > 400" ng-repeat="usuario in usuarios | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+        <!--tr md-row md-select="usuario" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-disabled="usuario.calories.value > 400" ng-repeat="usuario in usuarios | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit"-->
+        <tr md-row="" md-select="usuario" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="usuario in usuarios | filter: query.filter" class="md-row">
           <td md-cell>{{usuario.nome}}</td>
           <td md-cell>{{usuario.cpf}}</td>
                      

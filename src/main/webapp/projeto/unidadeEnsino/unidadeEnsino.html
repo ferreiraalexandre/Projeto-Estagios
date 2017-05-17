@@ -21,25 +21,11 @@
       <md-card-content>
         <div layout="row">
           <md-input-container>
-            <label>Buscar por</label>
+            <label>Buscar</label>
             <form flex="" name="filter.form" class="flex">
-		      <input type="text" ng-model="query.filter" placeholder="search" class="">
+		      <input type="text" ng-model="query.filter"  class="">
 		    </form>
           </md-input-container>
-
-          <!-- md-input-container>
-            <label>Nome</label>
-            <md-select ng-model="ctrl.userState">
-              <md-option><em>None</em></md-option>
-              <md-option ng-repeat="item in items" ng-value="item" >
-                {{item}}
-              </md-option>
-            </md-select>
-          </md-input-container-->
-
-          <md-button >
-            <ng-md-icon id="iconSearch" icon="search" style="fill: #abcdef" size="36"></ng-md-icon>     
-          </md-button>
         </div>
       </md-card-content>
     </md-grid-tile>
@@ -55,7 +41,7 @@
       </thead>
       <tbody md-body>
         <!-- tr md-row md-select="unidadeEnsino" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-disabled="unidadeEnsino.calories.value > 400" ng-repeat="unidadeEnsino in unidades | filter: searchInput"-->
-        <tr md-row="" md-select="dessert" md-select-id="name" md-auto-select="" ng-repeat="unidadeEnsino in unidades | filter: query.filter" class="md-row">
+        <tr md-row="" md-select="unidadeEnsino" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="unidadeEnsino in unidades | filter: query.filter" class="md-row">
           <td md-cell>{{unidadeEnsino.nome}}</td>
           <td md-cell>{{unidadeEnsino.cnpj}}</td>
         </tr>
@@ -65,24 +51,4 @@
 
   <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{unidades.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">
   </md-table-pagination>
-  
 </md-card>
-<div>
-<label>TESTE
-<input type="text" ng-model="searchInput" />
-</label>
-<table>
-<thead>
-<tr>
-<td>TESTE</td>
-<td>TESTE</td>
-</tr>
-</thead>
-<tbody>
-	<tr ng-repeat="unidadeEnsino in unidades | filter: searchInput">
-		<td >{{unidadeEnsino.nome}}</td>
-          <td >{{unidadeEnsino.cnpj}}</td>
-	</tr>
-</tbody>
-</table>
-</div>
