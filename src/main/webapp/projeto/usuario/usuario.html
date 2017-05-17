@@ -36,6 +36,7 @@
         <tr md-row>
           <th md-column md-order-by="nome"><span>Nome</span></th>
           <th md-column md-order-by="cnpj" md-desc><span>CPF</span></th>
+          <th md-column md-order-by="email" md-desc><span>EMAIL</span></th>
           <th md-column md-order-by="instituicao"><span>Instituições</span></th>
         </tr>
       </thead>
@@ -43,6 +44,7 @@
         <tr md-row="" md-select="usuario" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="usuario in usuarios | filter: query.filter" class="md-row">
           <td md-cell>{{usuario.nome}}</td>
           <td md-cell>{{usuario.cpf}}</td>
+          <td md-cell>{{usuario.email}}</td>
           <td md-cell>{{usuario.unidadeEnsino.nome}}</td>
         </tr>
       </tbody>

@@ -6,7 +6,7 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 }])
 
 app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UnidadeEnsinoService','ToastService',
-                                           function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, UnidadeEnsinoService,   ToastService) {
+                                   function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, UnidadeEnsinoService,   ToastService) {
   
   
   $scope.selecionados = [];  
