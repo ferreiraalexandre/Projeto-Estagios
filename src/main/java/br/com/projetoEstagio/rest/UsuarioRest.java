@@ -13,12 +13,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
-import br.com.projetoEstagio.entity.UnidadeEnsino;
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.restUtil.UtilRest;
-import br.com.projetoEstagio.service.UnidadeEnsinoService;
 import br.com.projetoEstagio.service.UsuarioService;
 
 @Path("/usuario")
@@ -32,22 +29,10 @@ public class UsuarioRest extends UtilRest {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response salva( String json){
-		JSONObject jsonObject = new JSONObject(json);
-		UnidadeEnsinoService unidadeService = new UnidadeEnsinoService();
-		Usuario usuario = new Usuario();
-		UsuarioService service = new UsuarioService(); 
-		
+
 		try{
-			
-			long idUnidade = jsonObject.optLong(("unidadeEnsino"));
-		
-			UnidadeEnsino unidade = unidadeService.buscarPorId(idUnidade);
-			
-			usuario.setCpf(jsonObject.optString("cpf"));
-			usuario.setEmail(jsonObject.optString("email"));
-			usuario.setNome(jsonObject.optString("nome"));
-			usuario.setSenha(jsonObject.getString("senha"));
-			usuario.setUnidadeEnsino(unidade);
+			UsuarioService service = new UsuarioService(); 
+			Usuario usuario = getObjectMapper().readValue(json, Usuario.class);
 										
 			return getResponseAdd(service.addUsuario(usuario));
 		}catch(Exception e){

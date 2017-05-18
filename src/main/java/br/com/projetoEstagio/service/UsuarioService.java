@@ -3,15 +3,23 @@ package br.com.projetoEstagio.service;
 import java.util.List;
 
 import org.json.JSONArray;
+
+import br.com.projetoEstagio.entity.UnidadeEnsino;
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.jpa.UsuarioJPA;
 
 public class UsuarioService {
 
 	public Object addUsuario(Usuario usu) {
-		UsuarioJPA user = new UsuarioJPA();
-		user.addUsuario(usu);
-		return user.list();
+		UsuarioJPA usuario = new UsuarioJPA();
+		usuario.addUsuario(usu);
+		
+		List<Usuario> teste = usuario.list();
+		
+		for (Usuario Usuario : teste) {
+			System.out.println(Usuario.getNome());
+		}
+		return teste;
 	}
 
 	public List<Usuario> listUsuario() throws Exception {
