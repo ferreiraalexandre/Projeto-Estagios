@@ -324,7 +324,7 @@
         toast: 'directives/toast/toast.html',
         progressbar: 'directives/progressbar/progressbar.html'
       },
-      timeOut: 1000,
+      timeOut: 1700,
       titleClass: 'toast-title',
       toastClass: 'toast'
     });
