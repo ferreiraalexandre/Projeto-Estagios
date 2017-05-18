@@ -5,8 +5,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UsuarioService', 'UnidadeEnsinoService', 'ToastService',  
-                            function ($mdEditDialog,   $q,   $scope,   $timeout,   $mdDialog,   UsuarioService,   UnidadeEnsinoService,   ToastService) {
+app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'UsuarioService', 'UnidadeEnsinoService', 'toastr',  
+                            function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   UsuarioService,   UnidadeEnsinoService,   toastr) {
 
   $scope.selecionados = [];
   $scope.limitOptions = [5, 10, 15];
@@ -84,10 +84,10 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 				data: JSON.stringify(arrayId),
 		};
 			UsuarioService.deleteUsuario(listId, function(response){
-			ToastService.alert(response.message, undefined, 'bottom right', 3000);
 			$scope.usuarios = response.data;
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
+			toastr.success(response.message);
 		});
 	};
 	
@@ -150,7 +150,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		$scope.novoUsuario = function (data) {
 			UsuarioService.postUsuario(data, function (response) {
 			$mdDialog.hide(data);
-			ToastService.alert(response.message, undefined, 'bottom right', 3000);
+			toastr.success(response.message);
 			retornoModal.usuarios = response.data;
 				
 			}),
@@ -163,7 +163,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		$scope.editarUsuario = function (data) {
 			UsuarioService.putUsuario(data, function (response) {
 			$mdDialog.hide(data);
-			ToastService.alert(response.message, undefined, 'bottom right', 3000);
+			toastr.success(response.message);
 			retornoModal.unidades = response.data;
 				
 			}),

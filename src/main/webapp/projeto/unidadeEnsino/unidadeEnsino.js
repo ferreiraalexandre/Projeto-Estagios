@@ -5,8 +5,9 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UnidadeEnsinoService','ToastService',
-                                   function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, UnidadeEnsinoService,   ToastService) {
+
+app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UnidadeEnsinoService', 'toastr',
+                                function ($mdEditDialog, $q, $scope,  $timeout, $mdDialog, UnidadeEnsinoService, toastr) {
   
   
   $scope.selecionados = [];  
@@ -81,8 +82,8 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 				data: JSON.stringify(arrayId),
 		};
 		UnidadeEnsinoService.deleteUnidade(listId, function(response){
-			ToastService.alert(response.message, undefined, 'bottom right', 3000);
 			$scope.unidades = response.data;
+			toastr.success(response.message);
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
 		});
@@ -141,7 +142,8 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	  $scope.novaUnidade = function (data) {
 			UnidadeEnsinoService.postUnidade(data, function (response) {
 				$mdDialog.hide(data);
-				ToastService.alert(response.message, undefined, 'bottom right', 3000);
+				toastr.success(response.message);
+				//toastr.RefreshTimer (toast, 500 ); pesquisar.......
 				retornoModal.unidades = response.data;	
 		}),
 			function (error) {
@@ -154,7 +156,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		$scope.editarUnidade = function (data) {
 			UnidadeEnsinoService.putUnidade(data, function (response) {
 			$mdDialog.hide(data);
-			ToastService.alert(response.message, undefined, 'bottom right', 3000);
+			toastr.success(response.message);
 			retornoModal.unidades = response.data;
 				
 			}),
