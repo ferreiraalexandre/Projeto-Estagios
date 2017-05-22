@@ -13,13 +13,8 @@ public class UnidadeEnsinoService {
 		UnidadeEnsinoJPA unidade = new UnidadeEnsinoJPA();
 		unidade.addUnidadeEnsino(uni);
 		
-		List<UnidadeEnsino> teste = unidade.list();
+		return unidade.list();
 		
-		for (UnidadeEnsino unidadeEnsino : teste) {
-			System.out.println(unidadeEnsino.getNome());
-		}
-		
-		return teste;
 	}
 	
 	public List<UnidadeEnsino> listUnidade() throws Exception {

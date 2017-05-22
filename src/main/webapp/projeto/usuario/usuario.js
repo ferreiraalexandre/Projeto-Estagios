@@ -106,7 +106,6 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 	    })
         .then(function(novoUsuario) {
         	$scope.selecionados = [];
-        	$scope.getUsuario();
         }, function() {
          //Adicionar mensagem de erro aqui
         });

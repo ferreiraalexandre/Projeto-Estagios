@@ -9,7 +9,6 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UnidadeEnsinoService', 'toastr',
                                 function ($mdEditDialog, $q, $scope,  $timeout, $mdDialog, UnidadeEnsinoService, toastr) {
   
-  
   $scope.selecionados = [];  
   $scope.limitOptions = [5, 10, 15];
   //$scope.items = ['Nome', 'Curso', 'Empresa'];
@@ -54,6 +53,15 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
     console.log('page: ', page);
     console.log('limit: ', limit);
   }
+
+///////////////////////////////////////////Busca unidade do banco e lista na tabela
+  $scope.getUnidadeEnsino = function(){;  
+		UnidadeEnsinoService.getList(function (response) {
+			$scope.unidades = response.data;	
+		});
+  }
+	
+
   
 ////////////////////função de confirm pra deletar
   $scope.showConfirm = function(ev) {
@@ -109,13 +117,6 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	        });
 	  };
 	  
-///////////////////////////////////////////Busca unidade do banco e lista na tabela
-		$scope.getUnidadeEnsino = function () {
-			UnidadeEnsinoService.getList(function (response) {
-				$scope.unidades = response.data;	
-			});
-
-		};
 			
 ///////////////////////////////////////////////////Controller da modal
 		function ModalController($scope, $mdDialog,retornoModal) {
@@ -167,6 +168,6 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	}
 			
 //////////////////////////////////////////////////////////////////////////////Chama função para buscar unidades de ensino
-		 $scope.getUnidadeEnsino();  
+			$scope.getUnidadeEnsino();  			
   
 }]);

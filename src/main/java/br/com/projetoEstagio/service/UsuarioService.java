@@ -14,12 +14,8 @@ public class UsuarioService {
 		UsuarioJPA usuario = new UsuarioJPA();
 		usuario.addUsuario(usu);
 		
-		List<Usuario> teste = usuario.list();
-		
-		for (Usuario Usuario : teste) {
-			System.out.println(Usuario.getNome());
-		}
-		return teste;
+		return  usuario.list();
+
 	}
 
 	public List<Usuario> listUsuario() throws Exception {
