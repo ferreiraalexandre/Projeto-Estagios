@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 public class JPAConnection {
 
 	private static EntityManagerFactory conection;
-	private EntityManager em;
+	private static EntityManager em;
 	
 	private EntityManagerFactory connect(){
 		
@@ -34,7 +34,7 @@ public class JPAConnection {
 	protected void closeConection(){
 		
 		if(em != null && em.isOpen()){
-			this.em.close();
+			em.close();
 		}
 	}
 }

@@ -111,7 +111,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		    })
 	        .then(function(novaUnidade) {
 	        	$scope.selecionados = [];
-	        	//$scope.getUnidadeEnsino();
+	        	$scope.buttonEnable();
 	        }, function() {
 	         //Adicionar mensagem de erro aqui
 	        });

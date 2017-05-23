@@ -106,6 +106,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 	    })
         .then(function(novoUsuario) {
         	$scope.selecionados = [];
+        	$scope.buttonEnable();
         }, function() {
          //Adicionar mensagem de erro aqui
         });
@@ -163,7 +164,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			UsuarioService.putUsuario(data, function (response) {
 			$mdDialog.hide(data);
 			toastr.success(response.message);
-			retornoModal.unidades = response.data;
+			retornoModal.usuarios = response.data;
 				
 			}),
 				function (error) {

@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import br.com.projetoEstagio.connection.JPAConnection;
-import br.com.projetoEstagio.interfaces.JPAAbstractInterface;
 
 import javax.persistence.Query;
 
@@ -25,7 +24,7 @@ import javax.persistence.Query;
  * @param <ID>
  *            Tipo da chave primaria
  */
-public class JPAAbstract<E, ID> extends JPAConnection implements JPAAbstractInterface<E, ID> {
+public class JPAAbstract<E, ID> extends JPAConnection {
 
 	/**
 	 * Atributo que armazena o .class da entity.
@@ -243,9 +242,9 @@ public class JPAAbstract<E, ID> extends JPAConnection implements JPAAbstractInte
 	 * 
 	 * @return List<E> retorna um array list de registros da entity.
 	 */
-	public List<E> list(){
-		return this.list("");
-	}
+//	public List<E> list(){
+//		return this.list("");
+//	}
 
 	/**
 	 * 
@@ -256,7 +255,7 @@ public class JPAAbstract<E, ID> extends JPAConnection implements JPAAbstractInte
 	 *            query sql.
 	 * @return List<E> retorna um array list de registros da entity.
 	 */
-	protected List<E> list(String jpql){
+	public List<E> list(String jpql){
 
 		if(jpql == null || jpql.isEmpty()){
 			jpql = "SELECT E FROM " + this.getEntityName() + " E";
