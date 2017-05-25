@@ -131,8 +131,9 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			$scope.title = "Editar Usuário";
 			$scope.usuario = angular.copy(retornoModal.selecionados[0]);
 			$scope.unidades = retornoModal.unidades;
-
+			$scope.selectRequired = false;
 		}else{
+			$scope.selectRequired = true;
 			$scope.title = "Adicionar Usuário";
 			$scope.novo = true;
 			$scope.unidades = retornoModal.unidades;
