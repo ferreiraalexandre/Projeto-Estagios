@@ -14,30 +14,12 @@ app.factory('UnidadeEnsinoService',['$resource',  function ($resource) {
 		  postUnidade: { method: 'POST', params: {method: 'salva'}}, 
 		  getList: {method: 'GET', params: {method: 'buscar'}, isArray: false},
 		  putUnidade: { method: 'PUT', params: {method: 'editar'}},
-		  deleteUnidade: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : teste}}
+		  deleteUnidade: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : resultError}}
 		   
 
 	  })
 	}]);
 
-app.service('ToastService',function($mdToast){
-	  this.alert = function(text,action,position,delay){
-
-	    var toast = $mdToast.simple()
-	    .textContent(text)
-	    .position(position)
-	    .hideDelay(delay);
-
-	    if(action){ toast.action(action); }
-
-	    return $mdToast.show(toast);
-	  };
-
-});
-
-
- function teste(response) {
-	//console.log(response.data.message);
-	sessionStorage.setItem("msg", response.data.message);
-	
+ function resultError(response) {
+	alert(response.data.message + "\n" + response.data.description);
 };

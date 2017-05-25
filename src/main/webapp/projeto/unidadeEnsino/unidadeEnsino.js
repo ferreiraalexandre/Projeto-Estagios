@@ -74,10 +74,8 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	  
 	  $mdDialog.show(confirm).then(function() {
 		  $scope.deleteUnidade();
-		  $scope.status = 'Deletado';
 	  }, function() {
-		  toastr.error(sessionStorage.getItem("msg"));
-		  $scope.status = 'Deu erro ao deletar';
+		  //SE APERTAR BOTAO NÃO ENTRA AQUI 		  
 	  });
   };
  

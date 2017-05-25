@@ -27,7 +27,7 @@ public class RestResponse {
 
 	private void RestResponseEx(Exception e){
 		e.printStackTrace();
-		this.message = "Erro no servidor";
+		this.message = "Erro no servidor!";
 		this.description = "Gentileza entrar em contato com o desenvolvedor.";
 		this.data = null;
 	}
