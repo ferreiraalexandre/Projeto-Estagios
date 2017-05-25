@@ -41,8 +41,8 @@
       </thead>
       <tbody md-body>
         <tr md-row="" md-select="unidadeEnsino" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="unidadeEnsino in unidades | filter: query.filter" class="md-row">
-          <td md-cell>{{unidadeEnsino.nome}}</td>
-          <td md-cell>{{unidadeEnsino.cnpj}}</td>
+          <td md-cell >{{unidadeEnsino.nome }}</td>
+          <td md-cell>{{unidadeEnsino.cnpj | cpf}}</td>
         </tr>
       </tbody>
     </table>
