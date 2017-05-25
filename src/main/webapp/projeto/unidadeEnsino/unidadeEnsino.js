@@ -76,6 +76,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		  $scope.deleteUnidade();
 		  $scope.status = 'Deletado';
 	  }, function() {
+		  toastr.error(sessionStorage.getItem("msg"));
 		  $scope.status = 'Deu erro ao deletar';
 	  });
   };
@@ -94,7 +95,9 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 			toastr.success(response.message);
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
+			
 		});
+		
 	};
 	
 	
