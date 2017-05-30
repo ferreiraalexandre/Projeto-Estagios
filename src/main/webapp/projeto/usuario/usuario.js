@@ -16,6 +16,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
   $scope.buttonAddDisabled = false;
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;
+  $scope.isLoading = true;
     
   $scope.options = {
     rowSelection: true,
@@ -115,13 +116,9 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 	//Busca usuários do banco e lista na tabela
 	$scope.getUsuario = function () {
 		UsuarioService.getList(function (response) {
-			$scope.usuarios = response.data;	
+			$scope.usuarios = response.data;
+			$scope.isLoading = false;
 		});
-		
-		UnidadeEnsinoService.getList(function (response) {
-			$scope.unidades = response.data;	
-		});
-
 	};
 		
 	//Controller da modal

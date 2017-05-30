@@ -17,6 +17,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
   $scope.buttonAddDisabled = false;
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;
+  $scope.isLoading = true;
     
   $scope.options = {
     rowSelection: true,
@@ -57,7 +58,8 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 ///////////////////////////////////////////Busca unidade do banco e lista na tabela
   $scope.getUnidadeEnsino = function(){;  
 		UnidadeEnsinoService.getList(function (response) {
-			$scope.unidades = response.data;	
+			$scope.unidades = response.data;
+			$scope.isLoading = false;
 		});
   }
 	

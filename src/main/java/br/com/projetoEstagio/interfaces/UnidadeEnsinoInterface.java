@@ -13,7 +13,5 @@ public interface UnidadeEnsinoInterface {
 	public void deleteUnidadeEnsino(long id);
 	
 	public UnidadeEnsino editarUnidade(UnidadeEnsino uni);
-	
-	public UnidadeEnsino buscarPorId(Long id);
 
 }

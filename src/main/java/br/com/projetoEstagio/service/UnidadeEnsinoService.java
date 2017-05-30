@@ -1,11 +1,14 @@
 package br.com.projetoEstagio.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.UnidadeEnsino;
+import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.jpa.UnidadeEnsinoJPA;
+import br.com.projetoEstagio.jpa.UsuarioJPA;
 
 public class UnidadeEnsinoService {
 
@@ -24,14 +27,24 @@ public class UnidadeEnsinoService {
 	
 	public Object deleteUnidade(JSONArray unid) throws Exception{
 		UnidadeEnsinoJPA uni = new UnidadeEnsinoJPA();
+		UsuarioJPA use = new UsuarioJPA();
+		
+		List<String> usuarioEmUso = new ArrayList<String>();
 			
 			if(unid != null && unid.length() > 0){
 				for (int i = 0; i < unid.length(); i++) {
-					uni.deleteUnidadeEnsino(unid.getLong(i));
+					Usuario usuario = use.buscarPorId(unid.getLong(i));
+					if(usuario == null){
+						uni.deleteUnidadeEnsino(unid.getLong(i));						
+					}else{
+						usuarioEmUso.add(usuario.getNome());	
+					}
 				}
 			}
 			
-			return uni.list();
+			List<UnidadeEnsino> unidades = uni.list();
+			
+			return unidades;
 	}
 	
 	public Object editarUnidade(UnidadeEnsino uni) {
@@ -39,11 +52,4 @@ public class UnidadeEnsinoService {
 		unid.editarUnidade(uni);
 		return unid.list();
 	}
-
-	public UnidadeEnsino buscarPorId(long id) {
-		UnidadeEnsinoJPA unid = new UnidadeEnsinoJPA();
-		return unid.buscarPorId(id);
-		
-	}
-
 }

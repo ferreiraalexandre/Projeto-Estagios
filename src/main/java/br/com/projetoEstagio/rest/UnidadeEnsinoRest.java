@@ -66,11 +66,9 @@ public class UnidadeEnsinoRest extends UtilRest {
 		try{
 			UnidadeEnsinoService service = new UnidadeEnsinoService(); 
 
-			Response teste = getResponseRemove(service.deleteUnidade(id));
-			return teste;
+			return getResponseRemove(service.deleteUnidade(id));
 		} catch (Exception e) {
-			Response teste = getResponseError(e);
-			return teste;
+			return getResponseError(e);
 		}
 	}
 	
