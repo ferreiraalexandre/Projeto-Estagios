@@ -7,7 +7,7 @@ app.factory('UsuarioService',['$resource',  function ($resource) {
 		  deleteUsuario: { method: 'DELETE', params: {method: 'deletar'}, isArray: false}
 
 	  })
-	}]);
+}]);
 
 app.factory('UnidadeEnsinoService',['$resource',  function ($resource) {
 	  return $resource(app.pathRest + '/unidadeEnsino/:method/:data', {}, {
@@ -28,6 +28,7 @@ app.factory('EmpresaService',['$resource',  function ($resource) {
 
 	  })
 }]);
+
 app.factory('TurmaService',['$resource',  function ($resource) {
 	  return $resource(app.pathRest + '/turma/:method/:data', {}, {
 		  postTurma: { method: 'POST', params: {method: 'salva'}}, 
@@ -35,7 +36,19 @@ app.factory('TurmaService',['$resource',  function ($resource) {
 		  putTurma: { method: 'PUT', params: {method: 'editar'}},
 		  deleteTurma: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : resultError}}
 	  })
-	}]);
+}]);
+
+
+app.factory('EmpresaService',['$resource',  function ($resource) {
+	  return $resource(app.pathRest + '/empresa/:method/:data', {}, {
+		  postEmpresa: { method: 'POST', params: {method: 'salva'}}, 
+		  getList: {method: 'GET', params: {method: 'buscar'}, isArray: false},
+		  putEmpresa: { method: 'PUT', params: {method: 'editar'}},
+		  deleteEmpresa: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : resultError}}
+		   
+
+	  })
+}]);
 
  function resultError(response) {
 	alert(response.data.message + "\n" + response.data.description);
