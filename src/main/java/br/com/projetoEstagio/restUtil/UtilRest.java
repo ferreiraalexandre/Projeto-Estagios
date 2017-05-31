@@ -41,9 +41,10 @@ public class UtilRest {
 	}
 
 	public Response getResponseRemove(Object e) {
-		return this.getResponse(new RestResponse(
-				"Registro removido com sucesso.", null, e),
-				Response.Status.OK);
+		RestResponse teste = new RestResponse();
+		String rr =	teste.getDescription();
+		
+		return this.getResponse(new RestResponse("Registro removido com sucesso.", null, e),Response.Status.OK);
 	}
 
 	public Response getResponseList(Object data) {

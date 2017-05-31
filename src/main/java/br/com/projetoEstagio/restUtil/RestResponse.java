@@ -25,6 +25,10 @@ public class RestResponse {
 		this.data = data;
 	}
 
+	public RestResponse() {
+		super();
+	}
+
 	private void RestResponseEx(Exception e){
 		e.printStackTrace();
 		this.message = "Erro no servidor!";
