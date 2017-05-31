@@ -3,13 +3,10 @@ package br.com.projetoEstagio.jpa;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
 import br.com.projetoEstagio.connection.JPAConnection;
-
 import javax.persistence.Query;
 
 
