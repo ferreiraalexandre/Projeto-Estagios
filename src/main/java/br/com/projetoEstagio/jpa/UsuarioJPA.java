@@ -1,9 +1,6 @@
 package br.com.projetoEstagio.jpa;
 
-
 import java.util.List;
-
-import br.com.projetoEstagio.entity.UnidadeEnsino;
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.interfaces.UsuarioInterface;
 
@@ -25,8 +22,8 @@ public class UsuarioJPA  extends JPAAbstract<Usuario, Long> implements UsuarioIn
 		return this.edit(usu);
 	}
 	
-	public Usuario buscarPorId(Long id) {
-		return this.getObject("SELECT U FROM "+ this.getEntityName() +" U WHERE U.unidadeEnsino.id = '"+ id +"'");
+	public List<Usuario> buscarPorId(Long id) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.unidadeEnsino.id = '"+ id +"'");
 	}
 
 }

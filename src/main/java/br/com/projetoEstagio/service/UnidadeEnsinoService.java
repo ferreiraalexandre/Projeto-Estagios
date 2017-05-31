@@ -9,6 +9,7 @@ import br.com.projetoEstagio.entity.UnidadeEnsino;
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.jpa.UnidadeEnsinoJPA;
 import br.com.projetoEstagio.jpa.UsuarioJPA;
+import br.com.projetoEstagio.restUtil.RestResponse;
 
 public class UnidadeEnsinoService {
 
@@ -25,23 +26,34 @@ public class UnidadeEnsinoService {
 		return listUnidade.list();
 	}
 	
+	@SuppressWarnings("null")
 	public Object deleteUnidade(JSONArray unid) throws Exception{
 		UnidadeEnsinoJPA uni = new UnidadeEnsinoJPA();
 		UsuarioJPA use = new UsuarioJPA();
 		
-		List<String> usuarioEmUso = new ArrayList<String>();
+		List<Usuario> usuarioEmUso = new ArrayList<Usuario>();
 			
 			if(unid != null && unid.length() > 0){
 				for (int i = 0; i < unid.length(); i++) {
-					Usuario usuario = use.buscarPorId(unid.getLong(i));
-					if(usuario == null){
-						uni.deleteUnidadeEnsino(unid.getLong(i));						
+					List<Usuario> usuario = use.buscarPorId(unid.getLong(i));
+					
+					if(usuario.size() > 0){
+						usuarioEmUso.addAll(usuario);	
 					}else{
-						usuarioEmUso.add(usuario.getNome());	
+						uni.deleteUnidadeEnsino(unid.getLong(i));												
 					}
 				}
 			}
 			
+			if(usuarioEmUso.size() > 0){
+				String nomeUsuario = "";
+				for (Usuario usuario : usuarioEmUso) {
+					nomeUsuario += usuario.getNome();
+				}
+			RestResponse teste = new RestResponse();
+				teste.setDescription(nomeUsuario);
+			}			
+	
 			List<UnidadeEnsino> unidades = uni.list();
 			
 			return unidades;
