@@ -131,7 +131,7 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 			$scope.selectRequired = false;
 		}else{
 			$scope.selectRequired = true;
-			$scope.title = "Adicionar Usuário";
+			$scope.title = "Adicionar Turma";
 			$scope.novo = true;
 			$scope.cursos = retornoModal.cursos;
 		}

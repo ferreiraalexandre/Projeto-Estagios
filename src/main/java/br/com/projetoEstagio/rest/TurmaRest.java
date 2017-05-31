@@ -18,7 +18,7 @@ import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.UsuarioService;
 
-@Path("/usuario")
+@Path("/turma")
 public class TurmaRest extends UtilRest {
 		
 	public TurmaRest() {
@@ -44,7 +44,7 @@ public class TurmaRest extends UtilRest {
 	@Path("/buscar")
 	@Produces("application/json")
 	public Response list() {
-
+		
 		try{
 			UsuarioService service = new UsuarioService(); 
 
