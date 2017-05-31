@@ -27,6 +27,12 @@ app.config(function($routeProvider) {
 		templateUrl : 'projeto/turma/turma.html',
 		controller : 'turmaController'
 	})
+	
+	$routeProvider
+	.when('/empresa', {
+		templateUrl : 'projeto/empresa/empresa.html',
+		controller : 'empresaController'
+	})
 
 });
 
