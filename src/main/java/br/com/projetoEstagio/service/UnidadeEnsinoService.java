@@ -29,16 +29,24 @@ public class UnidadeEnsinoService {
 		UnidadeEnsinoJPA uni = new UnidadeEnsinoJPA();
 		UsuarioJPA use = new UsuarioJPA();
 		
-		List<String> usuarioEmUso = new ArrayList<String>();
+		List<Usuario> usuarioEmUso = new ArrayList<Usuario>();
 			
 			if(unid != null && unid.length() > 0){
 				for (int i = 0; i < unid.length(); i++) {
-					Usuario usuario = use.buscarPorId(unid.getLong(i));
-					if(usuario == null){
+					List<Usuario> usuario = use.buscarPorId(unid.getLong(i));
+					if(usuario.size() > 0){
 						uni.deleteUnidadeEnsino(unid.getLong(i));						
 					}else{
-						usuarioEmUso.add(usuario.getNome());	
+						
+						usuarioEmUso.addAll(usuario);	
 					}
+				}
+			}
+			
+			if(usuarioEmUso.size() > 0){
+				List<String> nomeUsuario = new ArrayList<String>();
+				for (Usuario usuario : usuarioEmUso) {
+					nomeUsuario.add(usuario.getNome());
 				}
 			}
 			

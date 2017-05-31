@@ -121,6 +121,33 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 	
 	/**
 	 * 
+	 * Metodo que retorna uma lista com os registro que consta
+	 * na entity.
+	 * 
+	 * @param jpql
+	 *            query sql.
+	 * @return E objeto da entity.
+	 */
+	public List<E> findAllByIds(String jpql){
+		
+		if(jpql == null || jpql.isEmpty()){
+			jpql = "SELECT E FROM " + this.getEntityName() + " E";
+		}
+
+		EntityManager em = getEntityManager();
+
+		TypedQuery<E> sql = em.createQuery(jpql, this.entity);
+		
+		List<E> e = sql.getResultList();
+		
+		this.closeConection();
+		
+		return e;
+	}
+
+	
+	/**
+	 * 
 	 * Implementacao do metodo que insere determinada instancia de uma entity
 	 * no banco de dados
 	 * 

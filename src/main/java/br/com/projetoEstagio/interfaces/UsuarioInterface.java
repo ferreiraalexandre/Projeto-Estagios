@@ -14,5 +14,5 @@ public interface UsuarioInterface {
 	
 	public Usuario editarUsuario(Usuario usu);
 
-	public Usuario buscarPorId(Long id); 
+	public List<Usuario> buscarPorId(Long id);
 }
