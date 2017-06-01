@@ -12,7 +12,7 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
   $scope.selecionados = [];  
   $scope.limitOptions = [5, 10, 15];
   $scope.selectedItem;
-  $scope.cursoModal;
+  $scope.cursosModal;
   $scope.buttonAddDisabled = false;
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;
@@ -126,7 +126,7 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 			if(retornoModal.selecionados.length==1){
 				$scope.editar = true;
 				$scope.title = "Editar Curso";
-				$scope.unidade = angular.copy(retornoModal.selecionados[0]);
+				$scope.curso = angular.copy(retornoModal.selecionados[0]);
 			}else{
 				$scope.title = "Adicionar Curso";
 				$scope.novo = true;
