@@ -10,9 +10,9 @@ public interface EmpresaInterface {
 	
 	public List<Empresa> list();
 	
-	//public void deleteEmpresa(long id);
+	public void deleteEmpresa(long id);
 	
-	//public Empresa editarUsuario(Empresa emp);
+	public Empresa editarEmpresa(Empresa emp);
 
 	//public Empresa buscarPorId(Long id); 
 }

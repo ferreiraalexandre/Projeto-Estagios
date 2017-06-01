@@ -22,23 +22,23 @@ public class EmpresaService {
 		return listEmpresa.list();
 	}
 	
-	/*public Object deleteUsuario(JSONArray usu) throws Exception{
-		UsuarioJPA uni = new UsuarioJPA();
+	public Object editarEmpresa(Empresa emp) {
+		EmpresaJPA empresa = new EmpresaJPA();
+		empresa.editarEmpresa(emp);
+		return empresa.list();
+	}
+	
+	public Object deleteEmpresa(JSONArray emp) throws Exception{
+		EmpresaJPA empresa = new EmpresaJPA();
 			
-		if(usu != null && usu.length() > 0){
-			for (int i = 0; i < usu.length(); i++) {
-				uni.deleteUsuario(usu.getLong(i));
-				System.out.println(usu.getLong(i));
+		if(emp != null && emp.length() > 0){
+			for (int i = 0; i < emp.length(); i++) {
+				empresa.deleteEmpresa(emp.getLong(i));
+				System.out.println(emp.getLong(i));
 			}
 		}
-		return uni.list();
-	}*/
-
-	/*public Object editarUsuario(Usuario usu) {
-		UsuarioJPA user = new UsuarioJPA();
-		user.editarUsuario(usu);
-		return user.list();
-	}*/
+		return empresa.list();
+	}
 	
 }
 

@@ -148,7 +148,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		$scope.novaEmpresa = function (data) {
 			EmpresaService.postEmpresa(data, function (response) {
 				$mdDialog.hide(data);
-				toastr.success(response.message);
+				toastr.success("teste \r\n teste2");
 				retornoModal.empresas = response.data;
 			}),
 			function (error) {

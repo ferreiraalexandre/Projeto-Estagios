@@ -56,22 +56,7 @@ public class EmpresaRest extends UtilRest {
 		}
 	}
 	
-	/*@DELETE
-	@Path("/deletar/{id}")
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Response delete(@PathParam ("id") JSONArray id) {
-
-		try{
-			EmpresaService service = new EmpresaService(); 
-
-			return getResponseRemove(service.deleteEmpresa(id));
-		} catch (Exception e) {
-			return getResponseError(e);
-		}
-	}*/
-
-	/*@PUT
+	@PUT
 	@Path("/editar")
 	@Produces("application/json")
 	public Response editar(String json) {
@@ -85,7 +70,22 @@ public class EmpresaRest extends UtilRest {
 		}catch(Exception e){
 			return getResponseError(e);
 		}
-	}*/
+	}
+	
+	@DELETE
+	@Path("/deletar/{id}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response delete(@PathParam ("id") JSONArray id) {
+
+		try{
+			EmpresaService service = new EmpresaService(); 
+
+			return getResponseRemove(service.deleteEmpresa(id));
+		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
 	
 }
 
