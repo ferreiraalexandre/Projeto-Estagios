@@ -15,6 +15,7 @@ import br.com.projeto.exception.PrincipalException;
 public class UtilRest {
 	@Context
 	private HttpHeaders headers;
+	protected RestResponse response;
 	
 	
 	public ObjectMapper getObjectMapper() {
@@ -41,10 +42,11 @@ public class UtilRest {
 	}
 
 	public Response getResponseRemove(Object e) {
-		RestResponse teste = new RestResponse();
-		String rr =	teste.getDescription();
-		
-		return this.getResponse(new RestResponse("Registro removido com sucesso.", null, e),Response.Status.OK);
+		String msg = "Registro removido com sucesso.";
+		if(this.response.getDescription() != null){
+			msg = "Registro em uso:";
+		}
+		return this.getResponse(new RestResponse(msg, this.response.getDescription(), e),Response.Status.OK);
 	}
 
 	public Response getResponseList(Object data) {

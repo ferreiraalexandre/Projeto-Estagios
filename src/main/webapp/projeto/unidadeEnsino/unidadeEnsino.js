@@ -92,7 +92,11 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		};
 		UnidadeEnsinoService.deleteUnidade(listId, function(response){
 			$scope.unidades = response.data;
-			toastr.success(response.message);
+			if(response.description != null){
+				toastr.warning(response.description, response.message );
+			}else{
+				toastr.success(response.message);				
+			}
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
 			

@@ -26,8 +26,7 @@ public class UnidadeEnsinoService {
 		return listUnidade.list();
 	}
 	
-	@SuppressWarnings("null")
-	public Object deleteUnidade(JSONArray unid) throws Exception{
+	public Object deleteUnidade(JSONArray unid, RestResponse response) throws Exception{
 		UnidadeEnsinoJPA uni = new UnidadeEnsinoJPA();
 		UsuarioJPA use = new UsuarioJPA();
 		
@@ -38,7 +37,7 @@ public class UnidadeEnsinoService {
 					List<Usuario> usuario = use.buscarPorId(unid.getLong(i));
 					
 					if(usuario.size() > 0){
-						usuarioEmUso.addAll(usuario);	
+						usuarioEmUso.add(usuario.get(0));	
 					}else{
 						uni.deleteUnidadeEnsino(unid.getLong(i));												
 					}
@@ -48,10 +47,11 @@ public class UnidadeEnsinoService {
 			if(usuarioEmUso.size() > 0){
 				String nomeUsuario = "";
 				for (Usuario usuario : usuarioEmUso) {
-					nomeUsuario += usuario.getNome();
+					if(!nomeUsuario.contains(usuario.getUnidadeEnsino().getNome())){		
+						nomeUsuario += usuario.getUnidadeEnsino().getNome() + "  ";						
+					}
 				}
-			RestResponse teste = new RestResponse();
-				teste.setDescription(nomeUsuario);
+				response.setDescription(nomeUsuario.replace("  ", "; "));
 			}			
 	
 			List<UnidadeEnsino> unidades = uni.list();
