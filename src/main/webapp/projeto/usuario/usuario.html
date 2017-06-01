@@ -47,7 +47,7 @@
       <tbody md-body>
         <tr md-row="" md-select="usuario" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="usuario in usuarios | filter: query.filter" class="md-row">
           <td md-cell>{{usuario.nome}}</td>
-          <td md-cell>{{usuario.cpf}}</td>
+          <td md-cell>{{usuario.cpf | brCpf}}</td>
           <td md-cell>{{usuario.email}}</td>
           <td md-cell>{{usuario.unidadeEnsino.nome}}</td>
         </tr>

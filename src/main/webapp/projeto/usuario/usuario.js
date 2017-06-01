@@ -119,6 +119,10 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			$scope.usuarios = response.data;
 			$scope.isLoading = false;
 		});
+		UnidadeEnsinoService.getList(function (response) {
+			$scope.unidades = response.data;	
+		});
+		
 	};
 		
 	//Controller da modal
