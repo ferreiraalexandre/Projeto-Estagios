@@ -39,12 +39,12 @@ app.factory('TurmaService',['$resource',  function ($resource) {
 }]);
 
 
-app.factory('EmpresaService',['$resource',  function ($resource) {
-	  return $resource(app.pathRest + '/empresa/:method/:data', {}, {
-		  postEmpresa: { method: 'POST', params: {method: 'salva'}}, 
+app.factory('CursoService',['$resource',  function ($resource) {
+	  return $resource(app.pathRest + '/curso/:method/:data', {}, {
+		  postCurso: { method: 'POST', params: {method: 'salva'}}, 
 		  getList: {method: 'GET', params: {method: 'buscar'}, isArray: false},
-		  putEmpresa: { method: 'PUT', params: {method: 'editar'}},
-		  deleteEmpresa: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : resultError}}
+		  putCurso: { method: 'PUT', params: {method: 'editar'}},
+		  deleteCurso: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : resultError}}
 		   
 
 	  })
