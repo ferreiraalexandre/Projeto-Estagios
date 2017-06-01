@@ -6,7 +6,7 @@ import br.com.projetoEstagio.entity.Empresa;
 
 public interface EmpresaInterface {
 	
-	//public Empresa addUsuario(Empresa usu);
+	public Empresa addEmpresa(Empresa emp);
 	
 	public List<Empresa> list();
 	

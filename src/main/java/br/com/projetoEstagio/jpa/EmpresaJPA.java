@@ -7,9 +7,9 @@ import br.com.projetoEstagio.interfaces.EmpresaInterface;
 
 public class EmpresaJPA  extends JPAAbstract<Empresa, Long> implements EmpresaInterface {
 
-	/*public Empresa addEmpresa(Empresa usu) {
-		return this.add(usu);
-	}*/
+	public Empresa addEmpresa(Empresa emp) {
+		return this.add(emp);
+	}
 
 	public List<Empresa> list(){
 		return this.list("");

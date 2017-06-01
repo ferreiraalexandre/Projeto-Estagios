@@ -9,13 +9,13 @@ import br.com.projetoEstagio.jpa.EmpresaJPA;
 
 public class EmpresaService {
 
-	/*public Object addUsuario(Usuario usu) {
-		UsuarioJPA usuario = new UsuarioJPA();
-		usuario.addUsuario(usu);
+	public Object addEmpresa(Empresa emp) {
+		EmpresaJPA empresa = new EmpresaJPA();
+		empresa.addEmpresa(emp);
 		
-		return  usuario.list();
+		return  empresa.list();
 
-	}*/
+	}
 
 	public List<Empresa> listEmpresa() throws Exception {
 		EmpresaJPA listEmpresa = new EmpresaJPA();

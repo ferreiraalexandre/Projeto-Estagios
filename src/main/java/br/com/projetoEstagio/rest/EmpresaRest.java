@@ -24,7 +24,7 @@ public class EmpresaRest extends UtilRest {
 	public EmpresaRest() {
 	}
 	
-	/*@POST
+	@POST
 	@Path("/salva")
 	@Consumes("application/json")
 	@Produces("application/json")
@@ -38,7 +38,7 @@ public class EmpresaRest extends UtilRest {
 		}catch(Exception e){
 			return getResponseError(e);
 		}
-	}*/
+	}
 	
 	@GET
 	@Path("/buscar")

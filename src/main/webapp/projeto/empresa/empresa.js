@@ -145,7 +145,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		};
 			    
 		//Função de adicionar novas empresas no Banco de Dados
-		$scope.novaEmpresaa = function (data) {
+		$scope.novaEmpresa = function (data) {
 			EmpresaService.postEmpresa(data, function (response) {
 				$mdDialog.hide(data);
 				toastr.success(response.message);

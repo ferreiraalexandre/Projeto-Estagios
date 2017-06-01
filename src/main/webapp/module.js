@@ -22,6 +22,15 @@ app.config(function($routeProvider) {
 		controller : 'usuarioController'
 	})
 	
+<<<<<<< HEAD
+	$routeProvider
+	.when('/curso', {
+		templateUrl : 'projeto/curso/curso.html',
+		controller : 'cursoController'
+	})
+	
+=======
+>>>>>>> branch 'master' of https://github.com/ferreiraalexandre/Projeto-Estagios.git
 	$routeProvider
 	.when('/turma', {
 		templateUrl : 'projeto/turma/turma.html',
