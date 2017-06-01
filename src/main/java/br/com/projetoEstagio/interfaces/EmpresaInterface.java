@@ -6,13 +6,13 @@ import br.com.projetoEstagio.entity.Empresa;
 
 public interface EmpresaInterface {
 	
-	//public Empresa addUsuario(Empresa usu);
+	public Empresa addEmpresa(Empresa emp);
 	
 	public List<Empresa> list();
 	
-	//public void deleteEmpresa(long id);
+	public void deleteEmpresa(long id);
 	
-	//public Empresa editarUsuario(Empresa emp);
+	public Empresa editarEmpresa(Empresa emp);
 
 	//public Empresa buscarPorId(Long id); 
 }

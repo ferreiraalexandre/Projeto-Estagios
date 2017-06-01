@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<link rel="stylesheet" href="projeto/estagio/estagio.css">
+
+
+<md-dialog add-item-dialog="" role="dialog" tabindex="-1" aria-describedby="dialog_63" class="md-transition-in" aria-label="Add Dessert ..." style="">
+  <md-dialog-content class="md-dialog-content" id="dialog_63">
+    
+    <h2 class="md-title">{{title}}</h2>
+    
+    <!-- ngIf: item.form.$submitted && item.form.$invalid -->
+    
+    <form name="formCurso" ng-submit="curso.addItem()">
+      <div layout="row" class="input-row layout-row">
+        <md-input-container flex="" class="flex">
+          <label for="input_55">Curso</label>
+          <input name="name" ng-model="curso.nome" ng-required="true" ng-trim="false">
+        </md-input-container>
+      </div>
+        
+    </form>
+    
+  </md-dialog-content>
+  
+  <div class="md-actions">
+    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="novoCurso(curso)" ng-show="novo" ng-disabled="formCurso.$invalid"><span>Adicionar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="editarCurso(curso)" ng-show="editar" ng-disabled="formCurso.$invalid"><span>Salvar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
+  </div>
+  
+<div class="md-dialog-focus-trap" tabindex="0"></div></md-dialog>

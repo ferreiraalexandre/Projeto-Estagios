@@ -22,6 +22,14 @@ app.config(function($routeProvider) {
 		controller : 'usuarioController'
 	})
 	
+
+	$routeProvider
+	.when('/curso', {
+		templateUrl : 'projeto/curso/curso.html',
+		controller : 'cursoController'
+	})
+	
+
 	$routeProvider
 	.when('/turma', {
 		templateUrl : 'projeto/turma/turma.html',

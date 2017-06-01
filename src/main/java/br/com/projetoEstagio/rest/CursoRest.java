@@ -14,14 +14,16 @@ import javax.ws.rs.core.Response;
 
 import org.json.JSONArray;
 
-import br.com.projetoEstagio.entity.Empresa;
+import br.com.projetoEstagio.entity.Curso;
+import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.restUtil.UtilRest;
-import br.com.projetoEstagio.service.EmpresaService;
+import br.com.projetoEstagio.service.CursoService;
+import br.com.projetoEstagio.service.UsuarioService;
 
-@Path("/empresa")
-public class EmpresaRest extends UtilRest {
+@Path("/curso")
+public class CursoRest extends UtilRest {
 		
-	public EmpresaRest() {
+	public CursoRest() {
 	}
 	
 	@POST
@@ -29,45 +31,28 @@ public class EmpresaRest extends UtilRest {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response salva( String json){
-
 		try{
-			EmpresaService service = new EmpresaService(); 
-			Empresa empresa = getObjectMapper().readValue(json, Empresa.class);
-										
-			return getResponseAdd(service.addEmpresa(empresa));
+			Curso cur = getObjectMapper().readValue(json, Curso.class);
+			
+			CursoService service = new CursoService(); 
+					
+			return getResponseAdd(service.addCurso(cur));
 		}catch(Exception e){
 			return getResponseError(e);
 		}
 	}
-	
 	@GET
 	@Path("/buscar")
 	@Produces("application/json")
 	public Response list() {
 
 		try{
-			EmpresaService service = new EmpresaService(); 
+			CursoService service = new CursoService(); 
 
-			List<Empresa> e = service.listEmpresa();
+			List<Curso> e = service.listCurso();
 
 			return getResponseList(e);
 		} catch (Exception e) {
-			return getResponseError(e);
-		}
-	}
-	
-	@PUT
-	@Path("/editar")
-	@Produces("application/json")
-	public Response editar(String json) {
-
-		try{
-			Empresa emp = getObjectMapper().readValue(json, Empresa.class);
-			
-			EmpresaService service = new EmpresaService(); 
-					
-			return getResponseEdit(service.editarEmpresa(emp));
-		}catch(Exception e){
 			return getResponseError(e);
 		}
 	}
@@ -79,13 +64,29 @@ public class EmpresaRest extends UtilRest {
 	public Response delete(@PathParam ("id") JSONArray id) {
 
 		try{
-			EmpresaService service = new EmpresaService(); 
+			CursoService service = new CursoService(); 
 
-			return getResponseRemove(service.deleteEmpresa(id));
+			return getResponseRemove(service.deleteCurso(id));
 		} catch (Exception e) {
 			return getResponseError(e);
 		}
 	}
 	
+	@PUT
+	@Path("/editar")
+	@Produces("application/json")
+	public Response editar(String json) {
+
+		try{
+			Curso cur = getObjectMapper().readValue(json, Curso.class);
+			
+			CursoService service = new CursoService(); 
+					
+			return getResponseEdit(service.editarCurso(cur));
+		}catch(Exception e){
+			return getResponseError(e);
+		}
+	}
 }
+
 

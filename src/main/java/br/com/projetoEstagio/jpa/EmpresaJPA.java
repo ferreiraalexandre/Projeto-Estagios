@@ -7,23 +7,24 @@ import br.com.projetoEstagio.interfaces.EmpresaInterface;
 
 public class EmpresaJPA  extends JPAAbstract<Empresa, Long> implements EmpresaInterface {
 
-	/*public Empresa addEmpresa(Empresa usu) {
-		return this.add(usu);
-	}*/
+	public Empresa addEmpresa(Empresa emp) {
+		return this.add(emp);
+	}
 
 	public List<Empresa> list(){
 		return this.list("");
 		
 	}
 	
-	/*public void deleteEmpresa(long id){
-		this.remove(id);
-	}*/
-
-	/*public Empresa editarUsuario(Empresa emp) {
-		return this.edit(usu);
-	}*/
+	public Empresa editarEmpresa(Empresa emp) {
+		return this.edit(emp);
+	}
 	
+	public void deleteEmpresa(long id){
+		this.remove(id);
+	}
+	
+	// BuscarPorId será utilizado para verificar se ele não está atrelado a um estágio 
 	/*public Empresa buscarPorId(Long id) {
 		return this.getObject("SELECT U FROM "+ this.getEntityName() +" U WHERE U.unidadeEnsino.id = '"+ id +"'");
 	}*/
