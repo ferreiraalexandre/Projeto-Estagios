@@ -41,6 +41,12 @@ app.config(function($routeProvider) {
 		templateUrl : 'projeto/empresa/empresa.html',
 		controller : 'empresaController'
 	})
+	
+	$routeProvider
+	.when('/estagio', {
+		templateUrl : 'index.html',
+	})
+
 
 });
 
