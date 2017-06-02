@@ -114,11 +114,15 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
   };
     	
 	//Busca usuários do banco e lista na tabela
-	$scope.getTurma = function () {
+  $scope.getTurma = function () {
 		TurmaService.getList(function (response) {
 			$scope.turmas = response.data;
 			$scope.isLoading = false;
 		});
+		CursoService.getList(function (response) {
+			$scope.cursos = response.data;	
+		});
+		
 	};
 		
 	//Controller da modal

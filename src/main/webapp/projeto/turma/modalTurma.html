@@ -13,6 +13,8 @@
           <label for="input_55">Nome</label>
           <input name="name" ng-model="turma.nome"  id="input_55" ng-required="true" ng-trim="false">
         </md-input-container>
+        </div>
+        <div  layout="row" class="input-row layout-row">
         <md-input-container class="flex">
           <label for="input_55">Curso</label>
            <md-select ng-model="turma.curso" ng-required="selectRequired">
@@ -22,10 +24,10 @@
           </md-select>
         </md-input-container>        
       </div>
-      <div>
+      <div  layout="row" class="input-row layout-row">
         <md-input-container class="flex">
           <label for="input_55">Turno</label>
-           <md-select ng-model="turma.curso" ng-required="selectRequired">
+           <md-select ng-model="turma.turno" ng-required="selectRequired">
             <md-option ng-value="manha" >
               Manhã
             </md-option>
