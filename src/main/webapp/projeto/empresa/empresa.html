@@ -33,11 +33,15 @@
       		<thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
         		<tr md-row>
           			<th md-column md-order-by="empresa"><span>Empresa</span></th>
+          			<th md-column md-order-by="data"><span>Data da Visita</span></th>
+          			<th md-column md-order-by="usuarioId"><span>Orientador</span></th>
         		</tr>
       		</thead>
       		<tbody md-body>
-        		<tr md-row="" md-select="empresa" md-select-id="empresa" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="empresa in empresas | filter: query.filter" class="md-row">
+        		<tr md-row="" md-select="empresa" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="empresa in empresas | filter: query.filter" class="md-row">
           			<td md-cell>{{empresa.nome}}</td>
+          			<td md-cell>{{empresa.data}}</td>
+          			<td md-cell>{{empresa.usuario.nome}}</td>
         		</tr>
       		</tbody>
     	</table>
