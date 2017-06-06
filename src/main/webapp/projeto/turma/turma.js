@@ -6,7 +6,7 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 }])
 
 app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'TurmaService', 'CursoService', 'toastr',  
-                            function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog, TurmaService, CursoService,   toastr) {
+                          function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   TurmaService,   CursoService,   toastr) {
 
   $scope.selecionados = [];
   $scope.limitOptions = [5, 10, 15];
@@ -105,7 +105,7 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
               retornoModal : $scope
           }
 	    })
-        .then(function(novoTurma) {
+        .then(function(novaTurma) {
         	$scope.selecionados = [];
         	$scope.buttonEnable();
         }, function() {

@@ -18,7 +18,7 @@
         <md-input-container class="flex">
           <label for="input_55">Curso</label>
            <md-select ng-model="turma.curso" ng-required="selectRequired">
-            <md-option ng-repeat="item in curso" ng-selected="item.id == turma.curso.id" ng-value="item" >
+            <md-option ng-repeat="item in cursos" ng-selected="item.id == turma.curso.id" ng-value="item" >
               {{item.nome}}
             </md-option>
           </md-select>
