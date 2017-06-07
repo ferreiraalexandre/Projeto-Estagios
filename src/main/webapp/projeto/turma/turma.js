@@ -163,10 +163,11 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 		
 		//Função de editar turma no Banco de Dados
 		$scope.editarTurma = function (data) {
+			
 			TurmaService.putTurma(data, function (response) {
 			$mdDialog.hide(data);
 			toastr.success(response.message);
-			retornoModal.turma = response.data;
+			retornoModal.turmas = response.data;
 				
 			}),
 				function (error) {
