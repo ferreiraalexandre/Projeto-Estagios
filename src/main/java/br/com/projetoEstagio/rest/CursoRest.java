@@ -66,7 +66,7 @@ public class CursoRest extends UtilRest {
 		try{
 			CursoService service = new CursoService(); 
 
-			return getResponseRemove(service.deleteCurso(id));
+			return getResponseRemove(service.deleteCurso(id, this.response));
 		} catch (Exception e) {
 			return getResponseError(e);
 		}
