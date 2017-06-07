@@ -20,7 +20,7 @@
         		<md-input-container>
           			<label>Orientador</label>
           			<md-select ng-model="empresa.usuario" ng-required="selectRequired">
-            			<md-option ng-repeat="item in empresas" ng-selected="item.id == empresa.usuario.id" ng-value="item" >
+            			<md-option ng-repeat="item in usuarios" ng-selected="item.id == empresa.usuario.id" ng-value="item" >
               				{{item.nome}}
             			</md-option>
           			</md-select>

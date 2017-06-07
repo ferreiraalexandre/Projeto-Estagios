@@ -121,6 +121,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		});
 		UsuarioService.getList(function (response) {
 			$scope.usuarios = response.data;
+			console.log("empresas", response.data);
 		});
 	};
 			
@@ -136,7 +137,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			$scope.selectRequired = true;
 			$scope.title = "Adicionar Empresa";
 			$scope.novo = true;
-			$scope.unidades = retornoModal.unidades;
+			$scope.usuarios = retornoModal.usuarios;
 		}
 		  
 		$scope.hide = function() {
