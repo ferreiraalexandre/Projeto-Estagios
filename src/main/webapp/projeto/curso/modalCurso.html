@@ -12,8 +12,12 @@
     <form name="formCurso" ng-submit="curso.addItem()">
       <div layout="row" class="input-row layout-row">
         <md-input-container flex="" class="flex">
-          <label for="input_55">Curso</label>
+          <label for="input_55">Nome</label>
           <input name="name" ng-model="curso.nome" ng-required="true" ng-trim="false">
+        </md-input-container>
+        <md-input-container flex="" class="flex">
+          <label for="input_55">Sigla</label>
+          <input name="sigla" ng-model="curso.sigla" ng-required="true" ng-trim="false">
         </md-input-container>
       </div>
         
