@@ -91,11 +91,17 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 		};
 		CursoService.deleteCurso(listId, function(response){
 			$scope.cursos = response.data;
-			toastr.success(response.message);
+			if(response.description != null){
+				toastr.warning(response.description, response.message );
+			}else{
+				toastr.success(response.message);				
+			}
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
-			
+		
+					
 		});
+		
 		
 	};
 	

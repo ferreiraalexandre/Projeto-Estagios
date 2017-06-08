@@ -15,10 +15,8 @@ import javax.ws.rs.core.Response;
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.Curso;
-import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.CursoService;
-import br.com.projetoEstagio.service.UsuarioService;
 
 @Path("/curso")
 public class CursoRest extends UtilRest {
