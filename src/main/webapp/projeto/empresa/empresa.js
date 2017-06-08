@@ -121,7 +121,6 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		});
 		UsuarioService.getList(function (response) {
 			$scope.usuarios = response.data;
-			console.log("empresas", response.data);
 		});
 	};
 			
@@ -132,9 +131,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			$scope.title = "Editar Empresa";
 			$scope.empresa = angular.copy(retornoModal.selecionados[0]);
 			$scope.usuarios = retornoModal.usuarios;
-			$scope.selectRequired = false;
 		}else{
-			$scope.selectRequired = true;
 			$scope.title = "Adicionar Empresa";
 			$scope.novo = true;
 			$scope.usuarios = retornoModal.usuarios;
@@ -150,6 +147,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			    
 		//Função de adicionar novas empresas no Banco de Dados
 		$scope.novaEmpresa = function (data) {
+			console.log("nova empresa", data);
 			EmpresaService.postEmpresa(data, function (response) {
 				$mdDialog.hide(data);
 				toastr.success(response.message);

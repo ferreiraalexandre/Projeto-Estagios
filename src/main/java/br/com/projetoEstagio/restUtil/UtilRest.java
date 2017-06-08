@@ -19,7 +19,7 @@ public class UtilRest {
 	
 	
 	public ObjectMapper getObjectMapper() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return new ObjectMapper()
 				.setDateFormat(dateFormat)

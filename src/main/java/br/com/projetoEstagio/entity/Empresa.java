@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Empresa {
@@ -22,6 +24,7 @@ public class Empresa {
 	private String nome;
 	
 	@Column(name = "data")
+	@Temporal(TemporalType.DATE)
 	private Date data;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH)
