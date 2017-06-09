@@ -19,7 +19,7 @@ public class UtilRest {
 	
 	
 	public ObjectMapper getObjectMapper() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return new ObjectMapper()
 				.setDateFormat(dateFormat)
@@ -43,10 +43,15 @@ public class UtilRest {
 
 	public Response getResponseRemove(Object e) {
 		String msg = "Registro removido com sucesso.";
-		if(this.response.getDescription() != null){
-			msg = "Registro em uso:";
+		String description = null;
+		
+		if(this.response != null){
+			if(this.response.getDescription() != null){
+				msg = "Registro em uso:";
+				description = this.response.getDescription();
+			}			
 		}
-		return this.getResponse(new RestResponse(msg, this.response.getDescription(), e),Response.Status.OK);
+		return this.getResponse(new RestResponse(msg, description, e),Response.Status.OK);
 	}
 
 	public Response getResponseList(Object data) {

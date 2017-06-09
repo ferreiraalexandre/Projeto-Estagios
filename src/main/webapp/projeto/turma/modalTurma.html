@@ -11,32 +11,28 @@
       <div layout="row" class="input-row layout-row" >
         <md-input-container class="flex">
           <label for="input_55">Nome</label>
-          <input name="name" ng-model="turma.nome"  id="input_55" ng-required="true" ng-trim="false">
+          <input name="name" ng-model="turma.nome"   id="input_55" ng-required="true" ng-trim="false">
         </md-input-container>
+        </div>
+        <div  layout="row" class="input-row layout-row">
         <md-input-container class="flex">
           <label for="input_55">Curso</label>
            <md-select ng-model="turma.curso" ng-required="selectRequired">
-            <md-option ng-repeat="item in curso" ng-selected="item.id == turma.curso.id" ng-value="item" >
-              {{item.nome}}
+            <md-option ng-repeat="item in cursos" ng-selected="item.id == turma.curso.id" ng-value="item" >
+              {{item.sigla}}
             </md-option>
           </md-select>
         </md-input-container>        
       </div>
-      <div>
+      <div  layout="row" class="input-row layout-row">
         <md-input-container class="flex">
           <label for="input_55">Turno</label>
-           <md-select ng-model="turma.curso" ng-required="selectRequired">
-            <md-option ng-value="manha" >
-              Manhã
-            </md-option>
-            <md-option ng-value="tarde" >
-              Tarde
-            </md-option>
-            <md-option ng-value="noite" >
-              Noite
-            </md-option>
-            
-          </md-select>
+          <md-select ng-model="turma.turno" placeholder="Turno *" >
+          <md-option value="manha">Manhã</md-option>
+          <md-option value="tarde">Tarde</md-option>
+          <md-option value="noite">Noite</md-option>
+        </md-select>
+          
         </md-input-container>    
       </div>
     </form>
