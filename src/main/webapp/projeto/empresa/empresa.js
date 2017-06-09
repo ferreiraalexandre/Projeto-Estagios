@@ -5,8 +5,9 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'EmpresaService', 'toastr',  
-                            function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   EmpresaService,   toastr) {
+
+app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'EmpresaService', 'UsuarioService' , 'toastr',  
+                            function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   EmpresaService,   UsuarioService,    toastr) {
 	
 	$scope.selecionados = [];
 	$scope.limitOptions = [5, 10, 15];
@@ -119,6 +120,9 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			$scope.empresas = response.data;
 			$scope.isLoading = false;
 		});
+		UsuarioService.getList(function (response) {
+			$scope.usuarios = response.data;
+		});
 	};
 			
 	//Controller da modal
@@ -127,13 +131,11 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			$scope.editar = true;
 			$scope.title = "Editar Empresa";
 			$scope.empresa = angular.copy(retornoModal.selecionados[0]);
-			$scope.unidades = retornoModal.unidades;
-			$scope.selectRequired = false;
+			$scope.usuarios = retornoModal.usuarios;
 		}else{
-			$scope.selectRequired = true;
 			$scope.title = "Adicionar Empresa";
 			$scope.novo = true;
-			$scope.unidades = retornoModal.unidades;
+			$scope.usuarios = retornoModal.usuarios;
 		}
 		  
 		$scope.hide = function() {
@@ -146,9 +148,10 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			    
 		//Função de adicionar novas empresas no Banco de Dados
 		$scope.novaEmpresa = function (data) {
+			console.log("nova empresa", data);
 			EmpresaService.postEmpresa(data, function (response) {
 				$mdDialog.hide(data);
-				toastr.success("teste \r\n teste2");
+				toastr.success(response.message);
 				retornoModal.empresas = response.data;
 			}),
 			function (error) {

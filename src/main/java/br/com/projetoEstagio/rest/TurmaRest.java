@@ -14,14 +14,14 @@ import javax.ws.rs.core.Response;
 
 import org.json.JSONArray;
 
-import br.com.projetoEstagio.entity.Curso;
+import br.com.projetoEstagio.entity.Turma;
 import br.com.projetoEstagio.restUtil.UtilRest;
-import br.com.projetoEstagio.service.CursoService;
+import br.com.projetoEstagio.service.TurmaService;
 
-@Path("/curso")
-public class CursoRest extends UtilRest {
+@Path("/turma")
+public class TurmaRest extends UtilRest {
 		
-	public CursoRest() {
+	public TurmaRest() {
 	}
 	
 	@POST
@@ -29,32 +29,32 @@ public class CursoRest extends UtilRest {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response salva( String json){
+
 		try{
-			Curso cur = getObjectMapper().readValue(json, Curso.class);
-			
-			CursoService service = new CursoService(); 
-					
-			return getResponseAdd(service.addCurso(cur));
+			TurmaService service = new TurmaService(); 
+			Turma turma = getObjectMapper().readValue(json, Turma.class);
+										
+			return getResponseAdd(service.addTurma(turma));
 		}catch(Exception e){
 			return getResponseError(e);
 		}
 	}
+	
 	@GET
 	@Path("/buscar")
 	@Produces("application/json")
 	public Response list() {
 
 		try{
-			CursoService service = new CursoService(); 
+			TurmaService service = new TurmaService(); 
 
-			List<Curso> e = service.listCurso();
+			List<Turma> e = service.listTurma();
 
 			return getResponseList(e);
 		} catch (Exception e) {
 			return getResponseError(e);
 		}
 	}
-	
 	@DELETE
 	@Path("/deletar/{id}")
 	@Consumes("application/json")
@@ -62,29 +62,29 @@ public class CursoRest extends UtilRest {
 	public Response delete(@PathParam ("id") JSONArray id) {
 
 		try{
-			CursoService service = new CursoService(); 
+			TurmaService service = new TurmaService(); 
 
-			return getResponseRemove(service.deleteCurso(id, this.response));
+			return getResponseRemove(service.deleteTurma(id));
 		} catch (Exception e) {
 			return getResponseError(e);
 		}
 	}
-	
+
 	@PUT
 	@Path("/editar")
 	@Produces("application/json")
 	public Response editar(String json) {
 
 		try{
-			Curso cur = getObjectMapper().readValue(json, Curso.class);
+			Turma tur = getObjectMapper().readValue(json, Turma.class);
 			
-			CursoService service = new CursoService(); 
+			TurmaService service = new TurmaService(); 
 					
-			return getResponseEdit(service.editarCurso(cur));
+			return getResponseEdit(service.editarTurma(tur));
 		}catch(Exception e){
 			return getResponseError(e);
 		}
 	}
+	
 }
-
 

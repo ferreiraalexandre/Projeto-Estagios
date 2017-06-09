@@ -16,6 +16,9 @@ public class Curso {
 	
 	@Column(name = "nome", nullable = false)
 	private String nome;
+	
+	@Column(name = "sigla", nullable = false)
+	private String sigla;
 		
 	
 	public Long getId() {
@@ -32,6 +35,14 @@ public class Curso {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public String getSigla() {
+		return sigla;
+	}
+
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
 	}
 
 }
