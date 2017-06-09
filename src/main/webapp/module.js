@@ -46,7 +46,31 @@ app.config(function($routeProvider) {
 	.when('/estagio', {
 		templateUrl : 'index.html',
 	})
+});
 
+// deixa o calendario em 'pt'
+app.config(function($mdDateLocaleProvider) {
+	
+    $mdDateLocaleProvider.months = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+    $mdDateLocaleProvider.shortMonths = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+    $mdDateLocaleProvider.days = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
+    $mdDateLocaleProvider.shortDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
+    
+    
+    
+    /*$mdDateLocaleProvider.parseDate = function(dateString) {
+        var m = moment(dateString, 'L', true);
+        return m.isValid() ? m.toDate() : new Date(NaN);
+      };
 
+      $mdDateLocaleProvider.formatDate = function(date) {
+        var m = moment(date);
+        return m.isValid() ? m.format('L') : '';
+      };
+
+      $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
+        return myShortMonths[date.getMonth()] + ' ' + date.getFullYear();
+      };*/
+    
 });
 

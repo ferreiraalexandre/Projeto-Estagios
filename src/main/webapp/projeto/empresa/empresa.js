@@ -5,6 +5,7 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
+
 app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'EmpresaService', 'UsuarioService' , 'toastr',  
                             function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   EmpresaService,   UsuarioService,    toastr) {
 	
