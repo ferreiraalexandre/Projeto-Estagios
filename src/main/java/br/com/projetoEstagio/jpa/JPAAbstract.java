@@ -79,8 +79,6 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 		
 		E e = em.find(this.entity, id);
 
-		this.closeConection();
-		
 		return e;
 	}
 
@@ -114,8 +112,6 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 		
 		E e = sql.getSingleResult();
 		
-		this.closeConection();
-		
 		return e;
 	}
 	
@@ -140,8 +136,6 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 		
 		List<E> e = sql.getResultList();
 		
-		this.closeConection();
-		
 		return e;
 	}
 
@@ -163,10 +157,6 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 		em.persist(e);
 
 		em.getTransaction().commit();
-		
-		em.close();
-
-		this.closeConection();
 		
 		return e;
 	}
@@ -208,10 +198,6 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 
 		em.getTransaction().commit();
 
-		em.close();
-
-		this.closeConection();
-		
 		return e;
 	}
 	
@@ -255,10 +241,6 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 
 		em.getTransaction().commit();
 
-		em.close();
-
-		this.closeConection();
-		
 		return true;
 	}
 
@@ -294,8 +276,6 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 		
 		List<E> listentity = sql.getResultList();
 
-		this.closeConection();
-
 		return listentity;
 	}
 	
@@ -313,8 +293,6 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 		List<E> list = new ArrayList<E>();
 		
 		list = query.getResultList();
-		
-		this.closeConection();
 		
 		return list;
 	}
