@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.json.JSONArray;
 
-import br.com.projetoEstagio.entity.Curso;
 import br.com.projetoEstagio.entity.Turma;
 import br.com.projetoEstagio.jpa.TurmaJPA;
 
