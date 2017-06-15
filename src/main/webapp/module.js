@@ -56,21 +56,9 @@ app.config(function($mdDateLocaleProvider) {
     $mdDateLocaleProvider.days = ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'];
     $mdDateLocaleProvider.shortDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'];
     
-    
-    
-    /*$mdDateLocaleProvider.parseDate = function(dateString) {
-        var m = moment(dateString, 'L', true);
-        return m.isValid() ? m.toDate() : new Date(NaN);
-      };
-
-      $mdDateLocaleProvider.formatDate = function(date) {
-        var m = moment(date);
-        return m.isValid() ? m.format('L') : '';
-      };
-
-      $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
-        return myShortMonths[date.getMonth()] + ' ' + date.getFullYear();
-      };*/
+    $mdDateLocaleProvider.formatDate = function(date) {
+    	return moment(date).format('DD/MM/YYYY');
+    };
     
 });
 
