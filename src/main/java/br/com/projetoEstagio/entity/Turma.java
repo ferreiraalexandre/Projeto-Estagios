@@ -26,6 +26,18 @@ public class Turma {
 	@JoinColumn(name = "CursoId", nullable = false)
 	private Curso curso;
 
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "UsuarioID", nullable = false)
+	private Usuario usuario;
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	public Long getId() {
 		return id;
 	}
