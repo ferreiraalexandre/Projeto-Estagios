@@ -131,8 +131,8 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			$scope.editar = true;
 			$scope.title = "Editar Empresa";
 			$scope.empresa = angular.copy(retornoModal.selecionados[0]);
-			
-			$scope.empresa.data = moment($scope.empresa.data).format('MM/DD/YYYY');
+			 var collectionDate = '16-04-2017T09:00:00'; 
+			$scope.empresa.data = new Date($scope.empresa.data);
 			$scope.usuarios = retornoModal.usuarios;
 		}else{
 			$scope.title = "Adicionar Empresa";
