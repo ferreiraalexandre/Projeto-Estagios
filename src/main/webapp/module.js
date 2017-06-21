@@ -46,6 +46,13 @@ app.config(function($routeProvider) {
 	.when('/estagio', {
 		templateUrl : 'index.html',
 	})
+	
+	$routeProvider
+	.when('/instituto', {
+		templateUrl : 'projeto/instituto/instituto.html',
+		controller : 'institutoController'
+	})
+
 });
 
 // deixa o calendario em 'pt'
