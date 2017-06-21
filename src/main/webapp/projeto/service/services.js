@@ -50,6 +50,17 @@ app.factory('CursoService',['$resource',  function ($resource) {
 	  })
 }]);
 
+app.factory('InstitutoService',['$resource',  function ($resource) {
+	  return $resource(app.pathRest + '/instituto/:method/:data', {}, {
+		  postInstituto: { method: 'POST', params: {method: 'salva'}}, 
+		  getList: {method: 'GET', params: {method: 'buscar'}, isArray: false},
+		  putInstituto: { method: 'PUT', params: {method: 'editar'}},
+		  deleteInstituto: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : resultError}}
+		   
+
+	  })
+}]);
+
  function resultError(response) {
 	alert(response.data.message + "\n" + response.data.description);
 };
