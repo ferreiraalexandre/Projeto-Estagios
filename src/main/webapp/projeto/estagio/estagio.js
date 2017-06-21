@@ -8,7 +8,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 
 app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog','$location', function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, $location) {
   'use strict';
-  
+  $scope.rodape = true;
+  $scope.links = true;
   $scope.selected = [];
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
@@ -245,19 +246,15 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   }
   
   
-  $scope.addItem = function (event) {
-	    $mdDialog.show({
-	      clickOutsideToClose: true,
-	      controllerAs: 'ctrl',
-	      focusOnOpen: false,
-	      targetEvent: event,
-	      templateUrl: 'projeto/estagio/modalEstagio.html',
-	    }).then($scope.getDesserts);
-	  };
 
-		$scope.menuClick = function (link) {
-			$location.path(link);
-		};
+  $scope.menuClick = function (link) {
+	  if(link == "/cadastroEstagio"){
+		  $scope.rodape = false;
+		  $scope.links = false;
+		  $scope.cardCadastroEstagio = {"margin-top" : "60px"}
+	  }
+	$location.path(link);
+  };
 
   
 }]);

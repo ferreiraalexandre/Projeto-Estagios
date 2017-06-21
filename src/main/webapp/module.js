@@ -48,16 +48,16 @@ app.config(function($routeProvider) {
 	})
 	
 	$routeProvider
-	.when('/cadastroEstagio', {
-		templateUrl : 'projeto/estagio/cadastroEstagio.html',
-	})
-
-	
-	$routeProvider
 	.when('/instituto', {
 		templateUrl : 'projeto/instituto/instituto.html',
 		controller : 'institutoController'
 	})
+	
+	$routeProvider
+	.when('/cadastroEstagio', {
+		templateUrl : 'projeto/estagio/cadastroEstagio.html',
+	})
+
 
 });
 

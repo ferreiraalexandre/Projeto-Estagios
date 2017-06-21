@@ -1,42 +1,109 @@
-<meta charset="utf-8">
-<link rel="stylesheet" href="projeto/estagio/estagio.css">
+	<md-card ng-style="cardCadastroEstagio">
+		<h2 class="md-title">Adicionar Estágio</h2>
+   
+		<form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
+			<div layout="row" class="input-row layout-row">
+				
+				<md-input-container class="flex">
+					<md-checkbox ng-model="estagio.sgn" aria-label="Checkbox 1">
+						Cadastro SGN: {{ estagio.sgn }}
+					</md-checkbox>
+				</md-input-container>
+				
+				
+				<md-input-container class="flex">
+					<md-checkbox ng-model="estagio.obrigatoriedade" aria-label="Checkbox 1">
+						Estágio Obrigatorio: {{ estagio.obrigatoriedade }}
+					</md-checkbox>
+				</md-input-container>
+				
+				<md-input-container class="flex">
+        			<label for="data">Data Início</label>
+     			 	<md-datepicker ng-model="estagio.dataInicio" ng-required="false" ng-trim="false"></md-datepicker>
+        		</md-input-container>
+				
+				<md-input-container class="flex">
+        			<label for="data">Data Fim</label>
+     			 	<md-datepicker ng-model="estagio.dataFim" ng-required="false" ng-trim="false"></md-datepicker>
+        		</md-input-container>
+				
+			</div>
+			
+			<div layout="row"  class="input-row layout-row">
+				<md-input-container  class="flex">
+					<label for="input_55">Nome</label>
+				    <input name="name" ng-model="estagio.nome"  ng-required="true" ng-trim="false">
+				</md-input-container>
+				
+				<md-input-container class="flex">
+					<label>Curso</label>
+					<md-select ng-model="estagio.curso" ng-required="selectRequired">
+						<md-option ng-repeat="item in cursos" ng-selected="item.id == estagio.curso.id" ng-value="item" >
+							{{item.nome}}
+						</md-option>
+					</md-select>
+				</md-input-container>
+				
+				<md-input-container class="flex">
+					<label>Turma</label>
+					<md-select ng-model="estagio.turma" ng-required="selectRequired">
+						<md-option ng-repeat="item in turmas" ng-selected="item.id == estagio.turma.id" ng-value="item" >
+							{{item.nome}}
+						</md-option>
+					</md-select>
+				</md-input-container>
+				
+				<md-input-container class="flex">
+					<label>Situação</label>
+					<md-select ng-model="estagio.situacao" ng-required="selectRequired">
+						<md-option ng-repeat="item in situacoes" ng-selected="item.id == estagio.situacao.id" ng-value="item" >
+							{{item.nome}}
+						</md-option>
+					</md-select>
+				</md-input-container>
+						
+			</div>
+			
+			<div layout="row" class="input-row layout-row">
+  		
+  				<md-input-container class="flex">
+					<label>Empresa</label>
+					<md-select ng-model="estagio.empresa" ng-required="selectRequired">
+						<md-option ng-repeat="item in empresas" ng-selected="item.id == estagio.empresa.id" ng-value="item" >
+							{{item.nome}}
+						</md-option>
+					</md-select>
+				</md-input-container>
 
+				<md-input-container class="flex">
+        			<label for="data">Visita Empresa</label>
+     			 	<md-datepicker ng-model="estagio.visitaEmpresa" ng-required="false" ng-trim="false"></md-datepicker>
+        		</md-input-container>
+        		
+        		<md-input-container class="flex">
+        			<label for="data">Rescisão</label>
+     			 	<md-datepicker ng-model="estagio.rescisao" ng-required="false" ng-trim="false"></md-datepicker>
+        		</md-input-container>
 
-<md-dialog add-item-dialog="" role="dialog" tabindex="-1" aria-describedby="dialog_63" class="md-transition-in" aria-label="Add Dessert ..." style="">
-  <md-dialog-content class="md-dialog-content" id="dialog_63">
-    
-    <h2 class="md-title">Adicionar Estágio</h2>
-    
-    <!-- ngIf: item.form.$submitted && item.form.$invalid -->
-    
-    <form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
-      <div layout="row" class="input-row layout-row">
-        <md-input-container flex="" class="flex">
-          <label for="input_55">Name</label>
-          <input name="name" ng-model="dessert.name" required="" class="ng-pristine ng-untouched md-input ng-invalid ng-invalid-required" id="input_55" aria-required="true" aria-invalid="true" ng-trim="false" style="">
-        </md-input-container>
-         </div>
-        
-        <div layout="row" class="input-row layout-row">
-        <md-input-container>
-          <label>Instituições</label>
-          <md-select ng-model="ctrl.userState">
-            <md-option><em>None</em></md-option>
-            <md-option ng-repeat="state in ctrl.states" ng-value="state.abbrev" ng-disabled="$index === 1">
-              {{state.abbrev}}
-            </md-option>
-          </md-select>
-        </md-input-container>        
-        </div>
-        
-     
-    </form>
-    
-  </md-dialog-content>
+				<md-input-container class="flex">
+        			<label for="data">Aditivo</label>
+     			 	<md-datepicker ng-model="estagio.aditivo" ng-required="false" ng-trim="false"></md-datepicker>
+        		</md-input-container>
+			</div>
+        				
+			<div layout="row" class="input-row layout-row">
+				
+				<md-input-container class="flex">
+					<label>Observação</label>
+				    <input name="name" ng-model="estagio.observacao" id="input_55" ng-required="true" ng-trim="false">
+				</md-input-container>
+
+			</div>
+		</form>
+	
+		<div class="md-actions">
+			<button class="md-primary md-button md-ink-ripple" type="button" ng-transclude="" ng-click="ctrl.addItem()" ng-disabled="item.form.$invalid" aria-label="Add Item" aria-disabled="true" disabled="disabled"><span>Adicionar</span></button>
+			<button class="md-primary md-button md-ink-ripple" type="button" ng-transclude="" ng-click="ctrl.cancel()" aria-label="Cancel"><span>Cancelar</span></button>
+		</div>
+	</md-card>
   
-  <div class="md-actions">
-    <button class="md-primary md-button md-ink-ripple" type="button" ng-transclude="" ng-click="ctrl.addItem()" ng-disabled="item.form.$invalid" aria-label="Add Item" aria-disabled="true" disabled="disabled"><span>Adicionar</span></button>
-    <button class="md-primary md-button md-ink-ripple" type="button" ng-transclude="" ng-click="ctrl.cancel()" aria-label="Cancel"><span>Cancelar</span></button>
-  </div>
-  
-<div class="md-dialog-focus-trap" tabindex="0"></div></md-dialog>
