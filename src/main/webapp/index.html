@@ -10,7 +10,6 @@
 	<link rel="stylesheet" href="projeto/css/angular-toastr.css" />
     <link rel="stylesheet" href="projeto/css/md-data-table.css">
 	<link rel="stylesheet" href="projeto/css/bootstrap.css">
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="projeto/estagio/estagio.css">
   </head>
 	<body layout="column">
@@ -55,7 +54,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="container-fluid" id="menu" style="color:#313b3f;">
+			<div class="container-fluid" ng-show="links" id="menu" style="color:#313b3f;">
 				<md-content class="md-padding">
 					<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
 					<md-nav-item md-nav-click="menuClick('/estagio')" name="page1">Estágio</md-nav-item>
@@ -82,9 +81,9 @@
 			-->
 			<div ng-view>
 			</div>
-		</md-content>
-		<div class="footer"><p class="denvelopers">Copyright © 2017 | Alexandre Ferreira da Silva, Caio Ricardo Lessin, Eduardo Fabrício Pacheco e Jeronimo Fleith de Lima</p></div>
 		
+			<div class="footer" ng-show="rodape"><p class="denvelopers">Copyright © 2017 | Alexandre Ferreira da Silva, Caio Ricardo Lessin, Eduardo Fabrício Pacheco e Jeronimo Fleith de Lima</p></div>
+		</md-content>
 		<script src="projeto/js/angular.min.js"></script>
 		<script src="projeto/js/angular-route/angular-route.min.js"></script>
 		<script src="projeto/js/angularjs-toaster/toaster.min.js"></script>
@@ -111,5 +110,6 @@
 		<script src="projeto/turma/turma.js"></script>
 		<script src="projeto/empresa/empresa.js"></script>
 		<script src="projeto/curso/curso.js"></script>
+		<script src="projeto/instituto/instituto.js"></script>
 	</body> 
 </html>
