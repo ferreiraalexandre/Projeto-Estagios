@@ -44,9 +44,9 @@
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row="" md-select="curso" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="instituto in institutos | filter: query.filter" class="md-row">
-          <td md-cell >{{curso.nome }}</td>
-          <td md-cell >{{curso.sigla }}</td>
+        <tr md-row="" md-select="instituto" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="instituto in institutos | filter: query.filter" class="md-row">
+          <td md-cell >{{instituto.nome }}</td>
+          <td md-cell >{{instituto.sigla }}</td>
         </tr>
       </tbody>
     </table>
