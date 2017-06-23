@@ -6,13 +6,13 @@ import br.com.projetoEstagio.restUtil.RestResponse;
 
 import org.json.JSONArray;
 
-import br.com.projetoEstagio.entity.Instituto;
+import br.com.projetoEstagio.entity.Instituicao;
 import br.com.projetoEstagio.jpa.InstitutoJPA;
 
 
 public class InstitutoService {
 
-	public Object addInstituto(Instituto instituto) {
+	public Object addInstituto(Instituicao instituto) {
 		InstitutoJPA inst = new InstitutoJPA();
 		inst.addInstituto(instituto);
 		
@@ -20,7 +20,7 @@ public class InstitutoService {
 		
 	}
 	
-	public List<Instituto> listInstituto() throws Exception {
+	public List<Instituicao> listInstituto() throws Exception {
 		InstitutoJPA inst = new InstitutoJPA();
 		return inst.list();
 	}
@@ -59,7 +59,7 @@ public class InstitutoService {
 			return null;
 	}
 	
-	public Object editarInstituto(Instituto instituto) {
+	public Object editarInstituto(Instituicao instituto) {
 		InstitutoJPA inst = new InstitutoJPA();
 		inst.editarInstituto(instituto);
 		return inst.list();

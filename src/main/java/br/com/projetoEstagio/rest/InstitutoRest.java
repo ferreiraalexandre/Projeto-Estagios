@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 
 import org.json.JSONArray;
 
-import br.com.projetoEstagio.entity.Instituto;
+import br.com.projetoEstagio.entity.Instituicao;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.InstitutoService;
 
@@ -30,7 +30,7 @@ public class InstitutoRest extends UtilRest {
 	@Produces("application/json")
 	public Response salva( String json){
 		try{
-			Instituto instituto = getObjectMapper().readValue(json, Instituto.class);
+			Instituicao instituto = getObjectMapper().readValue(json, Instituicao.class);
 			
 			InstitutoService service = new InstitutoService(); 
 					
@@ -47,7 +47,7 @@ public class InstitutoRest extends UtilRest {
 		try{
 			InstitutoService service = new InstitutoService(); 
 
-			List<Instituto> e = service.listInstituto();
+			List<Instituicao> e = service.listInstituto();
 
 			return getResponseList(e);
 		} catch (Exception e) {
@@ -76,7 +76,7 @@ public class InstitutoRest extends UtilRest {
 	public Response editar(String json) {
 
 		try{
-			Instituto instituto = getObjectMapper().readValue(json, Instituto.class);
+			Instituicao instituto = getObjectMapper().readValue(json, Instituicao.class);
 			
 			InstitutoService service = new InstitutoService(); 
 					

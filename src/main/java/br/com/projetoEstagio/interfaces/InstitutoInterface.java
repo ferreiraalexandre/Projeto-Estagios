@@ -2,16 +2,16 @@ package br.com.projetoEstagio.interfaces;
 
 import java.util.List;
 
-import br.com.projetoEstagio.entity.Instituto;
+import br.com.projetoEstagio.entity.Instituicao;
 
 public interface InstitutoInterface {
 	
-	public Instituto addInstituto(Instituto instituto);
+	public Instituicao addInstituto(Instituicao instituto);
 	
-	public List<Instituto> list();
+	public List<Instituicao> list();
 	
 	public void deleteInstituto(long id);
 	
-	public Instituto editarInstituto(Instituto instituto);
+	public Instituicao editarInstituto(Instituicao instituto);
 
 }
