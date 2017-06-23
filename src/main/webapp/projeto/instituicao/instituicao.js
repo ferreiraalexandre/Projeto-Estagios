@@ -6,13 +6,13 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 }])
 
 
-app.controller('institutoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'InstitutoService', 'toastr',
-                                function ($mdEditDialog, $q, $scope,  $timeout, $mdDialog, InstitutoService, toastr) {
+app.controller('instituicaoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'InstituicaoService', 'toastr',
+                                function ($mdEditDialog, $q, $scope,  $timeout, $mdDialog, InstituicaoService, toastr) {
   
   $scope.selecionados = [];  
   $scope.limitOptions = [5, 10, 15];
   $scope.selectedItem;
-  $scope.institutosModal;
+  $scope.instituicoesModal;
   $scope.buttonAddDisabled = false;
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;
@@ -53,11 +53,11 @@ app.controller('institutoController', ['$mdEditDialog', '$q', '$scope', '$timeou
     console.log('page: ', page);
     console.log('limit: ', limit);
   }
-
-///////////////////////////////////////////Busca instituto do banco e lista na tabela
-  $scope.getInstituto = function(){;  
-  	InstitutoService.getList(function (response) {
-			$scope.institutos = response.data;
+  
+///////////////////////////////////////////Busca Instituicao do banco e lista na tabela
+  $scope.getInstituicao = function(){;  
+  InstituicaoService.getList(function (response) {
+			$scope.instituicoes = response.data;
 			$scope.isLoading = false;
 		});
   }
@@ -68,20 +68,20 @@ app.controller('institutoController', ['$mdEditDialog', '$q', '$scope', '$timeou
   $scope.showConfirm = function(ev) {
 	  var confirm = $mdDialog.confirm()
 	  .title('EXCLUIR ')
-	  .textContent('Tem certeza que deseja excluir o(s) institutos(s)?')
+	  .textContent('Tem certeza que deseja excluir a(s) Instituição?')
 	  .targetEvent(ev)
 	  .ok('SIM')
 	  .cancel('NÃO');
 	  
 	  $mdDialog.show(confirm).then(function() {
-		  $scope.deleteInstituto();
+		  $scope.deleteInstituicao();
 	  }, function() {
 		  //SE APERTAR BOTAO NÃO ENTRA AQUI 		  
 	  });
   };
  
 //////////função de deletar
-  $scope.deleteInstituto = function(){	
+  $scope.deleteInstituicao = function(){	
 		var arrayId = []; 
 		for (var i = 0; i < $scope.selecionados.length; i++) {
 			arrayId.push($scope.selecionados[i].id);
@@ -89,8 +89,8 @@ app.controller('institutoController', ['$mdEditDialog', '$q', '$scope', '$timeou
 		var listId ={
 				data: JSON.stringify(arrayId),
 		};
-		InstitutoService.deleteInstituto(listId, function(response){
-			$scope.institutos = response.data;
+		InstituicaoService.deleteInstituicao(listId, function(response){
+			$scope.instituicoes = response.data;
 			if(response.description != null){
 				toastr.warning(response.description, response.message );
 			}else{
@@ -110,14 +110,14 @@ app.controller('institutoController', ['$mdEditDialog', '$q', '$scope', '$timeou
 	  $scope.abrirModal = function(event) {
 		    $mdDialog.show({
 		      controller: ModalController,
-		      templateUrl: 'projeto/instituto/institutoModal.html',
+		      templateUrl: 'projeto/instituicao/instituicaoModal.html',
 		      targetEvent: event,
 		      clickOutsideToClose:true,
 		      locals : {
 	              retornoModal : $scope
 	          }
 		    })
-	        .then(function(novoInstituto) {
+	        .then(function(novoInstituicao) {
 	        	$scope.selecionados = [];
 	        	$scope.buttonEnable();
 	        }, function() {
@@ -131,10 +131,10 @@ app.controller('institutoController', ['$mdEditDialog', '$q', '$scope', '$timeou
 		
 			if(retornoModal.selecionados.length==1){
 				$scope.editar = true;
-				$scope.title = "Editar Instituto";
-				$scope.instituto = angular.copy(retornoModal.selecionados[0]);
+				$scope.title = "Editar Instituição";
+				$scope.instituicao = angular.copy(retornoModal.selecionados[0]);
 			}else{
-				$scope.title = "Adicionar instituto";
+				$scope.title = "Adicionar Instituição";
 				$scope.novo = true;
 			}
 		  
@@ -148,11 +148,11 @@ app.controller('institutoController', ['$mdEditDialog', '$q', '$scope', '$timeou
 		    };
 	  
 		   
-	  $scope.novoInstituto = function (data) {
-		  InstitutoService.postInstituto(data, function (response) {
+	  $scope.novoInstituicao = function (data) {
+		  InstituicaoService.postInstituicao(data, function (response) {
 				$mdDialog.hide(data);
 				toastr.success(response.message);
-				retornoModal.institutos = response.data;	
+				retornoModal.instituicoes = response.data;	
 		}),
 			function (error) {
 				
@@ -160,12 +160,12 @@ app.controller('institutoController', ['$mdEditDialog', '$q', '$scope', '$timeou
 			
 		};
 		
-/////////////////////////////////////Função de editar instituto no Banco de Dados
-		$scope.editarInstituto = function (data) {
-			InstitutoService.putInstituto(data, function (response) {
+/////////////////////////////////////Função de editar Instituicao no Banco de Dados
+		$scope.editarInstituicao = function (data) {
+			InstituicaoService.putInstituicao(data, function (response) {
 			$mdDialog.hide(data);
 			toastr.success(response.message);
-			retornoModal.institutos = response.data;
+			retornoModal.instituicoes = response.data;
 				
 			}),
 				function (error) {
@@ -174,7 +174,7 @@ app.controller('institutoController', ['$mdEditDialog', '$q', '$scope', '$timeou
 		};	
 	}
 			
-//////////////////////////////////////////////////////////////////////////////Chama função para buscar institutos
-			$scope.getInstituto();  			
+//////////////////////////////////////////////////////////////////////////////Chama função para buscar instituicoes
+			$scope.getInstituicao();  			
   
 }]);

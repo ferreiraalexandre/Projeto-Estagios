@@ -14,14 +14,14 @@ import javax.ws.rs.core.Response;
 
 import org.json.JSONArray;
 
-import br.com.projetoEstagio.entity.Instituto;
+import br.com.projetoEstagio.entity.Instituicao;
 import br.com.projetoEstagio.restUtil.UtilRest;
-import br.com.projetoEstagio.service.InstitutoService;
+import br.com.projetoEstagio.service.InstituicaoService;
 
-@Path("/instituto")
-public class InstitutoRest extends UtilRest {
+@Path("/instituicao")
+public class InstituicaoRest extends UtilRest {
 		
-	public InstitutoRest() {
+	public InstituicaoRest() {
 	}
 	
 	@POST
@@ -30,11 +30,11 @@ public class InstitutoRest extends UtilRest {
 	@Produces("application/json")
 	public Response salva( String json){
 		try{
-			Instituto instituto = getObjectMapper().readValue(json, Instituto.class);
+			Instituicao instituicao = getObjectMapper().readValue(json, Instituicao.class);
 			
-			InstitutoService service = new InstitutoService(); 
+			InstituicaoService service = new InstituicaoService(); 
 					
-			return getResponseAdd(service.addInstituto(instituto));
+			return getResponseAdd(service.addInstituicao(instituicao));
 		}catch(Exception e){
 			return getResponseError(e);
 		}
@@ -45,9 +45,9 @@ public class InstitutoRest extends UtilRest {
 	public Response list() {
 
 		try{
-			InstitutoService service = new InstitutoService(); 
+			InstituicaoService service = new InstituicaoService(); 
 
-			List<Instituto> e = service.listInstituto();
+			List<Instituicao> e = service.listInstituicao();
 
 			return getResponseList(e);
 		} catch (Exception e) {
@@ -62,9 +62,9 @@ public class InstitutoRest extends UtilRest {
 	public Response delete(@PathParam ("id") JSONArray id) {
 
 		try{
-			InstitutoService service = new InstitutoService(); 
+			InstituicaoService service = new InstituicaoService(); 
 
-			return getResponseRemove(service.deleteInstituto(id, this.response));
+			return getResponseRemove(service.deleteInstituicao(id, this.response));
 		} catch (Exception e) {
 			return getResponseError(e);
 		}
@@ -76,11 +76,11 @@ public class InstitutoRest extends UtilRest {
 	public Response editar(String json) {
 
 		try{
-			Instituto instituto = getObjectMapper().readValue(json, Instituto.class);
+			Instituicao instituicao = getObjectMapper().readValue(json, Instituicao.class);
 			
-			InstitutoService service = new InstitutoService(); 
+			InstituicaoService service = new InstituicaoService(); 
 					
-			return getResponseEdit(service.editarInstituto(instituto));
+			return getResponseEdit(service.editarInstituicao(instituicao));
 		}catch(Exception e){
 			return getResponseError(e);
 		}
