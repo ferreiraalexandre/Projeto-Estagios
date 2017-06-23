@@ -48,9 +48,9 @@ app.config(function($routeProvider) {
 	})
 	
 	$routeProvider
-	.when('/instituto', {
-		templateUrl : 'projeto/instituto/instituto.html',
-		controller : 'institutoController'
+	.when('/instituicao', {
+		templateUrl : 'projeto/instituicao/instituicao.html',
+		controller : 'instituicaoController'
 	})
 	
 	$routeProvider

@@ -9,17 +9,17 @@
     
     <!-- ngIf: item.form.$submitted && item.form.$invalid -->
     
-    <form name="formInstituto" ng-submit="instituto.addItem()">
+    <form name="formInstituicao" ng-submit="instituicao.addItem()">
       <div layout="row" class="input-row layout-row">
         <md-input-container flex="" class="flex">
           <label for="input_55">Nome</label>
-          <input name="name" ng-model="instituto.nome" ng-required="true" ng-trim="false" style="padding:20px">
+          <input name="name" ng-model="instituicao.nome" ng-required="true" ng-trim="false" style="padding:20px">
         </md-input-container>
       </div>
       <div layout="row" class="input-row layout-row">
         <md-input-container flex="" class="flex">
           <label for="input_55">Sigla</label>
-          <input name="sigla" ng-model="instituto.sigla" maxlength="5" ng-required="true" ng-trim="false" style="padding:20px">
+          <input name="sigla" ng-model="instituicao.sigla" maxlength="5" ng-required="true" ng-trim="false" style="padding:20px">
         </md-input-container>
       </div>
         
@@ -28,8 +28,8 @@
   </md-dialog-content>
   
   <div class="md-actions">
-    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="novoInstituto(instituto)" ng-show="novo" ng-disabled="formInstituto.$invalid"><span>Adicionar</span></button>
-    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="editarInstituto(instituto)" ng-show="editar" ng-disabled="formInstituto.$invalid"><span>Salvar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="novoInstituicao(instituicao)" ng-show="novo" ng-disabled="formInstituicao.$invalid"><span>Adicionar</span></button>
+    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="editarInstituicao(instituicao)" ng-show="editar" ng-disabled="formInstituicao.$invalid"><span>Salvar</span></button>
     <button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
   </div>
   
