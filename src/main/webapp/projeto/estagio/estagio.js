@@ -10,6 +10,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   'use strict';
   $scope.rodape = true;
   $scope.links = true;
+  $scope.estudante = true;
   $scope.selected = [];
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
@@ -255,6 +256,17 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	  }
 	$location.path(link);
   };
+ 
+  $scope.menuEstudante = function (link) {
+	  if(link == "estudante"){
+		  $scope.estudante = true;
+		  $scope.novoEstudante = false;
+	  }
+	  if(link == "novoEstudante"){
+		  $scope.novoEstudante = true;
+		  $scope.estudante = false;
+	  }
 
-  
+  };
+
 }]);

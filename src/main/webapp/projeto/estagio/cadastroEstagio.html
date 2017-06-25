@@ -1,9 +1,43 @@
     <md-card ng-style="cardCadastroEstagio">
     	<h2 class="md-title">Adicionar Estágio</h2>
 		<md-card >
-			<h2 class="md-title">Dados Do Estudante</h2>
+				
 				<form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
-					<div layout="row"  class="input-row layout-row">
+
+					<div layout="row" class="input-row layout-row">
+						<md-content class="md-padding" id="menuEstudante" >
+							<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+							<md-nav-item md-nav-click="menuEstudante('estudante')" name="page1">Estudante</md-nav-item>
+							<md-nav-item md-nav-click="menuEstudante('novoEstudante')" name="page2">Novo Estudante</md-nav-item>
+						</md-content>
+					</div>
+					
+					
+					<div layout="row"  class="input-row layout-row" ng-show="estudante">
+						<md-input-container class="flex">
+							<label>Turma</label>
+							<md-select ng-model="estagio.turma" ng-required="selectRequired">
+								<md-option ng-repeat="item in turmas" ng-selected="item.id == estagio.turma.id" ng-value="item" >
+									{{item.nome}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+
+						<md-input-container class="flex">
+							<label>Estudante</label>
+							<md-select ng-model="estagio.turma" ng-required="selectRequired">
+								<md-option ng-repeat="item in turmas" ng-selected="item.id == estagio.turma.id" ng-value="item" >
+									{{item.nome}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+												
+					</div>
+					
+					
+					
+					
+					<div layout="row"  class="input-row layout-row" ng-show="novoEstudante">
 						<md-input-container class="flex">
 							<label>Turma</label>
 							<md-select ng-model="estagio.turma" ng-required="selectRequired">
@@ -116,10 +150,11 @@
 				</div>
 			</form>
 		
-			<div class="md-actions">
+<!-- 		<div class="md-actions">
 				<button class="md-primary md-button md-ink-ripple" type="button" ng-transclude="" ng-click="ctrl.addItem()" ng-disabled="item.form.$invalid" aria-label="Add Item" aria-disabled="true" disabled="disabled"><span>Adicionar</span></button>
 				<button class="md-primary md-button md-ink-ripple" type="button" ng-transclude="" ng-click="ctrl.cancel()" aria-label="Cancel"><span>Cancelar</span></button>
 			</div>
+-->
 		</md-card>
 	</md-card>
   
