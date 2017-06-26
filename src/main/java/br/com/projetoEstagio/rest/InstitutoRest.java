@@ -16,7 +16,7 @@ import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.Instituicao;
 import br.com.projetoEstagio.restUtil.UtilRest;
-import br.com.projetoEstagio.service.InstitutoService;
+import br.com.projetoEstagio.service.InstituicaoService;
 
 @Path("/instituto")
 public class InstitutoRest extends UtilRest {
@@ -32,9 +32,9 @@ public class InstitutoRest extends UtilRest {
 		try{
 			Instituicao instituto = getObjectMapper().readValue(json, Instituicao.class);
 			
-			InstitutoService service = new InstitutoService(); 
+			InstituicaoService service = new InstituicaoService(); 
 					
-			return getResponseAdd(service.addInstituto(instituto));
+			return getResponseAdd(service.addInstituicao(instituto));
 		}catch(Exception e){
 			return getResponseError(e);
 		}
@@ -45,9 +45,9 @@ public class InstitutoRest extends UtilRest {
 	public Response list() {
 
 		try{
-			InstitutoService service = new InstitutoService(); 
+			InstituicaoService service = new InstituicaoService(); 
 
-			List<Instituicao> e = service.listInstituto();
+			List<Instituicao> e = service.listInstituicao();
 
 			return getResponseList(e);
 		} catch (Exception e) {
@@ -62,9 +62,9 @@ public class InstitutoRest extends UtilRest {
 	public Response delete(@PathParam ("id") JSONArray id) {
 
 		try{
-			InstitutoService service = new InstitutoService(); 
+			InstituicaoService service = new InstituicaoService(); 
 
-			return getResponseRemove(service.deleteInstituto(id, this.response));
+			return getResponseRemove(service.deleteInstituicao(id, this.response));
 		} catch (Exception e) {
 			return getResponseError(e);
 		}
@@ -78,9 +78,9 @@ public class InstitutoRest extends UtilRest {
 		try{
 			Instituicao instituto = getObjectMapper().readValue(json, Instituicao.class);
 			
-			InstitutoService service = new InstitutoService(); 
+			InstituicaoService service = new InstituicaoService(); 
 					
-			return getResponseEdit(service.editarInstituto(instituto));
+			return getResponseEdit(service.editarInstituicao(instituto));
 		}catch(Exception e){
 			return getResponseError(e);
 		}
