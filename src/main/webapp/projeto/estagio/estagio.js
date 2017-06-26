@@ -6,11 +6,13 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog','$location', function ($mdEditDialog, $q, $scope, $timeout, $mdDialog, $location) {
+app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService',
+                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService) {
   'use strict';
   $scope.rodape = true;
   $scope.links = true;
-  $scope.estudante = true;
+  $scope.title = "Adicionar Estudade"
+  $scope.adicionarEstudante = true;
   $scope.selected = [];
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
@@ -258,15 +260,50 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   };
  
   $scope.menuEstudante = function (link) {
-	  if(link == "estudante"){
-		  $scope.estudante = true;
-		  $scope.novoEstudante = false;
+	  if(link == "adicionar"){
+		  $scope.adicionarEstudante = true;
+		  $scope.listarEstudante = false;
+		  $scope.editarEstudante = false;
+		  $scope.title = "Adicionar Estudade"
 	  }
-	  if(link == "novoEstudante"){
-		  $scope.novoEstudante = true;
-		  $scope.estudante = false;
+	  if(link == "listar"){
+		  $scope.listarEstudante = true;
+		  $scope.adicionarEstudante = false;
+		  $scope.editarEstudante = false;
+		  $scope.title = "Lista de Estudade"
+	  }
+	  if(link == "editar"){
+		  $scope.editarEstudante = true;
+		  $scope.adicionarEstudante = false;
+		  $scope.listarEstudante = false;
+		  $scope.title = "Editar de Estudade"
 	  }
 
+	  
   };
+  
+	//Função de adicionar novo estagio no Banco de Dados
+	$scope.adicionarEstagio = function (data) {
+		EstagioService.postEstagio(data, function (response) {
+		toastr.success(response.message);
+		$scope.estagios = response.data;
+			
+		}),
+			function (error) {
+	
+			};
+	};
+	
+	//Busca estagios do banco e lista na tabela
+	$scope.getEstagio = function () {
+		EstagioService.getList(function (response) {
+			$scope.estagios = response.data;
+			$scope.isLoading = false;
+		});		
+	};
+
+
+	//Chama função para buscar estagios
+	$scope.getEstagio();
 
 }]);

@@ -61,6 +61,13 @@ app.factory('InstituicaoService',['$resource',  function ($resource) {
 	  })
 }]);
 
+app.factory('EstagioService',['$resource',  function ($resource) {
+	  return $resource(app.pathRest + '/estagio/:method/:data', {}, {
+		  getList: {method: 'GET', params: {method: 'buscar'}, isArray: false},
+
+	  })
+}]);
+
  function resultError(response) {
 	alert(response.data.message + "\n" + response.data.description);
 };
