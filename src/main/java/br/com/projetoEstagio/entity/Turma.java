@@ -27,7 +27,7 @@ public class Turma {
 	private Curso curso;
 
 	@ManyToOne(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "UsuarioID", nullable = false)
+	@JoinColumn(name = "UsuarioID", nullable = true)// por hora fica true, mais pre frente será obrigado possuir um usuario responsavel.
 	private Usuario usuario;
 	
 	public Usuario getUsuario() {
