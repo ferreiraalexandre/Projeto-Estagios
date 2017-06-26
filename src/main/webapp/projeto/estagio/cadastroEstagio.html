@@ -1,10 +1,33 @@
     <md-card ng-style="cardCadastroEstagio">
     	<h2 class="md-title">Adicionar Estágio</h2>
 		<md-card >
-				
+					<h2 class="md-title">Lista De Estudante</h2>
 				<form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
 
-					<div layout="row" class="input-row layout-row">
+
+					<md-grid-list md-cols="1"  md-row-height="64px" >
+				    	<md-grid-tile id="listaEsquerda">
+				      		<md-button ng-click="abrirModal($event)" ng-disabled="buttonAddDisabled">
+				      			<ng-md-icon id="adicionar" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
+				      		</md-button>
+				
+							<md-button ng-click="abrirModal($event)" ng-disabled="buttonAddDisabled">
+				      			<ng-md-icon id="adicionar" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
+				      		</md-button>
+				
+				
+					      	<md-button ng-click="menuEstudante('novoEstudante')" id="buttonRemove" ng-disabled="buttonEditDisabled">
+					      		<ng-md-icon id="editar" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
+					      	</md-button>
+					
+						</md-grid-tile>
+				
+				
+				  	</md-grid-list>
+
+
+
+<!--  					<div layout="row" class="input-row layout-row">
 						<md-content class="md-padding" id="menuEstudante" >
 							<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
 							<md-nav-item md-nav-click="menuEstudante('estudante')" name="page1">Estudante</md-nav-item>
@@ -12,20 +35,20 @@
 						</md-content>
 					</div>
 					
-					
+-->					
 					<div layout="row"  class="input-row layout-row" ng-show="estudante">
-						<md-input-container class="flex">
+						<md-input-container id="inputsEstudnte">
 							<label>Turma</label>
-							<md-select ng-model="estagio.turma" ng-required="selectRequired">
+							<md-select ng-model="estagio.turma" id="estagioTurma" ng-required="selectRequired">
 								<md-option ng-repeat="item in turmas" ng-selected="item.id == estagio.turma.id" ng-value="item" >
 									{{item.nome}}
 								</md-option>
 							</md-select>
 						</md-input-container>
 
-						<md-input-container class="flex">
+						<md-input-container >
 							<label>Estudante</label>
-							<md-select ng-model="estagio.turma" ng-required="selectRequired">
+							<md-select ng-model="estagio.turma" id="estagioEstudante" ng-required="selectRequired">
 								<md-option ng-repeat="item in turmas" ng-selected="item.id == estagio.turma.id" ng-value="item" >
 									{{item.nome}}
 								</md-option>
@@ -47,15 +70,6 @@
 							</md-select>
 						</md-input-container>
 
-						<md-input-container class="flex">
-							<label>Estudante</label>
-							<md-select ng-model="estagio.turma" ng-required="selectRequired">
-								<md-option ng-repeat="item in turmas" ng-selected="item.id == estagio.turma.id" ng-value="item" >
-									{{item.nome}}
-								</md-option>
-							</md-select>
-						</md-input-container>
-						
 						
 						<md-input-container  class="flex">
 							<label for="input_55">Novo Estudante</label>
