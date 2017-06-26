@@ -64,7 +64,7 @@ public class Estagio {
 	private Instituicao instituicao;
 
 	@ManyToOne(cascade = CascadeType.REFRESH)
-	@JoinColumn(name = "instituicaoId", nullable = false)
+	@JoinColumn(name = "turmaId", nullable = false)
 	private Turma Turma;
 
 	public Long getId() {
