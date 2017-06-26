@@ -100,7 +100,7 @@ a{
 	margin-right: 24px;
 }
 
-#buttonRemove{
+#buttonRemove, #buttonCreateDisabled{
 	margin-right:auto;
 }
 
