@@ -118,3 +118,10 @@ a{
 	width: 200px;
 	margin-right: 50px;
 }
+#logo{
+	 margin-top: 13px;
+	text-align: center;
+	font: italic bold 22px arial;
+	color: white;
+	
+}
