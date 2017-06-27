@@ -65,7 +65,11 @@ public class Estagio {
 
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "turmaId", nullable = false)
-	private Turma Turma;
+	private Turma turma;
+
+	@ManyToOne(cascade = CascadeType.REFRESH)
+	@JoinColumn(name = "estudanteId", nullable = false)
+	private Estudante estudante;
 
 	public Long getId() {
 		return id;
@@ -172,10 +176,19 @@ public class Estagio {
 	}
 
 	public Turma getTurma() {
-		return Turma;
+		return turma;
 	}
 
 	public void setTurma(Turma turma) {
-		Turma = turma;
+		this.turma = turma;
 	}
+	
+	public Estudante getEstudante() {
+		return estudante;
+	}
+
+	public void setEstudante(Estudante estudante) {
+		this.estudante = estudante;
+	}
+
 }

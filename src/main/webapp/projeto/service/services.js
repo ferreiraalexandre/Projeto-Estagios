@@ -64,6 +64,7 @@ app.factory('InstituicaoService',['$resource',  function ($resource) {
 app.factory('EstagioService',['$resource',  function ($resource) {
 	  return $resource(app.pathRest + '/estagio/:method/:data', {}, {
 		  getList: {method: 'GET', params: {method: 'buscar'}, isArray: false},
+		  getListSelect: {method: 'GET', params: {method: 'buscarListSelect'}, isArray: false},
 
 	  })
 }]);

@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import br.com.projetoEstagio.entity.Estagio;
+import br.com.projetoEstagio.pojo.EstagioPojo;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.EstagioService;
 
@@ -38,4 +39,20 @@ public class EstagioRest extends UtilRest {
 		}
 	}
 
+	@GET
+	@Path("/buscarListSelect")
+	@Produces("application/json")
+	public Response listSelect(){
+		
+		try {
+			EstagioService service = new EstagioService();
+			
+			EstagioPojo e = service.listSelect();
+			return getResponseList(e);
+		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
+
+	
 }

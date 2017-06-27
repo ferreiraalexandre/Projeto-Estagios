@@ -114,17 +114,25 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     console.log('limit: ', limit);
   }
   
-  
+//Função para mudar telas conforme menu 
+  $scope.menuClick = function (link) {
+	$location.path(link);
+  };
+
 
   $scope.cadastrarEstagio = function (event) {
 	var  link = "/cadastroEstagio";
 		  $scope.rodape = false;
 		  $scope.links = false;
 		  $scope.cardCadastroEstagio = {"margin-top" : "60px"}
-//		  EstagioService.getEstudante(data, function (response) {
-//			  $scope.estagios = response.data;
-//					
-//			}),
+		  
+		  EstagioService.getListSelect(function (response) {
+			  $scope.empresas = response.data.empresa;
+			  $scope.instituicaos = response.data.instituicao;
+			  $scope.turmas = response.turma;
+			  $scope.estudantes = response.estudante;
+					
+			}),
 
 	$location.path(link);
   };
