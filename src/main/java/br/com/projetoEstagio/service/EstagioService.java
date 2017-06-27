@@ -10,7 +10,7 @@ public class EstagioService {
 
 	public List<Estagio> listEstagio() throws Exception {
 		EstagioJPA listEstagio = new EstagioJPA();
-		return null;
+		return listEstagio.list();
 	}
 
 }

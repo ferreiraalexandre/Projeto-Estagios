@@ -42,141 +42,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     limit: 5,
     page: 1
   };
-  
-  $scope.estagios = {
-    "count": 9,
-    "data": [
-      {
-        "nome": "Andre Felipe",
-        "curso": "GT em Análise e Desenvolvimento de Sistemas",
-        "empresa" : "TOTVS",
-      	"dataInicio" : "10/05/2015",
-      	"dataFim" : "12/06/2016",
-      	"rescisao" : "",
-      	"aditivo" : "18/10/2016",
-      	"visita" : "02/03/2015",
-      	"orientador" : "Ademir",
-      	"situacao" : "Matriculado",
-      	"sgn" : "Sim",
-      	"instituicao": "Senai",
-      	"obrigatorio": "Não",
-      	
-      }, {
-        "nome": "Carlos Henrique da Silva",
-        "curso": "GT em Análise e Desenvolvimento de Sistemas",
-        "empresa" : "TOTVS",
-      	"dataInicio" : "10/05/2015",
-      	"dataFim" : "12/06/2016",
-      	"rescisao" : "",
-      	"aditivo" : "18/10/2016",
-      	"visita" : "02/03/2015",
-      	"orientador" : "Ademir",
-      	"situacao" : "Matriculado",
-      	"sgn" : "Sim",
-      	"instituicao": "Senai",
-      	"obrigatorio": "Não",
-      }, {
-        "nome": "Carolina Wiest Marcelino",
-        "curso": "GT em Análise e Desenvolvimento de Sistemas",
-        "empresa" : "TOTVS",
-      	"dataInicio" : "10/05/2015",
-      	"dataFim" : "12/06/2016",
-      	"rescisao" : "",
-      	"aditivo" : "18/10/2016",
-      	"visita" : "02/03/2015",
-      	"orientador" : "Ademir",
-      	"situacao" : "Matriculado",
-      	"sgn" : "Sim",
-      	"instituicao": "Senai",
-      	"obrigatorio": "Não",
-      }, {
-        "nome": "David Bento",
-        "curso": "CT em Eletrotécnica",
-        "empresa" : "TOTVS",
-      	"dataInicio" : "10/05/2015",
-      	"dataFim" : "12/06/2016",
-      	"rescisao" : "",
-      	"aditivo" : "18/10/2016",
-      	"visita" : "02/03/2015",
-      	"orientador" : "Ademir",
-      	"situacao" : "Matriculado",
-      	"sgn" : "Sim",
-      	"instituicao": "Senai",
-      	"obrigatorio": "Não",
-      }, {
-        "nome": "Denis Sales de Lima",
-        "curso": "CT em Fabricação Mecânica",
-        "empresa" : "TOTVS",
-      	"dataInicio" : "10/05/2015",
-      	"dataFim" : "12/06/2016",
-      	"rescisao" : "",
-      	"aditivo" : "18/10/2016",
-      	"visita" : "02/03/2015",
-      	"orientador" : "Ademir",
-      	"situacao" : "Matriculado",
-      	"sgn" : "Sim",
-      	"instituicao": "Senai",
-      	"obrigatorio": "Não",
-      }, {
-        "nome": "Elison Padilha Feliciano",
-        "curso": "GT em Análise e Desenvolvimento de Sistemas",
-        "empresa" : "TOTVS",
-      	"dataInicio" : "10/05/2015",
-      	"dataFim" : "12/06/2016",
-      	"rescisao" : "",
-      	"aditivo" : "18/10/2016",
-      	"visita" : "02/03/2015",
-      	"orientador" : "Ademir",
-      	"situacao" : "Matriculado",
-      	"sgn" : "Sim",
-      	"instituicao": "Senai",
-      	"obrigatorio": "Não",
-      }, {
-        "nome": "Igor Francisco Fortes",
-        "curso": "GT em Análise e Desenvolvimento de Sistemas",
-        "empresa" : "TOTVS",
-      	"dataInicio" : "10/05/2015",
-      	"dataFim" : "12/06/2016",
-      	"rescisao" : "",
-      	"aditivo" : "18/10/2016",
-      	"visita" : "02/03/2015",
-      	"orientador" : "Ademir",
-      	"situacao" : "Matriculado",
-      	"sgn" : "Sim",
-      	"instituicao": "Senai",
-      	"obrigatorio": "Não",
-      }, {
-        "nome": "Jackson Peterson Pereira Maciel",
-        "curso": "CT em Fabricação Mecânica",
-        "empresa" : "TOTVS",
-      	"dataInicio" : "10/05/2015",
-      	"dataFim" : "12/06/2016",
-      	"rescisao" : "",
-      	"aditivo" : "18/10/2016",
-      	"visita" : "02/03/2015",
-      	"orientador" : "Ademir",
-      	"situacao" : "Matriculado",
-      	"sgn" : "Sim",
-      	"instituicao": "Senai",
-      	"obrigatorio": "Não",
-      }, {
-        "nome": "Wander Vinicius Capote Santos",
-        "curso": "GT em Análise e Desenvolvimento de Sistemas",
-        "empresa" : "TOTVS",
-      	"dataInicio" : "10/05/2015",
-      	"dataFim" : "12/06/2016",
-      	"rescisao" : "",
-      	"aditivo" : "18/10/2016",
-      	"visita" : "02/03/2015",
-      	"orientador" : "Ademir",
-      	"situacao" : "Matriculado",
-      	"sgn" : "Sim",
-      	"instituicao": "Senai",
-      	"obrigatorio": "Não",
-      }
-    ]
-  };
-  
+    
   $scope.editObs = function (event, estagio) {
     event.stopPropagation(); // in case autoselect is enabled
     
@@ -250,12 +116,16 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   
   
 
-  $scope.menuClick = function (link) {
-	  if(link == "/cadastroEstagio"){
+  $scope.cadastrarEstagio = function (event) {
+	var  link = "/cadastroEstagio";
 		  $scope.rodape = false;
 		  $scope.links = false;
 		  $scope.cardCadastroEstagio = {"margin-top" : "60px"}
-	  }
+//		  EstagioService.getEstudante(data, function (response) {
+//			  $scope.estagios = response.data;
+//					
+//			}),
+
 	$location.path(link);
   };
  

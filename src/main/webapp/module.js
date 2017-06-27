@@ -6,7 +6,7 @@ app.config(function($routeProvider) {
 
 	$routeProvider
 	.when('/', {
-		templateUrl : 'tabela.html',
+		templateUrl : 'projeto/estagio/estagio.html',
 	})
 
 	$routeProvider

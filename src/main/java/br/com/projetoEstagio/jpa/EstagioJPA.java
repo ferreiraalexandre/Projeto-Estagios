@@ -1,5 +1,16 @@
 package br.com.projetoEstagio.jpa;
 
-public class EstagioJPA {
+import java.util.List;
+
+import br.com.projetoEstagio.entity.Estagio;
+import br.com.projetoEstagio.interfaces.EstagioInterface;
+
+public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInterface {
+	
+	public List<Estagio> list(){
+		return this.list("");
+		
+	}
+
 
 }

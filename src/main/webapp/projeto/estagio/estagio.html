@@ -2,7 +2,7 @@
   
   <md-grid-list md-cols="2"  md-row-height="64px">
     <md-grid-tile id="listaEsquerda">
-      <md-button  ng-click="menuClick('/cadastroEstagio')" >
+      <md-button  ng-click="cadastrarEstagio($event)" >
       	<ng-md-icon id="iconAdd" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
       	      	
       </md-button>
@@ -43,6 +43,10 @@
   </md-grid-list>
 
   <md-table-container>
+     <div layout="row" layout-sm="column" layout-align="space-around">
+      	<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
+     </div>
+ 
     <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
       <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
         <tr md-row>
@@ -63,18 +67,18 @@
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row md-select="estagio" md-on-select="logItem" md-auto-select="options.autoSelect" ng-disabled="estagio.calories.value > 400" ng-repeat="estagio in estagios.data | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">
+        <tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagios | filter: query.filter" class="md-row">
           <td md-cell>{{estagio.nome}}</td>
-          <td md-cell>{{estagio.curso}}</td>
-          <td md-cell>{{estagio.empresa}}</td>
+          <td md-cell>{{estagio.turma.curso.nome}}</td>
+          <td md-cell>{{estagio.empresa.nome}}</td>
           <td md-cell>{{estagio.dataInicio}}</td>
           <td md-cell>{{estagio.dataFim}}</td>
-          <td md-cell>{{estagio.rescisao}}</td>
-          <td md-cell>{{estagio.aditivo}}</td>
-          <td md-cell>{{estagio.visita}}</td>
+          <td md-cell>{{estagio.dataRescisao}}</td>
+          <td md-cell>{{estagio.dataAditivo}}</td>
+          <td md-cell>{{estagio.dataVisita}}</td>
           <td md-cell>{{estagio.orientador}}</td>
           <td md-cell>{{estagio.situacao}}</td>
-          <td md-cell>{{estagio.sgn}}</td>
+          <td md-cell>{{estagio.cadastroSGN}}</td>
            
            <td md-cell>
             <md-select ng-model="estagio.instituicao" placeholder="Other">
