@@ -28,6 +28,9 @@ public class Usuario {
 	@Column(name = "senha", nullable = false)
 	private String senha;
 	
+	@Column(name = "tipo", nullable = false)
+	private String tipo;
+	
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "UnidadeEnsinoId", nullable = false)
 	private UnidadeEnsino unidadeEnsino;
@@ -70,6 +73,14 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public UnidadeEnsino getUnidadeEnsino() {

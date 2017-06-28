@@ -39,6 +39,7 @@
           <th md-column md-order-by="nome"><span>Nome</span></th>
           <th md-column md-order-by="cnpj" md-desc><span>CPF</span></th>
           <th md-column md-order-by="email" md-desc><span>EMAIL</span></th>
+           <th md-column md-order-by="tipo" md-desc><span>Tipo de Usuário</span></th>
           <th md-column md-order-by="instituicao"><span>Instituições</span></th>
         </tr>
       </thead>
@@ -47,6 +48,7 @@
           <td md-cell>{{usuario.nome}}</td>
           <td md-cell>{{usuario.cpf | brCpf}}</td>
           <td md-cell>{{usuario.email}}</td>
+            <td md-cell>{{usuario.tipo}}</td>
           <td md-cell>{{usuario.unidadeEnsino.nome}}</td>
         </tr>
       </tbody>

@@ -13,27 +13,37 @@
           <label for="input_55">Nome</label>
           <input name="name" ng-model="turma.nome"   id="input_55" ng-required="true" ng-trim="false"  style="padding-right: 50px;">
         </md-input-container>
-        </div>
-        <div  layout="row" class="input-row layout-row">
+        
         <md-input-container class="flex">
-          <label for="input_55">Curso</label>
+           <label for="input_55">Curso</label>
            <md-select ng-model="turma.curso" ng-required="selectRequired">
-            <md-option ng-repeat="item in cursos" ng-selected="item.id == turma.curso.id" ng-value="item"  style="padding-right: 50px;">
-              {{item.sigla}}
-            </md-option>
-          </md-select>
-        </md-input-container>        
-      
-        <md-input-container class="flex">
-          <label for="input_55">Turno</label>
-          <md-select ng-model="turma.turno" placeholder="Turno *" >
-          <md-option value="matutino">Matutino</md-option>
-          <md-option value="vespertino">Vespertino</md-option>
-          <md-option value="noturno">Noturno</md-option>
-        </md-select>
-          
+             <md-option ng-repeat="item in cursos" ng-selected="item.id == turma.curso.id" ng-value="item"  style="padding-right: 50px;">
+               {{item.sigla}}
+             </md-option>
+           </md-select>
+         </md-input-container>  
+       </div>
+       
+       <div  layout="row" class="input-row layout-row">
+       	 <md-input-container class="flex">
+           <label for="input_55">Turno</label>
+           <md-select ng-model="turma.turno" ng-required="selectRequired" placeholder="Turno" >
+             <md-option value="Matutino">Matutino</md-option>
+             <md-option value="Vespertino">Vespertino</md-option>
+             <md-option value="Noturno">Noturno</md-option>
+           </md-select>         
         </md-input-container>    
+       
+         <md-input-container class="flex">
+           <label>Coordenador Responsável</label>
+           <md-select ng-model="turma.usuario" ng-required="selectRequired">
+             <md-option ng-repeat="item in usuarios" ng-selected="item.id == turma.usuario.id" ng-value="item" >
+               {{item.nome}}
+             </md-option>
+           </md-select>
+         </md-input-container>
       </div>
+      
     </form>
     
   </md-dialog-content>

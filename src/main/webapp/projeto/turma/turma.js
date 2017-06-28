@@ -5,8 +5,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'TurmaService', 'CursoService', 'toastr',  
-                          function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   TurmaService,   CursoService,   toastr) {
+app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'TurmaService', 'CursoService', 'UsuarioService', 'toastr',  
+                          function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   TurmaService,   CursoService,   UsuarioService,   toastr) {
 
   $scope.selecionados = [];
   $scope.limitOptions = [5, 10, 15];
@@ -122,7 +122,9 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 		CursoService.getList(function (response) {
 			$scope.cursos = response.data;	
 		});
-		
+		UsuarioService.getList(function (response) {
+			$scope.usuarios = response.data;
+		});
 	};
 		
 	//Controller da modal
@@ -132,12 +134,14 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 			$scope.title = "Editar Turma";
 			$scope.turma = angular.copy(retornoModal.selecionados[0]);
 			$scope.cursos = retornoModal.cursos;
+			$scope.usuarios = retornoModal.usuarios;
 			$scope.selectRequired = false;
 		}else{
 			$scope.selectRequired = true;
 			$scope.title = "Adicionar Turma";
 			$scope.novo = true;
 			$scope.cursos = retornoModal.cursos;
+			$scope.usuarios = retornoModal.usuarios;
 		}
 	  
 		$scope.hide = function() {
