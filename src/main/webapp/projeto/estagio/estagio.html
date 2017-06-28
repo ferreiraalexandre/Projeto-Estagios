@@ -71,11 +71,11 @@
           <td md-cell>{{estagio.estudante.nome}}</td>
           <td md-cell>{{estagio.turma.curso.nome}}</td>
           <td md-cell>{{estagio.empresa.nome}}</td>
-          <td md-cell>{{estagio.dataInicio}}</td>
-          <td md-cell>{{estagio.dataFim}}</td>
-          <td md-cell>{{estagio.dataRescisao}}</td>
-          <td md-cell>{{estagio.dataAditivo}}</td>
-          <td md-cell>{{estagio.dataVisita}}</td>
+          <td md-cell>{{estagio.dataInicio | date:'dd/MM/yyyy' : 'UTC'}}</td>
+          <td md-cell>{{estagio.dataFim | date:'dd/MM/yyyy' : 'UTC'}}</td>
+          <td md-cell>{{estagio.dataRescisao | date:'dd/MM/yyyy' : 'UTC'}}</td>
+          <td md-cell>{{estagio.dataAditivo | date:'dd/MM/yyyy' : 'UTC'}}</td>
+          <td md-cell>{{estagio.dataVisita | date:'dd/MM/yyyy' : 'UTC'}}</td>
           <td md-cell>{{estagio.orientador}}</td>
           <td md-cell>{{estagio.situacao}}</td>
           <td md-cell>{{estagio.cadastroSGN}}</td>

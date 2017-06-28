@@ -41,12 +41,7 @@ app.config(function($routeProvider) {
 		templateUrl : 'projeto/empresa/empresa.html',
 		controller : 'empresaController'
 	})
-	
-	$routeProvider
-	.when('/estagio', {
-		templateUrl : 'index.html',
-	})
-	
+		
 	$routeProvider
 	.when('/instituicao', {
 		templateUrl : 'projeto/instituicao/instituicao.html',
@@ -56,6 +51,7 @@ app.config(function($routeProvider) {
 	$routeProvider
 	.when('/cadastroEstagio', {
 		templateUrl : 'projeto/estagio/cadastroEstagio.html',
+		controller : 'estagioController'
 	})
 
 

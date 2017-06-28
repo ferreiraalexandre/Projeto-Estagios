@@ -18,6 +18,16 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
   
+  var path = $location.path();
+ 
+  if(path == "/cadastroEstagio"){
+	  $scope.rodape = false;
+	  $scope.links = false;	  
+  }
+  
+
+  
+  
   $scope.getSelectedText = function() {
       if ($scope.selectedItem !== undefined) {
         return "Buscar por " + $scope.selectedItem;
@@ -122,8 +132,8 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 
   $scope.cadastrarEstagio = function (event) {
 	var  link = "/cadastroEstagio";
-		  $scope.rodape = false;
-		  $scope.links = false;
+	//	  $scope.rodape = false;
+	//	  $scope.links = false;
 		  $scope.cardCadastroEstagio = {"margin-top" : "60px"}
 		  
 		  EstagioService.getListSelect(function (response) {
