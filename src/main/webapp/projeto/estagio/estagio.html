@@ -68,7 +68,7 @@
       </thead>
       <tbody md-body>
         <tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagios | filter: query.filter" class="md-row">
-          <td md-cell>{{estagio.nome}}</td>
+          <td md-cell>{{estagio.estudante.nome}}</td>
           <td md-cell>{{estagio.turma.curso.nome}}</td>
           <td md-cell>{{estagio.empresa.nome}}</td>
           <td md-cell>{{estagio.dataInicio}}</td>

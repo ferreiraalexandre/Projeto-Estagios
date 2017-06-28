@@ -19,7 +19,8 @@ public class UtilRest {
 	
 	
 	public ObjectMapper getObjectMapper() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 		return new ObjectMapper()
 				.setDateFormat(dateFormat)
 				.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS,

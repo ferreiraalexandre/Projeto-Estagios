@@ -7,4 +7,7 @@ import br.com.projetoEstagio.entity.Estagio;
 public interface EstagioInterface {
 
 	public List<Estagio> list();
+	
+	public Estagio addEstagio(Estagio estagio);
+
 }

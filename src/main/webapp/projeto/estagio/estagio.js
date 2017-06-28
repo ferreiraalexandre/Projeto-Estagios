@@ -128,9 +128,9 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		  
 		  EstagioService.getListSelect(function (response) {
 			  $scope.empresas = response.data.empresa;
-			  $scope.instituicaos = response.data.instituicao;
-			  $scope.turmas = response.turma;
-			  $scope.estudantes = response.estudante;
+			  $scope.instituicoes = response.data.instituicao;
+			  $scope.turmas = response.data.turma;
+			  $scope.estudantes = response.data.estudante;
 					
 			}),
 
@@ -162,6 +162,9 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   
 	//Função de adicionar novo estagio no Banco de Dados
 	$scope.adicionarEstagio = function (data) {
+		data.dataInicio = moment(data.dataInicio).format('YYYY-MM-DD');
+		data.dataFim = moment(data.dataFim).format('YYYY-MM-DD');
+		data.dataVisitaEmpresa = moment(data.dataVisitaEmpresa).format('YYYY-MM-DD');
 		EstagioService.postEstagio(data, function (response) {
 		toastr.success(response.message);
 		$scope.estagios = response.data;

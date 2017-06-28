@@ -13,9 +13,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import br.com.projetoEstagio.entity.Estagio;
+import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.pojo.EstagioPojo;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.EstagioService;
+import br.com.projetoEstagio.service.UsuarioService;
 
 @Path("/estagio")
 public class EstagioRest extends UtilRest {
@@ -54,5 +56,20 @@ public class EstagioRest extends UtilRest {
 		}
 	}
 
-	
+	@POST
+	@Path("/salva")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response salva( String json){
+
+		try{
+			EstagioService service = new EstagioService(); 
+			Estagio estagio = getObjectMapper().readValue(json, Estagio.class);
+										
+			return getResponseAdd(service.addEstagio(estagio));
+		}catch(Exception e){
+			return getResponseError(e);
+		}
+	}
+
 }

@@ -9,6 +9,7 @@ import br.com.projetoEstagio.jpa.EstagioJPA;
 import br.com.projetoEstagio.jpa.EstudanteJPA;
 import br.com.projetoEstagio.jpa.InstituicaoJPA;
 import br.com.projetoEstagio.jpa.TurmaJPA;
+import br.com.projetoEstagio.jpa.UsuarioJPA;
 import br.com.projetoEstagio.pojo.EstagioPojo;
 
 public class EstagioService {
@@ -32,6 +33,14 @@ public class EstagioService {
 		
 	
 		return estagioPojo;
+	}
+
+	public Object addEstagio(Estagio estagio) {
+		EstagioJPA estagioJPA = new EstagioJPA();
+		estagioJPA.addEstagio(estagio);
+		
+		return  estagioJPA.list();
+
 	}
 
 

@@ -20,9 +20,6 @@ public class Estagio {
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "nome", nullable = false )
-	private String nome;
-
 	@Column(name = "dataInicio", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataInicio;
@@ -31,11 +28,11 @@ public class Estagio {
 	@Temporal(TemporalType.DATE)
 	private Date dataFim;
 
-	@Column(name = "dataAditivo", nullable = false)
+	@Column(name = "dataAditivo", nullable = true)
 	@Temporal(TemporalType.DATE)
 	private Date dataAditivo;
 
-	@Column(name = "dataRescisao", nullable = false)
+	@Column(name = "dataRescisao", nullable = true)
 	@Temporal(TemporalType.DATE)
 	private Date dataRescisao;
 
@@ -44,12 +41,12 @@ public class Estagio {
 	private Date dataVisitaEmpresa;
 
 	@Column(name = "situacao", nullable = false)
-	private Boolean situacao;
+	private String situacao;
 
 	@Column(name = "cadastroSGN", nullable = false)
 	private Boolean cadastroSGN;
 	
-	@Column(name = "estagioObrigatorio", nullable = false)
+	@Column(name = "estagioObrigatorio", nullable = true)
 	private Boolean estagioObrigatorio;
 
 	@Column(name = "observacao")
@@ -77,14 +74,6 @@ public class Estagio {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	public Date getDataInicio() {
@@ -127,11 +116,11 @@ public class Estagio {
 		this.dataVisitaEmpresa = dataVisitaEmpresa;
 	}
 
-	public Boolean getSituacao() {
+	public String getSituacao() {
 		return situacao;
 	}
 
-	public void setSituacao(Boolean situacao) {
+	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
 
