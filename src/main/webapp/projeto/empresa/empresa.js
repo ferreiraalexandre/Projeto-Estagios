@@ -131,7 +131,6 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			$scope.editar = true;
 			$scope.title = "Editar Empresa";
 			$scope.empresa = angular.copy(retornoModal.selecionados[0]);
-			 var collectionDate = '16-04-2017T09:00:00'; 
 			$scope.empresa.data = new Date($scope.empresa.data);
 			$scope.usuarios = retornoModal.usuarios;
 		}else{
@@ -150,7 +149,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			    
 		//Função de adicionar novas empresas no Banco de Dados
 		$scope.novaEmpresa = function (data) {
-			data.data = moment(data.data).format('DD/MM/YYYY');
+			data.data = moment(data.data).format('YYYY-MM-DD');
 			EmpresaService.postEmpresa(data, function (response) {
 				$mdDialog.hide(data);
 				toastr.success(response.message);

@@ -40,7 +40,7 @@
       		<tbody md-body>
         		<tr md-row="" md-select="empresa" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="empresa in empresas | filter: query.filter" class="md-row">
           			<td md-cell>{{empresa.nome}}</td>
-          			<td md-cell>{{empresa.data}}</td>
+          			<td md-cell>{{empresa.data | date:'dd/MM/yyyy' : 'UTC'}}</td>
           			<td md-cell>{{empresa.usuario.nome}}</td>
         		</tr>
       		</tbody>
