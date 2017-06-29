@@ -11,6 +11,11 @@ public class EstudanteJPA extends JPAAbstract<Estudante, Long> implements Estuda
 		return this.list("");
 		
 	}
+	
+	public Estudante addEstudante(Estudante estudante) {
+		Estudante tt = this.add(estudante);
+		return tt;
+	}
 
 
 }

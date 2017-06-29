@@ -8,4 +8,6 @@ public interface EstudanteInterface {
 
 	
 	public List<Estudante> list();
+	
+	public Estudante addEstudante(Estudante estudante);
 }

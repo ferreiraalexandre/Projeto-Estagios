@@ -12,7 +12,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.json.JSONObject;
+
 import br.com.projetoEstagio.entity.Estagio;
+import br.com.projetoEstagio.entity.Estudante;
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.pojo.EstagioPojo;
 import br.com.projetoEstagio.restUtil.UtilRest;
@@ -63,7 +66,19 @@ public class EstagioRest extends UtilRest {
 	public Response salva( String json){
 
 		try{
+			JSONObject jsonObject = new JSONObject(json);
 			EstagioService service = new EstagioService(); 
+			
+			if(!jsonObject.isNull("novoEstudante")){
+				Estudante estudante = new Estudante();
+				estudante.setNome(jsonObject.optString("novoEstudante"));
+				estudante.setCpf(jsonObject.optString("cpf"));
+				Object tt = jsonObject.get("turma");
+				
+			//	estudante.setTurma(jsonObject.get("turma"));
+				service.addEstudante(estudante);
+			}
+			
 			Estagio estagio = getObjectMapper().readValue(json, Estagio.class);
 										
 			return getResponseAdd(service.addEstagio(estagio));
