@@ -15,6 +15,7 @@ import javax.ws.rs.core.Response;
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.Turma;
+import br.com.projetoEstagio.pojo.TurmaPojo;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.TurmaService;
 
@@ -55,6 +56,22 @@ public class TurmaRest extends UtilRest {
 			return getResponseError(e);
 		}
 	}
+	
+	@GET
+	@Path("/buscarListSelect")
+	@Produces("application/json")
+	public Response listSelect(){
+		
+		try {
+			TurmaService service = new TurmaService();
+			
+			TurmaPojo e = service.listSelect();
+			return getResponseList(e);
+		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
+	
 	@DELETE
 	@Path("/deletar/{id}")
 	@Consumes("application/json")

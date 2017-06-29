@@ -33,6 +33,7 @@ app.factory('TurmaService',['$resource',  function ($resource) {
 	  return $resource(app.pathRest + '/turma/:method/:data', {}, {
 		  postTurma: { method: 'POST', params: {method: 'salva'}}, 
 		  getList: {method: 'GET', params: {method: 'buscar'}, isArray: false},
+		  getListSelect: {method: 'GET', params: {method: 'buscarListSelect'}, isArray: false},
 		  putTurma: { method: 'PUT', params: {method: 'editar'}},
 		  deleteTurma: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : resultError}}
 	  })

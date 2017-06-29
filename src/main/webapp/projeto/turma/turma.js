@@ -114,6 +114,8 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
   };
     	
 	//Busca usuários do banco e lista na tabela
+  // arrumar para chamar atrav'es do turmapojo----------------------------------------------
+  
   $scope.getTurma = function () {
 		TurmaService.getList(function (response) {
 			$scope.turmas = response.data;
