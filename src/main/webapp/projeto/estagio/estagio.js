@@ -9,25 +9,15 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService',
                              function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService) {
   'use strict';
-  $scope.rodape = true;
-  $scope.links = true;
   $scope.title = "Adicionar Estudade"
   $scope.adicionarEstudante = true;
+  $scope.rodape = true;
+  $scope.links = true;	  
   $scope.selected = [];
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
-  
-  var path = $location.path();
- 
-  if(path == "/cadastroEstagio"){
-	  $scope.rodape = false;
-	  $scope.links = false;	  
-  }
-  
-
-  
-  
+   
   $scope.getSelectedText = function() {
       if ($scope.selectedItem !== undefined) {
         return "Buscar por " + $scope.selectedItem;
@@ -132,8 +122,8 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 
   $scope.cadastrarEstagio = function (event) {
 	var  link = "/cadastroEstagio";
-	//	  $scope.rodape = false;
-	//	  $scope.links = false;
+		  $scope.rodape = false;
+		  $scope.links = false;
 		  $scope.cardCadastroEstagio = {"margin-top" : "60px"}
 		  
 		  EstagioService.getListSelect(function (response) {
@@ -190,6 +180,16 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		EstagioService.getList(function (response) {
 			$scope.estagios = response.data;
 			$scope.isLoading = false;
+			
+			  var path = $location.path();
+			  
+			  if(path == "/cadastroEstagio"){
+				  $scope.rodape = false;
+				  $scope.links = false;	  
+				  $scope.cardCadastroEstagio = {"margin-top" : "60px"}
+
+			  }
+
 		});		
 	};
 
