@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Estudante;
 import br.com.projetoEstagio.entity.Usuario;
+import br.com.projetoEstagio.jpa.TurmaJPA;
 import br.com.projetoEstagio.pojo.EstagioPojo;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.EstagioService;
@@ -67,15 +68,19 @@ public class EstagioRest extends UtilRest {
 
 		try{
 			JSONObject jsonObject = new JSONObject(json);
-			EstagioService service = new EstagioService(); 
+			EstagioService service = new EstagioService();
 			
 			if(!jsonObject.isNull("novoEstudante")){
+				TurmaJPA turma = new TurmaJPA();
 				Estudante estudante = new Estudante();
+
 				estudante.setNome(jsonObject.optString("novoEstudante"));
 				estudante.setCpf(jsonObject.optString("cpf"));
-				Object tt = jsonObject.get("turma");
+				JSONObject turmaJSON =	jsonObject.optJSONObject("turma");
+				Long id = turmaJSON.optLong("id");
+			//	estudante.setTurma(turma.buscarPorId(id));
 				
-			//	estudante.setTurma(jsonObject.get("turma"));
+				
 				service.addEstudante(estudante);
 			}
 			
