@@ -44,11 +44,10 @@ public class EstagioService {
 
 	}
 
-	public Object addEstudante(Estudante estudante) {
-		EstudanteJPA estudanteJPA = new EstudanteJPA();
+	public Estudante addEstudante(Estudante estudante) {
+		EstudanteJPA jpa = new EstudanteJPA();
 		
-		
-		return  estudanteJPA.addEstudante(estudante);
+		return  jpa.addEstudante(estudante);
 
 	}
 

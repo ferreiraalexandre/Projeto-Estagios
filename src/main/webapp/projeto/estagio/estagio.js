@@ -6,8 +6,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService',
-                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService) {
+app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService', 'toastr',
+                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr) {
   'use strict';
   $scope.title = "Adicionar Estudade"
   $scope.adicionarEstudante = true;
@@ -167,7 +167,15 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		data.dataVisitaEmpresa = moment(data.dataVisitaEmpresa).format('YYYY-MM-DD');
 		EstagioService.postEstagio(data, function (response) {
 		toastr.success(response.message);
-		$scope.estagios = response.data;
+		$scope.$parent.estagios = response.data;
+	  
+		$scope.$parent.rodape = true;
+		$scope.$parent.links = true;	  
+
+		
+		var  link = "/";
+		$location.path(link);
+
 			
 		}),
 			function (error) {

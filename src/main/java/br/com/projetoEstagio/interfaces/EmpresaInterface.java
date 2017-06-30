@@ -14,5 +14,5 @@ public interface EmpresaInterface {
 	
 	public Empresa editarEmpresa(Empresa emp);
 
-	//public Empresa buscarPorId(Long id); 
+	public Empresa findById(Long id) ;
 }

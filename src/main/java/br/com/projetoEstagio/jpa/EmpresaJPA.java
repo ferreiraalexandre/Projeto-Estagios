@@ -3,6 +3,7 @@ package br.com.projetoEstagio.jpa;
 import java.util.List;
 
 import br.com.projetoEstagio.entity.Empresa;
+import br.com.projetoEstagio.entity.Turma;
 import br.com.projetoEstagio.interfaces.EmpresaInterface;
 
 public class EmpresaJPA  extends JPAAbstract<Empresa, Long> implements EmpresaInterface {
@@ -24,9 +25,8 @@ public class EmpresaJPA  extends JPAAbstract<Empresa, Long> implements EmpresaIn
 		this.remove(id);
 	}
 	
-	// BuscarPorId será utilizado para verificar se ele não está atrelado a um estágio 
-	/*public Empresa buscarPorId(Long id) {
-		return this.getObject("SELECT U FROM "+ this.getEntityName() +" U WHERE U.unidadeEnsino.id = '"+ id +"'");
-	}*/
+	public Empresa findById(Long id) {
+		return this.getObject("SELECT E FROM "+ this.getEntityName() +" E WHERE E.id = '"+ id +"'");
+	}
 
 }
