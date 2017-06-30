@@ -17,7 +17,10 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
-   
+  $scope.isLoading = true;
+  $scope.paginaAtualizado = false;
+  
+    
   $scope.getSelectedText = function() {
       if ($scope.selectedItem !== undefined) {
         return "Buscar por " + $scope.selectedItem;
@@ -121,20 +124,25 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 
 
   $scope.cadastrarEstagio = function (event) {
-	var  link = "/cadastroEstagio";
-		  $scope.rodape = false;
-		  $scope.links = false;
-		  $scope.cardCadastroEstagio = {"margin-top" : "60px"}
-		  
-		  EstagioService.getListSelect(function (response) {
-			  $scope.empresas = response.data.empresa;
-			  $scope.instituicoes = response.data.instituicao;
-			  $scope.turmas = response.data.turma;
-			  $scope.estudantes = response.data.estudante;
-					
-			}),
+	  var  link = "/cadastroEstagio";
+      
+	  $scope.rodape = false;
+	  $scope.links = false;
+	  $scope.cardCadastroEstagio = {"margin-top" : "60px"}
+	  
+	  EstagioService.getListSelect(function (response) {
+		  $scope.empresas = response.data.empresa;
+		  $scope.instituicoes = response.data.instituicao;
+		  $scope.turmas = response.data.turma;
+		  $scope.estudantes = response.data.estudante;
+		  $scope.paginaAtualizado = true;
+				
+		}),
+		function (error) {
+			
+		};
+		$location.path(link);
 
-	$location.path(link);
   };
  
   $scope.menuEstudante = function (link) {
@@ -205,4 +213,11 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	//Chama função para buscar estagios
 	$scope.getEstagio();
 
+	//Chama função no reload da pagina para buscar os select no cadastro do estagio
+	var path = $location.path();
+	if(path == "/cadastroEstagio" && $scope.paginaAtualizado == false){
+		$scope.cadastrarEstagio(path);
+	}
+
+	
 }]);
