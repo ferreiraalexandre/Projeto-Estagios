@@ -55,6 +55,22 @@ public class UsuarioRest extends UtilRest {
 			return getResponseError(e);
 		}
 	}
+	
+	@GET
+	@Path("/getCoordenadores")
+	@Produces("application/json")
+	public Response listSelect(){
+		
+		try {
+			UsuarioService service = new UsuarioService();
+			
+			List<Usuario> e = service.listCoordenadores();
+			return getResponseList(e);
+		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
+	
 	@DELETE
 	@Path("/deletar/{id}")
 	@Consumes("application/json")

@@ -5,10 +5,7 @@ import java.util.List;
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.Turma;
-import br.com.projetoEstagio.jpa.CursoJPA;
 import br.com.projetoEstagio.jpa.TurmaJPA;
-import br.com.projetoEstagio.jpa.UsuarioJPA;
-import br.com.projetoEstagio.pojo.TurmaPojo;
 
 public class TurmaService {
 
@@ -23,17 +20,6 @@ public class TurmaService {
 	public List<Turma> listTurma() throws Exception {
 		TurmaJPA listTurma = new TurmaJPA();
 		return listTurma.list();
-	}
-	
-	public TurmaPojo listSelect() throws Exception {
-		TurmaPojo turmaPojo = new TurmaPojo();
-		CursoJPA curso = new CursoJPA();
-		UsuarioJPA usuario = new UsuarioJPA();
-		
-		turmaPojo.setCurso(curso.list());
-		turmaPojo.setUsuario(usuario.listCoordenadores());
-	
-		return turmaPojo;
 	}
 	
 	public Object deleteTurma(JSONArray tur) throws Exception{
