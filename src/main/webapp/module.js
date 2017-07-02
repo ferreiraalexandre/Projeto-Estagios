@@ -7,6 +7,7 @@ app.config(function($routeProvider) {
 	$routeProvider
 	.when('/', {
 		templateUrl : 'projeto/estagio/estagio.html',
+		controller : 'estagioController'
 	})
 
 	$routeProvider
@@ -51,7 +52,7 @@ app.config(function($routeProvider) {
 	$routeProvider
 	.when('/cadastroEstagio', {
 		templateUrl : 'projeto/estagio/cadastroEstagio.html',
-		controller : 'estagioController'
+		controller : 'cadastroEstagioController'
 	})
 
 
