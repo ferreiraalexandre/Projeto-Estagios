@@ -27,9 +27,6 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
   $scope.getListSelect = function () {
 	  EstagioService.getListSelect(function (response) {
 		  $scope.empresas = response.data.empresa;			
-		  $scope.estagio.dataVisitaEmpresa = new Date(response.data.empresa[0].data);
-		  
-
 		  $scope.instituicoes = response.data.instituicao;
 		  $scope.turmas = response.data.turma;
 		  $scope.estudantes = response.data.estudante;

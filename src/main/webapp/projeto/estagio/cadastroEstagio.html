@@ -1,5 +1,5 @@
     <md-card ng-style="cardCadastroEstagio">
-    	<h2 class="md-title">Adicionar Estágio</h2>
+    	<h2 class="md-title">Cadastro de Estágio</h2>
 		<md-card >
 			<h2 class="md-title">{{title}}</h2>
 			<form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
@@ -124,11 +124,6 @@
 					</md-input-container>
 
 					<md-input-container class="flex">
-						<label for="data">Visita Empresa</label>
-						<md-datepicker ng-model="estagio.dataVisitaEmpresa" ng-required="false" ng-trim="false"></md-datepicker>
-					</md-input-container>
-					
-					<md-input-container class="flex">
 						<label for="data">Rescisão</label>
 						<md-datepicker ng-model="estagio.dataRescisao" ng-required="false" ng-trim="false"></md-datepicker>
 					</md-input-container>
@@ -137,6 +132,16 @@
 						<label for="data">Aditivo</label>
 						<md-datepicker ng-model="estagio.dataAditivo" ng-required="false" ng-trim="false"></md-datepicker>
 					</md-input-container>
+					
+					<md-input-container class="flex">
+						<label>Instituição</label>
+						<md-select ng-model="estagio.instituicao" id="estagioInstituicao" ng-required="selectRequired">
+							<md-option ng-repeat="item in instituicoes" ng-selected="item.id == estagio.instituicao.id" ng-value="item" >
+								{{item.nome}}
+							</md-option>
+						</md-select>
+					</md-input-container>						
+					
 				</div>
 							
 				<div layout="row" class="input-row layout-row">
@@ -152,14 +157,6 @@
 						<label>Observação</label>
 						<input name="name" ng-model="estagio.observacao" id="input_55" ng-required="true" ng-trim="false">
 					</md-input-container>
-					<md-input-container >
-						<label>Instituição</label>
-						<md-select ng-model="estagio.instituicao" id="estagioInstituicao" ng-required="selectRequired">
-							<md-option ng-repeat="item in instituicoes" ng-selected="item.id == estagio.instituicao.id" ng-value="item" >
-								{{item.nome}}
-							</md-option>
-						</md-select>
-					</md-input-container>						
 					
 				</div>
 			</form>

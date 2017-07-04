@@ -63,7 +63,7 @@
           <th md-column md-order-by="sgn"><span>SGN</span></th>
           <th md-column md-order-by="instituicao"><span>Instituições</span></th>
           <th md-column md-order-by="obrigatorio"><span>Obrigatorio</span></th>
-          <th md-column md-order-by="obs"><md-icon>comments</md-icon><span>Observações</span></th>
+          <th md-column md-order-by="observacao"><md-icon>comments</md-icon><span>Observações</span></th>
         </tr>
       </thead>
       <tbody md-body>
@@ -75,13 +75,13 @@
           <td md-cell>{{estagio.dataFim | date:'dd/MM/yyyy' : 'UTC'}}</td>
           <td md-cell>{{estagio.dataRescisao | date:'dd/MM/yyyy' : 'UTC'}}</td>
           <td md-cell>{{estagio.dataAditivo | date:'dd/MM/yyyy' : 'UTC'}}</td>
-          <td md-cell>{{estagio.dataVisita | date:'dd/MM/yyyy' : 'UTC'}}</td>
+          <td md-cell>{{estagio.empresa.data | date:'dd/MM/yyyy' : 'UTC'}}</td>
           <td md-cell>{{estagio.orientador}}</td>
           <td md-cell>{{estagio.situacao}}</td>
           <td md-cell>{{estagio.cadastroSGN}}</td>
-          <td md-cell>{{estagio.instituicao}}</td>
-          <td md-cell>{{estagio.obrigatorio}}</td>
-          <td md-cell>{{estagio.obs}}</td>
+          <td md-cell>{{estagio.instituicao.nome}}</td>
+          <td md-cell>{{estagio.estagioObrigatorio}}</td>
+          <td md-cell>{{estagio.observacao}}</td>
          
         </tr>
       </tbody>
