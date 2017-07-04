@@ -79,19 +79,10 @@
           <td md-cell>{{estagio.orientador}}</td>
           <td md-cell>{{estagio.situacao}}</td>
           <td md-cell>{{estagio.cadastroSGN}}</td>
-           
-           <td md-cell>
-            <md-select ng-model="estagio.instituicao" placeholder="Other">
-              <md-option ng-value="type" ng-repeat="type in getInstituicaoes()">{{type}}</md-option>
-            </md-select>
-          </td>
-          
-          <td md-cell>
-            <md-select ng-model="estagio.obrigatorio" placeholder="Other">
-              <md-option ng-value="type" ng-repeat="type in getOpcao()">{{type}}</md-option>
-            </md-select>
-          </td>
-          <td md-cell ng-click="editObs($event, estagio)" ng-class="{'md-placeholder': !estagio.obs}">{{estagio.obs || 'Add a obs'}}</td>
+          <td md-cell>{{estagio.instituicao}}</td>
+          <td md-cell>{{estagio.obrigatorio}}</td>
+          <td md-cell>{{estagio.obs}}</td>
+         
         </tr>
       </tbody>
     </table>
