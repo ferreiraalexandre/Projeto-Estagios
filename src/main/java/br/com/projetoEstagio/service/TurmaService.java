@@ -21,6 +21,7 @@ public class TurmaService {
 		TurmaJPA listTurma = new TurmaJPA();
 		return listTurma.list();
 	}
+	
 	public Object deleteTurma(JSONArray tur) throws Exception{
 		TurmaJPA turma = new TurmaJPA();
 			

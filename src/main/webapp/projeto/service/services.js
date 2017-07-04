@@ -3,7 +3,7 @@ project.factory('LoginService',['$resource',  function ($resource) {
     auth: { method: 'POST', params: {}, isArray: false },
   })
 }]);
-
+  
 app.factory('UsuarioService',['$resource',  function ($resource) {
 	  return $resource(app.pathRest + '/usuario/:method/:data', {}, {
 		  postUsuario: { method: 'POST', params: {method: 'salva'}}, 

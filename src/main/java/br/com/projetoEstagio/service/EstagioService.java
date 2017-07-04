@@ -3,6 +3,7 @@ package br.com.projetoEstagio.service;
 import java.util.List;
 
 import br.com.projetoEstagio.entity.Estagio;
+import br.com.projetoEstagio.entity.Estudante;
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.jpa.EmpresaJPA;
 import br.com.projetoEstagio.jpa.EstagioJPA;
@@ -43,5 +44,11 @@ public class EstagioService {
 
 	}
 
+	public Estudante addEstudante(Estudante estudante) {
+		EstudanteJPA jpa = new EstudanteJPA();
+		
+		return  jpa.addEstudante(estudante);
+
+	}
 
 }

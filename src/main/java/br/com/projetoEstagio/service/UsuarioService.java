@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.json.JSONArray;
 
-import br.com.projetoEstagio.entity.UnidadeEnsino;
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.jpa.UsuarioJPA;
 
@@ -22,6 +21,12 @@ public class UsuarioService {
 		UsuarioJPA listUsuario = new UsuarioJPA();
 		return listUsuario.list();
 	}
+	
+	public List<Usuario> listCoordenadores() throws Exception {
+		UsuarioJPA listUsuario = new UsuarioJPA();
+		return listUsuario.listCoordenadores();
+	}
+	
 	public Object deleteUsuario(JSONArray usu) throws Exception{
 		UsuarioJPA uni = new UsuarioJPA();
 			

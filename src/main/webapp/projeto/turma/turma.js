@@ -113,7 +113,7 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
         });
   };
     	
-	//Busca usuários do banco e lista na tabela
+  //Busca usuários do banco e lista na tabela  
   $scope.getTurma = function () {
 		TurmaService.getList(function (response) {
 			$scope.turmas = response.data;
@@ -122,7 +122,7 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 		CursoService.getList(function (response) {
 			$scope.cursos = response.data;	
 		});
-		UsuarioService.getList(function (response) {
+		UsuarioService.getListCoordenadores(function (response) {
 			$scope.usuarios = response.data;
 		});
 	};

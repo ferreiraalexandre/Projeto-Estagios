@@ -15,4 +15,6 @@ public interface TurmaInterface {
 	public Turma editarTurma(Turma tur);
 
 	public List<Turma> buscarPorId(Long id);
+	
+	public Turma findById(Long id);
 }

@@ -25,5 +25,12 @@ public class UsuarioJPA  extends JPAAbstract<Usuario, Long> implements UsuarioIn
 	public List<Usuario> buscarPorId(Long id) {
 		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.unidadeEnsino.id = '"+ id +"'");
 	}
+	
+	
+	public List<Usuario> listCoordenadores() {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.tipo = 'Coordenador'");
+	}
+	
+	
 
 }

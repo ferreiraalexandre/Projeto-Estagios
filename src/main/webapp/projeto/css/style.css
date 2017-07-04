@@ -1,0 +1,538 @@
+html,body{
+	font-family: 'Roboto', sans-serif;
+}
+body{
+	/*background:url(background_2.jpg)  center center no-repeat fixed;*/
+	background-color: #333;
+	background-size:cover;
+	overflow: hidden;
+}
+#main > div{
+	height: 85%;
+}
+#main .ng-scope .md-toolbar-tools{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+.list{
+	background-color:rgba(255,255,255,0.9);
+}
+.chart canvas{
+	text-align: center;
+	margin: 0 auto;
+}
+.requisition_dash{
+	width:33%;
+	float:left
+}
+.requisition_dash strong,
+.requisition_dash .part_one{
+	font-size: 0.750rem;
+}
+.stock_danger_box{
+	width:31%;
+	padding: 10px;
+	float:left;
+}
+.stock_danger_box.request{
+	width: 62% !important;
+}
+.stock_danger{
+	font-size: 0.750rem;
+	padding: 5px;
+	float:left;
+	border: 2px solid rgba(0,0,0,0.7);
+	width: 100%;
+}
+.stock_danger_title{
+	margin: -5px !important;
+	margin-bottom: 15px !important;
+	padding: 5px;
+	text-align:center;
+	background-color: #4B4B4B;
+}
+.stock_danger_title h3{
+	margin: 0px !important;
+}
+.stock_danger_title h3 strong{
+	color: #ffffff;
+}
+.card_info_box{
+	width: 19.25%;
+	padding:4px;
+	display:inline-block;
+	margin: 0 auto;
+}
+.card_info{
+	text-align:center;
+	padding:5px;
+}
+.card_info i{
+	display:inline-block;
+	font-size: 2rem;
+	font-weight:700;
+	color: #fff;
+	display:none;
+}
+.card_info strong{
+	font-weight: 700;
+	font-size: 1.5rem;
+	color: #fff;
+}
+
+md-input-container{
+	margin: 10px 0!important;
+}
+
+md-toolbar.md-hue-1:not(.md-menu-toolbar){
+	background-color:#d7d7d7 !important;
+}
+.icon_search{
+	color:#ffffff !important;
+}
+.list_stock{
+	margin:0px !important;
+	padding-left:0px;
+	list-style:none;
+	-webkit-padding-start: 0px;
+}
+.list_stock_item{
+	list-style:none;
+	margin:0px !important;
+}
+
+.list_stock_item_desc{
+	float:left;
+	padding: 5px;
+}
+.list_stock_item_nmbr{
+	float:right;
+	padding: 5px;
+}
+.list_stock_item{
+	min-height: 30px;
+	cursor:pointer;
+	position:relative;
+}
+.list_stock_item:BEFORE{
+	content: '-';
+	position:absolute;
+	left: -3px;
+	top: 5px;
+}
+/*ALL TRANSITIONS*/
+.list_stock_item{
+	-webkit-transition: all 0.25s ease-out;
+	-moz-transition: all 0.25s ease-out;
+	-o-transition: all 0.25s ease-out;
+	transition: all 0.25s ease-out;
+}
+.list_stock_item:hover{
+	background-color: #a7a7a7;
+}
+.card_info .value{
+	display:inline-block;
+	font-weight: 700;
+	font-size: 2.5rem;
+	color: #fff;
+}
+.orange{
+	background-color:#e38215;
+}
+.oranget{
+	color:#e38215;
+}
+.yellow{
+	background-color:#c4ba00;
+}
+.yellowt{
+	color:#c4ba00;
+}
+.green{
+	background-color:#145c36 ;
+}
+.greent{
+	color:#145c36 ;
+}
+.red{
+	background-color: #ff4a4a;
+}
+.redt{
+	color:#ff4a4a;
+}
+.black{
+	background-color:#1d1f21;
+}
+.blackt{
+	color:#1d1f21;
+}
+a:link{
+	color: #000000;
+}
+a{
+	color: #000000;
+}
+.md-whiteframe-4dp, .md-whiteframe-z2,
+.md-sidenav-left, md-sidenav {
+	box-shadow: none !important;
+}
+.md-sidenav-left, md-sidenav {
+	top: 45px !important;
+	height: 100%;
+}
+.primary-color{
+	background-color: #145c36!important;
+	color: #fff!important;
+}
+.fixed-menu{
+	position: fixed;
+	top: 0;
+	z-index: 1002;
+}
+.style-sidnav{
+	height: 74%;
+	position: relative;
+	bottom: 0;
+	top: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+	margin: 0px;
+	background-color: #d9d9d9;
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: rgba(0, 0, 0, 0.31);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(0, 0, 0, 0.31);
+}
+.logo_center{
+	text-align: center;
+	margin: 0 auto;
+	float: left;
+	cursor: pointer;
+}
+.md_icon_circle{
+	font-size: 4.000rem;
+	min-height: 64px;
+	min-width: 64px;
+}
+.box_user_mail{
+	font-size: 1rem;
+}
+.box_user_email span{
+	font-size: 1.125rem;
+}
+.md_toolbar_circle{
+	min-height: 21%;
+}
+
+.content{
+	padding-top: 60px;
+}
+.whitet{
+	color: #ffffff;
+}
+.menu_lists{
+	background-color: #145c36 !important;
+	color: white;
+}
+.text-center{
+	text-align: center;
+	text-transform: uppercase;
+}
+.text-left{
+	text-align: left;
+}
+.float-right{
+	float: right;
+}
+.float-left{
+	float: left;
+}
+.title_list strong{
+	font-weight: 900;
+	font-size: 2rem;
+}
+.status_on{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: #00b300;
+	border-color: #1aff1a;
+	-webkit-transition: all 0.3s; /* Safari */
+	transition: all 0.3s;
+}
+.status_off{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: #cc0000;
+	border-color: #ff1a1a;
+	-webkit-transition: all 0.3s; /* Safari */
+	transition: all 0.3s;
+}
+.status_on:hover,
+.status_off:hover{
+	opacity: 0.8;
+}
+.list_item .status_on,
+.list_item .status_off{
+	margin: 0 auto;
+}
+.list_item{
+	padding: 15px;
+	text-align: left;
+	border-bottom: 2px solid #ccccb3;
+}
+.divider{
+	width:100% !important;
+	height: 2px;
+	background-color: grey;
+	display: block !important;
+}
+.menu_lists > div{
+	padding:12px;
+}
+.menu_lists{
+	min-height: 50px !important;
+}
+md-sidenav{
+	position: fixed!important;
+}
+.scroll_div{
+	position:relative;
+	height: 80%;
+}
+.list,
+.menu_lists{
+	position:absolute;
+	width:80% !important;
+}
+.list{
+	overflow: auto;
+	padding-top:65px;
+	overflow-x:hidden;
+	height:74%;
+}
+
+md-toolbar:not(.md-menu-toolbar) {
+	background-color: #333;
+	color: #fff;
+}
+
+md-toolbar:not(.md-menu-toolbar) md-icon {
+	color: rgba(255, 255, 255, 0.87);
+	fill: rgba(255, 255, 255, 0.87);
+}
+.requisition_dash .content{
+	padding-top: 10px !important;
+}
+.requistion_dash {
+	padding: 10px;
+}
+
+
+table{
+	background-color: #fff;
+}
+
+md-toolbar.md-table-toolbar:not(.md-menu-toolbar).md-default {
+	/*background-color: #145c36!important;*/
+	background-color: #333 !important;
+	color: #fff;
+}
+
+md-dialog-actions .md-primary {
+	background-color: transparent!important;
+	color: #000!important;
+}
+
+.card-request{
+	min-height: 70px;
+	padding: 10px;
+}
+
+.label-request{
+	margin-top: -20px;
+	font-size: 18px;
+}
+
+.close-card{
+	position: relative;
+	top: -25px;
+	left: 13px;
+}
+
+md-toast {
+	position: absolute;
+	z-index: 3000;
+	box-sizing: border-box;
+	cursor: default;
+	padding: 10px;
+	opacity: 1;
+}
+
+.search_tables md-input-container input{
+	margin-top: 10px;
+}
+.search_tables md-input-container input{
+	padding-right: 15px;
+	background-image: url('../images/icon-search.png');
+	background-repeat: no-repeat;
+	background-position:right;
+	background-size: 15px;
+	width: 50%;
+	float:right;
+}
+.md-datepicker-input-container{
+	width: 150px;
+}
+md-fab-speed-dial.md-fab-top-right {
+	top: auto !important;
+	right: 20px !important;
+	bottom: 20px !important;
+	left: auto;
+	position: absolute;
+}
+md-table-container{
+	max-height: 90%;
+}
+.md-table-container{
+	max-height: 93% !important;
+}
+body > div > md-sidenav > md-content > md-list > md-list-item > div > span{
+	font-size: 0.750rem !important;
+	font-weight: 900 !important;
+}
+.fabSpeedDialdemoMoreOptions .md-fab-top-right {
+	top: 16px; }
+
+	@media (max-device-width: 600px) {
+		.fabSpeedDialdemoMoreOptions .md-fab-top-right {
+			top: 9px;
+			right: 9px;
+		}
+	}
+
+	.fabSpeedDialdemoMoreOptions .md-fab.demo-fab.trigger-fab:hover, .fabSpeedDialdemoMoreOptions .md-fab.demo-fab.trigger-fab.md-focused, .fabSpeedDialdemoMoreOptions .md-fab.demo-fab.action-fab:hover, .fabSpeedDialdemoMoreOptions .md-fab.demo-fab.action-fab.md-focused {
+		background-color: #333;
+	}
+
+	.fabSpeedDialdemoMoreOptions .md-fab.demo-fab.action-fab {
+		background-color: #aaa;
+	}
+
+	.fabSpeedDialdemoMoreOptions md-content div[flex="50"] {
+		padding: 15px;
+	}
+
+	.fabSpeedDialdemoMoreOptions md-fab-speed-dial {
+		margin-top: 89px;
+	}
+	.fabSpeedDialdemoMoreOptions md-fab-speed-dial md-fab-trigger {
+		transition: all 0.3s ease-in-out;
+		transform: scale(1);
+	}
+	.fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-scale.ng-hide-add.ng-hide-add-active, .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-fling.ng-hide-add.ng-hide-add-active {
+		display: flex !important;
+	}
+	.fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-scale.ng-hide md-fab-trigger, .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-fling.ng-hide md-fab-trigger {
+		transform: scale(0);
+	}
+
+	.fabSpeedDialdemoMoreOptions .intro {
+		padding-left: 5px;
+	}
+
+	.color-border{
+		height: 50px;
+		width: 7px;
+		background-color: #009a49;
+	}
+
+	.card-user{
+		display: inline-flex;
+		margin-bottom: 15px;
+		max-height: 55px!important;
+		min-height: 55px!important;
+		border-left: 5px solid #009a49;
+	}
+
+	.card-user span{
+		margin-top: 8px;
+		margin-left: 15px;
+	}
+
+	.card-user-city{
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 35px;
+	}
+	md-input-container{
+		padding-left:10px;
+		padding-right: 10px;
+	}
+	md-input-container label{
+		padding-left: 10px !important;
+	}
+	.box_container{
+		padding:10px;
+		margin: 5px;
+	}
+@media screen and (max-width: 640px) {
+	.logo_center img{
+		max-width: 100px;
+	}
+	.stock_danger_box{
+		width: 100%;
+	}
+}
+
+.title-card-dash {
+	padding: 10px 13px;
+	font-size: 20px;
+}
+	
+.hover:hover {
+ 	background-color: #ccc;
+ 	cursor: pointer;
+ }
+
+.row-cards {
+	margin-bottom: 15px;
+}
+
+.row-cards md-whiteframe {
+	background-color: #fff;
+}
+		
+.row-cards md-whiteframe div div {
+	padding: 20px;
+}
+#different-search .search_tables md-input-container input{
+	background-image: none !important;
+}
+#different-search ._md-datepicker-floating-label>md-datepicker .md-datepicker-button {
+    float: left !important;
+    margin-top: 8.5px !important;
+    margin-right: -40px !important;
+}
+#different-search .md-datepicker-triangle-button.md-button.md-icon-button{
+	margin-top:12px !important;
+}
+#different-search ._md-datepicker-floating-label._md-datepicker-has-calendar-icon.md-input-theme.flex{
+	padding-top: 18px !important;
+}

@@ -13,5 +13,7 @@ public interface InstituicaoInterface {
 	public void deleteInstituicao(long id);
 	
 	public Instituicao editarInstituicao(Instituicao instituicao);
+	
+	public Instituicao findById(Long id);
 
 }

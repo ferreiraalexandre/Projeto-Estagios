@@ -55,6 +55,7 @@ public class TurmaRest extends UtilRest {
 			return getResponseError(e);
 		}
 	}
+	
 	@DELETE
 	@Path("/deletar/{id}")
 	@Consumes("application/json")

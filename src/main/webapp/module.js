@@ -53,11 +53,14 @@ app.config(function($routeProvider) {
 	.when('/cadastroEstagio', {
 		templateUrl : 'projeto/estagio/cadastroEstagio.html',
 		controller : 'cadastroEstagioController'
+<<<<<<< HEAD
 	})
 	$routeProvider
 	.when('/login', {
 		templateUrl : 'login.html',
 		controller : 'LoginController'
+=======
+>>>>>>> branch 'master' of https://github.com/ferreiraalexandre/Projeto-Estagios.git
 	})
 
 
