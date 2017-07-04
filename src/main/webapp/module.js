@@ -7,6 +7,7 @@ app.config(function($routeProvider) {
 	$routeProvider
 	.when('/', {
 		templateUrl : 'projeto/estagio/estagio.html',
+		controller : 'estagioController'
 	})
 
 	$routeProvider
@@ -51,7 +52,12 @@ app.config(function($routeProvider) {
 	$routeProvider
 	.when('/cadastroEstagio', {
 		templateUrl : 'projeto/estagio/cadastroEstagio.html',
-		controller : 'estagioController'
+		controller : 'cadastroEstagioController'
+	})
+	$routeProvider
+	.when('/login', {
+		templateUrl : 'login.html',
+		controller : 'LoginController'
 	})
 
 
@@ -69,5 +75,18 @@ app.config(function($mdDateLocaleProvider) {
     	return moment(date).format('DD/MM/YYYY');
     };
     
+});
+
+app.run(function($rootScope, $http, $location, $localStorage) {
+	// redirect to login page if not logged in and trying to access a restricted page
+	$rootScope.$on('$locationChangeStart', function (event, next, current) {
+		var publicPages = ['/login'];
+		var restrictedPage = publicPages.indexOf($location.path()) === -1;
+		if (restrictedPage && !$localStorage.currentUser) {
+			$location.path('/login');
+		}else if(publicPages.indexOf($location.path()) != -1 && $localStorage.currentUser){
+			$location.path('/');
+		}
+	});
 });
 
