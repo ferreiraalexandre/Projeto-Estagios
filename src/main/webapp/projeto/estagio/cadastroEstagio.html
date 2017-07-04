@@ -37,7 +37,7 @@
 									
 					<md-input-container  class="flex">
 						<label for="input_55">CPF</label>
-						<input name="name" ng-model="estagio.cpf"  ng-required="true" ng-trim="false">
+						<input name="name" ng-model="estagio.cpf" ui-mask="999.999.999-99" ng-required="true" ng-trim="false">
 					</md-input-container>
 				</div>
 
@@ -46,7 +46,7 @@
 					<md-input-container id="inputsEstudnte">
 						<label>Turma</label>
 						<md-select ng-model="estagio.turma" id="estagioTurma" ng-required="selectRequired">
-							<md-option ng-repeat="item in turmas" ng-selected="item.id == estagio.turma.id" ng-value="item" >
+							<md-option ng-repeat="item in turmas" ng-selected="teste" ng-value="item" >
 								{{item.nome}}
 							</md-option>
 						</md-select>
@@ -55,7 +55,7 @@
 					<md-input-container >
 						<label>Estudante</label>
 						<md-select ng-model="estagio.estudante" id="estagioEstudante" ng-required="selectRequired">
-							<md-option ng-repeat="item in estudantes" ng-selected="item.id == estagio.estudante.id" ng-value="item" >
+							<md-option ng-if="estagio.turma && estagio.turma.id == item.turma.id" ng-repeat="item in estudantes"  ng-value="item" >
 								{{item.nome}}
 							</md-option>
 						</md-select>
@@ -79,7 +79,7 @@
 									
 					<md-input-container  class="flex">
 						<label for="input_55">CPF</label>
-						<input name="name" ng-model="estagio.cpf"  ng-required="true" ng-trim="false">
+						<input name="name" ng-model="estagio.cpf" ui-mask="999.999.999-99" ng-required="true" ng-trim="false">
 					</md-input-container>
 				</div>
 				
