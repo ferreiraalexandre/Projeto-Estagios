@@ -38,7 +38,7 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 		};
   };
   
-  $scope.menuEstudante = function (link) {
+  $scope.menuEstudante = function (link, data) {
 	  if(link == "adicionar"){
 		  $scope.adicionarEstudante = true;
 		  $scope.listarEstudante = false;
@@ -56,6 +56,9 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 		  $scope.adicionarEstudante = false;
 		  $scope.listarEstudante = false;
 		  $scope.title = "Editar de Estudade"
+		  $scope.estagio.estudante = data.nome;
+		  $scope.estagio.turma = data.turma.nome;
+		  $scope.estagio.cpf = data.cpf;
 	  }
 
 	  
