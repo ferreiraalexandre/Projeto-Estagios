@@ -46,9 +46,7 @@ public class EmpresaRest extends UtilRest {
 
 		try{
 			EmpresaService service = new EmpresaService(); 
-
 			List<Empresa> e = service.listEmpresa();
-
 			return getResponseList(e);
 		} catch (Exception e) {
 			return getResponseError(e);
@@ -61,10 +59,9 @@ public class EmpresaRest extends UtilRest {
 	public Response editar(String json) {
 
 		try{
-			Empresa emp = getObjectMapper().readValue(json, Empresa.class);
 			
-			EmpresaService service = new EmpresaService(); 
-					
+			EmpresaService service = new EmpresaService(); 			
+			Empresa emp = getObjectMapper().readValue(json, Empresa.class);
 			return getResponseEdit(service.editarEmpresa(emp));
 		}catch(Exception e){
 			return getResponseError(e);
