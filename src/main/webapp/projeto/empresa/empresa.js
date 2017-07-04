@@ -162,7 +162,9 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			
 		//Função de editar empresa no Banco de Dados
 		$scope.editarEmpresa = function (data) {
-			data.data = moment(data.data).format('DD/MM/YYYY');
+			data.data = moment(data.data).format('YYYY-MM-DD');
+			//data.data = data.data+1;
+			//console.log("data", data.data);
 			EmpresaService.putEmpresa(data, function (response) {
 				$mdDialog.hide(data);
 				toastr.success(response.message);

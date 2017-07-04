@@ -36,10 +36,6 @@ public class Estagio {
 	@Temporal(TemporalType.DATE)
 	private Date dataRescisao;
 
-	@Column(name = "dataVisitaEmpresa", nullable = false)
-	@Temporal(TemporalType.DATE)
-	private Date dataVisitaEmpresa;
-
 	@Column(name = "situacao", nullable = false)
 	private String situacao;
 
@@ -106,14 +102,6 @@ public class Estagio {
 
 	public void setDataRescisao(Date dataRescisao) {
 		this.dataRescisao = dataRescisao;
-	}
-
-	public Date getDataVisitaEmpresa() {
-		return dataVisitaEmpresa;
-	}
-
-	public void setDataVisitaEmpresa(Date dataVisitaEmpresa) {
-		this.dataVisitaEmpresa = dataVisitaEmpresa;
 	}
 
 	public String getSituacao() {

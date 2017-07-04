@@ -90,7 +90,6 @@ public class EstagioRest extends UtilRest {
 				estagio.setDataFim(formataData(jsonObject.optString("dataFim")));
 				estagio.setDataInicio(formataData(jsonObject.optString("dataInicio")));
 				estagio.setDataRescisao(formataData(jsonObject.optString("dataRescisao")));
-				estagio.setDataVisitaEmpresa(formataData(jsonObject.optString("dataVisitaEmpresa")));
 				estagio.setEmpresa(empresaJPA.findById(jsonObject.optJSONObject("empresa").optLong("id")));
 				estagio.setEstagioObrigatorio(jsonObject.optBoolean("obrigatorio"));
 				estagio.setEstudante(service.addEstudante(estudante));
