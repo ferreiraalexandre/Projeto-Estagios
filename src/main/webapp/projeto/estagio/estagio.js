@@ -43,54 +43,10 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     page: 1
   };
     
-  $scope.editObs = function (event, estagio) {
-    event.stopPropagation(); // in case autoselect is enabled
-    
-    var editDialog = {
-      modelValue: estagio.obs,
-      placeholder: 'Adicionar observações',
-      save: function (input) {
-        if(input.$modelValue === 'Donald Trump') {
-          input.$invalid = true;
-          return $q.reject();
-        }
-        if(input.$modelValue === 'Bernie Sanders') {
-          return estagio.obs = 'FEEL THE BERN!'
-        }
-        estagio.obs = input.$modelValue;
-      },
-      targetEvent: event,
-      title: 'Adicionar observações',
-      validators: {
-        'md-maxlength': 30
-      }
-    };
-    
-    var promise;
-    
-    if($scope.options.largeEditDialog) {
-      promise = $mdEditDialog.large(editDialog);
-    } else {
-      promise = $mdEditDialog.small(editDialog);
-    }
-    
-    promise.then(function (ctrl) {
-      var input = ctrl.getInput();
-      
-      input.$viewChangeListeners.push(function () {
-        input.$setValidity('test', input.$modelValue !== 'test');
-      });
-    });
-  };
-  
   $scope.toggleLimitOptions = function () {
     $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
   };
-  
-  $scope.getInstituicaoes = function () {
-    return ['AC Serviços de Recrutamento e seleção LTDA ME', 'Senai', 'IEL'];
-  };
-  
+    
   $scope.getOpcao = function () {
 	    return ['Sim', 'Não'];
 	  };
