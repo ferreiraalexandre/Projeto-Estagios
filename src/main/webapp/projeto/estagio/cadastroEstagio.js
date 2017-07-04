@@ -21,16 +21,15 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
   $scope.$parent.links = false;
   $scope.cardCadastroEstagio = {"margin-top" : "60px"}
   
+  console.log($scope.teste);
+  
+  
   $scope.getListSelect = function () {
 	  EstagioService.getListSelect(function (response) {
-		  $scope.empresas = response.data.empresa;
-		  //date:'dd/MM/yyyy' : 'UTC'
+		  $scope.empresas = response.data.empresa;			
+		  $scope.estagio.dataVisitaEmpresa = new Date(response.data.empresa[0].data);
 		  
-		  var t = new Date(moment(response.data.empresa[0].data).format('YYYY-MM-DD HH:mm'));
 
-		  $scope.dataVisitaEmpresa = t
-		  
-		  $scope.dataVisitaEmpresa = response.data.empresa[0].data;
 		  $scope.instituicoes = response.data.instituicao;
 		  $scope.turmas = response.data.turma;
 		  $scope.estudantes = response.data.estudante;
