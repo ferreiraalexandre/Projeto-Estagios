@@ -1,5 +1,5 @@
 <!DOCTYPE link PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html ng-app="projeto-estagios">
 
 <head>
 
@@ -16,9 +16,8 @@
 
  
 
-<div ng-app="LoginForm">
-
-    <md-content ng-app="LoginForm" ng-controller="Ctrl" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
+<div >
+    <md-content ng-app="LoginForm" ng-controller="LoginController" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
       <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
         <md-toolbar>
           <div class="md-toolbar-tools">
@@ -43,7 +42,7 @@
                 <div ng-message="md-maxlength" class="my-message">Too long.</div>
               </div>
             </md-input-container>
-            <md-button ng-disabled="!Form.$valid" ng-click="vm.submit()" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
+            <md-button ng-disabled="!Form.$valid" ng-click="auth('oi')" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
           </form>
         </md-card-content>
       </md-card>
@@ -54,18 +53,34 @@
 
 
 <script src="projeto/js/angular.min.js"></script>
-<script src="projeto/js/angular-route/angular-route.min.js"></script>
-<script src="projeto/js/angularjs-toaster/toaster.min.js"></script>
-<script src="projeto/js/angular-resource.min.js"></script>
-<script src="projeto/js/angular-animate.min.js"></script>
-<script src="projeto/js/angular-aria.min.js"></script>
-<script src="projeto/js/angular-messages.min.js"></script>
-<script src="projeto/js/angular-material.min.js"></script>
-<script src="projeto/js/angular-material-icons.min.js"></script>
-<script src="projeto/js/angular-toastr.js"></script>
-<script src="projeto/js/md-data-table.js"></script>		
-<script src="projeto/js/ui-bootstrap-tpls.min.js"></script>
-<script src="projeto/login/login.js"></script>
+		<script src="projeto/js/angular-route/angular-route.min.js"></script>
+		<script src="projeto/js/angularjs-toaster/toaster.min.js"></script>
+		<script src="projeto/js/angular-resource.min.js"></script>
+		<script src="projeto/js/angular-animate.min.js"></script>
+		<script src="projeto/js/angular-aria.min.js"></script>
+		<script src="projeto/js/angular-messages.min.js"></script>
+		<script src="projeto/js/angular-material.min.js"></script>
+		<script src="projeto/js/angular-material-icons.min.js"></script>
+		<script src="projeto/js/angular-toastr.js"></script>
+		<script src="projeto/js/md-data-table.js"></script>		
+		<script src="projeto/js/ui-bootstrap-tpls.min.js"></script>
+		<script src="projeto/js/angular-mask.min.js"></script>
+		<script src="projeto/js/moment.js"></script>
+	
+		<script src="projeto/js/jquery.js"></script>
+		<script src="projeto/js/angular-br-filters.min.js"></script>
+		<script src="projeto/js/bootstrap.js"></script>
+		<script src="module.js"></script>
+		<script src="projeto/service/services.js"></script>
+		<script src="projeto/estagio/estagio.js"></script>
+		<script src="projeto/estagio/cadastroEstagio.js"></script>
+		<script src="projeto/usuario/usuario.js"></script>
+		<script src="projeto/unidadeEnsino/unidadeEnsino.js"></script>
+		<script src="projeto/turma/turma.js"></script>
+		<script src="projeto/empresa/empresa.js"></script>
+		<script src="projeto/curso/curso.js"></script>
+		<script src="projeto/instituicao/instituicao.js"></script>
+		<script src="projeto/service/login.js"></script>
 
 </body>
 </html>

@@ -27,9 +27,9 @@ public class LoginRest extends UtilRest  {
 	public Response auth(String json)  {
 		try {
 			Usuario e = getObjectMapper().readValue(json, Usuario.class);
-
-			LoginService service = this.service.newInstance();
-			return getResponseList(service.auth(e));
+			System.out.println("CHEGUEI AQUI");
+			
+			return getResponseList("asodif");
 		} catch (Exception e) {
 			return getResponseError(e);
 		}

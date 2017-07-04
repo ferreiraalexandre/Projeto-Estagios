@@ -1,9 +1,9 @@
-project.factory('LoginService',['$resource',  function ($resource) {
-  return $resource(project.pathPrivate + '/login/auth', {}, {
-    auth: { method: 'POST', params: {}, isArray: false },
-  })
+app.factory('LoginService',['$resource',  function ($resource) {
+	  return $resource(app.pathRest + '/login/:method/:data', {}, {
+		  auth: { method: 'POST', params: {method: 'auth'}}, 
+	  })
 }]);
-  
+
 app.factory('UsuarioService',['$resource',  function ($resource) {
 	  return $resource(app.pathRest + '/usuario/:method/:data', {}, {
 		  postUsuario: { method: 'POST', params: {method: 'salva'}}, 
