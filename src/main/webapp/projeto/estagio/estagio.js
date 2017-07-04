@@ -46,10 +46,6 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.toggleLimitOptions = function () {
     $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
   };
-    
-  $scope.getOpcao = function () {
-	    return ['Sim', 'Não'];
-	  };
   
   $scope.loadStuff = function () {
     $scope.promise = $timeout(function () {
