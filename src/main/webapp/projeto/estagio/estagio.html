@@ -7,11 +7,11 @@
       	      	
       </md-button>
 
-      <md-button >
+      <md-button ng-click="iconEstagio('editar')">
       	<ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
       </md-button>
 
-      <md-button  id="buttonRemove" >
+      <md-button  ng-click="iconEstagio('remover')" id="buttonRemove" >
         <ng-md-icon id="iconRemove" icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
       </md-button>
     </md-grid-tile>
@@ -47,7 +47,7 @@
       	<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
      </div>
  
-    <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selected" md-progress="promise">
+    <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selecionados" md-progress="promise">
       <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
         <tr md-row>
           <th md-column md-order-by="nome"><span>Nome</span></th>

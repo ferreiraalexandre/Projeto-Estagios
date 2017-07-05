@@ -108,7 +108,8 @@ public class EstagioRest extends UtilRest {
 				Estudante estudante = new Estudante();
 				Estagio estagio = new Estagio();
 				
-				estudante.setNome(jsonObject.optString("editEstudante"));
+				estudante.setId(jsonObject.optJSONObject("editEstudante").optLong("id"));
+				estudante.setNome(jsonObject.optJSONObject("editEstudante").optString("nome"));
 				estudante.setCpf(jsonObject.optString("editCpf"));
 				estudante.setTurma(turmaJPA.findById(jsonObject.optLong("editTurma")));
 				
@@ -121,7 +122,7 @@ public class EstagioRest extends UtilRest {
 				estagio.setDataRescisao(formataData(jsonObject.optString("dataRescisao")));
 				estagio.setEmpresa(empresaJPA.findById(jsonObject.optJSONObject("empresa").optLong("id")));
 				estagio.setEstagioObrigatorio(jsonObject.optBoolean("obrigatorio"));
-				estagio.setEstudante(service.addEstudante(estudante));
+				estagio.setEstudante(estudante);
 				estagio.setInstituicao(instituicaoJPA.findById(jsonObject.optJSONObject("instituicao").optLong("id")));
 				estagio.setObservacao(jsonObject.optString("observacao"));
 				estagio.setSituacao(jsonObject.optString("situacao"));

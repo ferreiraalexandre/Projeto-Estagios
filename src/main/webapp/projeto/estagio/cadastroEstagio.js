@@ -20,9 +20,8 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
   $scope.$parent.rodape = false;
   $scope.$parent.links = false;
   $scope.cardCadastroEstagio = {"margin-top" : "60px"}
-  
+  $scope.$parent.icon;
   console.log($scope.teste);
-  
   
   $scope.getListSelect = function () {
 	  EstagioService.getListSelect(function (response) {
