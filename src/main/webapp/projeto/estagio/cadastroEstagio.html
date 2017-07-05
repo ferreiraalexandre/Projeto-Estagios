@@ -13,7 +13,7 @@
 							<ng-md-icon id="list" icon="list" style="fill: #abcdef" size="36"></ng-md-icon>
 						</md-button>
 							
-						<md-button ng-click="menuEstudante('editar', estagio.estudante)" id="buttonCreateDisabled" ng-disabled="buttonEditDisabled">
+						<md-button ng-click="menuEstudante('editar', estagio.estudante)" id="buttonCreateDisabled" ng-disabled="!estagio.estudante">
 							<ng-md-icon id="editar" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
 						</md-button>
 				
@@ -74,7 +74,7 @@
 
 					<md-input-container  class="flex">
 						<label for="input_55">Novo Estudante</label>
-						<input name="name" ng-model="estagio.editEstudante"  ng-required="true" ng-trim="false">
+						<input name="name" ng-model="estagio.editEstudante.nome"  ng-required="true" ng-trim="false">
 					</md-input-container>
 									
 					<md-input-container  class="flex">

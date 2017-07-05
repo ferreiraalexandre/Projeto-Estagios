@@ -16,5 +16,9 @@ public class EstudanteJPA extends JPAAbstract<Estudante, Long> implements Estuda
 		return this.add(estudante);
 	}
 
+	public Estudante editarEstudante(Estudante estudante) {
+		return this.edit(estudante);
+	}
+
 
 }

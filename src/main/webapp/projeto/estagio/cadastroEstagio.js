@@ -16,7 +16,7 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
   $scope.estagio = {};
   $scope.estagio.cadastroSGN = true;
   $scope.estagio.estagioObrigatorio = true;
-      
+  $scope.buttonEditDisabled = true;
   $scope.$parent.rodape = false;
   $scope.$parent.links = false;
   $scope.cardCadastroEstagio = {"margin-top" : "60px"}
@@ -56,11 +56,10 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 		  $scope.adicionarEstudante = false;
 		  $scope.listarEstudante = false;
 		  $scope.title = "Editar de Estudade"
-		  $scope.estagio.editEstudante = data.nome;
+		  $scope.estagio.editEstudante = data;
 		  $scope.estagio.editCpf = data.cpf;
 		  $scope.turmaEditar = data.turma.id;
 	  }
-
 	  
   };
   
