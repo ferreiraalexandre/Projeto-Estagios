@@ -56,9 +56,9 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 		  $scope.adicionarEstudante = false;
 		  $scope.listarEstudante = false;
 		  $scope.title = "Editar de Estudade"
-		  $scope.estagio.estudante = data.nome;
-		  $scope.estagio.turma = data.turma.nome;
-		  $scope.estagio.cpf = data.cpf;
+		  $scope.estagio.editEstudante = data.nome;
+		  $scope.estagio.editCpf = data.cpf;
+		  $scope.turmaEditar = data.turma.id;
 	  }
 
 	  
