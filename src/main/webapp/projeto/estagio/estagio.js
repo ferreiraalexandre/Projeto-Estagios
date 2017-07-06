@@ -6,8 +6,11 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService', 'toastr',
-                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr) {
+app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService', 'toastr', 'Scopes',
+                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr ,  Scopes) {
+  
+  Scopes.store('estagioController', $scope);//Armazena o scope no service para se utilizado por outra controller
+  
   'use strict';
   $scope.title = "Adicionar Estudade"
   $scope.selecionados = [];
@@ -74,8 +77,9 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 //Função para mudar telas conforme menu 
   $scope.iconEstagio = function (icon) {
 	  if(icon == "editar"){
+		 $scope.icon = "editar";
 		  $location.path("/cadastroEstagio");
-		  $scope.estagio = angular.copy($scope.selecionados[0]);
+		  
 	  }
   };
 

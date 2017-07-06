@@ -6,13 +6,12 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService', 'toastr',
-                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr) {
+app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService', 'toastr', 'Scopes',
+                                    function ($mdEditDialog,   $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr, Scopes) {
   'use strict';
   $scope.title = "Adicionar Estudade"
   $scope.adicionarEstudante = true;	  
   $scope.items = ['Nome', 'Curso', 'Empresa'];
-  $scope.paginaAtualizado = false;
   $scope.estagio = {};
   $scope.estagio.cadastroSGN = true;
   $scope.estagio.estagioObrigatorio = true;
@@ -22,6 +21,8 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
   $scope.cardCadastroEstagio = {"margin-top" : "60px"}
   $scope.$parent.icon;
   console.log($scope.teste);
+  $scope.selectRequired = true;
+  $scope.selecionados = [];
   
   $scope.getListSelect = function () {
 	  EstagioService.getListSelect(function (response) {
@@ -29,9 +30,16 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 		  $scope.instituicoes = response.data.instituicao;
 		  $scope.turmas = response.data.turma;
 		  $scope.estudantes = response.data.estudante;
-		  $scope.paginaAtualizado = true;
-				
-		}),
+		  $scope.selecionados = Scopes.get('estagioController').selecionados;
+		  if(icon == "editar"){
+			  
+		  }
+		  if(icon == "remover"){
+			  
+		  }
+
+ 	  
+	  }),
 		function (error) {
 			
 		};
@@ -69,13 +77,18 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 		data.dataVisitaEmpresa = moment(data.dataVisitaEmpresa).format('YYYY-MM-DD');
 		EstagioService.postEstagio(data, function (response) {
 		toastr.success(response.message);
-			
+		console.log("go", path);
 		var  link = "/";
 		$location.path(link);
 	
 		}),
 			function (error) {
 		};
+	};
+	
+	// Função do botão "Cancelar"do "CadastroEstagio.html"
+	$scope.go = function ( path ) {
+		$location.path(path);
 	};
 	
 	//Chama função para buscar estagios

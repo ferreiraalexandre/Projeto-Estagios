@@ -78,3 +78,17 @@ app.factory('EstagioService',['$resource',  function ($resource) {
  function resultError(response) {
 	alert(response.data.message + "\n" + response.data.description);
 };
+
+app.factory('Scopes', function ($rootScope) {
+	    var mem = {};
+	
+	    return {
+	        store: function (key, value) {
+	            mem[key] = value;
+	        },
+	        get: function (key) {
+	            return mem[key];
+	       }
+	    };
+	});
+
