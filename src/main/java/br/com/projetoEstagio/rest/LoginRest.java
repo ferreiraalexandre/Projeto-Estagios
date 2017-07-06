@@ -3,15 +3,12 @@ package br.com.projetoEstagio.rest;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import org.json.JSONArray;
+import org.json.JSONObject;
 
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.restUtil.UtilRest;
@@ -23,13 +20,17 @@ public class LoginRest extends UtilRest  {
 
 	@POST
 	@Path("/auth")
-	@Consumes("application/*")
+	@Consumes("application/json")
+	@Produces("application/json")
 	public Response auth(String json)  {
 		try {
-			Usuario e = getObjectMapper().readValue(json, Usuario.class);
-			System.out.println("CHEGUEI AQUI");
+			JSONObject user = new JSONObject(json);
 			
-			return getResponseList("asodif");
+			
+			LoginService login = new LoginService();
+									
+						
+			return getResponseList(login.buscarUsuario(user.optString("email"), user.optString("password")));
 		} catch (Exception e) {
 			return getResponseError(e);
 		}

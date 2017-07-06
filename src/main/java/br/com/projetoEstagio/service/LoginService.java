@@ -4,11 +4,27 @@ import javax.persistence.NoResultException;
 
 import br.com.projetoEstagio.auth.Auth;
 import br.com.projetoEstagio.entity.Usuario;
+import br.com.projetoEstagio.jpa.LoginJPA;
+import br.com.projetoEstagio.jpa.UsuarioJPA;
 import br.com.projetoEstagio.rest.Encryption;
 
 public class LoginService{
 	
-	public Usuario auth(Usuario e){
+	public Usuario buscarUsuario(String email, String password){
+		
+		UsuarioJPA user = new UsuarioJPA();
+		
+		Usuario usuario = user.buscar(email);
+		
+		if(usuario.getSenha().compareTo(password) == 0){
+			System.out.println("sucesso");
+		}
+				
+		return usuario;
+		
+	}
+	
+	/*public Usuario auth(Usuario e){
 		try{
 			Encryption descrpt = new Encryption();
 			Auth hashAuth = new Auth();
@@ -25,5 +41,5 @@ public class LoginService{
 		}catch(NoResultException AE){
 			throw new Exception();
 		}
-	}
+	}*/
 }
