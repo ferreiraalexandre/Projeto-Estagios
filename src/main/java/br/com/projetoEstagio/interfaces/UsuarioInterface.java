@@ -17,4 +17,6 @@ public interface UsuarioInterface {
 	public List<Usuario> buscarPorId(Long id);
 	
 	public List<Usuario> listCoordenadores();
+	
+	public Usuario buscar(String email);
 }
