@@ -10,7 +10,7 @@ import com.sun.jersey.spi.container.ContainerRequestFilter;
 import br.com.projetoEstagio.auth.Auth;
 import br.com.projetoEstagio.restUtil.UtilRest;
 
-@PreMatching
+/*@PreMatching
 @Priority(Priorities.AUTHORIZATION)
 @Provider
 public class interceptor extends UtilRest implements ContainerRequestFilter{
@@ -52,4 +52,4 @@ public class interceptor extends UtilRest implements ContainerRequestFilter{
         }
        
     }
-}
+}*/

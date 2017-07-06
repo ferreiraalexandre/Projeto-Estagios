@@ -14,8 +14,8 @@ import br.com.projetoEstagio.entity.Usuario;
 		 *            a ser procurado.
 		 * @return quantidade de usuarios que possuem aquele email.
 		 */
-		public int getEmailAmount(String email);
-		public Usuario getObject(String email, String password);
+		
+		public Usuario getObject(String email);
 	
 	
 
