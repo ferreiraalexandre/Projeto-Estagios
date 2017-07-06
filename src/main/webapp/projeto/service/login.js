@@ -13,10 +13,19 @@ app.controller('LoginController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 	
 	$scope.auth = function(data){
 		
-		LoginService.auth(function (response) {
-			console.log(response);
-			
-		});		
+		if (data.password) {
+			data.password = btoa(data.password);
+		}
+		LoginService.auth(data, function (response) {
+			if (response.data) {
+				//$localStorage.currentUser = { email: User.email, token: response.data.token, permission: response.data.permission, adm: response.data.adm };
+				$scope.getData();
+				
+			}
+		}, function (err) {
+			data.password = "";
+			toastr.info(err.data.message);
+		})
 	}
-	
+		
 }]);

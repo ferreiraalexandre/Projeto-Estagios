@@ -10,7 +10,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
                              function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr) {
   'use strict';
   $scope.title = "Adicionar Estudade"
-  $scope.selected = [];
+  $scope.selecionados = [];
   $scope.limitOptions = [5, 10, 15];
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.selectedItem;
@@ -70,8 +70,15 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.menuClick = function (link) {
 	$location.path(link);
   };
-
 	
+//Função para mudar telas conforme menu 
+  $scope.iconEstagio = function (icon) {
+	  if(icon == "editar"){
+		  $location.path("/cadastroEstagio");
+		  $scope.estagio = angular.copy($scope.selecionados[0]);
+	  }
+  };
+
 	//Busca estagios do banco e lista na tabela
 	$scope.getEstagio = function () {
 		EstagioService.getList(function (response) {

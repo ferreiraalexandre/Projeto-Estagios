@@ -135,6 +135,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			console.log("data", $scope.empresa.data);
 			$scope.empresa.data = new Date($scope.empresa.data);
 			$scope.usuarios = retornoModal.usuarios;
+			$scope.selectRequired = true;
 		}else{
 			$scope.title = "Adicionar Empresa";
 			$scope.novo = true;
