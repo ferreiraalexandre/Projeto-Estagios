@@ -6,13 +6,12 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService', 'toastr',
-                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr) {
+app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService', 'toastr', 'Scopes',
+                                    function ($mdEditDialog,   $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr, Scopes) {
   'use strict';
   $scope.title = "Adicionar Estudade"
   $scope.adicionarEstudante = true;	  
   $scope.items = ['Nome', 'Curso', 'Empresa'];
-  $scope.paginaAtualizado = false;
   $scope.estagio = {};
   $scope.estagio.cadastroSGN = true;
   $scope.estagio.estagioObrigatorio = true;
@@ -23,6 +22,7 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
   $scope.$parent.icon;
   console.log($scope.teste);
   $scope.selectRequired = true;
+  $scope.selecionados = [];
   
   $scope.getListSelect = function () {
 	  EstagioService.getListSelect(function (response) {
@@ -30,9 +30,16 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 		  $scope.instituicoes = response.data.instituicao;
 		  $scope.turmas = response.data.turma;
 		  $scope.estudantes = response.data.estudante;
-		  $scope.paginaAtualizado = true;
-				
-		}),
+		  $scope.selecionados = Scopes.get('estagioController').selecionados;
+		  if(icon == "editar"){
+			  
+		  }
+		  if(icon == "remover"){
+			  
+		  }
+
+ 	  
+	  }),
 		function (error) {
 			
 		};
