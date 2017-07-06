@@ -22,6 +22,7 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
   $scope.cardCadastroEstagio = {"margin-top" : "60px"}
   $scope.$parent.icon;
   console.log($scope.teste);
+  $scope.selectRequired = true;
   
   $scope.getListSelect = function () {
 	  EstagioService.getListSelect(function (response) {
@@ -69,13 +70,18 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 		data.dataVisitaEmpresa = moment(data.dataVisitaEmpresa).format('YYYY-MM-DD');
 		EstagioService.postEstagio(data, function (response) {
 		toastr.success(response.message);
-			
+		console.log("go", path);
 		var  link = "/";
 		$location.path(link);
 	
 		}),
 			function (error) {
 		};
+	};
+	
+	// Função do botão "Cancelar"do "CadastroEstagio.html"
+	$scope.go = function ( path ) {
+		$location.path(path);
 	};
 	
 	//Chama função para buscar estagios
