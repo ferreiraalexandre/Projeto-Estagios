@@ -30,11 +30,24 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 		  $scope.instituicoes = response.data.instituicao;
 		  $scope.turmas = response.data.turma;
 		  $scope.estudantes = response.data.estudante;
+
 		  $scope.selecionados = Scopes.get('estagioController').selecionados;
-		  if(icon == "editar"){
+		  if(Scopes.get('estagioController').icon == "editar"){
+			  $scope.editarEstudante = true;
+			  $scope.adicionarEstudante = false;
+			  $scope.listarEstudante = false;
+			  $scope.title = "Editar de Estudade"
+				  
+			  $scope.estagio = $scope.selecionados[0];
+			  $scope.estagio.editEstudante = $scope.selecionados[0].estudante;
+			  $scope.estagio.editCpf = $scope.selecionados[0].estudante.cpf;
+			  $scope.turmaEditar = $scope.selecionados[0].turma.id;
+			  $scope.estagio.dataInicio = new Date($scope.selecionados[0].dataInicio);
 			  
+			  new Date(Date.UTC(96, 11, 1, 0, 0, 0));
+			  //$scope.estagio.dataInicio = new Date("2014-01-01 11:00:00 UTC");
 		  }
-		  if(icon == "remover"){
+		  if(Scopes.get('estagioController').icon == "remover"){
 			  
 		  }
 

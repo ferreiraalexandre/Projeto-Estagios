@@ -77,8 +77,8 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 //Função para mudar telas conforme menu 
   $scope.iconEstagio = function (icon) {
 	  if(icon == "editar"){
-		 $scope.icon = "editar";
-		  $location.path("/cadastroEstagio");
+		 $scope.icon = icon;
+		 $location.path("/cadastroEstagio");
 		  
 	  }
   };
