@@ -19,12 +19,10 @@ public class UtilRest {
 	
 	
 	public ObjectMapper getObjectMapper() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-		dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 		return new ObjectMapper()
 				.setDateFormat(dateFormat)
-				.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS,
-						false)
+				.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
 				.configure(SerializationFeature.INDENT_OUTPUT, true)
 				.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
 	}

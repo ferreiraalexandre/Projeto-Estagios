@@ -9,6 +9,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
@@ -16,6 +17,7 @@ import javax.ws.rs.core.Response;
 import org.json.JSONObject;
 import org.json.JSONString;
 
+import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Estudante;
 import br.com.projetoEstagio.entity.Turma;
@@ -25,7 +27,9 @@ import br.com.projetoEstagio.jpa.InstituicaoJPA;
 import br.com.projetoEstagio.jpa.TurmaJPA;
 import br.com.projetoEstagio.pojo.EstagioPojo;
 import br.com.projetoEstagio.restUtil.UtilRest;
+import br.com.projetoEstagio.service.EmpresaService;
 import br.com.projetoEstagio.service.EstagioService;
+import br.com.projetoEstagio.service.EstudanteService;
 
 @Path("/estagio")
 public class EstagioRest extends UtilRest {
@@ -140,15 +144,42 @@ public class EstagioRest extends UtilRest {
 			return getResponseError(e);
 		}
 	}
+	
+	@PUT
+	@Path("/editar")
+	@Produces("application/json")
+	public Response editar(String json) {
 
+		try{
+			JSONObject jsonObject = new JSONObject(json);
+			EstagioService estagioService = new EstagioService(); 
+			EstudanteService estudanteService = new EstudanteService(); 
+			
+			if(!jsonObject.isNull("editEstudante")){
+				Estudante estudante = getObjectMapper().readValue(jsonObject.optJSONObject("editEstudante").toString(), Estudante.class);
+				
+				jsonObject.remove("editEstudante");
+				jsonObject.remove("editTurma");
+				jsonObject.remove("editCpf");
+				
+				jsonObject.put("estudante", estudanteService.editarEstudante(estudante));
+			
+				Estagio estagio = getObjectMapper().readValue(jsonObject.toString(), Estagio.class);
+				return getResponseEdit(estagioService.editarEstagio(estagio));
+			}
+			return null;
+		}catch(Exception e){
+			return getResponseError(e);
+		}
+	}
 	
 	public static Date formataData(String data) throws Exception { 
 		if (data == null || data.equals(""))
 			return null;
         Date date = null;
         try {
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            date = (java.util.Date)formatter.parse(data);
+        	DateFormat  formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+            date = formatter.parse(data);
         } catch (ParseException e) {            
             throw e;
         }

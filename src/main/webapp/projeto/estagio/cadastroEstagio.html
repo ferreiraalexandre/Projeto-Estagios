@@ -1,7 +1,7 @@
     <md-card ng-style="cardCadastroEstagio">
-    	<h2 class="md-title">Cadastro de Estágio</h2>
+    	<h2 class="md-title">{{titleEstagio}}</h2>
 		<md-card >
-			<h2 class="md-title">{{title}}</h2>
+			<h2 class="md-title">{{titleEstudante}}</h2>
 			<form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
 				<md-grid-list md-cols="1"  md-row-height="64px" >
 					<md-grid-tile id="listaEsquerda">
@@ -162,7 +162,8 @@
 			</form>
 		
 			<div class="md-actions">
-    			<button class="md-primary md-button md-ink-ripple" type="button" ng-click="adicionarEstagio(estagio)" ng-disabled="estagio.$invalid"><span>Salvar</span></button>
+    			<button class="md-primary md-button md-ink-ripple" type="button" ng-click="adicionarEstagio(estagio)" ng-show="novo" ng-disabled="formEstagio.$invalid"><span>Adicionar</span></button>
+   				<button class="md-primary md-button md-ink-ripple" type="button" ng-click="editarEstagio(estagio)" ng-show="editar" ng-disabled="formEmpresa.$invalid"><span>Salvar</span></button>
    				<button class="md-primary md-button md-ink-ripple" type="button" ng-click="go('/')" aria-label="Cancel"><span>Cancelar</span></button>
 			</div>
 		</md-card>

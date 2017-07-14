@@ -1,6 +1,6 @@
 package br.com.projetoEstagio.entity;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,20 +20,21 @@ public class Estagio {
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "dataInicio", nullable = false, columnDefinition = "DATE")
-	private LocalDate dataInicio;
+	@Column(name = "dataInicio", nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataInicio;
 
 	@Column(name = "dataFim", nullable = false)
-//	@Temporal(TemporalType.DATE)
-	private LocalDate dataFim;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataFim;
 
 	@Column(name = "dataAditivo", nullable = true)
-//	@Temporal(TemporalType.DATE)
-	private LocalDate dataAditivo;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataAditivo;
 
 	@Column(name = "dataRescisao", nullable = true)
-//	@Temporal(TemporalType.DATE)
-	private LocalDate dataRescisao;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataRescisao;
 
 	@Column(name = "situacao", nullable = false)
 	private String situacao;

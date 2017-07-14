@@ -9,5 +9,7 @@ public interface EstagioInterface {
 	public List<Estagio> list();
 	
 	public Estagio addEstagio(Estagio estagio);
+	
+	public Estagio editarEstagio(Estagio estagio);
 
 }

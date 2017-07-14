@@ -2,6 +2,7 @@ package br.com.projetoEstagio.jpa;
 
 import java.util.List;
 
+import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.interfaces.EstagioInterface;
 
@@ -16,6 +17,8 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 		return this.add(estagio);
 	}
 
-
-
+	public Estagio editarEstagio(Estagio estagio) {
+		return this.edit(estagio);
+	}
+	
 }
