@@ -20,6 +20,7 @@ import org.json.JSONString;
 import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Estudante;
+import br.com.projetoEstagio.entity.Instituicao;
 import br.com.projetoEstagio.entity.Turma;
 import br.com.projetoEstagio.jpa.EmpresaJPA;
 import br.com.projetoEstagio.jpa.EstudanteJPA;
@@ -156,15 +157,26 @@ public class EstagioRest extends UtilRest {
 			EstudanteService estudanteService = new EstudanteService(); 
 			
 			if(!jsonObject.isNull("editEstudante")){
-				Estudante estudante = getObjectMapper().readValue(jsonObject.optJSONObject("editEstudante").toString(), Estudante.class);
+				Estudante estudante = new Estudante();
+				Estagio estagio = new Estagio();
 				
-				jsonObject.remove("editEstudante");
-				jsonObject.remove("editTurma");
-				jsonObject.remove("editCpf");
+				estudante = getObjectMapper().readValue(jsonObject.optJSONObject("editEstudante").toString(), Estudante.class);
 				
-				jsonObject.put("estudante", estudanteService.editarEstudante(estudante));
-			
-				Estagio estagio = getObjectMapper().readValue(jsonObject.toString(), Estagio.class);
+				
+				estagio.setId(jsonObject.optLong("id"));
+				estagio.setCadastroSGN(jsonObject.optBoolean("cadastroSGN"));
+				estagio.setDataAditivo(formataData(jsonObject.optString("dataAditivo")));
+				estagio.setDataFim(formataData(jsonObject.optString("dataFim")));
+				estagio.setDataInicio(formataData(jsonObject.optString("dataInicio")));
+				estagio.setDataRescisao(formataData(jsonObject.optString("dataRescisao")));
+				estagio.setEmpresa(getObjectMapper().readValue(jsonObject.optJSONObject("empresa").toString(), Empresa.class));
+				estagio.setEstagioObrigatorio(jsonObject.optBoolean("obrigatorio"));
+				estagio.setEstudante(estudanteService.editarEstudante(estudante));
+				estagio.setInstituicao(getObjectMapper().readValue(jsonObject.optJSONObject("instituicao").toString(), Instituicao.class));
+				estagio.setObservacao(jsonObject.optString("observacao"));
+				estagio.setSituacao(jsonObject.optString("situacao"));
+				estagio.setTurma(estudante.getTurma());
+
 				return getResponseEdit(estagioService.editarEstagio(estagio));
 			}
 			return null;

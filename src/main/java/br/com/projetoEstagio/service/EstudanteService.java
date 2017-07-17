@@ -6,9 +6,8 @@ import br.com.projetoEstagio.jpa.EstudanteJPA;;
 
 public class EstudanteService {
 	
-	public Object editarEstudante(Estudante estudante) {
+	public Estudante editarEstudante(Estudante estudante) {
 		EstudanteJPA jpa = new EstudanteJPA();
-		jpa.editarEstudante(estudante);
-		return jpa.list();
+		return jpa.editarEstudante(estudante);
 	}
 }

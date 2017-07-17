@@ -3,7 +3,7 @@
 		<md-card >
 			<h2 class="md-title">{{titleEstudante}}</h2>
 			<form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
-				<md-grid-list md-cols="1"  md-row-height="64px" >
+				<md-grid-list md-cols="1"  md-row-height="64px" ng-show="buttons">
 					<md-grid-tile id="listaEsquerda">
 						<md-button ng-click="menuEstudante('adicionar')" ng-disabled="buttonAddDisabled">
 							<ng-md-icon id="add" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
@@ -79,7 +79,7 @@
 									
 					<md-input-container  class="flex">
 						<label for="input_55">CPF</label>
-						<input name="name" ng-model="estagio.editCpf" ui-mask="999.999.999-99" ng-required="true" ng-trim="false">
+						<input name="name" ng-model="estagio.editEstudante.cpf" ui-mask="999.999.999-99" ng-required="true" ng-trim="false">
 					</md-input-container>
 				</div>
 				

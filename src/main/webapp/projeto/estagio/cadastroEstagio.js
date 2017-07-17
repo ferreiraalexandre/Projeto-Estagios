@@ -24,6 +24,7 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
   console.log($scope.teste);
   $scope.selectRequired = true;
   $scope.selecionados = [];
+  $scope.buttons = true;
   
   $scope.getListSelect = function () {
 	  EstagioService.getListSelect(function (response) {
@@ -41,6 +42,7 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 			  $scope.editarEstudante = true;
 			  $scope.adicionarEstudante = false;
 			  $scope.listarEstudante = false;
+			  $scope.buttons = false;
 			  $scope.titleEstagio = "Editar Estágio";
 			  $scope.titleEstudante = "Editar de Estudade";
 				  
