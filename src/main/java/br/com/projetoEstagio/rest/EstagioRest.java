@@ -7,13 +7,16 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONString;
 
@@ -126,7 +129,7 @@ public class EstagioRest extends UtilRest {
 				estagio.setDataInicio(formataData(jsonObject.optString("dataInicio")));
 				estagio.setDataRescisao(formataData(jsonObject.optString("dataRescisao")));
 				estagio.setEmpresa(empresaJPA.findById(jsonObject.optJSONObject("empresa").optLong("id")));
-				estagio.setEstagioObrigatorio(jsonObject.optBoolean("obrigatorio"));
+				estagio.setEstagioObrigatorio(jsonObject.optBoolean("estagioObrigatorio"));
 				estagio.setEstudante(estudante);
 				estagio.setInstituicao(instituicaoJPA.findById(jsonObject.optJSONObject("instituicao").optLong("id")));
 				estagio.setObservacao(jsonObject.optString("observacao"));
@@ -170,7 +173,7 @@ public class EstagioRest extends UtilRest {
 				estagio.setDataInicio(formataData(jsonObject.optString("dataInicio")));
 				estagio.setDataRescisao(formataData(jsonObject.optString("dataRescisao")));
 				estagio.setEmpresa(getObjectMapper().readValue(jsonObject.optJSONObject("empresa").toString(), Empresa.class));
-				estagio.setEstagioObrigatorio(jsonObject.optBoolean("obrigatorio"));
+				estagio.setEstagioObrigatorio(jsonObject.optBoolean("estagioObrigatorio"));
 				estagio.setEstudante(estudanteService.editarEstudante(estudante));
 				estagio.setInstituicao(getObjectMapper().readValue(jsonObject.optJSONObject("instituicao").toString(), Instituicao.class));
 				estagio.setObservacao(jsonObject.optString("observacao"));
@@ -184,6 +187,22 @@ public class EstagioRest extends UtilRest {
 			return getResponseError(e);
 		}
 	}
+	
+	@DELETE
+	@Path("/deletar/{id}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response delete(@PathParam ("id") JSONArray id) {
+
+		try{
+			EstagioService service = new EstagioService();  
+
+			return getResponseRemove(service.deleteEstagio(id));
+		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
+
 	
 	public static Date formataData(String data) throws Exception { 
 		if (data == null || data.equals(""))

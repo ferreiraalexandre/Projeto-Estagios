@@ -73,6 +73,7 @@ app.factory('EstagioService',['$resource',  function ($resource) {
 		  getListSelect: {method: 'GET', params: {method: 'buscarListSelect'}, isArray: false},
 		  postEstagio: { method: 'POST', params: {method: 'salva'}}, 
 		  putEstagio: { method: 'PUT', params: {method: 'editar'}},
+		  deleteEstagio: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : resultError}}
 
 	  })
 }]);

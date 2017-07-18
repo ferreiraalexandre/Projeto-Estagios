@@ -12,4 +12,5 @@ public interface EstagioInterface {
 	
 	public Estagio editarEstagio(Estagio estagio);
 
+	public void deleteEstagio(long id);
 }

@@ -21,4 +21,7 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 		return this.edit(estagio);
 	}
 	
+	public void deleteEstagio(long id){
+		this.remove(id);
+	}	
 }

@@ -115,7 +115,7 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 
 		};
 	};
-
+	
 	
 	// Função do botão "Cancelar"do "CadastroEstagio.html"
 	$scope.go = function ( path ) {
