@@ -26,6 +26,9 @@ md-card:first-child {
   flex: 0 0 auto;
 }
 
+md-input-container{
+	margin: 25px 10px;
+}
 .navBardemoBasicUsage md-content .ext-content {
   padding: 50px;
   margin: 20px;
@@ -114,10 +117,6 @@ a{
   background-color: rgb(255,255,255)
 }
 
-#estagioEstudante, #estagioTurma{
-	width: 200px;
-	margin-right: 50px;
-}
 #logo{
 	 margin-top: 13px;
 	text-align: center;

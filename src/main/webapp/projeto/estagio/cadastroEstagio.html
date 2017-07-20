@@ -20,8 +20,8 @@
 					</md-grid-tile>
 				</md-grid-list>
 
-				<div layout="row"  class="input-row layout-row" ng-show="adicionarEstudante">
-					<md-input-container class="flex">
+				<div layout-gt-xs="row" ng-show="adicionarEstudante">
+					<md-input-container class="md-block" flex-gt-xs="25">
 						<label>Turma</label>
 						<md-select ng-model="estagio.turma" ng-required="selectRequired">
 							<md-option ng-repeat="item in turmas" ng-selected="item.id == estagio.turma.id" ng-value="item" >
@@ -30,20 +30,20 @@
 						</md-select>
 					</md-input-container>
 
-					<md-input-container  class="flex">
+					<md-input-container  class="md-block" flex-gt-xs="25">
 						<label for="input_55">Novo Estudante</label>
 						<input name="name" ng-model="estagio.novoEstudante"  ng-required="true" ng-trim="false">
 					</md-input-container>
 									
-					<md-input-container  class="flex">
+					<md-input-container  class="md-block" flex-gt-xs="25">
 						<label for="input_55">CPF</label>
 						<input name="name" ng-model="estagio.cpf" ui-mask="999.999.999-99" ng-required="true" ng-trim="false">
 					</md-input-container>
 				</div>
 
 		
-				<div layout="row"  class="input-row layout-row" ng-show="listarEstudante">
-					<md-input-container id="inputsEstudnte">
+				<div layout-gt-xs="row" ng-show="listarEstudante">
+					<md-input-container id="inputsEstudnte" class="md-block" flex-gt-xs="25">
 						<label>Turma</label>
 						<md-select ng-model="estagio.turma" id="estagioTurma" ng-required="selectRequired">
 							<md-option ng-repeat="item in turmas" ng-value="item" >
@@ -52,7 +52,7 @@
 						</md-select>
 					</md-input-container>
 
-					<md-input-container >
+					<md-input-container class="md-block" flex-gt-xs="25">
 						<label>Estudante</label>
 						<md-select ng-model="estagio.estudante" id="estagioEstudante" ng-required="selectRequired">
 							<md-option ng-if="estagio.turma && estagio.turma.id == item.turma.id" ng-repeat="item in estudantes"  ng-value="item" >
@@ -62,8 +62,8 @@
 					</md-input-container>						
 				</div>
 				
-				<div layout="row"  class="input-row layout-row" ng-show="editarEstudante">
-					<md-input-container class="flex">
+				<div layout-gt-xs="row" ng-show="editarEstudante">
+					<md-input-container class="md-block" flex-gt-xs="25">
 						<label>Turma</label>
 						<md-select ng-model="estagio.editTurma" ng-required="selectRequired" >
 							<md-option ng-repeat="item in turmas"  ng-value="item.id" ng-selected="turmaEditar == item.id">
@@ -72,12 +72,12 @@
 						</md-select>
 					</md-input-container>
 
-					<md-input-container  class="flex">
+					<md-input-container  class="md-block" flex-gt-xs="25">
 						<label for="input_55">Novo Estudante</label>
 						<input name="name" ng-model="estagio.editEstudante.nome"  ng-required="true" ng-trim="false">
 					</md-input-container>
 									
-					<md-input-container  class="flex">
+					<md-input-container  class="md-block" flex-gt-xs="25">
 						<label for="input_55">CPF</label>
 						<input name="name" ng-model="estagio.editEstudante.cpf" ui-mask="999.999.999-99" ng-required="true" ng-trim="false">
 					</md-input-container>
@@ -144,8 +144,8 @@
 					
 				</div>
 							
-				<div layout="row" class="input-row layout-row">
-					<md-input-container class="flex">
+				<div layout-gt-xs="row">
+					<md-input-container class="md-block" flex-gt-xs="25">
 						<label>Situação</label>
 						<md-select ng-model="estagio.situacao" placeholder="Situação*" ng-required="selectRequired">
           					<md-option value="matriculado">Matriculado</md-option>
@@ -153,7 +153,7 @@
 						</md-select>
 					</md-input-container>	
 	
-					<md-input-container class="flex">
+					<md-input-container class="md-block" flex-gt-xs="75">
 						<label>Observação</label>
 						<input name="name" ng-model="estagio.observacao" id="input_55" ng-required="true" ng-trim="false">
 					</md-input-container>
