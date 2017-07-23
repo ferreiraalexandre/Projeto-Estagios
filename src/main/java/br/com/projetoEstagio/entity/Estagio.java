@@ -21,7 +21,7 @@ public class Estagio {
 	private Long id;
 	
 	@Column(name = "dataInicio", nullable = false)
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInicio;
 
 	@Column(name = "dataFim", nullable = false)
@@ -29,11 +29,11 @@ public class Estagio {
 	private Date dataFim;
 
 	@Column(name = "dataAditivo", nullable = true)
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAditivo;
 
 	@Column(name = "dataRescisao", nullable = true)
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataRescisao;
 
 	@Column(name = "situacao", nullable = false)

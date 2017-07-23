@@ -2,6 +2,9 @@ package br.com.projetoEstagio.service;
 
 import java.util.List;
 
+import org.json.JSONArray;
+
+import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Estudante;
 import br.com.projetoEstagio.entity.Usuario;
@@ -50,5 +53,24 @@ public class EstagioService {
 		return  jpa.addEstudante(estudante);
 
 	}
+	
+	public Estagio editarEstagio(Estagio estagio) {
+		EstagioJPA jpa = new EstagioJPA();
+		return jpa.editarEstagio(estagio);
+	}
+	
+	public Object deleteEstagio(JSONArray estagio) throws Exception{
+		EstagioJPA jpa = new EstagioJPA();
+			
+		if(estagio != null && estagio.length() > 0){
+			for (int i = 0; i < estagio.length(); i++) {
+				jpa.deleteEstagio(estagio.getLong(i));
+			
+			}
+		}
+		return jpa.list();
+	}
+
+
 
 }

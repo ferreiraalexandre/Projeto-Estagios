@@ -7,17 +7,23 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONString;
 
+import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Estudante;
+import br.com.projetoEstagio.entity.Instituicao;
 import br.com.projetoEstagio.entity.Turma;
 import br.com.projetoEstagio.jpa.EmpresaJPA;
 import br.com.projetoEstagio.jpa.EstudanteJPA;
@@ -25,7 +31,9 @@ import br.com.projetoEstagio.jpa.InstituicaoJPA;
 import br.com.projetoEstagio.jpa.TurmaJPA;
 import br.com.projetoEstagio.pojo.EstagioPojo;
 import br.com.projetoEstagio.restUtil.UtilRest;
+import br.com.projetoEstagio.service.EmpresaService;
 import br.com.projetoEstagio.service.EstagioService;
+import br.com.projetoEstagio.service.EstudanteService;
 
 @Path("/estagio")
 public class EstagioRest extends UtilRest {
@@ -121,7 +129,7 @@ public class EstagioRest extends UtilRest {
 				estagio.setDataInicio(formataData(jsonObject.optString("dataInicio")));
 				estagio.setDataRescisao(formataData(jsonObject.optString("dataRescisao")));
 				estagio.setEmpresa(empresaJPA.findById(jsonObject.optJSONObject("empresa").optLong("id")));
-				estagio.setEstagioObrigatorio(jsonObject.optBoolean("obrigatorio"));
+				estagio.setEstagioObrigatorio(jsonObject.optBoolean("estagioObrigatorio"));
 				estagio.setEstudante(estudante);
 				estagio.setInstituicao(instituicaoJPA.findById(jsonObject.optJSONObject("instituicao").optLong("id")));
 				estagio.setObservacao(jsonObject.optString("observacao"));
@@ -140,6 +148,60 @@ public class EstagioRest extends UtilRest {
 			return getResponseError(e);
 		}
 	}
+	
+	@PUT
+	@Path("/editar")
+	@Produces("application/json")
+	public Response editar(String json) {
+
+		try{
+			JSONObject jsonObject = new JSONObject(json);
+			EstagioService estagioService = new EstagioService(); 
+			EstudanteService estudanteService = new EstudanteService(); 
+			
+			if(!jsonObject.isNull("editEstudante")){
+				Estudante estudante = new Estudante();
+				Estagio estagio = new Estagio();
+				
+				estudante = getObjectMapper().readValue(jsonObject.optJSONObject("editEstudante").toString(), Estudante.class);
+				
+				
+				estagio.setId(jsonObject.optLong("id"));
+				estagio.setCadastroSGN(jsonObject.optBoolean("cadastroSGN"));
+				estagio.setDataAditivo(formataData(jsonObject.optString("dataAditivo")));
+				estagio.setDataFim(formataData(jsonObject.optString("dataFim")));
+				estagio.setDataInicio(formataData(jsonObject.optString("dataInicio")));
+				estagio.setDataRescisao(formataData(jsonObject.optString("dataRescisao")));
+				estagio.setEmpresa(getObjectMapper().readValue(jsonObject.optJSONObject("empresa").toString(), Empresa.class));
+				estagio.setEstagioObrigatorio(jsonObject.optBoolean("estagioObrigatorio"));
+				estagio.setEstudante(estudanteService.editarEstudante(estudante));
+				estagio.setInstituicao(getObjectMapper().readValue(jsonObject.optJSONObject("instituicao").toString(), Instituicao.class));
+				estagio.setObservacao(jsonObject.optString("observacao"));
+				estagio.setSituacao(jsonObject.optString("situacao"));
+				estagio.setTurma(estudante.getTurma());
+
+				return getResponseEdit(estagioService.editarEstagio(estagio));
+			}
+			return null;
+		}catch(Exception e){
+			return getResponseError(e);
+		}
+	}
+	
+	@DELETE
+	@Path("/deletar/{id}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response delete(@PathParam ("id") JSONArray id) {
+
+		try{
+			EstagioService service = new EstagioService();  
+
+			return getResponseRemove(service.deleteEstagio(id));
+		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
 
 	
 	public static Date formataData(String data) throws Exception { 
@@ -147,8 +209,8 @@ public class EstagioRest extends UtilRest {
 			return null;
         Date date = null;
         try {
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            date = (java.util.Date)formatter.parse(data);
+        	DateFormat  formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+            date = formatter.parse(data);
         } catch (ParseException e) {            
             throw e;
         }
