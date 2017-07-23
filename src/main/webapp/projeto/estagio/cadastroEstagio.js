@@ -9,7 +9,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService', 'toastr', 'Scopes',
                                     function ($mdEditDialog,   $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr, Scopes) {
   'use strict';
-  $scope.title = "Adicionar Estudade"
+  $scope.titleEstagio = "Cadastrar Estágio";
+  $scope.titleEstudante = "Adicionar Estudade";
   $scope.adicionarEstudante = true;	  
   $scope.items = ['Nome', 'Curso', 'Empresa'];
   $scope.estagio = {};
@@ -23,9 +24,12 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
   console.log($scope.teste);
   $scope.selectRequired = true;
   $scope.selecionados = [];
+  $scope.buttons = true;
   
   $scope.getListSelect = function () {
 	  EstagioService.getListSelect(function (response) {
+		  $scope.novo = true;
+		  $scope.titleEstagio = "Cadastrar Estágio";
 		  $scope.empresas = response.data.empresa;			
 		  $scope.instituicoes = response.data.instituicao;
 		  $scope.turmas = response.data.turma;
@@ -33,19 +37,23 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 
 		  $scope.selecionados = Scopes.get('estagioController').selecionados;
 		  if(Scopes.get('estagioController').icon == "editar"){
+			  $scope.novo = false;
+			  $scope.editar = true;
 			  $scope.editarEstudante = true;
 			  $scope.adicionarEstudante = false;
 			  $scope.listarEstudante = false;
-			  $scope.title = "Editar de Estudade"
+			  $scope.buttons = false;
+			  $scope.titleEstagio = "Editar Estágio";
+			  $scope.titleEstudante = "Editar de Estudade";
 				  
 			  $scope.estagio = $scope.selecionados[0];
 			  $scope.estagio.editEstudante = $scope.selecionados[0].estudante;
 			  $scope.estagio.editCpf = $scope.selecionados[0].estudante.cpf;
 			  $scope.turmaEditar = $scope.selecionados[0].turma.id;
 			  $scope.estagio.dataInicio = new Date($scope.selecionados[0].dataInicio);
-			  
-			  new Date(Date.UTC(96, 11, 1, 0, 0, 0));
-			  //$scope.estagio.dataInicio = new Date("2014-01-01 11:00:00 UTC");
+			  $scope.estagio.dataFim = new Date($scope.selecionados[0].dataFim);
+			  $scope.estagio.dataAditivo =  $scope.selecionados[0].dataAditivo ? new Date($scope.selecionados[0].dataAditivo) : null;
+			  $scope.estagio.dataRescisao = $scope.selecionados[0].dataRescisao ? new Date($scope.selecionados[0].dataRescisao) : null;
 		  }
 		  if(Scopes.get('estagioController').icon == "remover"){
 			  
@@ -63,19 +71,19 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 		  $scope.adicionarEstudante = true;
 		  $scope.listarEstudante = false;
 		  $scope.editarEstudante = false;
-		  $scope.title = "Adicionar Estudade"
+		  $scope.titleEstudante = "Adicionar Estudade"
 	  }
 	  if(link == "listar"){
 		  $scope.listarEstudante = true;
 		  $scope.adicionarEstudante = false;
 		  $scope.editarEstudante = false;
-		  $scope.title = "Lista de Estudade"
+		  $scope.titleEstudante = "Lista de Estudade"
 	  }
 	  if(link == "editar"){
 		  $scope.editarEstudante = true;
 		  $scope.adicionarEstudante = false;
 		  $scope.listarEstudante = false;
-		  $scope.title = "Editar de Estudade"
+		  $scope.titleEstudante = "Editar de Estudade"
 		  $scope.estagio.editEstudante = data;
 		  $scope.estagio.editCpf = data.cpf;
 		  $scope.turmaEditar = data.turma.id;
@@ -85,12 +93,8 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
   
 	//Função de adicionar novo estagio no Banco de Dados
 	$scope.adicionarEstagio = function (data) {
-		data.dataInicio = moment(data.dataInicio).format('YYYY-MM-DD');
-		data.dataFim = moment(data.dataFim).format('YYYY-MM-DD');
-		data.dataVisitaEmpresa = moment(data.dataVisitaEmpresa).format('YYYY-MM-DD');
 		EstagioService.postEstagio(data, function (response) {
 		toastr.success(response.message);
-		console.log("go", path);
 		var  link = "/";
 		$location.path(link);
 	
@@ -98,6 +102,20 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 			function (error) {
 		};
 	};
+	
+	//Função de editar Estagio no Banco de Dados
+	$scope.editarEstagio = function (data) {
+		EstagioService.putEstagio(data, function (response) {
+			toastr.success(response.message);
+			var  link = "/";
+			$location.path(link);
+
+		}),
+		function (error) {
+
+		};
+	};
+	
 	
 	// Função do botão "Cancelar"do "CadastroEstagio.html"
 	$scope.go = function ( path ) {
