@@ -24,7 +24,7 @@ public class Empresa {
 	private String nome;
 	
 	@Column(name = "data", nullable = false)
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
 	
 	@ManyToOne(cascade = CascadeType.REFRESH)

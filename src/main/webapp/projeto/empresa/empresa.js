@@ -152,7 +152,6 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			    
 		//Função de adicionar novas empresas no Banco de Dados
 		$scope.novaEmpresa = function (data) {
-			data.data = moment(data.data).format('YYYY-MM-DD');
 			EmpresaService.postEmpresa(data, function (response) {
 				$mdDialog.hide(data);
 				toastr.success(response.message);
@@ -165,7 +164,6 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			
 		//Função de editar empresa no Banco de Dados
 		$scope.editarEmpresa = function (data) {
-			data.data = moment(data.data).format('YYYY-MM-DD');
 			EmpresaService.putEmpresa(data, function (response) {
 				$mdDialog.hide(data);
 				toastr.success(response.message);
