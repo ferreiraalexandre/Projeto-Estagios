@@ -23,7 +23,7 @@ public class Empresa {
 	@Column(name = "nome", nullable = false)
 	private String nome;
 	
-	@Column(name = "data", nullable = false)
+	@Column(name = "data")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
 	

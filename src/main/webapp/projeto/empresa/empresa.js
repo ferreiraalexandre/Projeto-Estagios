@@ -131,11 +131,8 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			$scope.editar = true;
 			$scope.title = "Editar Empresa";
 			$scope.empresa = angular.copy(retornoModal.selecionados[0]);
-			//retornoModal.selecionados[0].data = retornoModal.selecionados[0] + 1;
-			console.log("data", $scope.empresa.data);
-			$scope.empresa.data = new Date($scope.empresa.data);
+			$scope.empresa.data =  retornoModal.selecionados[0].data ? new Date(retornoModal.selecionados[0].data) : null;
 			$scope.usuarios = retornoModal.usuarios;
-			$scope.selectRequired = true;
 		}else{
 			$scope.title = "Adicionar Empresa";
 			$scope.novo = true;
