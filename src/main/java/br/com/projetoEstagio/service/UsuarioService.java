@@ -1,16 +1,21 @@
 package br.com.projetoEstagio.service;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.json.JSONArray;
 
+import br.com.projeto.help.Crypt;
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.jpa.UsuarioJPA;
 
 public class UsuarioService {
 
-	public Object addUsuario(Usuario usu) {
+	public Object addUsuario(Usuario usu) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		UsuarioJPA usuario = new UsuarioJPA();
+		Crypt crypt = new Crypt();
+		usu.setSenha(crypt.decode(usu.getSenha()));
 		usuario.addUsuario(usu);
 		
 		return  usuario.list();

@@ -26,11 +26,10 @@ public class LoginRest extends UtilRest  {
 		try {
 			JSONObject user = new JSONObject(json);
 			
-			
 			LoginService login = new LoginService();
-									
 						
 			return getResponseList(login.buscarUsuario(user.optString("email"), user.optString("password")));
+
 		} catch (Exception e) {
 			return getResponseError(e);
 		}
