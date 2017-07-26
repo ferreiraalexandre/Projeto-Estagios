@@ -4,7 +4,7 @@
     <md-grid-tile id="listaEsquerda">
       <md-button  ng-click="menuClick('/cadastroEstagio')" ng-disabled="buttonAddDisabled" >
       	<md-tooltip md-direction="top">Adicionar</md-tooltip>
-      	<ng-md-icon id="iconAdd" icon="playlist_add" style="fill: #abcdef" size="36"></ng-md-icon>
+      	<ng-md-icon id="iconAdd" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
       	      	
       </md-button>
 
@@ -16,7 +16,8 @@
       <md-button  ng-click="deleteEstagio()" id="buttonRemove" ng-disabled="buttonRemoveDisabled">
         <md-tooltip md-direction="top">Deletar</md-tooltip>
         <ng-md-icon id="iconRemove" icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
-      </md-button>    
+      </md-button> 
+              
     </md-grid-tile>
 
  	    <md-grid-tile id="listaDireita">
@@ -62,17 +63,17 @@
           <td md-cell>{{estagio.estudante.nome}}</td>
           <td md-cell>{{estagio.turma.curso.nome}}</td>
           <td md-cell>{{estagio.empresa.nome}}</td>
-          <td md-cell>{{estagio.dataInicio | date:'dd/MM/yyyy' : 'UTC'}}</td>
-          <td md-cell>{{estagio.dataFim | date:'dd/MM/yyyy' : 'UTC'}}</td>
-          <td md-cell>{{estagio.dataRescisao | date:'dd/MM/yyyy' : 'UTC'}}</td>
-          <td md-cell>{{estagio.dataAditivo | date:'dd/MM/yyyy' : 'UTC'}}</td>
-          <td md-cell>{{estagio.empresa.data | date:'dd/MM/yyyy' : 'UTC'}}</td>
-          <td md-cell>{{estagio.orientador}}</td>
+          <td md-cell>{{estagio.dataInicio ? (estagio.estagio.dataInicio | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.dataFim ? (estagio.dataFim | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.dataRescisao ? (estagio.dataRescisao | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.dataAditivo ? (estagio.dataAditivo | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.empresa.data ? (estagio.empresa.data | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.empresa.usuario.nome}}</td>
           <td md-cell>{{estagio.situacao}}</td>
           <td md-cell>{{estagio.cadastroSGN}}</td>
           <td md-cell>{{estagio.instituicao.nome}}</td>
           <td md-cell>{{estagio.estagioObrigatorio}}</td>
-          <td md-cell>{{estagio.observacao}}</td>
+          <td md-cell>{{estagio.observacao ? estagio.observacao : 'N/A'}}</td>
          
         </tr>
       </tbody>
