@@ -11,7 +11,7 @@ public class Crypt {
 		
 		MessageDigest md = MessageDigest.getInstance("MD5"); 
 		
-		String salt="5a6b7c";
+		String salt="$r$%¨&YHGTY()2#";
 	       
 	       BigInteger hash = new BigInteger(1, md.digest((salt+pass).getBytes()));
 	       String senhaMd5 = String.format("%32x", hash);
