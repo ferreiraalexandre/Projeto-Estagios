@@ -16,10 +16,12 @@ app.controller('LoginController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 		if (data.password) {
 			data.password = btoa(data.password);
 		}
+		console.log(data);
 		LoginService.auth(data, function (response) {
 			if (response.data) {
 				//$localStorage.currentUser = { email: User.email, token: response.data.token, permission: response.data.permission, adm: response.data.adm };
-				$scope.getData();
+				//$scope.getData();
+				console.log(response);
 				
 			}
 		}, function (err) {

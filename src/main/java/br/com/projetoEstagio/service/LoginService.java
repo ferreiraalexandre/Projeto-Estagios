@@ -16,10 +16,6 @@ public class LoginService{
 		
 		Usuario usuario = user.buscar(email);
 		
-		if(usuario.getSenha().compareTo(password) == 0){
-			System.out.println("sucesso");
-		}
-				
 		return usuario;
 		
 	}
