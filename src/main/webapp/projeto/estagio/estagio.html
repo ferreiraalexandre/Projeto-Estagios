@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <md-card>
   
   <md-grid-list md-cols="2"  md-row-height="64px">
@@ -53,9 +54,9 @@
           <th md-column md-order-by="orientador"><span>Orientador</span></th>
           <th md-column md-order-by="situacao"><span>Situação</span></th>
           <th md-column md-order-by="sgn"><span>SGN</span></th>
-          <th md-column md-order-by="instituicao"><span>Instituições</span></th>
+          <th md-column md-order-by="instituicao"><span>Instituição</span></th>
           <th md-column md-order-by="obrigatorio"><span>Obrigatorio</span></th>
-          <th md-column md-order-by="observacao"><md-icon>comments</md-icon><span>Observações</span></th>
+          <th md-column md-order-by="observacao"><md-icon>comments</md-icon><span>Observação</span></th>
         </tr>
       </thead>
       <tbody md-body>
@@ -63,16 +64,16 @@
           <td md-cell>{{estagio.estudante.nome}}</td>
           <td md-cell>{{estagio.turma.curso.nome}}</td>
           <td md-cell>{{estagio.empresa.nome}}</td>
-          <td md-cell>{{estagio.dataInicio ? (estagio.estagio.dataInicio | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.dataInicio ? (estagio.dataInicio | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
           <td md-cell>{{estagio.dataFim ? (estagio.dataFim | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
           <td md-cell>{{estagio.dataRescisao ? (estagio.dataRescisao | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
           <td md-cell>{{estagio.dataAditivo ? (estagio.dataAditivo | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
           <td md-cell>{{estagio.empresa.data ? (estagio.empresa.data | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
           <td md-cell>{{estagio.empresa.usuario.nome}}</td>
           <td md-cell>{{estagio.situacao}}</td>
-          <td md-cell>{{estagio.cadastroSGN}}</td>
+          <td md-cell>{{estagio.cadastroSGN == true ? 'Sim' : 'Não'}}</td>
           <td md-cell>{{estagio.instituicao.nome}}</td>
-          <td md-cell>{{estagio.estagioObrigatorio}}</td>
+          <td md-cell>{{estagio.estagioObrigatorio == true ? 'Sim' : 'Não'}}</td>
           <td md-cell>{{estagio.observacao ? estagio.observacao : 'N/A'}}</td>
          
         </tr>

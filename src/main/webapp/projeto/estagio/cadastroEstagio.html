@@ -91,17 +91,17 @@
 	
 		<md-card >
 			<h2 class="md-title">Dados Do Estágio</h2>
-			<form name="formEstagio" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
+			<form name="formEstagio" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" >
 				<div layout="row" class="input-row layout-row">
 					<md-input-container class="flex">
 						<md-checkbox ng-model="estagio.cadastroSGN" aria-label="Checkbox 1">
-							Cadastro SGN: {{ estagio.cadastroSGN }}
+							Cadastro SGN
 						</md-checkbox>
 					</md-input-container>
 					
 					<md-input-container class="flex">
 						<md-checkbox ng-model="estagio.estagioObrigatorio" aria-label="Checkbox 1">
-							Estágio Obrigatorio: {{ estagio.estagioObrigatorio }}
+							Estágio Obrigatorio
 						</md-checkbox>
 					</md-input-container>
 					
@@ -112,9 +112,12 @@
 					
 					<md-input-container class="flex">
 						<label for="data">Data Fim</label>
-						<md-datepicker ng-model="estagio.dataFim" ng-required="true" ng-trim="false"></md-datepicker>
-					    <div ng-messages="estagio.dataInicio < estagio.dataFim">
-          					<div ng-message="if">This is required.</div>
+						<md-datepicker ng-model="estagio.dataFim" name="dataFim" ng-disabled="!estagio.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
+					    <div ng-messages="formEstagio.dataFim.$error" role="alert">
+          					  <div ng-if="estagio.dataInicio == estagio.dataFim">
+    							<div ng-message="required">Please enter something</div>
+  							</div>
+
         				</div>
 					
 					</md-input-container>
