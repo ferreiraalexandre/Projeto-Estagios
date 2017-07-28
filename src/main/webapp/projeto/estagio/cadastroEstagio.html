@@ -112,13 +112,20 @@
 					
 					<md-input-container class="flex">
 						<label for="data">Data Fim</label>
-						<md-datepicker ng-model="estagio.dataFim" name="dataFim" ng-disabled="!estagio.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
-					    <div ng-messages="formEstagio.dataFim.$error" role="alert">
-          					  <div ng-if="estagio.dataInicio == estagio.dataFim">
-    							<div ng-message="required">Please enter something</div>
-  							</div>
-
-        				</div>
+						<md-datepicker ng-model="estagio.dataFim" md-min-date="estagio.dataInicio == estagio.dataFim"  name="dataFim" ng-disabled="!estagio.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>					
+					
+					<div class="alert alert-danger" ng-class='{"invisible": estagio.dataFim < estagio.dataInicio}' role="alert">
+    Ocorreu um erro inesperado, verifique se os dados digitados estão corretos.
+</div>
+					
+					      <div class="validation-messages" ng-messages="formEstagio.dataFim.$error">
+					        <div ng-message="valid">The entered value is not a date!</div>
+					        <div ng-message="required">This date is required!</div>
+					        <div ng-message="mindate">Date is too early!</div>
+					        <div ng-message="maxdate">Date is too late!</div>
+					        <div ng-message="filtered">Only weekends are allowed!</div>
+					      </div>
+					
 					
 					</md-input-container>
 				</div>						
