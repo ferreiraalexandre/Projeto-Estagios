@@ -125,4 +125,13 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 	//Chama função para buscar estagios
 	$scope.getListSelect();
 	
+	
+	   var appCtrl = this;
+
+	    appCtrl.myDate = new Date();
+	    appCtrl.minDate = $scope.estagio.dataInicio;
+	    appCtrl.maxDate = $scope.estagio.dataFim;
+	    appCtrl.filtered = $scope.estagio.dataFim < $scope.estagio.dataInicio;
+
+	
 }]);
