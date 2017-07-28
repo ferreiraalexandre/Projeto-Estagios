@@ -121,6 +121,9 @@ a{
 	 margin-top: 13px;
 	text-align: center;
 	font: italic bold 22px arial;
-	color: white;
-	
+	color: white;	
+}
+
+#buscar{
+	margin-top: 35px;
 }

@@ -16,7 +16,7 @@
 
       <md-button  ng-click="deleteEstagio()" id="buttonRemove" ng-disabled="buttonRemoveDisabled">
         <md-tooltip md-direction="top">Deletar</md-tooltip>
-        <ng-md-icon id="iconRemove" icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
+        <ng-md-icon id="iconRemove" icon="delete" style="fill: #abcdef" size="36"></ng-md-icon>
       </md-button> 
               
     </md-grid-tile>
@@ -24,14 +24,22 @@
  	    <md-grid-tile id="listaDireita">
 	      	<md-card-content>
 	        	<div layout="row">
-		         	<md-input-container>
+		         	<md-input-container id="buscar">
 		            	<label>Buscar</label>
 		            	<form flex="" name="filter.form" class="flex">
 					      	<input type="text" ng-model="query.filter"  class="">
 				    	</form>
 		         	</md-input-container>
+
+					<md-input-container>		         	
+				      	<md-button  ng-click="filtrarData()" >
+			        		<md-tooltip md-direction="top">Deletar</md-tooltip>
+			        		<ng-md-icon id="" icon="date_range" style="fill: #abcdef" size="36"></ng-md-icon>
+			      		</md-button> 
+			      	<md-input-container>
 	        	</div>
 	      	</md-card-content>
+ 
 		</md-grid-tile>
     </md-grid-list>
 
