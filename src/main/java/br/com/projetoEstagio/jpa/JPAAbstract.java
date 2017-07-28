@@ -279,6 +279,31 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 		return listentity;
 	}
 	
+	/**
+	 * 
+	 * Implementacao do metodo que validade se esse registro já está no banco de
+	 * dados.
+	 * 
+	 * @param id
+	 *            instancia do tipo da chave primaria do banco de dados.
+	 */
+	public Boolean validate(ID id){
+
+		E e = this.getObject(id);
+
+		EntityManager em = getEntityManager();
+
+		em.getTransaction().begin();
+
+		e = em.merge(e);
+
+		em.remove(e);
+
+		em.getTransaction().commit();
+
+		return true;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<E> listNativeQuery(String sql){
 		
