@@ -6,7 +6,7 @@ app.factory('LoginService',['$resource',  function ($resource) {
 
 app.factory('UsuarioService',['$resource',  function ($resource) {
 	  return $resource(app.pathRest + '/usuario/:method/:data', {}, {
-		  postUsuario: { method: 'POST', params: {method: 'salva'}}, 
+		  postUsuario: { method: 'POST', params: {method: 'salva'}, interceptor: {responseError : resultError}}, 
 		  getList: 	{ method: 'GET', params: {method: 'buscar'}, isArray: false },
 		  getListCoordenadores: {method: 'GET', params: {method: 'getCoordenadores'}, isArray: false},
 		  putUsuario: { method: 'PUT', params: {method: 'editar'}},

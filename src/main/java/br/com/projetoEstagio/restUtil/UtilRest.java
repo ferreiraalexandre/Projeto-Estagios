@@ -32,6 +32,12 @@ public class UtilRest {
 				"Registro incluido com sucesso.", null, e),
 				Response.Status.CREATED);
 	}
+	
+	public Response getResponseAdd(String msg, Object e) {
+		return this.getResponse(new RestResponse(
+				msg, null, e),
+				Response.Status.CREATED);
+	}
 
 	public Response getResponseEdit(Object data) {
 		return this.getResponse(new RestResponse(
@@ -84,7 +90,7 @@ public class UtilRest {
 			status = Response.Status.INTERNAL_SERVER_ERROR;
 		}
 
-		return this.getResponse(new RestResponse(e), status);
+		return this.getResponse(new RestResponse("Erro na operação!", null, e), status);
 	}
 
 	private Response getResponse(Object obj, Response.Status status) {
