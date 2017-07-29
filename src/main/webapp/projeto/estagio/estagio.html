@@ -32,9 +32,9 @@
 		         	</md-input-container>
 
 					<md-input-container>		         	
-				      	<md-button  ng-click="filtrarData()" >
-			        		<md-tooltip md-direction="top">Deletar</md-tooltip>
-			        		<ng-md-icon id="" icon="date_range" style="fill: #abcdef" size="36"></ng-md-icon>
+				      	<md-button  ng-click="openRightMenu()" >
+			        		<md-tooltip md-direction="top">Filtrar</md-tooltip>
+			        		<ng-md-icon id="" icon="filter_list" style="fill: #abcdef" size="36"></ng-md-icon>
 			      		</md-button> 
 			      	<md-input-container>
 	        	</div>
@@ -87,10 +87,43 @@
         </tr>
       </tbody>
     </table>
+    
+     
   </md-table-container>
+
+
+
+
+
+
+ 
+         
+ 
+
+
+
+
+
 
   <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{estagios.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">
   </md-table-pagination>
   
 </md-card>
+
+           <md-sidenav id="sidenav" md-component-id = "right" md-disable-backdrop  class = "md-sidenav-right">
+            				<div layout="row" class="input-row layout-row">
+            				
+		
+					<md-input-container class="flex">
+						<label>Data InÃ­cio</label>
+						<md-datepicker ng-model="estagio.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
+					</md-input-container>
+					
+					<md-input-container class="flex">
+						<label for="data">Data Fim</label>
+						<md-datepicker ng-model="estagio.dataFim" md-min-date="estagio.dataInicio" ng-disabled="!estagio.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>										
+					</md-input-container>
+				</div>
+         </md-sidenav>
+
 

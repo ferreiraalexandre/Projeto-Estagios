@@ -6,8 +6,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService', 'toastr', 'Scopes',
-                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr ,  Scopes) {
+app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdSidenav', '$mdUtil','$location', 'EstagioService', 'toastr', 'Scopes',
+                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $mdSidenav,   $mdUtil,  $location,   EstagioService,   toastr ,  Scopes) {
   
   Scopes.store('estagioController', $scope);//Armazena o scope no service para se utilizado por outra controller
   
@@ -98,27 +98,22 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		});		
 	};
 
-	
-	  $scope.filtrarData = function(ev) {
-		    // Appending dialog to document.body to cover sidenav in docs app
-		    var confirm = $mdDialog.prompt()
-		      .title('What would you name your dog?')
-		      .textContent('Bowser is a common name.')
-		      .placeholder('Dog name')
-		      .ariaLabel('Dog name')
-		      .initialValue('Buddy')
-		      .targetEvent(ev)
-		      .ok('Okay!')
-		      .cancel('I\'m a cat person');
+  
+        $scope.openLeftMenu = function() {
+           $mdSidenav('left').toggle();
+        };
+         
+        $scope.openRightMenu = function() {
+           $mdSidenav('right').toggle();
+        };
+    
+   
 
-		    $mdDialog.show(confirm).then(function(result) {
-		      $scope.status = 'You decided to name your dog ' + result + '.';
-		    }, function() {
-		      $scope.status = 'You didn\'t name your dog.';
-		    });
-		  };
+
 
 	//Chama função para buscar estagios
 	$scope.getEstagio();
 	
 }]);
+
+
