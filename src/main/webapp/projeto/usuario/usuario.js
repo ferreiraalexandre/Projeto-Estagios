@@ -157,7 +157,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 				
 			}),
 				function (error) {
-		
+					
 				};
 		};
 		
@@ -170,7 +170,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 				
 			}),
 				function (error) {
-		
+					
 				};
 		};
 
