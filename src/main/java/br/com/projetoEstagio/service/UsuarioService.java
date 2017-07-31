@@ -15,18 +15,21 @@ public class UsuarioService {
 	public Object addUsuario(Usuario usu) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException {
 		
 		UsuarioJPA usuario = new UsuarioJPA();
-		List<Usuario> var = usuario.validate(usu);
-		if(var.isEmpty()){
-			Crypt crypt = new Crypt();
-			usu.setSenha(crypt.decode(usu.getSenha()));
-			usuario.addUsuario(usu);
-		}else{
-			throw new Exception();
-		}
+		
+		Crypt crypt = new Crypt();
+		usu.setSenha(crypt.decode(usu.getSenha()));
+		usuario.addUsuario(usu);
+	
 		return  usuario.list();
 
 	}
 
+	public List<Usuario> validar(Usuario user) throws Exception {
+		UsuarioJPA jpa = new UsuarioJPA();
+		return jpa.validate(user);
+	}
+
+	
 	public List<Usuario> listUsuario() throws Exception {
 		UsuarioJPA listUsuario = new UsuarioJPA();
 		return listUsuario.list();

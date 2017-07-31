@@ -152,8 +152,12 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		$scope.novoUsuario = function (data) {
 			UsuarioService.postUsuario(data, function (response) {
 			$mdDialog.hide(data);
-			toastr.success(response.message);
-			retornoModal.usuarios = response.data;
+			if(response.data != undefined){
+				toastr.success(response.message);
+				retornoModal.usuarios = response.data;				
+			}else{
+				toastr.warning(response.message );
+			}
 				
 			}),
 				function (error) {

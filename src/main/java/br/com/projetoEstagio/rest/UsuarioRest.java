@@ -33,9 +33,19 @@ public class UsuarioRest extends UtilRest {
 		try{
 			UsuarioService service = new UsuarioService(); 
 			Usuario usuario = getObjectMapper().readValue(json, Usuario.class);
-			Object users = service.addUsuario(usuario);					
+			String msg = "Email ja cadastrado";
+			Object users = null;
 			
-			return getResponseAdd(users);
+			List<Usuario> retorno = service.validar(usuario);
+			if(retorno.size() > 0){
+				return getResponseAdd(msg, users);
+			}else{
+				users = service.addUsuario(usuario);
+				return getResponseAdd(users);
+				
+			}
+			
+			
 		}catch(Exception e){
 			Object o = new Object();
 			return getResponseAdd("Erro ao cadastrar novo usuario", o);
