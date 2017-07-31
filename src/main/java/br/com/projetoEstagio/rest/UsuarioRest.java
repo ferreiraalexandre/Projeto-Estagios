@@ -28,15 +28,17 @@ public class UsuarioRest extends UtilRest {
 	@Path("/salva")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Response salva( String json){
+	public Response salva( String json) throws Exception{
 
 		try{
 			UsuarioService service = new UsuarioService(); 
 			Usuario usuario = getObjectMapper().readValue(json, Usuario.class);
-										
-			return getResponseAdd(service.addUsuario(usuario));
+			Object users = service.addUsuario(usuario);					
+			
+			return getResponseAdd(users);
 		}catch(Exception e){
-			return getResponseError(e);
+			Object o = new Object();
+			return getResponseAdd("Erro ao cadastrar novo usuario", o);
 		}
 	}
 	

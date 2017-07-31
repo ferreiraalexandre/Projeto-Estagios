@@ -32,9 +32,9 @@
 		         	</md-input-container>
 
 					<md-input-container>		         	
-				      	<md-button  ng-click="filtrarData()" >
-			        		<md-tooltip md-direction="top">Deletar</md-tooltip>
-			        		<ng-md-icon id="" icon="date_range" style="fill: #abcdef" size="36"></ng-md-icon>
+				      	<md-button  ng-click="openRightMenu()" >
+			        		<md-tooltip md-direction="top">Filtrar</md-tooltip>
+			        		<ng-md-icon id="" icon="filter_list" style="fill: #abcdef" size="36"></ng-md-icon>
 			      		</md-button> 
 			      	<md-input-container>
 	        	</div>
@@ -87,10 +87,62 @@
         </tr>
       </tbody>
     </table>
+    
+     
   </md-table-container>
+
+
+
+
+
+
+ 
+         
+ 
+
+
+
+
+
 
   <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{estagios.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">
   </md-table-pagination>
   
+  
+  
+  
 </md-card>
+
+           <md-sidenav id="sidenav" md-component-id = "right" md-disable-backdrop  class = "md-sidenav-right">
+            		<h2 class="md-title">Filtro</h2>		
+            		<div layout="row" class="input-row layout-row">
+		
+						<md-input-container class="flex">
+							<label>Início</label>
+							<md-datepicker ng-model="estagio.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
+						</md-input-container>
+						
+						<md-input-container class="flex">
+							<label for="data">Fim</label>
+							<md-datepicker ng-model="estagio.dataFim" md-min-date="estagio.dataInicio" ng-disabled="!estagio.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>										
+						</md-input-container>
+					</div>
+					<div layout="row" class="input-row layout-row">
+						<md-input-container class="md-block" flex-gt-xs="25">
+							<label>Turma</label>
+							<md-select ng-model="estagio.turma" ng-required="selectRequired">
+								<md-option ng-repeat="item in turmas" ng-selected="item.id == estagio.turma.id" ng-value="item" >
+									{{item.nome}}
+								</md-option>
+							</md-select>
+						</md-input-container>					
+				    </div>
+				    
+				    <div class="md-actions">
+    					<button class="md-primary md-button md-ink-ripple" type="button"  ng-click="novaEmpresa(empresa)"><span>Aplicar</span></button>
+    					<button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
+  					</div>
+				    
+         </md-sidenav>
+
 
