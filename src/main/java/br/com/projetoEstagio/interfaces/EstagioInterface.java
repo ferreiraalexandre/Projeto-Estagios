@@ -1,5 +1,6 @@
 package br.com.projetoEstagio.interfaces;
 
+import java.util.Date;
 import java.util.List;
 
 import br.com.projetoEstagio.entity.Estagio;
@@ -13,4 +14,6 @@ public interface EstagioInterface {
 	public Estagio editarEstagio(Estagio estagio);
 
 	public void deleteEstagio(long id);
+	
+	public List<Estagio> filtrar(Date dataInicio, Date dataFim, Long turmaId);
 }

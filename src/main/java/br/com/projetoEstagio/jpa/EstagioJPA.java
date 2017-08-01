@@ -1,9 +1,11 @@
 package br.com.projetoEstagio.jpa;
 
+import java.util.Date;
 import java.util.List;
 
 import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
+import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.interfaces.EstagioInterface;
 
 public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInterface {
@@ -23,5 +25,16 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 	
 	public void deleteEstagio(long id){
 		this.remove(id);
+	}
+	
+	public List<Estagio> filtrar(Date dataInicio, Date dataFim, Long turmaId) {
+		String hql = "SELECT E FROM "+ this.getEntityName() +" E WHERE E.turma_id = "+ turmaId;
+//		if(turmaId != null){
+//			hql += " AND E.turmaId = '"+ turmaId +"'";
+//			
+//		}
+		return this.list("SELECT E FROM "+ this.getEntityName() +" E WHERE E.turmaId = '"+ turmaId + "'");
+
 	}	
+
 }

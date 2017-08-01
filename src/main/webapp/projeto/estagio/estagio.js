@@ -99,15 +99,23 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	};
 
   
-        $scope.openLeftMenu = function() {
-           $mdSidenav('left').toggle();
-        };
-         
-        $scope.openRightMenu = function() {
-           $mdSidenav('right').toggle();
-        };
+    $scope.openLeftMenu = function() {
+       $mdSidenav('left').toggle();
+    };
+     
+    $scope.openRightMenu = function() {
+       $mdSidenav('right').toggle();
+     //  $scope.filtro.curso = $scope.curso; 
+    };
     
    
+	//Função de Aplicar Filtro 
+	$scope.aplicarFiltro = function (data) {
+		EstagioService.filtroEstagio(data, function (response) {
+		}),
+			function (error) {
+		};
+	};
 
 
 

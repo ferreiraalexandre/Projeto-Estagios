@@ -129,6 +129,34 @@ a{
 }
 
 #sidenav{
-	margin-top: 50px;
-    margin-bottom: 30px;
+  position: fixed;
+    height: calc(100% - 200px);
+    min-height: 200px;
+    min-width: 300px;
+    top: 125px;
+    right: 20px;
+    border: 1px solid #4f9acf;
+    padding-top: 0px;
+    border-radius: 3px;
+    visibility: visible;
+    opacity: 1;
+    transition: all 200ms linear;
+    overflow: hidden;
+    box-shadow: -2px 2px 20px 0px rgba(45, 45, 45, 0.61);
+}
+
+#titulo{
+	width: 100%;
+    height: 39px;
+    border-bottom: 1px solid #ccc;
+    padding: 0 10px;
+    position: relative;
+    border-radius: 3px 3px 0 0;
+    margin-top: 0px;
+}
+
+#tituloFiltro{
+	color: #6ca6d1;
+    font-size: 24px;
+    font-weight: bold;
 }
