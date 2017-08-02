@@ -33,7 +33,7 @@ public class UsuarioRest extends UtilRest {
 		try{
 			UsuarioService service = new UsuarioService(); 
 			Usuario usuario = getObjectMapper().readValue(json, Usuario.class);
-			String msg = "Email ja cadastrado";
+			String msg = "Email já cadastrado";
 			Object users = null;
 			
 			List<Usuario> retorno = service.validar(usuario);

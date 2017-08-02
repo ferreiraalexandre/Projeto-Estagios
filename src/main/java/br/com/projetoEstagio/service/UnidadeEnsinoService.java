@@ -21,6 +21,11 @@ public class UnidadeEnsinoService {
 		
 	}
 	
+	public List<UnidadeEnsino> validar(UnidadeEnsino uni) throws Exception {
+		UnidadeEnsinoJPA jpa = new UnidadeEnsinoJPA();
+		return jpa.validate(uni);
+	}
+	
 	public List<UnidadeEnsino> listUnidade() throws Exception {
 		UnidadeEnsinoJPA listUnidade = new UnidadeEnsinoJPA();
 		return listUnidade.list();

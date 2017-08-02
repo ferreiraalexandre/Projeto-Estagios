@@ -21,5 +21,9 @@ public class UnidadeEnsinoJPA  extends JPAAbstract<UnidadeEnsino, Long> implemen
 	public UnidadeEnsino editarUnidade(UnidadeEnsino uni) {
 		return this.edit(uni);
 	}
+	
+	public List<UnidadeEnsino> validate(UnidadeEnsino user) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.nome = '"+ user.getNome() +"'");
+	}
 
 }

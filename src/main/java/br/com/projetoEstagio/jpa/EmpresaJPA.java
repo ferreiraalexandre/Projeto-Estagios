@@ -3,7 +3,6 @@ package br.com.projetoEstagio.jpa;
 import java.util.List;
 
 import br.com.projetoEstagio.entity.Empresa;
-import br.com.projetoEstagio.entity.Turma;
 import br.com.projetoEstagio.interfaces.EmpresaInterface;
 
 public class EmpresaJPA  extends JPAAbstract<Empresa, Long> implements EmpresaInterface {

@@ -14,7 +14,11 @@ public class TurmaService {
 		turma.addTurma(tur);
 		
 		return  turma.list();
-
+	}
+	
+	public List<Turma> validar(Turma turma) throws Exception {
+		TurmaJPA jpa = new TurmaJPA();
+		return jpa.validate(turma);
 	}
 
 	public List<Turma> listTurma() throws Exception {

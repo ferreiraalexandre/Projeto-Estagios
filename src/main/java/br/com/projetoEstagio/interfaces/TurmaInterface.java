@@ -13,6 +13,8 @@ public interface TurmaInterface {
 	public void deleteTurma(long id);
 	
 	public Turma editarTurma(Turma tur);
+	
+	public List<Turma> validate(Turma turma);
 
 	public List<Turma> buscarPorId(Long id);
 	
