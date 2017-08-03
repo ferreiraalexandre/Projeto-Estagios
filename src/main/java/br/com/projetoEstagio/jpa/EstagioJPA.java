@@ -1,5 +1,7 @@
 package br.com.projetoEstagio.jpa;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -29,17 +31,22 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 		this.remove(id);
 	}
 	
-	public List<Estagio> filtrar(Date dataInicio, Date dataFim, Long turmaId) {
-		String hql = "SELECT E FROM "+ this.getEntityName() +" E WHERE E.dataFim BETWEEN :dataInicio AND :dataFim";
+	public List<Estagio> filtrar(Date dataInicio, Date dataFim, Long turmaId){
+	
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		String inicio = formato.format(dataInicio);
+		String fim = formato.format(dataFim);
+		//BETWEEN
+		String hql = "SELECT E FROM "+ this.getEntityName() +" E WHERE E.dataFim = '" + fim + "'";
 		
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		
-		params.put("dataInicio", dataInicio);
-		params.put("dataFim", dataFim);
-		return findByQuery(hql, params);
-		
-
+//		params.put("dataInicio", dataInicio);
+//		params.put("dataFim", dataFim);
+//		return findByQuery(hql, params);
+		List<Estagio> tt = this.list(hql);
+		return tt;
 	
 
 	}	
