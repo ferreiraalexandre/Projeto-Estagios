@@ -25,7 +25,8 @@ public class TurmaJPA  extends JPAAbstract<Turma, Long> implements TurmaInterfac
 	}
 	
 	public List<Turma> validate(Turma turma) {
-		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.nome = '"+ turma.getNome() +"'");
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.nome = '"+ turma.getNome() +"'"
+				+ " and U.turno = '"+ turma.getTurno() +"' and U.curso.id = '"+ turma.getCurso().getId() +"'");
 	}
 	
 	public Turma findById(Long id) {
@@ -33,7 +34,6 @@ public class TurmaJPA  extends JPAAbstract<Turma, Long> implements TurmaInterfac
 	}
 
 	public List<Turma> buscarPorId(Long id) {
-		//System.out.println("****** SELECT U FROM "+ this.getEntityName() +" U WHERE U.curso.id = '"+ id +"'  **********************");
 		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.curso.id = '"+ id +"'");
 	}
 
