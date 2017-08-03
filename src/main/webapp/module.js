@@ -1,15 +1,16 @@
-var app = angular.module("projeto-estagios", ['ngMaterial', 'ngMessages','md.data.table', 'ngMdIcons', 'ngRoute', 'ui.mask', 'ngResource', 'ngAnimate', 'toastr', 'idf.br-filters']);
+var app = angular.module("projeto-estagios", ['ngMaterial', 'ngMessages','md.data.table', 'ngMdIcons', 'ngRoute', 'ui.mask', 'ngResource', 'ngAnimate', 'ngStorage', 'toastr', 'idf.br-filters']);
 
 app.pathRest = 'rest';
 
 app.config(function($routeProvider) {
-
+	
 	$routeProvider
 	.when('/', {
 		templateUrl : 'projeto/estagio/estagio.html',
 		controller : 'estagioController'
 	})
 
+	
 	$routeProvider
 	.when('/unidadeEnsino', {
 		templateUrl : 'projeto/unidadeEnsino/unidadeEnsino.html',
@@ -55,13 +56,9 @@ app.config(function($routeProvider) {
 		controller : 'cadastroEstagioController'
 
 	})
-	$routeProvider
-	.when('/login', {
-		templateUrl : 'login.html',
-		controller : 'LoginController'
 
-	})
-
+	
+	
 
 });
 
@@ -79,16 +76,17 @@ app.config(function($mdDateLocaleProvider) {
     
 });
 
-//app.run(function($rootScope, $http, $location, $localStorage) {
-//	// redirect to login page if not logged in and trying to access a restricted page
-//	$rootScope.$on('$locationChangeStart', function (event, next, current) {
-//		var publicPages = ['/login'];
-//		var restrictedPage = publicPages.indexOf($location.path()) === -1;
-//		if (restrictedPage && !$localStorage.currentUser) {
-//			$location.path('/login');
-//		}else if(publicPages.indexOf($location.path()) != -1 && $localStorage.currentUser){
-//			$location.path('/');
-//		}
-//	});
-//});
+app.run(function($rootScope, $location, $localStorage) {
+	// redirect to login page if not logged in and trying to access a restricted page
+	$rootScope.$on('$locationChangeStart', function (event, next, current) {
+		var publicPages = ['/login'];
+		//var restrictedPage = publicPages.indexOf($location.path()) === -1;
+		if (!$localStorage.currentUser) {
+			window.location.href="/projeto-estagios/login.html";
+		}else if($localStorage.currentUser && $location.path() == '/login'){
+			$location.path('/empresa');
+		}
+	});
+	
+});
 

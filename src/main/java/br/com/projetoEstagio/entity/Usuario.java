@@ -34,6 +34,16 @@ public class Usuario {
 	@ManyToOne(cascade = CascadeType.REFRESH)
 	@JoinColumn(name = "UnidadeEnsinoId", nullable = false)
 	private UnidadeEnsino unidadeEnsino;
+	
+	private String Token;
+
+	public String getToken() {
+		return Token;
+	}
+
+	public void setToken(String token) {
+		Token = token;
+	}
 
 	public Long getId() {
 		return id;

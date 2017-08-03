@@ -13,7 +13,8 @@ import com.auth0.jwt.JWTVerifyException;
 
 public class Auth {
 	
-	public String generate(String email, int permission){
+	public String generate(String email){
+		int permission = 5;
 		final String issuer = "https://mydomain.com/";
 		final String secret = "123spArta#@!@";
  

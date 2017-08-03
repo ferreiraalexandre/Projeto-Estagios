@@ -15,7 +15,10 @@ public class LoginService{
 		UsuarioJPA user = new UsuarioJPA();
 		
 		Usuario usuario = user.buscar(email);
-		
+		if(usuario != null){
+			Auth hashAuth = new Auth();
+			usuario.setToken(hashAuth.generate(usuario.getEmail()));
+		}
 		return usuario;
 		
 	}
