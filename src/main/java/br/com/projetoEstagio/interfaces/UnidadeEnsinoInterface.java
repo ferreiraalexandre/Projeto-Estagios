@@ -13,5 +13,7 @@ public interface UnidadeEnsinoInterface {
 	public void deleteUnidadeEnsino(long id);
 	
 	public UnidadeEnsino editarUnidade(UnidadeEnsino uni);
+	
+	public List<UnidadeEnsino> validate(UnidadeEnsino user);
 
 }

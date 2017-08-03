@@ -3,9 +3,12 @@ package br.com.projetoEstagio.jpa;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import br.com.projetoEstagio.connection.JPAConnection;
@@ -279,6 +282,7 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 		return listentity;
 	}
 	
+	
 	@SuppressWarnings("unchecked")
 	public List<E> listNativeQuery(String sql){
 		
@@ -296,4 +300,24 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 		
 		return list;
 	}
+	
+	@SuppressWarnings("unchecked")
+	protected <J> J findByQuery(final String query, final Map<String, Object> params) {
+		EntityManager em = getEntityManager();
+		final Query hqlQuery = em.createQuery(query);
+		hqlQuery.setMaxResults(1);
+		if (params != null) {
+			Set<String> keys = params.keySet();
+			for (final String key : keys) {
+				hqlQuery.setParameter(key, params.get(key));
+			}
+		}
+		
+		try {
+			return (J) hqlQuery.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
 }

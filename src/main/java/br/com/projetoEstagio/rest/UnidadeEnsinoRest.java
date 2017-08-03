@@ -31,11 +31,18 @@ public class UnidadeEnsinoRest extends UtilRest {
 	@Produces("application/json")
 	public Response salva( String json){
 		try{
-			UnidadeEnsino uni = getObjectMapper().readValue(json, UnidadeEnsino.class);
-			
+			UnidadeEnsino uni = getObjectMapper().readValue(json, UnidadeEnsino.class);			
 			UnidadeEnsinoService service = new UnidadeEnsinoService(); 
+			String msg = "Unidade de ensino já cadastrada";
+			Object unis = null;
 					
-			return getResponseAdd(service.addUnidadeEnsino(uni));
+			List<UnidadeEnsino> retorno = service.validar(uni);
+			if(retorno.size() > 0){
+				return getResponseAdd(msg, unis);
+			}else{
+				unis = service.addUnidadeEnsino(uni);
+				return getResponseAdd(unis);				
+			}
 		}catch(Exception e){
 			return getResponseError(e);
 		}

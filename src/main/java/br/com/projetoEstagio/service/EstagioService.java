@@ -1,5 +1,6 @@
 package br.com.projetoEstagio.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -71,6 +72,8 @@ public class EstagioService {
 		return jpa.list();
 	}
 
-
-
+	public List<Estagio> filtrarEstagio(Date dataInicio, Date dataFim, Long turmaId) throws Exception {
+		EstagioJPA jpa = new EstagioJPA();
+		return jpa.filtrar(dataInicio, dataFim, turmaId);
+	}
 }

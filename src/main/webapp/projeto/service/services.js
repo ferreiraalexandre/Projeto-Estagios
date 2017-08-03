@@ -6,7 +6,7 @@ app.factory('LoginService',['$resource',  function ($resource) {
 
 app.factory('UsuarioService',['$resource',  function ($resource) {
 	  return $resource(app.pathRest + '/usuario/:method/:data', {}, {
-		  postUsuario: { method: 'POST', params: {method: 'salva'}}, 
+		  postUsuario: { method: 'POST', params: {method: 'salva'}, interceptor: {responseError : resultError}}, 
 		  getList: 	{ method: 'GET', params: {method: 'buscar'}, isArray: false },
 		  getListCoordenadores: {method: 'GET', params: {method: 'getCoordenadores'}, isArray: false},
 		  putUsuario: { method: 'PUT', params: {method: 'editar'}},
@@ -73,8 +73,8 @@ app.factory('EstagioService',['$resource',  function ($resource) {
 		  getListSelect: {method: 'GET', params: {method: 'buscarListSelect'}, isArray: false},
 		  postEstagio: { method: 'POST', params: {method: 'salva'}}, 
 		  putEstagio: { method: 'PUT', params: {method: 'editar'}},
-		  deleteEstagio: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : resultError}}
-
+		  deleteEstagio: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : resultError}},
+		  filtroEstagio: {method: 'POST', params: {method: 'filtro'}},
 	  })
 }]);
 

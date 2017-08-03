@@ -15,10 +15,13 @@ public class UnidadeEnsinoService {
 
 	public Object addUnidadeEnsino(UnidadeEnsino uni) {
 		UnidadeEnsinoJPA unidade = new UnidadeEnsinoJPA();
-		unidade.addUnidadeEnsino(uni);
-		
-		return unidade.list();
-		
+		unidade.addUnidadeEnsino(uni);		
+		return unidade.list();		
+	}
+	
+	public List<UnidadeEnsino> validar(UnidadeEnsino uni) throws Exception {
+		UnidadeEnsinoJPA jpa = new UnidadeEnsinoJPA();
+		return jpa.validate(uni);
 	}
 	
 	public List<UnidadeEnsino> listUnidade() throws Exception {

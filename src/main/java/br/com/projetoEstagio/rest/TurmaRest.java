@@ -32,9 +32,18 @@ public class TurmaRest extends UtilRest {
 
 		try{
 			TurmaService service = new TurmaService(); 
-			Turma turma = getObjectMapper().readValue(json, Turma.class);
-										
-			return getResponseAdd(service.addTurma(turma));
+			Turma turma = getObjectMapper().readValue(json, Turma.class);										
+			String msg = "Turma já cadastrada";
+			Object obj = null;
+					
+			List<Turma> retorno = service.validar(turma);
+			if(retorno.size() > 0){
+				return getResponseAdd(msg, obj);
+			}else{
+				obj = service.addTurma(turma);
+				return getResponseAdd(obj);
+				
+			}
 		}catch(Exception e){
 			return getResponseError(e);
 		}

@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <md-card>
   
   <md-grid-list md-cols="2"  md-row-height="64px">
@@ -15,7 +16,7 @@
 
       <md-button  ng-click="deleteEstagio()" id="buttonRemove" ng-disabled="buttonRemoveDisabled">
         <md-tooltip md-direction="top">Deletar</md-tooltip>
-        <ng-md-icon id="iconRemove" icon="remove" style="fill: #abcdef" size="36"></ng-md-icon>
+        <ng-md-icon id="iconRemove" icon="delete" style="fill: #abcdef" size="36"></ng-md-icon>
       </md-button> 
               
     </md-grid-tile>
@@ -23,14 +24,22 @@
  	    <md-grid-tile id="listaDireita">
 	      	<md-card-content>
 	        	<div layout="row">
-		         	<md-input-container>
+		         	<md-input-container id="buscar">
 		            	<label>Buscar</label>
 		            	<form flex="" name="filter.form" class="flex">
 					      	<input type="text" ng-model="query.filter"  class="">
 				    	</form>
 		         	</md-input-container>
+
+					<md-input-container>		         	
+				      	<md-button  ng-click="openRightMenu()" >
+			        		<md-tooltip md-direction="top">Filtrar</md-tooltip>
+			        		<ng-md-icon id="" icon="filter_list" style="fill: #abcdef" size="36"></ng-md-icon>
+			      		</md-button> 
+			      	<md-input-container>
 	        	</div>
 	      	</md-card-content>
+ 
 		</md-grid-tile>
     </md-grid-list>
 
@@ -53,9 +62,9 @@
           <th md-column md-order-by="orientador"><span>Orientador</span></th>
           <th md-column md-order-by="situacao"><span>Situação</span></th>
           <th md-column md-order-by="sgn"><span>SGN</span></th>
-          <th md-column md-order-by="instituicao"><span>Instituições</span></th>
+          <th md-column md-order-by="instituicao"><span>Instituição</span></th>
           <th md-column md-order-by="obrigatorio"><span>Obrigatorio</span></th>
-          <th md-column md-order-by="observacao"><md-icon>comments</md-icon><span>Observações</span></th>
+          <th md-column md-order-by="observacao"><md-icon>comments</md-icon><span>Observação</span></th>
         </tr>
       </thead>
       <tbody md-body>
@@ -63,25 +72,65 @@
           <td md-cell>{{estagio.estudante.nome}}</td>
           <td md-cell>{{estagio.turma.curso.nome}}</td>
           <td md-cell>{{estagio.empresa.nome}}</td>
-          <td md-cell>{{estagio.dataInicio ? (estagio.estagio.dataInicio | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.dataInicio ? (estagio.dataInicio | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
           <td md-cell>{{estagio.dataFim ? (estagio.dataFim | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
           <td md-cell>{{estagio.dataRescisao ? (estagio.dataRescisao | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
           <td md-cell>{{estagio.dataAditivo ? (estagio.dataAditivo | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
           <td md-cell>{{estagio.empresa.data ? (estagio.empresa.data | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
           <td md-cell>{{estagio.empresa.usuario.nome}}</td>
           <td md-cell>{{estagio.situacao}}</td>
-          <td md-cell>{{estagio.cadastroSGN}}</td>
+          <td md-cell>{{estagio.cadastroSGN == true ? 'Sim' : 'Não'}}</td>
           <td md-cell>{{estagio.instituicao.nome}}</td>
-          <td md-cell>{{estagio.estagioObrigatorio}}</td>
+          <td md-cell>{{estagio.estagioObrigatorio == true ? 'Sim' : 'Não'}}</td>
           <td md-cell>{{estagio.observacao ? estagio.observacao : 'N/A'}}</td>
          
         </tr>
       </tbody>
     </table>
+    
+     
   </md-table-container>
 
   <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{estagios.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">
   </md-table-pagination>
   
+  
+  
+  
 </md-card>
+
+           <md-sidenav id="sidenav" md-component-id = "right" md-disable-backdrop  class = "md-sidenav-right">
+            		<div id= "titulo" >
+	            		<h2 id="tituloFiltro">Filtro</h2>		
+            		</div>
+            		<div layout="row" class="input-row layout-row">
+		
+						<md-input-container class="flex">
+							<label>Início</label>
+							<md-datepicker ng-model="filtro.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
+						</md-input-container>
+						
+						<md-input-container class="flex">
+							<label>Fim</label>
+							<md-datepicker ng-model="filtro.dataFim" md-min-date="filtro.dataInicio" ng-disabled="!filtro.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>										
+						</md-input-container>
+					</div>
+					<div layout="row" class="input-row layout-row">
+						<md-input-container class="flex">
+							<label>Turma</label>
+							<md-select ng-model="filtro.turma" ng-required="selectRequired">
+								<md-option ng-repeat="item in estagios" ng-value="item.turma" >
+									{{item.turma.nome}}
+								</md-option>
+							</md-select>
+						</md-input-container>					
+				    </div>
+				    
+				    <div class="md-actions">
+    					<button class="md-primary md-button md-ink-ripple" type="button"  ng-click="aplicarFiltro(filtro)"><span>Aplicar</span></button>
+    					<button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
+  					</div>
+				    
+         </md-sidenav>
+
 

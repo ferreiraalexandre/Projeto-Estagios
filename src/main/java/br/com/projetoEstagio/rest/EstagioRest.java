@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -216,5 +217,28 @@ public class EstagioRest extends UtilRest {
         }
         return date;
 	}
+	
+	@POST
+	@Path("/filtro")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response filtro(String json){
+		
+		try {
+			JSONObject jsonObject = new JSONObject(json);
+			
+			Date dataInicio = formataData(jsonObject.optString("dataInicio"));
+			Date dataFim = formataData(jsonObject.optString("dataFim"));
+			Long turmaId = jsonObject.optJSONObject("turma").optLong("id");
+			
+			EstagioService service = new EstagioService();
+			
+			List<Estagio> e = service.filtrarEstagio(dataInicio, dataFim, turmaId);
+			return getResponseList(e);
+		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
+
 
 }

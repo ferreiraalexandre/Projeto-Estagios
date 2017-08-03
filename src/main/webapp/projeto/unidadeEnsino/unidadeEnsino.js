@@ -148,11 +148,14 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 	  
 		   
 	  $scope.novaUnidade = function (data) {
-			UnidadeEnsinoService.postUnidade(data, function (response) {
+			UnidadeEnsinoService.postUnidade(data, function (response) {				
+			if(response.data != undefined){
 				$mdDialog.hide(data);
 				toastr.success(response.message);
-				//toastr.RefreshTimer (toast, 500 ); pesquisar.......
-				retornoModal.unidades = response.data;	
+				retornoModal.unidades = response.data;				
+			}else{
+				toastr.warning(response.message );
+			}
 		}),
 			function (error) {
 				

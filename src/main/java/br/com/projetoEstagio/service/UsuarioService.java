@@ -12,16 +12,24 @@ import br.com.projetoEstagio.jpa.UsuarioJPA;
 
 public class UsuarioService {
 
-	public Object addUsuario(Usuario usu) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+	public Object addUsuario(Usuario usu) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException {
+		
 		UsuarioJPA usuario = new UsuarioJPA();
+		
 		Crypt crypt = new Crypt();
 		usu.setSenha(crypt.decode(usu.getSenha()));
 		usuario.addUsuario(usu);
-		
+	
 		return  usuario.list();
 
 	}
 
+	public List<Usuario> validar(Usuario user) throws Exception {
+		UsuarioJPA jpa = new UsuarioJPA();
+		return jpa.validate(user);
+	}
+
+	
 	public List<Usuario> listUsuario() throws Exception {
 		UsuarioJPA listUsuario = new UsuarioJPA();
 		return listUsuario.list();

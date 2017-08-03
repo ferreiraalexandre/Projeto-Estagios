@@ -155,10 +155,13 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 		//Função de adicionar novas turma no Banco de Dados
 		$scope.novaTurma = function (data) {
 			TurmaService.postTurma(data, function (response) {
-			$mdDialog.hide(data);
-			toastr.success(response.message);
-			retornoModal.turmas = response.data;
-				
+			if(response.data != undefined){
+				$mdDialog.hide(data);
+				toastr.success(response.message);
+				retornoModal.turmas = response.data;				
+			}else{
+				toastr.warning(response.message );
+			}
 			}),
 				function (error) {
 		
