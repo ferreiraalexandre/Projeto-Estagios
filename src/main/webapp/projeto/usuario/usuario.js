@@ -151,13 +151,17 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		//Função de adicionar novos usuario no Banco de Dados
 		$scope.novoUsuario = function (data) {
 			UsuarioService.postUsuario(data, function (response) {
-			$mdDialog.hide(data);
-			toastr.success(response.message);
-			retornoModal.usuarios = response.data;
+			if(response.data != undefined){
+				$mdDialog.hide(data);
+				toastr.success(response.message);
+				retornoModal.usuarios = response.data;				
+			}else{
+				toastr.warning(response.message );
+			}
 				
 			}),
 				function (error) {
-		
+					
 				};
 		};
 		
@@ -170,7 +174,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 				
 			}),
 				function (error) {
-		
+					
 				};
 		};
 

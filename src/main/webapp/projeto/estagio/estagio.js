@@ -6,8 +6,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService', 'toastr', 'Scopes',
-                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr ,  Scopes) {
+app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdSidenav', '$mdUtil','$location', 'EstagioService', 'toastr', 'Scopes',
+                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $mdSidenav,   $mdUtil,  $location,   EstagioService,   toastr ,  Scopes) {
   
   Scopes.store('estagioController', $scope);//Armazena o scope no service para se utilizado por outra controller
   
@@ -98,8 +98,30 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		});		
 	};
 
+  
+    $scope.openLeftMenu = function() {
+       $mdSidenav('left').toggle();
+    };
+     
+    $scope.openRightMenu = function() {
+       $mdSidenav('right').toggle();
+     //  $scope.filtro.curso = $scope.curso; 
+    };
+    
+   
+	//Função de Aplicar Filtro 
+	$scope.aplicarFiltro = function (data) {
+		EstagioService.filtroEstagio(data, function (response) {
+		}),
+			function (error) {
+		};
+	};
+
+
 
 	//Chama função para buscar estagios
 	$scope.getEstagio();
 	
 }]);
+
+
