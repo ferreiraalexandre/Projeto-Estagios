@@ -5,8 +5,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'UsuarioService', 'UnidadeEnsinoService', 'toastr',  
-                            function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   UsuarioService,   UnidadeEnsinoService,   toastr) {
+app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'UsuarioService', 'UnidadeEnsinoService', 'toastr', '$localStorage',  
+                            function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   UsuarioService,   UnidadeEnsinoService,   toastr, $localStorage) {
 
   $scope.selecionados = [];
   $scope.limitOptions = [5, 10, 15];
@@ -161,7 +161,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 				
 			}),
 				function (error) {
-					
+		
 				};
 		};
 		
@@ -174,7 +174,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 				
 			}),
 				function (error) {
-					
+		
 				};
 		};
 
@@ -182,5 +182,6 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 
 	//Chama função para buscar usuarios
 	$scope.getUsuario();
+	
 
 }]);
