@@ -13,5 +13,7 @@ public interface CursoInterface {
 	public void deleteCurso(long id);
 	
 	public Curso editarCurso(Curso cur);
+	
+	public List<Curso> validate(Curso cur);
 
 }

@@ -129,12 +129,8 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		};
 	};
 
-
-
 	//Chama função para buscar estagios
 	$scope.getEstagio();
 	
 }]);
-
-
 

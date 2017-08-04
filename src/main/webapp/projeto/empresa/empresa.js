@@ -6,8 +6,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 }])
 
 
-app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'EmpresaService', 'UsuarioService' , 'toastr',  
-                            function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   EmpresaService,   UsuarioService,    toastr) {
+app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'EmpresaService', 'UsuarioService' , 'toastr', '$location',  
+                            function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   EmpresaService,   UsuarioService,    toastr, $location) {
 	
 	$scope.selecionados = [];
 	$scope.limitOptions = [5, 10, 15];
@@ -150,9 +150,13 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		//Função de adicionar novas empresas no Banco de Dados
 		$scope.novaEmpresa = function (data) {
 			EmpresaService.postEmpresa(data, function (response) {
-				$mdDialog.hide(data);
-				toastr.success(response.message);
-				retornoModal.empresas = response.data;
+				if(response.data != undefined){
+					$mdDialog.hide(data);
+					toastr.success(response.message);
+					retornoModal.empresas = response.data;				
+				}else{
+					toastr.warning(response.message );
+				}
 			}),
 			function (error) {
 	

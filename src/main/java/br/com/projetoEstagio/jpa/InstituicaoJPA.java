@@ -2,7 +2,6 @@ package br.com.projetoEstagio.jpa;
 
 import java.util.List;
 
-import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Instituicao;
 import br.com.projetoEstagio.interfaces.InstituicaoInterface;
 
@@ -21,6 +20,11 @@ public class InstituicaoJPA  extends JPAAbstract<Instituicao, Long> implements I
 	
 	public Instituicao editarInstituicao(Instituicao instituicao) {
 		return this.edit(instituicao);
+	}
+	
+	public List<Instituicao> validate(Instituicao inst) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.nome = '"+ inst.getNome() +"'"
+				+ " or U.sigla = '"+ inst.getSigla() +"'");
 	}
 
 	public Instituicao findById(Long id) {

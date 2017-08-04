@@ -12,9 +12,12 @@ public class EmpresaService {
 	public Object addEmpresa(Empresa emp) {
 		EmpresaJPA empresa = new EmpresaJPA();
 		empresa.addEmpresa(emp);
-		
 		return  empresa.list();
-
+	}
+	
+	public List<Empresa> validar(Empresa emp) throws Exception {
+		EmpresaJPA jpa = new EmpresaJPA();
+		return jpa.validate(emp);
 	}
 
 	public List<Empresa> listEmpresa() throws Exception {

@@ -12,6 +12,8 @@ public interface EmpresaInterface {
 	
 	public void deleteEmpresa(long id);
 	
+	public List<Empresa> validate(Empresa emp);
+	
 	public Empresa editarEmpresa(Empresa emp);
 
 	public Empresa findById(Long id) ;

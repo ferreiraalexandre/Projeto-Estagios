@@ -33,7 +33,17 @@ public class EmpresaRest extends UtilRest {
 		try{
 			EmpresaService service = new EmpresaService(); 
 			Empresa empresa = getObjectMapper().readValue(json, Empresa.class);
-			return getResponseAdd(service.addEmpresa(empresa));
+			String msg = "Empresa já cadastrada";
+			Object obj = null;
+					
+			List<Empresa> retorno = service.validar(empresa);
+			if(retorno.size() > 0){
+				return getResponseAdd(msg, obj);
+			}else{
+				obj = service.addEmpresa(empresa);
+				return getResponseAdd(obj);
+				
+			}
 		}catch(Exception e){
 			return getResponseError(e);
 		}

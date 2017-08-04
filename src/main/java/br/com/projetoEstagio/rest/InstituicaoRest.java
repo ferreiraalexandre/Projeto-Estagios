@@ -31,10 +31,18 @@ public class InstituicaoRest extends UtilRest {
 	public Response salva( String json){
 		try{
 			Instituicao instituicao = getObjectMapper().readValue(json, Instituicao.class);
-			
-			InstituicaoService service = new InstituicaoService(); 
+			InstituicaoService service = new InstituicaoService();
+			String msg = "Instituição já cadastrada";
+			Object obj = null;
 					
-			return getResponseAdd(service.addInstituicao(instituicao));
+			List<Instituicao> retorno = service.validar(instituicao);
+			if(retorno.size() > 0){
+				return getResponseAdd(msg, obj);
+			}else{
+				obj = service.addInstituicao(instituicao);
+				return getResponseAdd(obj);
+				
+			}
 		}catch(Exception e){
 			return getResponseError(e);
 		}

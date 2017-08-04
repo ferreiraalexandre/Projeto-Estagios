@@ -22,6 +22,9 @@ public class CursoJPA  extends JPAAbstract<Curso, Long> implements CursoInterfac
 		return this.edit(cur);
 	}
 
-	
+	public List<Curso> validate(Curso cur) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.nome = '"+ cur.getNome() +"'"
+				+ " or U.sigla = '"+ cur.getSigla() +"'");
+	}
 
 }

@@ -1,8 +1,10 @@
 package br.com.projetoEstagio.restUtil;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
+import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
@@ -105,6 +107,11 @@ public class UtilRest {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
 					.entity(null).build();
 		}
+	}
+
+	public void filter(ContainerRequestContext requestContext) throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
