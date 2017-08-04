@@ -107,8 +107,13 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		});		
 	};
 	
-    $scope.openRightMenu = function() {
+	
+		
+	
+	$mdSidenav('right').toggle();
+	$scope.openRightMenu = function() {
        $mdSidenav('right').toggle();
+       this.$scope.estagio.inicio = new Date();
      //  $scope.filtro.dataInicio = new Date();
    
     };

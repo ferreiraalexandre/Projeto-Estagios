@@ -1,4 +1,20 @@
 <meta charset="utf-8">
+
+
+   <script language = "javascript">
+         angular
+            .module('firstApplication', ['ngMaterial','ngMessages'])
+            .controller('dateController', dateController);
+
+         function dateController ($scope) {
+            $scope.myDate = new Date();
+         }                 
+      </script>    
+
+
+
+
+
 <md-card>
   
   <md-grid-list md-cols="2"  md-row-height="64px">
@@ -96,15 +112,15 @@
 
 </md-card>
 
-           <md-sidenav id="sidenav" md-component-id = "right" md-disable-backdrop  class = "md-sidenav-right">
+           <md-sidenav id="sidenav" md-component-id = "right" md-disable-backdrop  class = "md-sidenav-right" ng-app = "firstApplication" >
             		<div id= "titulo" >
 	            		<h2 id="tituloFiltro">Filtro</h2>		
             		</div>
-            		<div layout="row" class="input-row layout-row">
+            		<div layout="row" class="input-row layout-row" ng-controller = "dateController as ctrl>
 		
 						<md-input-container class="flex">
 							<label>Início 1</label>
-							<md-datepicker ng-model="filtro.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
+							<md-datepicker ng-model="myDate" ng-required="true" ng-trim="false"></md-datepicker>
 						</md-input-container>
 						
 						<md-input-container class="flex">
