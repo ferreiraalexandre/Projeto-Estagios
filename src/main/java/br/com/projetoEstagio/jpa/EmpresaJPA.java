@@ -13,7 +13,6 @@ public class EmpresaJPA  extends JPAAbstract<Empresa, Long> implements EmpresaIn
 
 	public List<Empresa> list(){
 		return this.list("");
-		
 	}
 	
 	public Empresa editarEmpresa(Empresa emp) {
@@ -22,6 +21,10 @@ public class EmpresaJPA  extends JPAAbstract<Empresa, Long> implements EmpresaIn
 	
 	public void deleteEmpresa(long id){
 		this.remove(id);
+	}
+	
+	public List<Empresa> validate(Empresa emp) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.nome = '"+ emp.getNome() +"'");
 	}
 	
 	public Empresa findById(Long id) {

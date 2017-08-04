@@ -2,7 +2,6 @@ package br.com.projetoEstagio.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import br.com.projetoEstagio.restUtil.RestResponse;
 
 import org.json.JSONArray;
 
@@ -10,6 +9,7 @@ import br.com.projetoEstagio.entity.Curso;
 import br.com.projetoEstagio.entity.Turma;
 import br.com.projetoEstagio.jpa.CursoJPA;
 import br.com.projetoEstagio.jpa.TurmaJPA;
+import br.com.projetoEstagio.restUtil.RestResponse;
 
 
 public class CursoService {
@@ -17,9 +17,12 @@ public class CursoService {
 	public Object addCurso(Curso cur) {
 		CursoJPA curso = new CursoJPA();
 		curso.addCurso(cur);
-		
 		return curso.list();
-		
+	}
+	
+	public List<Curso> validar(Curso cur) throws Exception {
+		CursoJPA jpa = new CursoJPA();
+		return jpa.validate(cur);
 	}
 	
 	public List<Curso> listCurso() throws Exception {

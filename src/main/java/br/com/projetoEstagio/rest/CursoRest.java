@@ -31,10 +31,17 @@ public class CursoRest extends UtilRest {
 	public Response salva( String json){
 		try{
 			Curso cur = getObjectMapper().readValue(json, Curso.class);
-			
-			CursoService service = new CursoService(); 
+			CursoService service = new CursoService();
+			String msg = "Curso já cadastrado";
+			Object obj = null;
 					
-			return getResponseAdd(service.addCurso(cur));
+			List<Curso> retorno = service.validar(cur);
+			if(retorno.size() > 0){
+				return getResponseAdd(msg, obj);
+			}else{
+				obj = service.addCurso(cur);
+				return getResponseAdd(obj);				
+			}
 		}catch(Exception e){
 			return getResponseError(e);
 		}

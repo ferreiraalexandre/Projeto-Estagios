@@ -150,9 +150,13 @@ app.controller('instituicaoController', ['$mdEditDialog', '$q', '$scope', '$time
 		   
 	  $scope.novoInstituicao = function (data) {
 		  InstituicaoService.postInstituicao(data, function (response) {
-				$mdDialog.hide(data);
-				toastr.success(response.message);
-				retornoModal.instituicoes = response.data;	
+			if(response.data != undefined){
+			$mdDialog.hide(data);
+			toastr.success(response.message);
+			retornoModal.instituicoes = response.data;				
+			}else{
+				toastr.warning(response.message );
+			}
 		}),
 			function (error) {
 				

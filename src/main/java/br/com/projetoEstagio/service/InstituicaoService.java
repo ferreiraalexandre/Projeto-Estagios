@@ -1,23 +1,25 @@
 package br.com.projetoEstagio.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import br.com.projetoEstagio.restUtil.RestResponse;
 
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.Instituicao;
 import br.com.projetoEstagio.jpa.InstituicaoJPA;
+import br.com.projetoEstagio.restUtil.RestResponse;
 
 
 public class InstituicaoService {
 
 	public Object addInstituicao(Instituicao instituicao) {
 		InstituicaoJPA inst = new InstituicaoJPA();
-		inst.addInstituicao(instituicao);
-		
+		inst.addInstituicao(instituicao);		
 		return inst.list();
-		
+	}
+	
+	public List<Instituicao> validar(Instituicao inst) throws Exception {
+		InstituicaoJPA jpa = new InstituicaoJPA();
+		return jpa.validate(inst);
 	}
 	
 	public List<Instituicao> listInstituicao() throws Exception {

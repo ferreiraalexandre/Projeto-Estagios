@@ -11,7 +11,7 @@ public class TurmaService {
 
 	public Object addTurma(Turma tur) {
 		TurmaJPA turma = new TurmaJPA();
-		turma.addTurma(tur);		
+		turma.addTurma(tur);
 		return  turma.list();
 	}
 	

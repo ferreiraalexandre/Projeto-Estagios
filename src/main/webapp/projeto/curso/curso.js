@@ -150,9 +150,13 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 		   
 	  $scope.novoCurso = function (data) {
 			CursoService.postCurso(data, function (response) {
-				$mdDialog.hide(data);
-				toastr.success(response.message);
-				retornoModal.cursos = response.data;	
+				if(response.data != undefined){
+					$mdDialog.hide(data);
+					toastr.success(response.message);
+					retornoModal.cursos = response.data;				
+				}else{
+					toastr.warning(response.message );
+				}
 		}),
 			function (error) {
 				
