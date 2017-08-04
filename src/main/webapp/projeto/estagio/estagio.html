@@ -32,7 +32,7 @@
 		         	</md-input-container>
 
 					<md-input-container>		         	
-				      	<md-button  ng-click="openRightMenu()" >
+				      	<md-button  ng-click="openRightMenu($scope)" >
 			        		<md-tooltip md-direction="top">Filtrar</md-tooltip>
 			        		<ng-md-icon id="" icon="filter_list" style="fill: #abcdef" size="36"></ng-md-icon>
 			      		</md-button> 
@@ -93,10 +93,7 @@
 
   <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{estagios.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">
   </md-table-pagination>
-  
-  
-  
-  
+
 </md-card>
 
            <md-sidenav id="sidenav" md-component-id = "right" md-disable-backdrop  class = "md-sidenav-right">
@@ -106,13 +103,13 @@
             		<div layout="row" class="input-row layout-row">
 		
 						<md-input-container class="flex">
-							<label>Início</label>
+							<label>Início 1</label>
 							<md-datepicker ng-model="filtro.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
 						</md-input-container>
 						
 						<md-input-container class="flex">
 							<label>Fim</label>
-							<md-datepicker ng-model="filtro.dataFim" md-min-date="filtro.dataInicio" ng-disabled="!filtro.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>										
+							<md-datepicker ng-model="filtro.dataFim" md-min-date="filtro.dataInicio" md-date-locale="" ng-disabled="!filtro.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>										
 						</md-input-container>
 					</div>
 					<div layout="row" class="input-row layout-row">
@@ -128,9 +125,8 @@
 				    
 				    <div class="md-actions">
     					<button class="md-primary md-button md-ink-ripple" type="button"  ng-click="aplicarFiltro(filtro)"><span>Aplicar</span></button>
-    					<button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
+    					<button class="md-primary md-button md-ink-ripple" type="button" ng-click="closeRightMenu()" aria-label="Cancel"><span>Cancelar</span></button>
   					</div>
 				    
          </md-sidenav>
-
 

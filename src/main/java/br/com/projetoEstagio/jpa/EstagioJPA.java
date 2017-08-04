@@ -36,17 +36,12 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		String inicio = formato.format(dataInicio);
 		String fim = formato.format(dataFim);
-		//BETWEEN
-		String hql = "SELECT E FROM "+ this.getEntityName() +" E WHERE E.dataFim = '" + fim + "'";
 		
-
-		Map<String, Object> params = new HashMap<String, Object>();
-		
-//		params.put("dataInicio", dataInicio);
-//		params.put("dataFim", dataFim);
-//		return findByQuery(hql, params);
-		List<Estagio> tt = this.list(hql);
-		return tt;
+		String hql = "SELECT E FROM "+ this.getEntityName() +" E WHERE E.dataFim BETWEEN '" + inicio + "'" + "AND '" + fim +"'";
+		if(turmaId != null){
+			hql += "and E.turma.id = '" + turmaId + "'";
+		}
+		return this.list(hql);
 	
 
 	}	

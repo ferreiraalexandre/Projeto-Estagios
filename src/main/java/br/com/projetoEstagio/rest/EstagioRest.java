@@ -229,8 +229,7 @@ public class EstagioRest extends UtilRest {
 			
 			Date dataInicio = formataData(jsonObject.optString("dataInicio"));
 			Date dataFim = formataData(jsonObject.optString("dataFim"));
-			Long turmaId = jsonObject.optJSONObject("turma").optLong("id");
-			
+			Long turmaId = !jsonObject.isNull("turma") ? jsonObject.optJSONObject("turma").optLong("id") : null;
 			EstagioService service = new EstagioService();
 			
 			List<Estagio> e = service.filtrarEstagio(dataInicio, dataFim, turmaId);
