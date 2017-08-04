@@ -6,10 +6,13 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdSidenav', '$mdUtil','$location', 'EstagioService', 'toastr', 'Scopes',
-                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $mdSidenav,   $mdUtil,  $location,   EstagioService,   toastr ,  Scopes) {
+app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdSidenav', '$mdUtil', '$location', 'EstagioService', 'toastr', 'Scopes', '$rootScope', '$location', '$localStorage',
+                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,  $mdSidenav, $mdUtil,   $location,   EstagioService,   toastr ,  Scopes, $rootScope, $location, $localStorage) {
   
   Scopes.store('estagioController', $scope);//Armazena o scope no service para se utilizado por outra controller
+  
+  app.run($rootScope, $location, $localStorage);
+  
   
   'use strict';
   $scope.title = "Adicionar Estudade"
@@ -34,6 +37,12 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     limitSelect: true,
     pageSelect: true
   };
+  
+
+	$scope.logout = function(){
+		$localStorage.$reset();
+		window.location.href="/projeto-estagios/login.html";
+	}
   
   $scope.query = {
     order: 'name',
@@ -97,21 +106,24 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			
 		});		
 	};
-
-  
-    $scope.openLeftMenu = function() {
-       $mdSidenav('left').toggle();
-    };
-     
+	
     $scope.openRightMenu = function() {
        $mdSidenav('right').toggle();
-     //  $scope.filtro.curso = $scope.curso; 
+     //  $scope.filtro.dataInicio = new Date();
+   
     };
     
+    $scope.closeRightMenu = function() {
+    	$mdSidenav('right').close(); 
+     };
+
    
 	//Função de Aplicar Filtro 
 	$scope.aplicarFiltro = function (data) {
+		 $scope.filtro.dataInicio;
 		EstagioService.filtroEstagio(data, function (response) {
+			$scope.estagios = response.data;
+			$mdSidenav('right').close();
 		}),
 			function (error) {
 		};
@@ -123,5 +135,6 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	$scope.getEstagio();
 	
 }]);
+
 
 
