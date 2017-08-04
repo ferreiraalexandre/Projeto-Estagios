@@ -1,7 +1,7 @@
 (function(){
 	'user strict';
 	
-	angular.module('myApp').factory('auth.interceptor', Interceptor);
+	angular.module('projeto-estagios').factory('auth.interceptor', Interceptor);
 	
 	Interceptor.$inject = ['$localStorage'];
 	
@@ -11,12 +11,12 @@
 				if($localStorage.currentUser){
 					config.headers.Authorization = 'Bearer ' + $localStorage.currentUser.token;
 				}
-				return config;
+				return config; 	
 			}
 		}
 	}
 	
-	angular.module('myApp').config(HttpProvider);
+	angular.module('projeto-estagios').config(HttpProvider);
 	
 	HttpProvider.$inject = ['$httpProvider'];
 	function HttpProvider($httpProvider){

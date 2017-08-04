@@ -6,10 +6,13 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdSidenav', '$mdUtil','$location', 'EstagioService', 'toastr', 'Scopes',
-                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,   $mdSidenav,   $mdUtil,  $location,   EstagioService,   toastr ,  Scopes) {
+app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$mdSidenav', '$mdUtil', '$location', 'EstagioService', 'toastr', 'Scopes', '$rootScope', '$location', '$localStorage',
+                             function ($mdEditDialog,  $q,   $scope,   $timeout,   $mdDialog,  $mdSidenav, $mdUtil,   $location,   EstagioService,   toastr ,  Scopes, $rootScope, $location, $localStorage) {
   
   Scopes.store('estagioController', $scope);//Armazena o scope no service para se utilizado por outra controller
+  
+  app.run($rootScope, $location, $localStorage);
+  
   
   'use strict';
   $scope.title = "Adicionar Estudade"
@@ -34,6 +37,12 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     limitSelect: true,
     pageSelect: true
   };
+  
+
+	$scope.logout = function(){
+		$localStorage.$reset();
+		window.location.href="/projeto-estagios/login.html";
+	}
   
   $scope.query = {
     order: 'name',
@@ -117,11 +126,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		};
 	};
 
-
-
 	//Chama função para buscar estagios
 	$scope.getEstagio();
 	
 }]);
-
-

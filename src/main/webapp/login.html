@@ -17,7 +17,7 @@
  
 
 <div >
-    <md-content ng-app="LoginForm" ng-controller="LoginController" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
+    <md-content ng-controller="LoginController" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
       <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
         <md-toolbar>
           <div class="md-toolbar-tools">
@@ -61,6 +61,7 @@
 		<script src="projeto/js/angular-material.min.js"></script>
 		<script src="projeto/js/angular-material-icons.min.js"></script>
 		<script src="projeto/js/angular-toastr.js"></script>
+		<script src="projeto/js/angular-storage/ngstorage/ngStorage.min.js"></script>
 		<script src="projeto/js/md-data-table.js"></script>		
 		<script src="projeto/js/ui-bootstrap-tpls.min.js"></script>
 		<script src="projeto/js/angular-mask.min.js"></script>
@@ -69,7 +70,8 @@
 		<script src="projeto/js/jquery.js"></script>
 		<script src="projeto/js/angular-br-filters.min.js"></script>
 		<script src="projeto/js/bootstrap.js"></script>
-		<script src="module.js"></script>
+		<script src="projeto/service/login.js"></script>
+		
 		<script src="projeto/service/services.js"></script>
 		<script src="projeto/estagio/estagio.js"></script>
 		<script src="projeto/estagio/cadastroEstagio.js"></script>
@@ -79,7 +81,7 @@
 		<script src="projeto/empresa/empresa.js"></script>
 		<script src="projeto/curso/curso.js"></script>
 		<script src="projeto/instituicao/instituicao.js"></script>
-		<script src="projeto/service/login.js"></script>
+		<script src="projeto/interceptor/auth.interceptor.js"></script>
 
 </body>
 </html>
