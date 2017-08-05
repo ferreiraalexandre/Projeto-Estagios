@@ -17,6 +17,11 @@
         <md-input-container class="flex">
           <label for="input_55">CPF</label>
           <input name="cpf" ng-model="usuario.cpf"  ui-mask="999.999.999-99" id="input_55" ng-required="true" ng-trim="false">
+          <div ng-messages="usuarioForm.cpf.$error" role="alert">
+	          <div ng-message-exp="['required']">
+	           Insira um CPF valído
+	          </div>
+          </div>
         </md-input-container>                
       </div>
       
@@ -25,15 +30,20 @@
           <label for="input_55">Email</label>
           <input name="email" ng-model="usuario.email" ng-pattern="/^.+@.+\..+$/" id="input_55" ng-required="true" ng-trim="false">
           <div ng-messages="usuarioForm.email.$error" role="alert">
-          <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-            Insira um email válido
+	          <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+	            Insira um email válido
+	          </div>
           </div>
-        </div>
         </md-input-container>
                 
         <md-input-container class="flex">
           <label for="input_55">Senha</label>
-          <input type="password" name="senha" ng-model="usuario.senha" ng-required="true" id="input_55"  ng-trim="false">
+          <input type="password" name="senha" ng-model="usuario.senha" ng-required="true" id="input_55"  ng-trim="false" ng-minlength="6">
+          <div ng-messages="usuarioForm.senha.$error" role="alert">
+	          <div ng-message-exp="['required', 'minlength']">
+	            Mínimo de 6 caracteres
+	          </div>
+          </div>
         </md-input-container>                
       </div>
       
