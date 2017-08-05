@@ -2,6 +2,7 @@
 <html ng-app="projeto-estagios">
 
 <head>
+<meta charset="utf-8">
 
 
 <link rel="stylesheet" href="projeto/css/angular-material.css">
@@ -27,15 +28,15 @@
         <md-card-content>
           <form name="Form">
             <md-input-container class="md-block">
-              <input type="text" name="email" ng-model="usuario.email" placeholder="login" required=""/>
-              <div ng-messages="Form.email.$error" role="alert" multiple="">
+              <input type="text" name="email" ng-model="usuario.email" placeholder="E-mail" required="required" ng-trim="false"/>
+              <div ng-messages="Form.email.$error" role="alert">
                 <div ng-message="required" class="my-message">Please enter your email.</div>
               </div>
             
             </md-input-container>              
             <md-input-container class="md-block">
               <label>Password</label>
-              <input type="password" name="password" ng-model="usuario.password" placeholder="password" required="" md-maxlength="16"/>
+              <input type="password" name="password" ng-model="usuario.password" placeholder="Senha" required="required" md-maxlength="16"/>
               <div ng-messages="Form.password.$error" role="alert" multiple="">
                <div ng-message="required" class="my-message">Please enter your password.</div>
                 <div ng-message="md-maxlength" class="my-message">Too long.</div>
@@ -70,7 +71,7 @@
 		<script src="projeto/js/jquery.js"></script>
 		<script src="projeto/js/angular-br-filters.min.js"></script>
 		<script src="projeto/js/bootstrap.js"></script>
-		<script src="projeto/service/login.js"></script>
+		<script src="projeto/login/login.js"></script>
 		
 		<script src="projeto/service/services.js"></script>
 		<script src="projeto/estagio/estagio.js"></script>

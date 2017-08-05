@@ -1,5 +1,7 @@
 package br.com.projetoEstagio.service;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.persistence.NoResultException;
 
 import br.com.projetoEstagio.auth.Auth;
@@ -11,15 +13,23 @@ import br.com.projetoEstagio.rest.Encryption;
 public class LoginService{
 	
 	public Usuario buscarUsuario(String email, String password){
-		
-		UsuarioJPA user = new UsuarioJPA();
-		
-		Usuario usuario = user.buscar(email);
-		if(usuario != null){
-			Auth hashAuth = new Auth();
-			usuario.setToken(hashAuth.generate(usuario.getEmail()));
+		Encryption descrpt = new Encryption();
+		UsuarioJPA jpa = new UsuarioJPA();
+		Usuario user = new Usuario();
+		try {
+			user.setSenha(descrpt.md5(descrpt.bs64d(password)));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
 		}
-		return usuario;
+		
+		user = jpa.getUserAuth(email, user.getSenha());
+		if(user != null){
+			Auth hashAuth = new Auth();
+			
+			
+			user.setToken(hashAuth.generate(user.getEmail()));
+		}
+		return user;
 		
 	}
 	

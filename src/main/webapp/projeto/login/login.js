@@ -41,7 +41,7 @@ app.controller('LoginController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 			}
 		}, function (err) {
 			data.password = "";
-			toastr.info(err.data.message);
+			toastr.warning("E-mail ou senha inválido");
 		})
 	}
 		

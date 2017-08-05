@@ -21,4 +21,6 @@ public interface UsuarioInterface {
 	public List<Usuario> validate(Usuario user);
 	
 	public Usuario buscar(String email);
+	
+	public Usuario getUserAuth(String email, String senha);
 }
