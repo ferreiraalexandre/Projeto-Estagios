@@ -1,24 +1,9 @@
 <meta charset="utf-8">
 
-
-   <script language = "javascript">
-         angular
-            .module('firstApplication', ['ngMaterial','ngMessages'])
-            .controller('dateController', dateController);
-
-         function dateController ($scope) {
-            $scope.myDate = new Date();
-         }                 
-      </script>    
-
-
-
-
-
 <md-card>
   
   <md-grid-list md-cols="2"  md-row-height="64px">
-    <md-grid-tile id="listaEsquerda">
+    <md-grid-tile>
       <md-button  ng-click="menuClick('/cadastroEstagio')" ng-disabled="buttonAddDisabled" >
       	<md-tooltip md-direction="top">Adicionar</md-tooltip>
       	<ng-md-icon id="iconAdd" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
@@ -37,25 +22,29 @@
               
     </md-grid-tile>
 
- 	    <md-grid-tile id="listaDireita">
-	      	<md-card-content>
-	        	<div layout="row">
-		         	<md-input-container id="buscar">
+ 	    <md-grid-tile>
+	      	
+	        	
+		         	<md-input-container  id="md-input-container" class="md-block">
 		            	<label>Buscar</label>
-		            	<form flex="" name="filter.form" class="flex">
+		            	<form flex="" name="filter.form" class="md-button">
 					      	<input type="text" ng-model="query.filter"  class="">
 				    	</form>
-		         	</md-input-container>
-
-					<md-input-container>		         	
+					</md-input-container>	
+					<md-input-container  class="md-block">	         	
 				      	<md-button  ng-click="openRightMenu($scope)" >
 			        		<md-tooltip md-direction="top">Filtrar</md-tooltip>
 			        		<ng-md-icon id="" icon="filter_list" style="fill: #abcdef" size="36"></ng-md-icon>
 			      		</md-button> 
-			      	<md-input-container>
-	        	</div>
-	      	</md-card-content>
- 
+			      
+	
+							         	
+				      	<md-button  ng-click="menuClick('/cadastroEstagio')" >
+			        		<md-tooltip md-direction="top">Relatório</md-tooltip>
+			        		<ng-md-icon id="" icon="archive" style="fill: #abcdef" size="36"></ng-md-icon>
+			      		</md-button> 
+			   
+ </md-input-container>	
 		</md-grid-tile>
     </md-grid-list>
 
@@ -112,26 +101,26 @@
 
 </md-card>
 
-           <md-sidenav id="sidenav" md-component-id = "right" md-disable-backdrop  class = "md-sidenav-right" ng-app = "firstApplication" >
+           <md-sidenav id="sidenav" md-component-id = "right" md-disable-backdrop  class = "md-sidenav-right">
             		<div id= "titulo" >
 	            		<h2 id="tituloFiltro">Filtro</h2>		
             		</div>
-            		<div layout="row" class="input-row layout-row" ng-controller = "dateController as ctrl>
+            		<div layout="row" class="input-row layout-row" >
 		
 						<md-input-container class="flex">
 							<label>Início 1</label>
-							<md-datepicker ng-model="myDate" ng-required="true" ng-trim="false"></md-datepicker>
+							<md-datepicker ng-model="dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
 						</md-input-container>
 						
 						<md-input-container class="flex">
 							<label>Fim</label>
-							<md-datepicker ng-model="filtro.dataFim" md-min-date="filtro.dataInicio" md-date-locale="" ng-disabled="!filtro.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>										
+							<md-datepicker ng-model="dataFim" md-min-date="dataInicio" ng-required="true" ng-trim="false"></md-datepicker>										
 						</md-input-container>
 					</div>
 					<div layout="row" class="input-row layout-row">
 						<md-input-container class="flex">
 							<label>Turma</label>
-							<md-select ng-model="filtro.turma" ng-required="selectRequired">
+							<md-select ng-model="turma" ng-required="selectRequired">
 								<md-option ng-repeat="item in estagios" ng-value="item.turma" >
 									{{item.turma.nome}}
 								</md-option>
@@ -140,7 +129,7 @@
 				    </div>
 				    
 				    <div class="md-actions">
-    					<button class="md-primary md-button md-ink-ripple" type="button"  ng-click="aplicarFiltro(filtro)"><span>Aplicar</span></button>
+    					<button class="md-primary md-button md-ink-ripple" type="button"  ng-click="aplicarFiltro(dataInicio,dataFim,turma)"><span>Aplicar</span></button>
     					<button class="md-primary md-button md-ink-ripple" type="button" ng-click="closeRightMenu()" aria-label="Cancel"><span>Cancelar</span></button>
   					</div>
 				    

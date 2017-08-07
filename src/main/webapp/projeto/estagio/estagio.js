@@ -107,15 +107,12 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		});		
 	};
 	
-	
-		
-	
-	$mdSidenav('right').toggle();
 	$scope.openRightMenu = function() {
        $mdSidenav('right').toggle();
-       this.$scope.estagio.inicio = new Date();
-     //  $scope.filtro.dataInicio = new Date();
-   
+       $scope.dataInicio = new Date();
+       var dataFim = new Date();
+       dataFim.setDate($scope.dataInicio.getDate() + 10);
+       $scope.dataFim = dataFim;
     };
     
     $scope.closeRightMenu = function() {
@@ -124,8 +121,13 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 
    
 	//Função de Aplicar Filtro 
-	$scope.aplicarFiltro = function (data) {
-		 $scope.filtro.dataInicio;
+	$scope.aplicarFiltro = function (dataInicio, dataFim, turma) {
+		 var data = {
+				 dataInicio : dataInicio,
+				 dataFim : dataFim,
+				 turma : turma != null ? turma : null
+		 };
+		
 		EstagioService.filtroEstagio(data, function (response) {
 			$scope.estagios = response.data;
 			$mdSidenav('right').close();
