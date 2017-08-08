@@ -1,13 +1,15 @@
+alert("twste")
 var app = angular.module("projeto-estagios", ['ngMaterial', 'ngMessages','md.data.table', 'ngMdIcons', 'ngRoute', 'ui.mask', 'ngResource', 'ngAnimate', 'ngStorage', 'toastr', 'idf.br-filters']);
 
 app.pathRest = 'rest';
+
 
 app.config(function($routeProvider) {
 	
 	$routeProvider
 	.when('/', {
 		templateUrl : 'projeto/estagio/estagio.html',
-		controller : 'estagioController'
+		
 	})
 
 	
@@ -55,10 +57,7 @@ app.config(function($routeProvider) {
 		templateUrl : 'projeto/estagio/cadastroEstagio.html',
 		controller : 'cadastroEstagioController'
 
-	})
-
-	
-	
+	})	
 
 });
 
@@ -79,12 +78,15 @@ app.config(function($mdDateLocaleProvider) {
 app.run(function($rootScope, $location, $localStorage) {
 	// redirect to login page if not logged in and trying to access a restricted page
 	$rootScope.$on('$locationChangeStart', function (event, next, current) {
-		var publicPages = ['/login'];
+		var publicPages = ['/index'];
+		debugger;
 		//var restrictedPage = publicPages.indexOf($location.path()) === -1;
 		if (!$localStorage.currentUser) {
-			window.location.href="/projeto-estagios/login.html";
-		}else if($localStorage.currentUser && $location.path() == '/login'){
-			$location.path('/empresa');
+			alert('index');
+			window.location.href="/projeto-estagios/index.html";
+		}else if($localStorage.currentUser && $location.path() == '/index'){
+			alert('Home');
+			$location.path('/home');
 		}
 	});
 	

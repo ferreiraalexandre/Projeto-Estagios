@@ -1,0 +1,123 @@
+<html ng-app="projeto-estagios">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projeto Estágios</title>
+	<link rel="stylesheet" href="projeto/css/angular-material.css">
+    <link rel="stylesheet" href="projeto/css/material-icons.css">
+    
+	<link rel="stylesheet" href="projeto/css/angular-toastr.css" />
+    <link rel="stylesheet" href="projeto/css/md-data-table.css">
+	<link rel="stylesheet" href="projeto/css/bootstrap.css">
+    <link rel="stylesheet" href="projeto/estagio/estagio.css">
+  </head>
+	<body layout="column">
+		<md-content laout="column" flex ng-controller="estagioController">
+			<div class="navbar navbar-default navbar-fixed-top" id="navbarMenu" role="navigation">
+				<div class="container"> 
+					<!--a class="navbar-brand" href=""><img src="projeto/img/Logo.png"></a-->
+					<a class="navbar-brand" href="">
+					<h1  id="logo">Controle Estágio</h1>
+					</a>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" style="cursor:pointer;">
+								<span class="glyphicon glyphicon-user" style="color:white;"></span> 
+								<strong style="color:white;">Usuário</strong>
+								<span class="glyphicon glyphicon-chevron-down" style="color:white;"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<div class="navbar-login">
+										<div class="row">
+											<div class="col-lg-4">
+												<p class="text-center"><span class="glyphicon glyphicon-user icon-size"></span></p>
+											</div>
+											<div class="col-lg-8">
+												<p class="text-left"><strong>Marcia</strong></p>
+												<p class="text-left small">Marcia@senai.com</p>
+												<p class="text-left"><a href="#" class="btn btn-primary btn-block btn-sm">Atualizar Dados</a></p>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<div class="navbar-login navbar-login-session">
+										<div class="row">
+											<div class="col-lg-12">
+												<p><a href="#" class="btn btn-danger btn-block" ng-click="logout()">Sair</a></p>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="container-fluid" ng-show="links" id="menu" style="color:#313b3f;">
+				<md-content class="md-padding">
+					<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+					<md-nav-item md-nav-click="menuClick('/')" name="page1">Estágio</md-nav-item>
+					<md-nav-item md-nav-click="menuClick('/usuario')" name="page6">Usuário</md-nav-item>
+					<md-nav-item md-nav-click="menuClick('/curso')" name="page4">Curso</md-nav-item>
+					<md-nav-item md-nav-click="menuClick('/turma')" name="page5">Turma</md-nav-item>
+					<md-nav-item md-nav-click="menuClick('/empresa')" name="page3">Empresa</md-nav-item>					
+					<md-nav-item md-nav-click="menuClick('/instituicao')" name="page7">Instituição</md-nav-item>
+					<md-nav-item md-nav-click="menuClick('/unidadeEnsino')" name="page2">Unidade De Ensino</md-nav-item>
+				</md-content>
+			</div>
+			<!--   NÃO REMOVER
+			<md-card>
+				<div layout="row" layout-wrap class="checkboxes">
+					<md-checkbox ng-model="options.rowSelection">Row Selection</md-checkbox>
+					<md-checkbox ng-model="options.multiSelect">Multiple Selection</md-checkbox>
+					<md-checkbox ng-model="options.autoSelect">Auto Selection</md-checkbox>
+					<md-checkbox ng-model="options.decapitate">Decapitate</md-checkbox>
+					<md-checkbox ng-model="options.largeEditDialog">Lard Edit Dialogs</md-checkbox>
+					<md-checkbox ng-model="options.boundaryLinks">Pagination Boundary Links</md-checkbox>
+					<md-checkbox ng-model="options.limitSelect" ng-click="toggleLimitOptions()">Pagination Limit Select</md-checkbox>
+					<md-checkbox ng-model="options.pageSelect">Pagination Page Select</md-checkbox>
+				</div>
+			</md-card>
+			-->
+			<div ng-view>
+			</div>
+		
+			<div class="footer" ng-show="rodape"><p class="denvelopers">Desenvolvedores | Alexandre Ferreira da Silva, Caio Ricardo Lessin, Eduardo Fabrício Pacheco e Jeronimo Fleith de Lima</p></div>
+		</md-content>
+		<script src="projeto/js/angular.min.js"></script>
+		<script src="projeto/js/angular-route/angular-route.min.js"></script>
+		<script src="projeto/js/angularjs-toaster/toaster.min.js"></script>
+		<script src="projeto/js/angular-resource.min.js"></script>
+		<script src="projeto/js/angular-animate.min.js"></script>
+		<script src="projeto/js/angular-aria.min.js"></script>
+		<script src="projeto/js/angular-messages.min.js"></script>
+		<script src="projeto/js/angular-material.min.js"></script>
+		<script src="projeto/js/angular-material-icons.min.js"></script>
+		<script src="projeto/js/angular-toastr.js"></script>
+		<script src="projeto/js/angular-storage/ngstorage/ngStorage.min.js"></script>
+		<script src="projeto/js/md-data-table.js"></script>		
+		<script src="projeto/js/ui-bootstrap-tpls.min.js"></script>
+		<script src="projeto/js/angular-mask.min.js"></script>
+		
+		<script src="projeto/js/moment.js"></script>
+	
+		<script src="projeto/js/jquery.js"></script>
+		<script src="projeto/js/angular-br-filters.min.js"></script>
+		<script src="projeto/js/bootstrap.js"></script>
+		<script src="module.js"></script>
+		<script src="projeto/service/services.js"></script>
+		<script src="projeto/estagio/estagio.js"></script>
+		<script src="projeto/estagio/cadastroEstagio.js"></script>
+		<script src="projeto/usuario/usuario.js"></script>
+		<script src="projeto/unidadeEnsino/unidadeEnsino.js"></script>
+		<script src="projeto/turma/turma.js"></script>
+		<script src="projeto/empresa/empresa.js"></script>
+		<script src="projeto/curso/curso.js"></script>
+		<script src="projeto/instituicao/instituicao.js"></script>
+		<script src="projeto/interceptor/auth.interceptor.js"></script>
+	</body> 
+</html>
