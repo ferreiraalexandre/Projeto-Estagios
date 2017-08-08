@@ -124,10 +124,6 @@ a{
 	color: white;	
 }
 
-#buscar{
-	margin-top: 35px;
-}
-
 #sidenav{
   position: fixed;
     height: calc(100% - 200px);
@@ -159,4 +155,13 @@ a{
 	color: #6ca6d1;
     font-size: 24px;
     font-weight: bold;
+}
+
+#md-card-content{
+	margin-left: auto;
+}
+
+#md-input-container{
+	margin-left: auto;
+	margin-top: 40px;
 }
