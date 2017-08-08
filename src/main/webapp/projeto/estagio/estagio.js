@@ -94,10 +94,14 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			$scope.estagios = response.data;
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
-			toastr.success(response.message);
+			toastr.info('What a nice apple button', 'Button spree', {
+				  closeButton: true,
+				  closeHtml: '<button></button>'
+				});
 		});
-	};
+	};  
 
+	
 	//Busca estagios do banco e lista na tabela
 	$scope.getEstagio = function () {
 		EstagioService.getList(function (response) {
@@ -114,16 +118,15 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
        dataFim.setDate($scope.dataInicio.getDate() + 10);
        $scope.dataFim = dataFim;
        
-       var tt = [];
-       tt.push($scope.estagios[0].turma);
-       $scope.turmas = tt;
+       var turma = [];
+       $scope.turmas = turma.push($scope.estagios[0].turma);
        for (var int = 0; int < $scope.estagios.length; int++) {
 		
-    	   for (var i = 0; i < tt.length; i++) {
+    	   for (var i = 0; i < turma.length; i++) {
 			
-    		   if(!$scope.estagios[int].turma.id === tt[i].id){
-    			   tt.push($scope.estagios[int].turma);
-    			   $scope.turmas = tt;
+    		   if(!($scope.estagios[int].turma.id == turma[i].id)){
+    			   turma.push($scope.estagios[int].turma);
+    			   $scope.turmas = turma;
     		   }	   
     	   }
        }

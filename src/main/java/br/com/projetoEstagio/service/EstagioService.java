@@ -1,27 +1,42 @@
 package br.com.projetoEstagio.service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
 
-import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Estudante;
-import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.jpa.EmpresaJPA;
 import br.com.projetoEstagio.jpa.EstagioJPA;
 import br.com.projetoEstagio.jpa.EstudanteJPA;
 import br.com.projetoEstagio.jpa.InstituicaoJPA;
 import br.com.projetoEstagio.jpa.TurmaJPA;
-import br.com.projetoEstagio.jpa.UsuarioJPA;
 import br.com.projetoEstagio.pojo.EstagioPojo;
 
 public class EstagioService {
 
 	public List<Estagio> listEstagio() throws Exception {
 		EstagioJPA listEstagio = new EstagioJPA();
-		return listEstagio.list();
+		
+		List<Estagio> result = listEstagio.list();
+		if(result.size() > 0){
+			Date dataAtual = new Date();
+			Date dataVencimento = new Date();
+			
+			Calendar c = Calendar.getInstance();
+			c.setTime(dataVencimento);
+			c.add(Calendar.DATE, +10);
+			
+			for (Estagio estagio : result) {
+				if(estagio.getDataFim().before(dataAtual) || estagio.getDataFim().before(c.getTime()) || estagio.getDataFim() == c.getTime()){
+					System.out.println(estagio.getDataFim());
+					
+				}
+			}
+		}
+		return result;
 	}
 	
 	public EstagioPojo listSelect() throws Exception {
