@@ -30,7 +30,8 @@ public class EstagioService {
 			c.add(Calendar.DATE, +10);
 			
 			for (Estagio estagio : result) {
-				if(estagio.getDataFim().before(dataAtual) || estagio.getDataFim().after(c.getTime())){
+				if(estagio.getDataFim().before(dataAtual) || estagio.getDataFim().before(c.getTime()) || estagio.getDataFim() == c.getTime()){
+					System.out.println(estagio.getDataFim());
 					
 				}
 			}
