@@ -113,6 +113,20 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
        var dataFim = new Date();
        dataFim.setDate($scope.dataInicio.getDate() + 10);
        $scope.dataFim = dataFim;
+       
+       var tt = [];
+       tt.push($scope.estagios[0].turma);
+       $scope.turmas = tt;
+       for (var int = 0; int < $scope.estagios.length; int++) {
+		
+    	   for (var i = 0; i < tt.length; i++) {
+			
+    		   if(!$scope.estagios[int].turma.id === tt[i].id){
+    			   tt.push($scope.estagios[int].turma);
+    			   $scope.turmas = tt;
+    		   }	   
+    	   }
+       }
     };
     
     $scope.closeRightMenu = function() {

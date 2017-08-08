@@ -121,8 +121,8 @@
 						<md-input-container class="flex">
 							<label>Turma</label>
 							<md-select ng-model="turma" ng-required="selectRequired">
-								<md-option ng-repeat="item in estagios" ng-value="item.turma" >
-									{{item.turma.nome}}
+								<md-option ng-repeat="item in turmas" ng-value="item" >
+									{{item.nome}}
 								</md-option>
 							</md-select>
 						</md-input-container>					
