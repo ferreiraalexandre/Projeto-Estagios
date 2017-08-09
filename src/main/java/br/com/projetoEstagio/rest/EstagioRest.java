@@ -238,6 +238,22 @@ public class EstagioRest extends UtilRest {
 			return getResponseError(e);
 		}
 	}
+	
+	@GET
+	@Path("/vencendo")
+	@Produces("application/json")
+	public Response vencendo(){
+		
+		try {
+			EstagioService service = new EstagioService();
+			
+			List<Estagio> e = service.estagioVencendo();
+			return getResponseList(e);
+		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
+
 
 
 }

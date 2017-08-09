@@ -36,6 +36,7 @@ app.controller('LoginController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 				$localStorage.currentUser = {token: response.data.token, pemission: response.data.permission};
 				//$http.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.token;
 				//$scope.getData();
+				$localStorage.login = true;
 				window.location.href='/projeto-estagios/home.html';
 				
 			}

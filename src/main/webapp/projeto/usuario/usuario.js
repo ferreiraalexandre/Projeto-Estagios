@@ -168,11 +168,15 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		//Função de editar usuario no Banco de Dados
 		$scope.editarUsuario = function (data) {
 			UsuarioService.putUsuario(data, function (response) {
-			$mdDialog.hide(data);
-			toastr.success(response.message);
-			retornoModal.usuarios = response.data;
-				
-			}),
+				if(response.data != undefined){
+					$mdDialog.hide(data);
+					toastr.success(response.message);
+					retornoModal.usuarios = response.data;				
+				}else{
+					toastr.warning(response.message );
+				}
+					
+				}),
 				function (error) {
 		
 				};

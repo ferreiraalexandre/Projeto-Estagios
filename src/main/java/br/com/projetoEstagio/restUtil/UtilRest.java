@@ -36,15 +36,15 @@ public class UtilRest {
 	}
 	
 	public Response getResponseAdd(String msg, Object e) {
-		return this.getResponse(new RestResponse(
-				msg, null, e),
-				Response.Status.CREATED);
+		return this.getResponse(new RestResponse(msg, null, e), Response.Status.CREATED);
 	}
 
 	public Response getResponseEdit(Object data) {
-		return this.getResponse(new RestResponse(
-				"Registro alterado com sucesso.", null, data),
-				Response.Status.OK);
+		return this.getResponse(new RestResponse("Registro editado com suceso!", null, data), Response.Status.OK);
+	}
+	
+	public Response getResponseEdit(String msg, Object data) {
+		return this.getResponse(new RestResponse(msg, null, data), Response.Status.OK);
 	}
 
 	public Response getResponseRemove(Object e) {

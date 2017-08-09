@@ -26,7 +26,8 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.isLoading = true;
   $scope.$parent.rodape = true;
   $scope.$parent.links = true;
-    
+  $scope.estagioVencendo;
+  
   $scope.options = {
     rowSelection: true,
     multiSelect: true,
@@ -41,7 +42,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 
 	$scope.logout = function(){
 		$localStorage.$reset();
-		window.location.href="/projeto-estagios/login.html";
+		window.location.href="/projeto-estagios/login.html";l
 	}
   
   $scope.query = {
@@ -94,10 +95,6 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			$scope.estagios = response.data;
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
-			toastr.info('What a nice apple button', 'Button spree', {
-				  closeButton: true,
-				  closeHtml: '<button></button>'
-				});
 		});
 	};  
 
@@ -153,8 +150,59 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		};
 	};
 
+	//Busca estagios Vencendo
+	$scope.getEstagioVencendo = function () {
+		EstagioService.getEstagioVencendo(function (response) {
+			if(response.data){
+				$scope.estagioVencendo = response.data;
+				$scope.abrirModal();
+			}
+			
+		});		
+	};
+
+//////////////////////////////////////Abrir Modal
+	  $scope.abrirModal = function(event) {
+		    $mdDialog.show({
+		      controller: ModalController,
+		      templateUrl: 'projeto/estagio/modalEstagioVencendo.html',
+		      targetEvent: event,
+		      clickOutsideToClose:true,
+		      locals : {
+	              retornoModal : $scope
+	          }
+		    })
+	        .then(function(novaUnidade) {
+	        	$scope.selecionados = [];
+	        	$scope.buttonEnable();
+	        }, function() {
+	         //Adicionar mensagem de erro aqui
+	        });
+	  };
+
+///////////////////////////////////////////////////Controller da modal
+		function ModalController($scope, $mdDialog,retornoModal) {
+			console.log(retornoModal);
+			$scope.estagiosVencendo = retornoModal.estagioVencendo;
+			
+			$scope.hide = function() {
+		      $mdDialog.hide();
+		    };
+
+		    $scope.cancel = function() {
+		      $mdDialog.cancel();
+
+		    };	
+	}
+	
 	//Chama função para buscar estagios
 	$scope.getEstagio();
+
+	//Chama função para buscar estagios vencendo
+	if($localStorage.login == true){
+		$localStorage.login = false;
+		$scope.getEstagioVencendo();
+	}
 	
 }]);
 

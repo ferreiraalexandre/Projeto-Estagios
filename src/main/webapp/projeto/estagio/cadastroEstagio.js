@@ -95,8 +95,9 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 	$scope.adicionarEstagio = function (data) {
 		EstagioService.postEstagio(data, function (response) {
 		toastr.success(response.message);
-		var  link = "/";
-		$location.path(link);
+//		var  link = "/";
+//		$location.path(link);
+		window.location.href="/projeto-estagios/home.html";
 	
 		}),
 			function (error) {
@@ -107,8 +108,9 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 	$scope.editarEstagio = function (data) {
 		EstagioService.putEstagio(data, function (response) {
 			toastr.success(response.message);
-			var  link = "/";
-			$location.path(link);
+//			var  link = "/";
+//			$location.path(link);
+			window.location.href="/projeto-estagios/home.html";
 
 		}),
 		function (error) {
@@ -119,7 +121,8 @@ app.controller('cadastroEstagioController', ['$mdEditDialog', '$q', '$scope', '$
 	
 	// Função do botão "Cancelar"do "CadastroEstagio.html"
 	$scope.go = function ( path ) {
-		$location.path(path);
+		window.location.href="/projeto-estagios/home.html";
+		
 	};
 	
 	//Chama função para buscar estagios
