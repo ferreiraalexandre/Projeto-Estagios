@@ -2,6 +2,7 @@ package br.com.projetoEstagio.jpa;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +42,25 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 		if(turmaId != null){
 			hql += "and E.turma.id = '" + turmaId + "'";
 		}
+		return this.list(hql);
+	
+
+	}	
+
+	public List<Estagio> estagioVencendo(){
+//		Date dataAtual = new Date();
+//		Date dataVencimento = new Date();
+		
+		Calendar c = Calendar.getInstance();
+		c.add(Calendar.DATE, +10);
+
+		
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		String inicio = formato.format(new Date());
+		String fim = formato.format(c.getTime());
+		
+		String hql = "SELECT E FROM "+ this.getEntityName() +" E WHERE E.dataFim BETWEEN '" + inicio + "'" + "AND '" + fim +"'";
+
 		return this.list(hql);
 	
 

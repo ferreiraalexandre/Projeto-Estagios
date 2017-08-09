@@ -91,4 +91,13 @@ public class EstagioService {
 		EstagioJPA jpa = new EstagioJPA();
 		return jpa.filtrar(dataInicio, dataFim, turmaId);
 	}
+	
+	public List<Estagio> estagioVencendo() throws Exception {
+		EstagioJPA jpa = new EstagioJPA();
+		
+		List<Estagio> result = jpa.estagioVencendo();
+
+		return result;
+	}
+
 }
