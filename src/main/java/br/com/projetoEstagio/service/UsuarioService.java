@@ -15,20 +15,18 @@ public class UsuarioService {
 	public Object addUsuario(Usuario usu) throws Exception, UnsupportedEncodingException, NoSuchAlgorithmException {
 		
 		UsuarioJPA usuario = new UsuarioJPA();
+		Object obj = null;
 		
-		Crypt crypt = new Crypt();
-		usu.setSenha(crypt.decode(usu.getSenha()));
-		usuario.addUsuario(usu);
-	
-		return  usuario.list();
-
+		List<Usuario> retorno = usuario.buscarPorEmail(usu);
+		if(retorno.size() > 0){
+			return obj;
+		}else{
+			Crypt crypt = new Crypt();
+			usu.setSenha(crypt.decode(usu.getSenha()));
+			usuario.addUsuario(usu);		
+			return  usuario.list();
+		}
 	}
-
-	public List<Usuario> validar(Usuario user) throws Exception {
-		UsuarioJPA jpa = new UsuarioJPA();
-		return jpa.validate(user);
-	}
-
 	
 	public List<Usuario> listUsuario() throws Exception {
 		UsuarioJPA listUsuario = new UsuarioJPA();
@@ -38,6 +36,11 @@ public class UsuarioService {
 	public List<Usuario> listCoordenadores() throws Exception {
 		UsuarioJPA listUsuario = new UsuarioJPA();
 		return listUsuario.listCoordenadores();
+	}
+	
+	public List<Usuario> validar(Usuario user) throws Exception {
+		UsuarioJPA listUsuario = new UsuarioJPA();
+		return listUsuario.buscarPorEmail(user);
 	}
 	
 	public Object deleteUsuario(JSONArray usu) throws Exception{

@@ -34,17 +34,13 @@ public class UsuarioRest extends UtilRest {
 			UsuarioService service = new UsuarioService(); 
 			Usuario usuario = getObjectMapper().readValue(json, Usuario.class);
 			String msg = "Email já cadastrado";
-			Object users = null;
 			
-			List<Usuario> retorno = service.validar(usuario);
-			if(retorno.size() > 0){
-				return getResponseAdd(msg, users);
+			Object result = service.addUsuario(usuario);
+			if(result == null){
+				return getResponseAdd(msg, result);
 			}else{
-				users = service.addUsuario(usuario);
-				return getResponseAdd(users);
-				
+				return getResponseAdd(result);				
 			}
-			
 			
 		}catch(Exception e){
 			Object o = new Object();
@@ -104,10 +100,21 @@ public class UsuarioRest extends UtilRest {
 	public Response editar(String json) {
 
 		try{
-			Usuario usu = getObjectMapper().readValue(json, Usuario.class);
-			
+			Usuario usu = getObjectMapper().readValue(json, Usuario.class);			
 			UsuarioService service = new UsuarioService(); 
-					
+			String msg = "Email já cadastrado";
+			Object users = null;
+			
+			List<Usuario> retorno = service.validar(usu);
+			if(retorno.size() > 0){
+				for (Usuario u : retorno) {
+					if(u.getId() != usu.getId()){
+						return getResponseEdit(msg, users);
+					}					
+				}				
+			}else{
+				return getResponseEdit(service.editarUsuario(usu));
+			}
 			return getResponseEdit(service.editarUsuario(usu));
 		}catch(Exception e){
 			return getResponseError(e);

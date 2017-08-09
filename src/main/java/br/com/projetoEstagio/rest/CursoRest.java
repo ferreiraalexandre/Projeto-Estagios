@@ -40,7 +40,7 @@ public class CursoRest extends UtilRest {
 				return getResponseAdd(msg, obj);
 			}else{
 				obj = service.addCurso(cur);
-				return getResponseAdd(obj);				
+				return getResponseAdd(obj);			
 			}
 		}catch(Exception e){
 			return getResponseError(e);

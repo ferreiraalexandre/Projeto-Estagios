@@ -18,7 +18,7 @@ public interface UsuarioInterface {
 	
 	public List<Usuario> listCoordenadores();
 	
-	public List<Usuario> validate(Usuario user);
+	public List<Usuario> buscarPorEmail(Usuario user);
 	
 	public Usuario buscar(String email);
 	
