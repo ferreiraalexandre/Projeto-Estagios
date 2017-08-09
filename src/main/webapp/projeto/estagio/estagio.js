@@ -42,7 +42,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 
 	$scope.logout = function(){
 		$localStorage.$reset();
-		window.location.href="/projeto-estagios/login.html";l
+		window.location.href="/projeto-estagios/login.html";
 	}
   
   $scope.query = {

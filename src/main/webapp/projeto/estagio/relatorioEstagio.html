@@ -1,0 +1,47 @@
+ <meta charset="utf-8">
+ 
+  <md-table-container>
+ 
+    <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selecionados" md-progress="promise">
+      <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+        <tr md-row>
+          <th md-column md-order-by="nome"><span>Nome</span></th>
+          <th md-column md-order-by="curso" md-desc><span>Curso</span></th>
+          <th md-column md-order-by="empresa"><span>Empresa</span></th>
+          <th md-column md-order-by="dataInicio"><span>Data Início</span></th>
+          <th md-column md-order-by="dataFim"><span>Data Fim</span></th>
+          <th md-column md-order-by="rescisao"><span>Rescisão</span></th>
+          <th md-column md-order-by="aditivo"><span>Aditivo</span></th>
+          <th md-column md-order-by="visita"><span>Visita Empresa</span></th>
+          <th md-column md-order-by="orientador"><span>Orientador</span></th>
+          <th md-column md-order-by="situacao"><span>Situação</span></th>
+          <th md-column md-order-by="sgn"><span>SGN</span></th>
+          <th md-column md-order-by="instituicao"><span>Instituição</span></th>
+          <th md-column md-order-by="obrigatorio"><span>Obrigatorio</span></th>
+          <th md-column md-order-by="observacao"><md-icon>comments</md-icon><span>Observação</span></th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagios | filter: query.filter" class="md-row">
+          <td md-cell>{{estagio.estudante.nome}}</td>
+          <td md-cell>{{estagio.turma.curso.nome}}</td>
+          <td md-cell>{{estagio.empresa.nome}}</td>
+          <td md-cell>{{estagio.dataInicio ? (estagio.dataInicio | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.dataFim ? (estagio.dataFim | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.dataRescisao ? (estagio.dataRescisao | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.dataAditivo ? (estagio.dataAditivo | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.empresa.data ? (estagio.empresa.data | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+          <td md-cell>{{estagio.empresa.usuario.nome}}</td>
+          <td md-cell>{{estagio.situacao}}</td>
+          <td md-cell>{{estagio.cadastroSGN == true ? 'Sim' : 'Não'}}</td>
+          <td md-cell>{{estagio.instituicao.nome}}</td>
+          <td md-cell>{{estagio.estagioObrigatorio == true ? 'Sim' : 'Não'}}</td>
+          <td md-cell>{{estagio.observacao ? estagio.observacao : 'N/A'}}</td>
+         
+        </tr>
+      </tbody>
+    </table>
+    
+     
+  </md-table-container>
+  

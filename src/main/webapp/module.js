@@ -58,6 +58,13 @@ app.config(function($routeProvider) {
 
 	})	
 
+	$routeProvider
+	.when('/relatorioEstagio', {
+		templateUrl : 'projeto/estagio/relatorioEstagio.html',
+		controller : 'relatorioEstagioController'
+
+	})	
+
 });
 
 // deixa o calendario em 'pt'
