@@ -34,15 +34,12 @@ public class TurmaRest extends UtilRest {
 			TurmaService service = new TurmaService(); 
 			Turma turma = getObjectMapper().readValue(json, Turma.class);										
 			String msg = "Turma já cadastrada";
-			Object obj = null;
-					
-			List<Turma> retorno = service.validar(turma);
-			if(retorno.size() > 0){
-				return getResponseAdd(msg, obj);
+			
+			Object result = service.addTurma(turma);
+			if(result == null){
+				return getResponseAdd(msg, result);
 			}else{
-				obj = service.addTurma(turma);
-				return getResponseAdd(obj);
-				
+				return getResponseAdd(result);				
 			}
 		}catch(Exception e){
 			return getResponseError(e);
@@ -86,11 +83,17 @@ public class TurmaRest extends UtilRest {
 	public Response editar(String json) {
 
 		try{
-			Turma tur = getObjectMapper().readValue(json, Turma.class);
+			Turma tur = getObjectMapper().readValue(json, Turma.class);			
+			TurmaService service = new TurmaService();
+			String msg = "Turma já cadastrada";
+
 			
-			TurmaService service = new TurmaService(); 
-					
-			return getResponseEdit(service.editarTurma(tur));
+			Object result = service.editarTurma(tur);
+			if(result == null){
+				return getResponseEdit(msg, result);
+			}else{
+				return getResponseEdit(result);				
+			}
 		}catch(Exception e){
 			return getResponseError(e);
 		}

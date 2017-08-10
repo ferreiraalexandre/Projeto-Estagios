@@ -22,7 +22,7 @@ public class InstituicaoJPA  extends JPAAbstract<Instituicao, Long> implements I
 		return this.edit(instituicao);
 	}
 	
-	public List<Instituicao> validate(Instituicao inst) {
+	public List<Instituicao> buscarPorNome(Instituicao inst) {
 		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.nome = '"+ inst.getNome() +"'"
 				+ " or U.sigla = '"+ inst.getSigla() +"'");
 	}

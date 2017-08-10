@@ -13,13 +13,16 @@ public class InstituicaoService {
 
 	public Object addInstituicao(Instituicao instituicao) {
 		InstituicaoJPA inst = new InstituicaoJPA();
-		inst.addInstituicao(instituicao);		
-		return inst.list();
-	}
-	
-	public List<Instituicao> validar(Instituicao inst) throws Exception {
-		InstituicaoJPA jpa = new InstituicaoJPA();
-		return jpa.validate(inst);
+		Object obj = null;
+				
+		List<Instituicao> retorno = inst.buscarPorNome(instituicao);
+		if(retorno.size() > 0){
+			return obj;
+		}else{
+			inst.addInstituicao(instituicao);		
+			return inst.list();
+			
+		}
 	}
 	
 	public List<Instituicao> listInstituicao() throws Exception {
@@ -58,12 +61,35 @@ public class InstituicaoService {
 			List<Estagio> listEstagios = inst.list();
 			
 			return listEstagios;*/
-			return null;
+			return inst.list();
 	}
 	
 	public Object editarInstituicao(Instituicao instituicao) {
 		InstituicaoJPA inst = new InstituicaoJPA();
+		Object obj = null;
+		
+		List<Instituicao> retorno = inst.buscarPorNome(instituicao);
+		if(retorno.size() > 0){
+			for (Instituicao u : retorno) {
+				if(u.getId() != instituicao.getId()){
+					return obj;
+				}					
+			}				
+		}
 		inst.editarInstituicao(instituicao);
 		return inst.list();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

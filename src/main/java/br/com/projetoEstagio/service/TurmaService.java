@@ -10,14 +10,16 @@ import br.com.projetoEstagio.jpa.TurmaJPA;
 public class TurmaService {
 
 	public Object addTurma(Turma tur) {
-		TurmaJPA turma = new TurmaJPA();
-		turma.addTurma(tur);
-		return  turma.list();
-	}
-	
-	public List<Turma> validar(Turma turma) throws Exception {
-		TurmaJPA jpa = new TurmaJPA();
-		return jpa.validate(turma);
+		TurmaJPA turma = new TurmaJPA();									
+		Object obj = null;
+				
+		List<Turma> retorno = turma.buscarSemId(tur);
+		if(retorno.size() > 0){
+			return obj;
+		}else{
+			obj = turma.addTurma(tur);			
+			return turma.list();							
+		}
 	}
 
 	public List<Turma> listTurma() throws Exception {
@@ -38,9 +40,20 @@ public class TurmaService {
 	}
 
 	public Object editarTurma(Turma tur) {
-		TurmaJPA user = new TurmaJPA();
-		user.editarTurma(tur);
-		return user.list();
+		TurmaJPA turma = new TurmaJPA();
+		Object obj = null;
+		
+		List<Turma> retorno = turma.buscarSemId(tur);
+		if(retorno.size() > 0){
+			for (Turma u : retorno) {
+				if(u.getId() != tur.getId()){
+					return obj;
+				}					
+			}				
+		}
+		turma.editarTurma(tur);
+		return turma.list();
+		
 	}
 	
 }

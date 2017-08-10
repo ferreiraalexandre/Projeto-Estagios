@@ -38,11 +38,6 @@ public class UsuarioService {
 		return listUsuario.listCoordenadores();
 	}
 	
-	public List<Usuario> validar(Usuario user) throws Exception {
-		UsuarioJPA listUsuario = new UsuarioJPA();
-		return listUsuario.buscarPorEmail(user);
-	}
-	
 	public Object deleteUsuario(JSONArray usu) throws Exception{
 		UsuarioJPA uni = new UsuarioJPA();
 			
@@ -56,7 +51,18 @@ public class UsuarioService {
 	}
 
 	public Object editarUsuario(Usuario usu) {
-		UsuarioJPA user = new UsuarioJPA();
+		
+		UsuarioJPA user = new UsuarioJPA();		
+		Object obj = null;
+		
+		List<Usuario> retorno = user.buscarPorEmail(usu);
+		if(retorno.size() > 0){
+			for (Usuario u : retorno) {
+				if(u.getId() != usu.getId()){
+					return obj;
+				}					
+			}				
+		}
 		user.editarUsuario(usu);
 		return user.list();
 	}
