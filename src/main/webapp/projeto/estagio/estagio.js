@@ -66,7 +66,22 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	$scope.buttonEditDisabled = !($scope.selecionados.length == 1);
 	$scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
   };
-
+////////////////////função de confirm pra deletar
+  $scope.showConfirm = function(ev) {
+	  var confirm = $mdDialog.confirm()
+	  .title('EXCLUIR ')
+	  .textContent('Tem certeza que deseja excluir o(s) Estágio(s)?')
+	  .targetEvent(ev)
+	  .ok('SIM')
+	  .cancel('NÃO');
+	  
+	  $mdDialog.show(confirm).then(function() {
+		  $scope.deleteEstagio();
+		  $scope.status = 'Deletado';
+	  }, function() {
+		  $scope.status = 'Deu erro ao deletar';
+	  });
+  };
   
 //Função para mudar telas conforme menu 
   $scope.menuClick = function (link) {
