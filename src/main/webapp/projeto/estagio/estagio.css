@@ -165,3 +165,19 @@ a{
 	margin-left: auto;
 	margin-top: 40px;
 }
+
+
+.glyphicon-log-out{
+	color: white;	
+	font-size: 19px;	
+	margin-top: 10px;
+    height: 40px;
+    vertical-align: sub;
+    margin-left: 10px;
+	
+}
+
+.nome-logado{
+	margin-top: 10px;
+	color: white;
+}

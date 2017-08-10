@@ -21,38 +21,9 @@
 					<h1  id="logo">Controle Estágio</h1>
 					</a>
 					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" style="cursor:pointer;">
-								<span class="glyphicon glyphicon-user" style="color:white;"></span> 
-								<strong style="color:white;">Usuário</strong>
-								<span class="glyphicon glyphicon-chevron-down" style="color:white;"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<div class="navbar-login">
-										<div class="row">
-											<div class="col-lg-4">
-												<p class="text-center"><span class="glyphicon glyphicon-user icon-size"></span></p>
-											</div>
-											<div class="col-lg-8">
-												<p class="text-left"><strong>Marcia</strong></p>
-												<p class="text-left small">Marcia@senai.com</p>
-												<p class="text-left"><a href="#" class="btn btn-primary btn-block btn-sm">Atualizar Dados</a></p>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<div class="navbar-login navbar-login-session">
-										<div class="row">
-											<div class="col-lg-12">
-												<p><a href="#" class="btn btn-danger btn-block" ng-click="logout()">Sair</a></p>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
+						<li class="nome-logado" ng-click="logout()">
+							
+								{{usuario}}<i class="glyphicon glyphicon-log-out" aria-hidden="true"></i>
 						</li>
 					</ul>
 				</div>

@@ -14,7 +14,7 @@ public interface InstituicaoInterface {
 	
 	public Instituicao editarInstituicao(Instituicao instituicao);
 	
-	public List<Instituicao> validate(Instituicao inst);
+	public List<Instituicao> buscarPorNome(Instituicao inst);
 	
 	public Instituicao findById(Long id);
 

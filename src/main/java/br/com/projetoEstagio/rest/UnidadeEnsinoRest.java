@@ -34,14 +34,12 @@ public class UnidadeEnsinoRest extends UtilRest {
 			UnidadeEnsino uni = getObjectMapper().readValue(json, UnidadeEnsino.class);			
 			UnidadeEnsinoService service = new UnidadeEnsinoService(); 
 			String msg = "Unidade de ensino já cadastrada";
-			Object unis = null;
-					
-			List<UnidadeEnsino> retorno = service.validar(uni);
-			if(retorno.size() > 0){
-				return getResponseAdd(msg, unis);
+
+			Object result = service.addUnidadeEnsino(uni);
+			if(result == null){
+				return getResponseAdd(msg, result);
 			}else{
-				unis = service.addUnidadeEnsino(uni);
-				return getResponseAdd(unis);				
+				return getResponseAdd(result);				
 			}
 		}catch(Exception e){
 			return getResponseError(e);
@@ -85,11 +83,17 @@ public class UnidadeEnsinoRest extends UtilRest {
 	public Response editar(String json) {
 
 		try{
-			UnidadeEnsino uni = getObjectMapper().readValue(json, UnidadeEnsino.class);
-			
+			UnidadeEnsino uni = getObjectMapper().readValue(json, UnidadeEnsino.class);			
 			UnidadeEnsinoService service = new UnidadeEnsinoService(); 
-					
-			return getResponseEdit(service.editarUnidade(uni));
+			String msg = "Unidade de ensino já cadastrada";
+
+			
+			Object result = service.editarUnidade(uni);
+			if(result == null){
+				return getResponseEdit(msg, result);
+			}else{
+				return getResponseEdit(result);				
+			}
 		}catch(Exception e){
 			return getResponseError(e);
 		}
