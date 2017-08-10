@@ -22,7 +22,7 @@ public class UnidadeEnsinoJPA  extends JPAAbstract<UnidadeEnsino, Long> implemen
 		return this.edit(uni);
 	}
 	
-	public List<UnidadeEnsino> validate(UnidadeEnsino user) {
+	public List<UnidadeEnsino> buscarPorNome(UnidadeEnsino user) {
 		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.nome = '"+ user.getNome() +"'");
 	}
 

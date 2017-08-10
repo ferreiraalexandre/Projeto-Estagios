@@ -14,6 +14,6 @@ public interface UnidadeEnsinoInterface {
 	
 	public UnidadeEnsino editarUnidade(UnidadeEnsino uni);
 	
-	public List<UnidadeEnsino> validate(UnidadeEnsino user);
+	public List<UnidadeEnsino> buscarPorNome(UnidadeEnsino user);
 
 }

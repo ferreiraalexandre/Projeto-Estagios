@@ -84,7 +84,7 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 		var listId ={
 				data: JSON.stringify(arrayId),
 		};
-			TurmaService.deleteTurma(listId, function(response){
+		TurmaService.deleteTurma(listId, function(response){
 			$scope.turmas = response.data;
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
@@ -169,13 +169,15 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 		};
 		
 		//Função de editar turma no Banco de Dados
-		$scope.editarTurma = function (data) {
-			
+		$scope.editarTurma = function (data) {	
 			TurmaService.putTurma(data, function (response) {
-			$mdDialog.hide(data);
-			toastr.success(response.message);
-			retornoModal.turmas = response.data;
-				
+				if(response.data != undefined){
+					$mdDialog.hide(data);
+					toastr.success(response.message);
+					retornoModal.turmas = response.data;				
+				}else{
+					toastr.warning(response.message );
+				}			
 			}),
 				function (error) {
 		

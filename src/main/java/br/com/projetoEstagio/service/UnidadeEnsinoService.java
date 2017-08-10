@@ -15,13 +15,15 @@ public class UnidadeEnsinoService {
 
 	public Object addUnidadeEnsino(UnidadeEnsino uni) {
 		UnidadeEnsinoJPA unidade = new UnidadeEnsinoJPA();
-		unidade.addUnidadeEnsino(uni);		
-		return unidade.list();		
-	}
-	
-	public List<UnidadeEnsino> validar(UnidadeEnsino uni) throws Exception {
-		UnidadeEnsinoJPA jpa = new UnidadeEnsinoJPA();
-		return jpa.validate(uni);
+		Object obj = null;
+				
+		List<UnidadeEnsino> retorno = unidade.buscarPorNome(uni);
+		if(retorno.size() > 0){
+			return obj;
+		}else{
+			unidade.addUnidadeEnsino(uni);		
+			return unidade.list();				
+		}
 	}
 	
 	public List<UnidadeEnsino> listUnidade() throws Exception {
@@ -64,7 +66,30 @@ public class UnidadeEnsinoService {
 	
 	public Object editarUnidade(UnidadeEnsino uni) {
 		UnidadeEnsinoJPA unid = new UnidadeEnsinoJPA();
-		unid.editarUnidade(uni);
-		return unid.list();
+		Object obj = null;
+		
+		List<UnidadeEnsino> retorno = unid.buscarPorNome(uni);
+		if(retorno.size() > 0){
+			for (UnidadeEnsino u : retorno) {
+				if(u.getId() != uni.getId()){
+					return obj;
+				}					
+			}				
+		}
+		unid.editarUnidade(uni);		
+		return unid.list();		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

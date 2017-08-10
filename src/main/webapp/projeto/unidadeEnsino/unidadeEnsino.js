@@ -165,11 +165,14 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		
 /////////////////////////////////////Função de editar usuario no Banco de Dados
 		$scope.editarUnidade = function (data) {
-			UnidadeEnsinoService.putUnidade(data, function (response) {
-			$mdDialog.hide(data);
-			toastr.success(response.message);
-			retornoModal.unidades = response.data;
-				
+			UnidadeEnsinoService.putUnidade(data, function (response) {				
+				if(response.data != undefined){
+					$mdDialog.hide(data);
+					toastr.success(response.message);
+					retornoModal.unidades = response.data;				
+				}else{
+					toastr.warning(response.message );
+				}
 			}),
 				function (error) {
 		
