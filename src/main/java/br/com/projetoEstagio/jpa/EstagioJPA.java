@@ -48,13 +48,10 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 	}	
 
 	public List<Estagio> estagioVencendo(){
-//		Date dataAtual = new Date();
-//		Date dataVencimento = new Date();
 		
 		Calendar c = Calendar.getInstance();
 		c.add(Calendar.DATE, +10);
 
-		
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		String inicio = formato.format(new Date());
 		String fim = formato.format(c.getTime());

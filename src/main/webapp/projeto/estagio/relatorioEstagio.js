@@ -9,8 +9,11 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 app.controller('relatorioEstagioController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', '$location', 'EstagioService', 'toastr', 'Scopes',
                                     function ($mdEditDialog,   $q,   $scope,   $timeout,   $mdDialog,   $location,   EstagioService,   toastr, Scopes) {
   'use strict';
-  
-  $scope.$parent.rodape = false;
+
+  $scope.estagio.rodape = false;
   $scope.$parent.links = false;
+
+  
+ 
 	
 }]);

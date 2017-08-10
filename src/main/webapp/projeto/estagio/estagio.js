@@ -115,18 +115,26 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
        dataFim.setDate($scope.dataInicio.getDate() + 10);
        $scope.dataFim = dataFim;
        
-       var turma = [];
-       $scope.turmas = turma.push($scope.estagios[0].turma);
+       var idsCurso = [];
+       var cursos = [];
        for (var int = 0; int < $scope.estagios.length; int++) {
-		
-    	   for (var i = 0; i < turma.length; i++) {
-			
-    		   if(!($scope.estagios[int].turma.id == turma[i].id)){
-    			   turma.push($scope.estagios[int].turma);
-    			   $scope.turmas = turma;
-    		   }	   
+    	   if(idsCurso.indexOf($scope.estagios[int].turma.curso.id)){
+    		   idsCurso.push($scope.estagios[int].turma.curso.id);
+    		   cursos.push($scope.estagios[int].turma.curso);
+    		   $scope.cursos = cursos;
     	   }
        }
+       
+       var idsEmpresa = [];
+       var empresas = [];
+       for (var int = 0; int < $scope.estagios.length; int++) {
+    	   if(idsEmpresa.indexOf($scope.estagios[int].empresa.id)){
+    		   idsEmpresa.push($scope.estagios[int].empresa.id);
+    		   empresas.push($scope.estagios[int].empresa);
+    		   $scope.empresas = empresas;
+    	   }
+       }
+
     };
     
     $scope.closeRightMenu = function() {
