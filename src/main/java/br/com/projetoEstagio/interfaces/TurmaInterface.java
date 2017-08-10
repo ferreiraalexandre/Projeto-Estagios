@@ -14,7 +14,7 @@ public interface TurmaInterface {
 	
 	public Turma editarTurma(Turma tur);
 	
-	public List<Turma> validate(Turma turma);
+	public List<Turma> buscarSemId(Turma turma);
 
 	public List<Turma> buscarPorId(Long id);
 	

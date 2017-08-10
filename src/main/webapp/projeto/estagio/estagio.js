@@ -27,6 +27,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.$parent.rodape = true;
   $scope.$parent.links = true;
   $scope.estagioVencendo;
+  $scope.usuario = $localStorage.currentUser.user;
   
   $scope.options = {
     rowSelection: true,
@@ -42,7 +43,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 
 	$scope.logout = function(){
 		$localStorage.$reset();
-		window.location.href="/projeto-estagios/login.html";
+		window.location.href="/projeto-estagios/index.html";
 	}
   
   $scope.query = {
@@ -66,7 +67,22 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	$scope.buttonEditDisabled = !($scope.selecionados.length == 1);
 	$scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
   };
-
+////////////////////função de confirm pra deletar
+  $scope.showConfirm = function(ev) {
+	  var confirm = $mdDialog.confirm()
+	  .title('EXCLUIR ')
+	  .textContent('Tem certeza que deseja excluir o(s) Estágio(s)?')
+	  .targetEvent(ev)
+	  .ok('SIM')
+	  .cancel('NÃO');
+	  
+	  $mdDialog.show(confirm).then(function() {
+		  $scope.deleteEstagio();
+		  $scope.status = 'Deletado';
+	  }, function() {
+		  $scope.status = 'Deu erro ao deletar';
+	  });
+  };
   
 //Função para mudar telas conforme menu 
   $scope.menuClick = function (link) {
@@ -115,18 +131,26 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
        dataFim.setDate($scope.dataInicio.getDate() + 10);
        $scope.dataFim = dataFim;
        
-       var turma = [];
-       $scope.turmas = turma.push($scope.estagios[0].turma);
+       var idsCurso = [];
+       var cursos = [];
        for (var int = 0; int < $scope.estagios.length; int++) {
-		
-    	   for (var i = 0; i < turma.length; i++) {
-			
-    		   if(!($scope.estagios[int].turma.id == turma[i].id)){
-    			   turma.push($scope.estagios[int].turma);
-    			   $scope.turmas = turma;
-    		   }	   
+    	   if(idsCurso.indexOf($scope.estagios[int].turma.curso.id)){
+    		   idsCurso.push($scope.estagios[int].turma.curso.id);
+    		   cursos.push($scope.estagios[int].turma.curso);
+    		   $scope.cursos = cursos;
     	   }
        }
+       
+       var idsEmpresa = [];
+       var empresas = [];
+       for (var int = 0; int < $scope.estagios.length; int++) {
+    	   if(idsEmpresa.indexOf($scope.estagios[int].empresa.id)){
+    		   idsEmpresa.push($scope.estagios[int].empresa.id);
+    		   empresas.push($scope.estagios[int].empresa);
+    		   $scope.empresas = empresas;
+    	   }
+       }
+
     };
     
     $scope.closeRightMenu = function() {

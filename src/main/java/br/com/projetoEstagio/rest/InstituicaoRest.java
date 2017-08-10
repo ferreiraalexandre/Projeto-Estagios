@@ -33,15 +33,12 @@ public class InstituicaoRest extends UtilRest {
 			Instituicao instituicao = getObjectMapper().readValue(json, Instituicao.class);
 			InstituicaoService service = new InstituicaoService();
 			String msg = "Instituição já cadastrada";
-			Object obj = null;
 					
-			List<Instituicao> retorno = service.validar(instituicao);
-			if(retorno.size() > 0){
-				return getResponseAdd(msg, obj);
+			Object result = service.addInstituicao(instituicao);
+			if(result == null){
+				return getResponseAdd(msg, result);
 			}else{
-				obj = service.addInstituicao(instituicao);
-				return getResponseAdd(obj);
-				
+				return getResponseAdd(result);				
 			}
 		}catch(Exception e){
 			return getResponseError(e);
@@ -84,11 +81,16 @@ public class InstituicaoRest extends UtilRest {
 	public Response editar(String json) {
 
 		try{
-			Instituicao instituicao = getObjectMapper().readValue(json, Instituicao.class);
-			
+			Instituicao instituicao = getObjectMapper().readValue(json, Instituicao.class);			
 			InstituicaoService service = new InstituicaoService(); 
+			String msg = "Instituição já cadastrada";
 					
-			return getResponseEdit(service.editarInstituicao(instituicao));
+			Object result = service.editarInstituicao(instituicao);
+			if(result == null){
+				return getResponseEdit(msg, result);
+			}else{
+				return getResponseEdit(result);				
+			}
 		}catch(Exception e){
 			return getResponseError(e);
 		}

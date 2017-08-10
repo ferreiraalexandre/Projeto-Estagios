@@ -15,7 +15,7 @@
       	<ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
       </md-button>
 
-      <md-button  ng-click="deleteEstagio()" id="buttonRemove" ng-disabled="buttonRemoveDisabled">
+      <md-button  ng-click="showConfirm($event)" id="buttonRemove" ng-disabled="buttonRemoveDisabled">
         <md-tooltip md-direction="top">Deletar</md-tooltip>
         <ng-md-icon id="iconRemove" icon="delete" style="fill: #abcdef" size="36"></ng-md-icon>
       </md-button> 
@@ -106,7 +106,6 @@
 	            		<h2 id="tituloFiltro">Filtro</h2>		
             		</div>
             		<div layout="row" class="input-row layout-row" >
-		
 						<md-input-container class="flex">
 							<label>Início 1</label>
 							<md-datepicker ng-model="dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
@@ -119,15 +118,26 @@
 					</div>
 					<div layout="row" class="input-row layout-row">
 						<md-input-container class="flex">
-							<label>Turma</label>
-							<md-select ng-model="turma" ng-required="selectRequired">
-								<md-option ng-repeat="item in turmas" ng-value="item" >
+							<label>Curso</label>
+							<md-select ng-model="curso" >
+								<md-option ng-repeat="item in cursos" ng-value="item" >
 									{{item.nome}}
 								</md-option>
 							</md-select>
 						</md-input-container>					
 				    </div>
 				    
+					<div layout="row" class="input-row layout-row">
+						<md-input-container class="flex">
+							<label>Empresa</label>
+							<md-select ng-model="empresa" >
+								<md-option ng-repeat="item in empresas" ng-value="item" >
+									{{item.nome}}
+								</md-option>
+							</md-select>
+						</md-input-container>					
+				    </div>
+
 				    <div class="md-actions">
     					<button class="md-primary md-button md-ink-ripple" type="button"  ng-click="aplicarFiltro(dataInicio,dataFim,turma)"><span>Aplicar</span></button>
     					<button class="md-primary md-button md-ink-ripple" type="button" ng-click="closeRightMenu()" aria-label="Cancel"><span>Cancelar</span></button>

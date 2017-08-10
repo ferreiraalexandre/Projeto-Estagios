@@ -24,7 +24,7 @@ public class TurmaJPA  extends JPAAbstract<Turma, Long> implements TurmaInterfac
 		return this.edit(usu);
 	}
 	
-	public List<Turma> validate(Turma turma) {
+	public List<Turma> buscarSemId(Turma turma) {
 		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.nome = '"+ turma.getNome() +"'"
 				+ " and U.turno = '"+ turma.getTurno() +"' and U.curso.id = '"+ turma.getCurso().getId() +"'");
 	}

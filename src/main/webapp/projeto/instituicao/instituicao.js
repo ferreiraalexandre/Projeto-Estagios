@@ -90,12 +90,12 @@ app.controller('instituicaoController', ['$mdEditDialog', '$q', '$scope', '$time
 				data: JSON.stringify(arrayId),
 		};
 		InstituicaoService.deleteInstituicao(listId, function(response){
-			$scope.instituicoes = response.data;
 			if(response.description != null){
 				toastr.warning(response.description, response.message );
 			}else{
 				toastr.success(response.message);				
 			}
+			$scope.instituicoes = response.data;	
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
 		
@@ -151,9 +151,9 @@ app.controller('instituicaoController', ['$mdEditDialog', '$q', '$scope', '$time
 	  $scope.novoInstituicao = function (data) {
 		  InstituicaoService.postInstituicao(data, function (response) {
 			if(response.data != undefined){
-			$mdDialog.hide(data);
-			toastr.success(response.message);
-			retornoModal.instituicoes = response.data;				
+				$mdDialog.hide(data);
+				toastr.success(response.message);
+				retornoModal.instituicoes = response.data;				
 			}else{
 				toastr.warning(response.message );
 			}
@@ -167,10 +167,13 @@ app.controller('instituicaoController', ['$mdEditDialog', '$q', '$scope', '$time
 /////////////////////////////////////Função de editar Instituicao no Banco de Dados
 		$scope.editarInstituicao = function (data) {
 			InstituicaoService.putInstituicao(data, function (response) {
-			$mdDialog.hide(data);
-			toastr.success(response.message);
-			retornoModal.instituicoes = response.data;
-				
+				if(response.data != undefined){
+					$mdDialog.hide(data);
+					toastr.success(response.message);
+					retornoModal.instituicoes = response.data;				
+				}else{
+					toastr.warning(response.message );
+				}
 			}),
 				function (error) {
 		
