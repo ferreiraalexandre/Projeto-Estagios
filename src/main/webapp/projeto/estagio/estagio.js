@@ -27,6 +27,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.$parent.rodape = true;
   $scope.$parent.links = true;
   $scope.estagioVencendo;
+  $scope.usuario = $localStorage.currentUser.user;
   
   $scope.options = {
     rowSelection: true,
@@ -42,7 +43,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 
 	$scope.logout = function(){
 		$localStorage.$reset();
-		window.location.href="/projeto-estagios/login.html";
+		window.location.href="/projeto-estagios/index.html";
 	}
   
   $scope.query = {
