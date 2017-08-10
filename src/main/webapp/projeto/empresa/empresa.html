@@ -2,14 +2,17 @@
 	<md-grid-list md-cols="2"  md-row-height="64px" >
     	<md-grid-tile id="listaEsquerda">
       		<md-button ng-click="abrirModal($event)" ng-disabled="buttonAddDisabled">
+      		<md-tooltip md-direction="top">Adicionar</md-tooltip>
       			<ng-md-icon id="adicionar" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
       		</md-button>
 
 	      	<md-button ng-click="abrirModal($event)" ng-disabled="buttonEditDisabled">
+	      	<md-tooltip md-direction="top">Editar</md-tooltip>
 	      		<ng-md-icon id="editar" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
 	      	</md-button>
 	
 	      	<md-button ng-click="showConfirm($event)" id="buttonRemove" ng-disabled="buttonRemoveDisabled">
+	      	<md-tooltip md-direction="top">Deletar</md-tooltip>
 	        	<ng-md-icon id="iconRemove" icon="delete" style="fill: #abcdef" size="36"></ng-md-icon>
 	      	</md-button>
 		</md-grid-tile>
