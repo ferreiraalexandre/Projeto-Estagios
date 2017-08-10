@@ -134,7 +134,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
        var idsCurso = [];
        var cursos = [];
        for (var int = 0; int < $scope.estagios.length; int++) {
-    	   if(idsCurso.indexOf($scope.estagios[int].turma.curso.id)){
+    	   if(idsCurso.indexOf($scope.estagios[int].turma.curso.id) == -1){
     		   idsCurso.push($scope.estagios[int].turma.curso.id);
     		   cursos.push($scope.estagios[int].turma.curso);
     		   $scope.cursos = cursos;
@@ -144,7 +144,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
        var idsEmpresa = [];
        var empresas = [];
        for (var int = 0; int < $scope.estagios.length; int++) {
-    	   if(idsEmpresa.indexOf($scope.estagios[int].empresa.id)){
+    	   if(idsEmpresa.indexOf($scope.estagios[int].empresa.id) == -1){
     		   idsEmpresa.push($scope.estagios[int].empresa.id);
     		   empresas.push($scope.estagios[int].empresa);
     		   $scope.empresas = empresas;
@@ -173,6 +173,16 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			function (error) {
 		};
 	};
+	
+	//Limpar Filtro
+	$scope.limparFiltro = function () {
+		EstagioService.getList(function (response) {
+			$scope.estagios = response.data;
+			$mdSidenav('right').close();
+			
+		});		
+	};
+
 
 	//Busca estagios Vencendo
 	$scope.getEstagioVencendo = function () {

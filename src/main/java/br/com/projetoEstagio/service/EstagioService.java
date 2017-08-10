@@ -87,9 +87,9 @@ public class EstagioService {
 		return jpa.list();
 	}
 
-	public List<Estagio> filtrarEstagio(Date dataInicio, Date dataFim, Long turmaId) throws Exception {
+	public List<Estagio> filtrarEstagio(Date dataInicio, Date dataFim, Long cursoId, Long empresaId) throws Exception {
 		EstagioJPA jpa = new EstagioJPA();
-		return jpa.filtrar(dataInicio, dataFim, turmaId);
+		return jpa.filtrar(dataInicio, dataFim, cursoId, empresaId);
 	}
 	
 	public List<Estagio> estagioVencendo() throws Exception {

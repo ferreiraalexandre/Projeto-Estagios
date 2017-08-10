@@ -15,5 +15,5 @@ public interface EstagioInterface {
 
 	public void deleteEstagio(long id);
 	
-	public List<Estagio> filtrar(Date dataInicio, Date dataFim, Long turmaId);
+	public List<Estagio> filtrar(Date dataInicio, Date dataFim, Long cursoId, Long empresaId);
 }

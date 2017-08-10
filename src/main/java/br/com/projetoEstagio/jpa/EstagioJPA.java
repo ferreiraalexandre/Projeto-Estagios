@@ -32,16 +32,20 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 		this.remove(id);
 	}
 	
-	public List<Estagio> filtrar(Date dataInicio, Date dataFim, Long turmaId){
+	public List<Estagio> filtrar(Date dataInicio, Date dataFim, Long cursoId, Long empresaId){
 	
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		String inicio = formato.format(dataInicio);
 		String fim = formato.format(dataFim);
 		
 		String hql = "SELECT E FROM "+ this.getEntityName() +" E WHERE E.dataFim BETWEEN '" + inicio + "'" + "AND '" + fim +"'";
-		if(turmaId != null){
-			hql += "and E.turma.id = '" + turmaId + "'";
+		if(cursoId != null){
+			hql += "and E.curso.id = '" + cursoId + "'";
 		}
+		if(empresaId != null){
+			hql += "and E.empresa.id = '" + empresaId + "'";
+		}
+
 		return this.list(hql);
 	
 

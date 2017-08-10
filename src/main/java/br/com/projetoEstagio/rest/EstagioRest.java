@@ -229,10 +229,11 @@ public class EstagioRest extends UtilRest {
 			
 			Date dataInicio = formataData(jsonObject.optString("dataInicio"));
 			Date dataFim = formataData(jsonObject.optString("dataFim"));
-			Long turmaId = !jsonObject.isNull("turma") ? jsonObject.optJSONObject("turma").optLong("id") : null;
+			Long cursoId = !jsonObject.isNull("curso") ? jsonObject.optJSONObject("curso").optLong("id") : null;
+			Long empresaId = !jsonObject.isNull("empresa") ? jsonObject.optJSONObject("empresa").optLong("id") : null;
 			EstagioService service = new EstagioService();
 			
-			List<Estagio> e = service.filtrarEstagio(dataInicio, dataFim, turmaId);
+			List<Estagio> e = service.filtrarEstagio(dataInicio, dataFim, cursoId, empresaId);
 			return getResponseList(e);
 		} catch (Exception e) {
 			return getResponseError(e);

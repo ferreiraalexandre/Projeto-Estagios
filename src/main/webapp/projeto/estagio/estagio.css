@@ -181,3 +181,12 @@ a{
 	margin-top: 10px;
 	color: white;
 }
+
+#button-filtro > .md-button{
+	margin: 5px;
+}
+
+#datas-filtro > md-input-container{
+	margin-top: 50px;
+	margin-bottom: 0px;
+}

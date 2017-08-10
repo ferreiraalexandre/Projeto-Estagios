@@ -105,7 +105,7 @@
             		<div id= "titulo" >
 	            		<h2 id="tituloFiltro">Filtro</h2>		
             		</div>
-            		<div layout="row" class="input-row layout-row" >
+            		<div layout="row" class="input-row layout-row" id="datas-filtro">
 						<md-input-container class="flex">
 							<label>Início 1</label>
 							<md-datepicker ng-model="dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
@@ -138,8 +138,9 @@
 						</md-input-container>					
 				    </div>
 
-				    <div class="md-actions">
+				    <div class="md-actions" id="button-filtro">
     					<button class="md-primary md-button md-ink-ripple" type="button"  ng-click="aplicarFiltro(dataInicio,dataFim,turma)"><span>Aplicar</span></button>
+    					<button class="md-primary md-button md-ink-ripple" type="button" ng-click="limparFiltro()"><span>Limpar</span></button>
     					<button class="md-primary md-button md-ink-ripple" type="button" ng-click="closeRightMenu()" aria-label="Cancel"><span>Cancelar</span></button>
   					</div>
 				    
