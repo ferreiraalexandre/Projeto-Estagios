@@ -33,14 +33,12 @@ public class CursoRest extends UtilRest {
 			Curso cur = getObjectMapper().readValue(json, Curso.class);
 			CursoService service = new CursoService();
 			String msg = "Curso já cadastrado";
-			Object obj = null;
-					
-			List<Curso> retorno = service.validar(cur);
-			if(retorno.size() > 0){
-				return getResponseAdd(msg, obj);
+			
+			Object result = service.addCurso(cur);
+			if(result == null){
+				return getResponseAdd(msg, result);
 			}else{
-				obj = service.addCurso(cur);
-				return getResponseAdd(obj);			
+				return getResponseAdd(result);				
 			}
 		}catch(Exception e){
 			return getResponseError(e);
@@ -83,11 +81,16 @@ public class CursoRest extends UtilRest {
 	public Response editar(String json) {
 
 		try{
-			Curso cur = getObjectMapper().readValue(json, Curso.class);
+			Curso cur = getObjectMapper().readValue(json, Curso.class);			
+			CursoService service = new CursoService();
+			String msg = "Curso já cadastrada";
 			
-			CursoService service = new CursoService(); 
-					
-			return getResponseEdit(service.editarCurso(cur));
+			Object result = service.editarCurso(cur);
+			if(result == null){
+				return getResponseEdit(msg, result);
+			}else{
+				return getResponseEdit(result);				
+			}
 		}catch(Exception e){
 			return getResponseError(e);
 		}

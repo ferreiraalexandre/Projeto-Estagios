@@ -166,9 +166,13 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		//Função de editar empresa no Banco de Dados
 		$scope.editarEmpresa = function (data) {
 			EmpresaService.putEmpresa(data, function (response) {
-				$mdDialog.hide(data);
-				toastr.success(response.message);
-				retornoModal.empresas = response.data;
+				if(response.data != undefined){
+					$mdDialog.hide(data);
+					toastr.success(response.message);
+					retornoModal.empresas = response.data;				
+				}else{
+					toastr.warning(response.message );
+				}
 			}),
 			function (error) {
 

@@ -15,14 +15,22 @@ import br.com.projetoEstagio.restUtil.RestResponse;
 public class CursoService {
 
 	public Object addCurso(Curso cur) {
-		CursoJPA curso = new CursoJPA();
-		curso.addCurso(cur);
-		return curso.list();
+		CursoJPA curso = new CursoJPA();		
+		Object obj = null;
+		
+		List<Curso> retorno = curso.buscarPorNome(cur);
+		if(retorno.size() > 0){
+			return obj;
+		}else{
+			curso.addCurso(cur);
+			return curso.list();
+			
+		}
 	}
 	
 	public List<Curso> validar(Curso cur) throws Exception {
 		CursoJPA jpa = new CursoJPA();
-		return jpa.validate(cur);
+		return jpa.buscarPorNome(cur);
 	}
 	
 	public List<Curso> listCurso() throws Exception {
@@ -65,7 +73,36 @@ public class CursoService {
 	
 	public Object editarCurso(Curso cur) {
 		CursoJPA curso = new CursoJPA();
+		Object obj = null;
+		
+		List<Curso> retorno = curso.buscarPorNome(cur);
+		if(retorno.size() > 0){
+			for (Curso u : retorno) {
+				if(u.getId() != cur.getId()){
+					return obj;
+				}					
+			}				
+		}
 		curso.editarCurso(cur);
 		return curso.list();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

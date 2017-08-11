@@ -167,10 +167,13 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 /////////////////////////////////////Função de editar usuario no Banco de Dados
 		$scope.editarCurso = function (data) {
 			CursoService.putCurso(data, function (response) {
-			$mdDialog.hide(data);
-			toastr.success(response.message);
-			retornoModal.cursos = response.data;
-				
+				if(response.data != undefined){
+					$mdDialog.hide(data);
+					toastr.success(response.message);
+					retornoModal.cursos = response.data;				
+				}else{
+					toastr.warning(response.message );
+				}
 			}),
 				function (error) {
 		
