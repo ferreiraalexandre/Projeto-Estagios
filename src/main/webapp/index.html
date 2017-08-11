@@ -28,23 +28,21 @@
         <md-card-content>
           <form name="Form">
             <md-input-container class="md-block">
-              <input type="text" name="email" ng-model="usuario.email" placeholder="E-mail" required="required" ng-trim="false"/>
+              <input type="text" name="email" ng-model="usuario.email" ng-pattern="/^.+@.+\..+$/" placeholder="E-mail" required="required" ng-trim="false"/>
               <div ng-messages="Form.email.$error" role="alert">
-                <div ng-message="required" class="my-message">Please enter your email.</div>
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+	            	Email incorreto.
+	            </div>
               </div>
-              
-              
-              <div layout="row" layout-sm="column" layout-align="space-around">
-      			<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
-     		  </div>
             
             </md-input-container>              
             <md-input-container class="md-block">
               <label>Password</label>
               <input type="password" name="password" ng-model="usuario.password" placeholder="Senha" required="required" md-maxlength="16"/>
               <div ng-messages="Form.password.$error" role="alert" multiple="">
-               <div ng-message="required" class="my-message">Please enter your password.</div>
-                <div ng-message="md-maxlength" class="my-message">Too long.</div>
+                <div ng-message-exp="['required']">
+	            	Senha incorreta.
+	            </div>
               </div>
             </md-input-container>
             <md-button ng-disabled="!Form.$valid" ng-click="auth(usuario)" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
@@ -83,6 +81,7 @@
 		<script src="projeto/service/services.js"></script>
 		<script src="projeto/estagio/estagio.js"></script>
 		<script src="projeto/estagio/cadastroEstagio.js"></script>
+		<script src="projeto/estagio/relatorioEstagio.js"></script>
 		<script src="projeto/usuario/usuario.js"></script>
 		<script src="projeto/unidadeEnsino/unidadeEnsino.js"></script>
 		<script src="projeto/turma/turma.js"></script>
@@ -90,7 +89,6 @@
 		<script src="projeto/curso/curso.js"></script>
 		<script src="projeto/instituicao/instituicao.js"></script>
 		<script src="projeto/interceptor/auth.interceptor.js"></script>
-		<script src="projeto/estagio/relatorioEstagio.js"></script>
 
 </body>
 </html>
