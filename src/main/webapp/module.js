@@ -6,9 +6,9 @@ app.pathRest = 'rest';
 app.config(function($routeProvider) {
 	
 	$routeProvider
-	.when('/', {
-		templateUrl : 'projeto/estagio/estagio.html',
-		
+	.when('/home', {
+		templateUrl : 'home.html',
+		controller : 'estagioController'
 	})
 
 	
@@ -87,9 +87,10 @@ app.run(function($rootScope, $location, $localStorage) {
 		var publicPages = ['/index'];
 		//var restrictedPage = publicPages.indexOf($location.path()) === -1;
 		if (!$localStorage.currentUser) {
-			window.location.href="/projeto-estagios/index.html";
+			//window.location.href="/projeto-estagios/index.html";
+			$location.path('/index');
 		}else if($localStorage.currentUser && $location.path() == '/index'){
-			$location.path('/home');
+			$location.path('/');
 		}
 	});
 	

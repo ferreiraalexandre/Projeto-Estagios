@@ -6,7 +6,7 @@ app.config(function($routeProvider) {
 	
 	$routeProvider
 	.when('/login', {
-		templateUrl : 'projeto/login.html',
+		templateUrl : 'projeto/login',
 		controller : 'LoginController'
 	})
 
@@ -41,6 +41,7 @@ app.controller('LoginController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 				$localStorage.currentUser.user;
 				$localStorage.login = true;
 				window.location.href='/projeto-estagios/home.html';
+				//$location.path('/home');
 				
 				
 				
