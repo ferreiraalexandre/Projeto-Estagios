@@ -12,7 +12,7 @@ public interface EmpresaInterface {
 	
 	public void deleteEmpresa(long id);
 	
-	public List<Empresa> validate(Empresa emp);
+	public List<Empresa> buscarPorNome(Empresa emp);
 	
 	public Empresa editarEmpresa(Empresa emp);
 

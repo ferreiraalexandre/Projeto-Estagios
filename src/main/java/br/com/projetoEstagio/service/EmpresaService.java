@@ -11,24 +11,21 @@ public class EmpresaService {
 
 	public Object addEmpresa(Empresa emp) {
 		EmpresaJPA empresa = new EmpresaJPA();
-		empresa.addEmpresa(emp);
-		return  empresa.list();
-	}
-	
-	public List<Empresa> validar(Empresa emp) throws Exception {
-		EmpresaJPA jpa = new EmpresaJPA();
-		return jpa.validate(emp);
+		Object obj = null;
+		
+		List<Empresa> retorno = empresa.buscarPorNome(emp);
+		if(retorno.size() > 0){
+			return obj;
+		}else{
+			empresa.addEmpresa(emp);
+			return  empresa.list();
+			
+		}
 	}
 
 	public List<Empresa> listEmpresa() throws Exception {
 		EmpresaJPA listEmpresa = new EmpresaJPA();
 		return listEmpresa.list();
-	}
-	
-	public Object editarEmpresa(Empresa emp) {
-		EmpresaJPA empresa = new EmpresaJPA();
-		empresa.editarEmpresa(emp);
-		return empresa.list();
 	}
 	
 	public Object deleteEmpresa(JSONArray emp) throws Exception{
@@ -40,6 +37,22 @@ public class EmpresaService {
 				System.out.println(emp.getLong(i));
 			}
 		}
+		return empresa.list();
+	}
+	
+	public Object editarEmpresa(Empresa emp) {
+		EmpresaJPA empresa = new EmpresaJPA();
+		Object obj = null;
+		
+		List<Empresa> retorno = empresa.buscarPorNome(emp);
+		if(retorno.size() > 0){
+			for (Empresa u : retorno) {
+				if(u.getId() != emp.getId()){
+					return obj;
+				}					
+			}				
+		}
+		empresa.editarEmpresa(emp);
 		return empresa.list();
 	}
 	

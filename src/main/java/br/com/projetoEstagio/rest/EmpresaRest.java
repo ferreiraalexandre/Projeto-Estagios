@@ -34,15 +34,12 @@ public class EmpresaRest extends UtilRest {
 			EmpresaService service = new EmpresaService(); 
 			Empresa empresa = getObjectMapper().readValue(json, Empresa.class);
 			String msg = "Empresa já cadastrada";
-			Object obj = null;
 					
-			List<Empresa> retorno = service.validar(empresa);
-			if(retorno.size() > 0){
-				return getResponseAdd(msg, obj);
+			Object result = service.addEmpresa(empresa);
+			if(result == null){
+				return getResponseAdd(msg, result);
 			}else{
-				obj = service.addEmpresa(empresa);
-				return getResponseAdd(obj);
-				
+				return getResponseAdd(result);				
 			}
 		}catch(Exception e){
 			return getResponseError(e);
@@ -63,21 +60,6 @@ public class EmpresaRest extends UtilRest {
 		}
 	}
 	
-	@PUT
-	@Path("/editar")
-	@Produces("application/json")
-	public Response editar(String json) {
-
-		try{
-			
-			EmpresaService service = new EmpresaService(); 			
-			Empresa emp = getObjectMapper().readValue(json, Empresa.class);
-			return getResponseEdit(service.editarEmpresa(emp));
-		}catch(Exception e){
-			return getResponseError(e);
-		}
-	}
-	
 	@DELETE
 	@Path("/deletar/{id}")
 	@Consumes("application/json")
@@ -89,6 +71,27 @@ public class EmpresaRest extends UtilRest {
 
 			return getResponseRemove(service.deleteEmpresa(id));
 		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
+	
+	@PUT
+	@Path("/editar")
+	@Produces("application/json")
+	public Response editar(String json) {
+
+		try{			
+			EmpresaService service = new EmpresaService(); 			
+			Empresa emp = getObjectMapper().readValue(json, Empresa.class);
+			String msg = "Empresa já cadastrada";
+			
+			Object result = service.editarEmpresa(emp);
+			if(result == null){
+				return getResponseEdit(msg, result);
+			}else{
+				return getResponseEdit(result);				
+			}
+		}catch(Exception e){
 			return getResponseError(e);
 		}
 	}

@@ -14,6 +14,6 @@ public interface CursoInterface {
 	
 	public Curso editarCurso(Curso cur);
 	
-	public List<Curso> validate(Curso cur);
+	public List<Curso> buscarPorNome(Curso cur);
 
 }

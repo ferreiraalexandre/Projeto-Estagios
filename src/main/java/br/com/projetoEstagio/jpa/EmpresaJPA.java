@@ -23,7 +23,7 @@ public class EmpresaJPA  extends JPAAbstract<Empresa, Long> implements EmpresaIn
 		this.remove(id);
 	}
 	
-	public List<Empresa> validate(Empresa emp) {
+	public List<Empresa> buscarPorNome(Empresa emp) {
 		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.nome = '"+ emp.getNome() +"'");
 	}
 	
