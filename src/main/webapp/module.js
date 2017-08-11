@@ -6,11 +6,10 @@ app.pathRest = 'rest';
 app.config(function($routeProvider) {
 	
 	$routeProvider
-	.when('/home', {
-		templateUrl : 'home.html',
+	.when('/estagio', {
+		templateUrl : 'projeto/estagio/estagio.html',
 		controller : 'estagioController'
 	})
-
 	
 	$routeProvider
 	.when('/unidadeEnsino', {
@@ -82,15 +81,13 @@ app.config(function($mdDateLocaleProvider) {
 });
 
 app.run(function($rootScope, $location, $localStorage) {
-	// redirect to login page if not logged in and trying to access a restricted page
+	
 	$rootScope.$on('$locationChangeStart', function (event, next, current) {
-		var publicPages = ['/index'];
-		//var restrictedPage = publicPages.indexOf($location.path()) === -1;
+
 		if (!$localStorage.currentUser) {
-			//window.location.href="/projeto-estagios/index.html";
-			$location.path('/index');
-		}else if($localStorage.currentUser && $location.path() == '/index'){
-			$location.path('/');
+			window.location.href="/projeto-estagios/index.html";
+		}else if($localStorage.currentUser && $location.path() == ''){
+			$location.path('/estagio');
 		}
 	});
 	
