@@ -1,6 +1,77 @@
- <meta charset="utf-8">
-    <md-card ng-style="cardCadastroEstagio">
-    	<h2 class="md-title">Relatório</h2>	
+<meta charset="utf-8">
+<md-content class="md-padding" layout-xs="column" layout="row">
+	<div flex-xs flex-gt-xs="50" layout="column" ng-style="cardCadastroEstagio">
+		<md-card md-theme="{{'default' }}" md-theme-watch>
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">Estagio Por Empresa</span>
+				</md-card-title-text>
+			</md-card-title>
+		
+			<table md-table md-progress="promise">
+				<thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+					<tr md-row>
+						<th md-column md-order-by="empresa"><span>Empresa</span></th>
+						<th md-column md-order-by="total"><span>Total</span></th>						
+					</tr>
+				</thead>
+				<tbody md-body>
+					<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagiosVencendo | filter: query.filter" class="md-row">
+						<td md-cell>{{estagio.empresa}}</td>
+						<td md-cell>{{estagio.total}}</td>         
+					</tr>
+				</tbody>
+			 </table>
+		</md-card>
+	</div>
 
-	</md-card>
-  
+	<div flex-xs flex-gt-xs="50" layout="column" ng-style="cardCadastroEstagio">
+		<md-card md-theme="{{'default' }}" md-theme-watch>
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">Recisão De Estagio</span>
+				</md-card-title-text>
+			</md-card-title>
+		
+			<table md-table md-progress="promise">
+				<thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+					<tr md-row>
+						<th md-column md-order-by="empresa"><span>Empresa</span></th>
+						<th md-column md-order-by="total"><span>Total</span></th>						
+					</tr>
+				</thead>
+				<tbody md-body>
+					<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagiosVencendo | filter: query.filter" class="md-row">
+						<td md-cell>{{estagio.empresa}}</td>
+						<td md-cell>{{estagio.total}}</td>         
+					</tr>
+				</tbody>
+			 </table>
+		</md-card>
+	</div>
+
+	<div flex-xs flex-gt-xs="50" layout="column" ng-style="cardCadastroEstagio">
+		<md-card md-theme="{{'default' }}" md-theme-watch>
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">Estagio Por Turma</span>
+				</md-card-title-text>
+			</md-card-title>
+		
+			<table md-table md-progress="promise">
+				<thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+					<tr md-row>
+						<th md-column md-order-by="empresa"><span>Empresa</span></th>
+						<th md-column md-order-by="total"><span>Total</span></th>						
+					</tr>
+				</thead>
+				<tbody md-body>
+					<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagiosVencendo | filter: query.filter" class="md-row">
+						<td md-cell>{{estagio.empresa}}</td>
+						<td md-cell>{{estagio.total}}</td>         
+					</tr>
+				</tbody>
+			 </table>
+		</md-card>
+	</div>
+</md-content>
