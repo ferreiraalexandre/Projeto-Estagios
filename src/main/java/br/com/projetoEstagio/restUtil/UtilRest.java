@@ -53,7 +53,7 @@ public class UtilRest {
 		
 		if(this.response != null){
 			if(this.response.getDescription() != null){
-				msg = "Registro em uso:";
+				msg = "Registro em uso!";
 				description = this.response.getDescription();
 			}			
 		}
@@ -69,8 +69,8 @@ public class UtilRest {
 		return this
 				.getResponse(
 						new RestResponse(
-								"Acesso negado.",
-								"Esta funcionalidade não esta dísponivel para seu nível de acesso.",
+								"Acesso negado!",
+								"Esta funcionalidade não esta dísponivel para seu nível de acesso!",
 								null), Response.Status.FORBIDDEN);
 	}
 
@@ -78,8 +78,8 @@ public class UtilRest {
 		return this
 				.getResponse(
 						new RestResponse(
-								"Credenciais invalidas.",
-								"Suas credenciais não são validas para este acesso.",
+								"Credenciais invalidas!",
+								"Suas credenciais não são validas para este acesso!",
 								null), Response.Status.UNAUTHORIZED);
 	}
 	
@@ -109,9 +109,6 @@ public class UtilRest {
 		}
 	}
 
-	public void filter(ContainerRequestContext requestContext) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
+	public void filter(ContainerRequestContext requestContext) throws IOException{}
 	
 }

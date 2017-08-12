@@ -2,13 +2,19 @@ package br.com.projetoEstagio.service;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
 
 import br.com.projeto.help.Crypt;
+import br.com.projetoEstagio.entity.Empresa;
+import br.com.projetoEstagio.entity.Turma;
 import br.com.projetoEstagio.entity.Usuario;
+import br.com.projetoEstagio.jpa.EmpresaJPA;
+import br.com.projetoEstagio.jpa.TurmaJPA;
 import br.com.projetoEstagio.jpa.UsuarioJPA;
+import br.com.projetoEstagio.restUtil.RestResponse;
 
 public class UsuarioService {
 
@@ -38,7 +44,7 @@ public class UsuarioService {
 		return listUsuario.listCoordenadores();
 	}
 	
-	public Object deleteUsuario(JSONArray usu) throws Exception{
+	/*public Object deleteUsuario(JSONArray usu) throws Exception{
 		UsuarioJPA uni = new UsuarioJPA();
 			
 		if(usu != null && usu.length() > 0){
@@ -48,6 +54,41 @@ public class UsuarioService {
 			}
 		}
 		return uni.list();
+	}*/
+	
+	public Object deleteUsuario(JSONArray users, RestResponse response) throws Exception{
+		UsuarioJPA use = new UsuarioJPA();
+		EmpresaJPA emp = new EmpresaJPA();
+		TurmaJPA tur = new TurmaJPA();
+		
+		List<Usuario> usuarioEmUso = new ArrayList<Usuario>();
+			
+			if(users != null && users.length() > 0){
+				for (int i = 0; i < users.length(); i++) {
+					List<Empresa> empresa = emp.buscarPorUsuario(users.getLong(i));
+					List<Turma> turma = tur.buscarPorUsuario(users.getLong(i));
+					
+					if(empresa.size() > 0 || turma.size() > 0){
+						usuarioEmUso.add(empresa.get(0).getUsuario());////////////////////////parei aqui, arrumar essa linha!!!!!!!!	
+					}else{
+						use.deleteUsuario(users.getLong(i));												
+					}
+				}
+			}
+			
+			if(usuarioEmUso.size() > 0){
+				String nomeUsuario = "";
+				for (Usuario usuario : usuarioEmUso) {
+					if(!nomeUsuario.contains(usuario.getNome())){		
+						nomeUsuario += usuario.getNome() + "  ";						
+					}
+				}
+				response.setDescription(nomeUsuario.replace(" * ", " "));
+			}			
+	
+			List<Usuario> usuarios = use.list();
+			
+			return usuarios;
 	}
 
 	public Object editarUsuario(Usuario usu) {

@@ -19,4 +19,6 @@ public interface TurmaInterface {
 	public List<Turma> buscarPorId(Long id);
 	
 	public Turma findById(Long id);
+	
+	public List<Turma> buscarPorUsuario(Long id);
 }

@@ -36,5 +36,9 @@ public class TurmaJPA  extends JPAAbstract<Turma, Long> implements TurmaInterfac
 	public List<Turma> buscarPorId(Long id) {
 		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.curso.id = '"+ id +"'");
 	}
+	
+	public List<Turma> buscarPorUsuario(Long id) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.usuario.id = '"+ id +"'");
+	}
 
 }

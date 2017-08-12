@@ -27,6 +27,10 @@ public class EmpresaJPA  extends JPAAbstract<Empresa, Long> implements EmpresaIn
 		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.nome = '"+ emp.getNome() +"'");
 	}
 	
+	public List<Empresa> buscarPorUsuario(Long id) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.usuario.id = '"+ id +"'");
+	}
+	
 	public Empresa findById(Long id) {
 		return this.getObject("SELECT E FROM "+ this.getEntityName() +" E WHERE E.id = '"+ id +"'");
 	}

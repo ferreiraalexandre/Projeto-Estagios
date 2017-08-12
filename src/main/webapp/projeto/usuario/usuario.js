@@ -76,7 +76,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
   };
  
 //////////função de deletar
-  $scope.deleteUsuario = function(){	
+  /*$scope.deleteUsuario = function(){	
 		var arrayId = []; 
 		for (var i = 0; i < $scope.selecionados.length; i++) {
 			arrayId.push($scope.selecionados[i].id);
@@ -90,7 +90,30 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			$scope.buttonEnable();
 			toastr.success(response.message);
 		});
+	};*/
+  
+  $scope.deleteUsuario = function(){	
+		var arrayId = []; 
+		for (var i = 0; i < $scope.selecionados.length; i++) {
+			arrayId.push($scope.selecionados[i].id);
+		}
+		var listId ={
+				data: JSON.stringify(arrayId),
+		};
+		UsuarioService.deleteUsuario(listId, function(response){
+			$scope.usuarios = response.data;
+			if(response.description != null){
+				toastr.warning(response.description, response.message );
+			}else{
+				toastr.success(response.message);				
+			}
+			$scope.selecionados = []; 
+			$scope.buttonEnable();
+			
+		});
+		
 	};
+	
 	
 
    

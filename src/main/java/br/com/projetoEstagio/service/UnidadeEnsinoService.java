@@ -56,7 +56,7 @@ public class UnidadeEnsinoService {
 						nomeUsuario += usuario.getUnidadeEnsino().getNome() + "  ";						
 					}
 				}
-				response.setDescription(nomeUsuario.replace("  ", "; "));
+				response.setDescription(nomeUsuario.replace("* ", " "));
 			}			
 	
 			List<UnidadeEnsino> unidades = uni.list();

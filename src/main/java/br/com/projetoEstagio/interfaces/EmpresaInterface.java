@@ -15,6 +15,8 @@ public interface EmpresaInterface {
 	public List<Empresa> buscarPorNome(Empresa emp);
 	
 	public Empresa editarEmpresa(Empresa emp);
+	
+	public List<Empresa> buscarPorUsuario(Long id);
 
 	public Empresa findById(Long id) ;
 }
