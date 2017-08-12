@@ -190,3 +190,7 @@ a{
 	margin-top: 50px;
 	margin-bottom: 0px;
 }
+
+.carddemoBasicUsage .card-media {
+  background-color: #999999; 
+  }
