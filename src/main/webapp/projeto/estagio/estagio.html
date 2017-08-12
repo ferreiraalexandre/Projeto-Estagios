@@ -1,148 +1,137 @@
 <meta charset="utf-8">
 
 <md-card>
-  
-  <md-grid-list md-cols="2"  md-row-height="64px">
-    <md-grid-tile>
-      <md-button  ng-click="menuClick('/cadastroEstagio')" ng-disabled="buttonAddDisabled" >
-      	<md-tooltip md-direction="top">Adicionar</md-tooltip>
-      	<ng-md-icon id="iconAdd" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
-      	      	
-      </md-button>
 
-      <md-button ng-click="iconEstagio('editar')" ng-disabled="buttonEditDisabled">
-      	<md-tooltip md-direction="top">Editar</md-tooltip>
-      	<ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
-      </md-button>
+	<md-grid-list md-cols="2"  md-row-height="64px">
+		<md-grid-tile>
+			<md-button  ng-click="menuClick('/cadastroEstagio')" ng-disabled="buttonAddDisabled" >
+				<md-tooltip md-direction="top">Adicionar</md-tooltip>
+				<ng-md-icon id="iconAdd" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
 
-      <md-button  ng-click="showConfirm($event)" id="buttonRemove" ng-disabled="buttonRemoveDisabled">
-        <md-tooltip md-direction="top">Deletar</md-tooltip>
-        <ng-md-icon id="iconRemove" icon="delete" style="fill: #abcdef" size="36"></ng-md-icon>
-      </md-button> 
-              
-    </md-grid-tile>
+			</md-button>
 
- 	    <md-grid-tile>
-	      	
-	        	
-		         	<md-input-container  id="md-input-container" class="md-block">
-		            	<label>Buscar</label>
-		            	<form flex="" name="filter.form" class="md-button">
-					      	<input type="text" ng-model="query.filter"  class="">
-				    	</form>
-					</md-input-container>	
-					<md-input-container  class="md-block">	         	
-				      	<md-button  ng-click="openRightMenu($scope)" >
-			        		<md-tooltip md-direction="top">Filtrar</md-tooltip>
-			        		<ng-md-icon id="" icon="filter_list" style="fill: #abcdef" size="36"></ng-md-icon>
-			      		</md-button> 
-			      
-	
-							         	
-				      	<md-button  ng-click="menuClick('/relatorioEstagio')" >
-			        		<md-tooltip md-direction="top">Relatório</md-tooltip>
-			        		<ng-md-icon id="" icon="archive" style="fill: #abcdef" size="36"></ng-md-icon>
-			      		</md-button> 
-			   
- </md-input-container>	
+			<md-button ng-click="iconEstagio('editar')" ng-disabled="buttonEditDisabled">
+				<md-tooltip md-direction="top">Editar</md-tooltip>
+				<ng-md-icon id="iconCreate" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
+			</md-button>
+
+			<md-button  ng-click="showConfirm($event)" id="buttonRemove" ng-disabled="buttonRemoveDisabled">
+				<md-tooltip md-direction="top">Deletar</md-tooltip>
+				<ng-md-icon id="iconRemove" icon="delete" style="fill: #abcdef" size="36"></ng-md-icon>
+			</md-button> 
 		</md-grid-tile>
-    </md-grid-list>
 
-  <md-table-container>
-     <div layout="row" layout-sm="column" layout-align="space-around">
-      	<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
-     </div>
- 
-    <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selecionados" md-progress="promise">
-      <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
-        <tr md-row>
-          <th md-column md-order-by="nome"><span>Nome</span></th>
-          <th md-column md-order-by="curso" md-desc><span>Curso</span></th>
-          <th md-column md-order-by="empresa"><span>Empresa</span></th>
-          <th md-column md-order-by="dataInicio"><span>Data Início</span></th>
-          <th md-column md-order-by="dataFim"><span>Data Fim</span></th>
-          <th md-column md-order-by="rescisao"><span>Rescisão</span></th>
-          <th md-column md-order-by="aditivo"><span>Aditivo</span></th>
-          <th md-column md-order-by="visita"><span>Visita Empresa</span></th>
-          <th md-column md-order-by="orientador"><span>Orientador</span></th>
-          <th md-column md-order-by="situacao"><span>Situação</span></th>
-          <th md-column md-order-by="sgn"><span>SGN</span></th>
-          <th md-column md-order-by="instituicao"><span>Instituição</span></th>
-          <th md-column md-order-by="obrigatorio"><span>Obrigatorio</span></th>
-          <th md-column md-order-by="observacao"><md-icon>comments</md-icon><span>Observação</span></th>
-        </tr>
-      </thead>
-      <tbody md-body>
-        <tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagios | filter: query.filter" class="md-row">
-          <td md-cell>{{estagio.estudante.nome}}</td>
-          <td md-cell>{{estagio.turma.curso.nome}}</td>
-          <td md-cell>{{estagio.empresa.nome}}</td>
-          <td md-cell>{{estagio.dataInicio ? (estagio.dataInicio | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
-          <td md-cell>{{estagio.dataFim ? (estagio.dataFim | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
-          <td md-cell>{{estagio.dataRescisao ? (estagio.dataRescisao | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
-          <td md-cell>{{estagio.dataAditivo ? (estagio.dataAditivo | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
-          <td md-cell>{{estagio.empresa.data ? (estagio.empresa.data | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
-          <td md-cell>{{estagio.empresa.usuario.nome}}</td>
-          <td md-cell>{{estagio.situacao}}</td>
-          <td md-cell>{{estagio.cadastroSGN == true ? 'Sim' : 'Não'}}</td>
-          <td md-cell>{{estagio.instituicao.nome}}</td>
-          <td md-cell>{{estagio.estagioObrigatorio == true ? 'Sim' : 'Não'}}</td>
-          <td md-cell>{{estagio.observacao ? estagio.observacao : 'N/A'}}</td>
-         
-        </tr>
-      </tbody>
-    </table>
-    
-     
-  </md-table-container>
+		<md-grid-tile>
+			<md-input-container  id="md-input-container" class="md-block">
+				<label>Buscar</label>
+				<form flex="" name="filter.form" class="md-button">
+					<input type="text" ng-model="query.filter"  class="">
+				</form>
+			</md-input-container>	
+			
+			<md-input-container  class="md-block">	         	
+				<md-button  ng-click="openRightMenu($scope)" >
+					<md-tooltip md-direction="top">Filtrar</md-tooltip>
+					<ng-md-icon id="" icon="filter_list" style="fill: #abcdef" size="36"></ng-md-icon>
+				</md-button> 
+				<md-button  ng-click="menuClick('/relatorioEstagio')" >
+					<md-tooltip md-direction="top">Relatório</md-tooltip>
+					<ng-md-icon id="" icon="archive" style="fill: #abcdef" size="36"></ng-md-icon>
+				</md-button> 
+			</md-input-container>	
+		</md-grid-tile>
+	</md-grid-list>
 
-  <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{estagios.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">
-  </md-table-pagination>
+	<md-table-container>
+		<div layout="row" layout-sm="column" layout-align="space-around">
+			<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
+		</div>
+		<table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selecionados" md-progress="promise">
+			<thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+				<tr md-row>
+					<th md-column md-order-by="nome"><span>Nome</span></th>
+					<th md-column md-order-by="curso" md-desc><span>Curso</span></th>
+					<th md-column md-order-by="empresa"><span>Empresa</span></th>
+					<th md-column md-order-by="dataInicio"><span>Data Início</span></th>
+					<th md-column md-order-by="dataFim"><span>Data Fim</span></th>
+					<th md-column md-order-by="rescisao"><span>Rescisão</span></th>
+					<th md-column md-order-by="aditivo"><span>Aditivo</span></th>
+					<th md-column md-order-by="visita"><span>Visita Empresa</span></th>
+					<th md-column md-order-by="orientador"><span>Orientador</span></th>
+					<th md-column md-order-by="situacao"><span>Situação</span></th>
+					<th md-column md-order-by="sgn"><span>SGN</span></th>
+					<th md-column md-order-by="instituicao"><span>Instituição</span></th>
+					<th md-column md-order-by="obrigatorio"><span>Obrigatorio</span></th>
+					<th md-column md-order-by="observacao"><md-icon>comments</md-icon><span>Observação</span></th>
+				</tr>
+			</thead>
+			<tbody md-body>
+				<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagios | filter: query.filter" class="md-row">
+					<td md-cell>{{estagio.estudante.nome}}</td>
+					<td md-cell>{{estagio.turma.curso.nome}}</td>
+					<td md-cell>{{estagio.empresa.nome}}</td>
+					<td md-cell>{{estagio.dataInicio ? (estagio.dataInicio | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+					<td md-cell>{{estagio.dataFim ? (estagio.dataFim | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+					<td md-cell>{{estagio.dataRescisao ? (estagio.dataRescisao | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+					<td md-cell>{{estagio.dataAditivo ? (estagio.dataAditivo | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+					<td md-cell>{{estagio.empresa.data ? (estagio.empresa.data | date:'dd/MM/yyyy' : 'UTC') : 'N/A'}}</td>
+					<td md-cell>{{estagio.empresa.usuario.nome}}</td>
+					<td md-cell>{{estagio.situacao}}</td>
+					<td md-cell>{{estagio.cadastroSGN == true ? 'Sim' : 'Não'}}</td>
+					<td md-cell>{{estagio.instituicao.nome}}</td>
+					<td md-cell>{{estagio.estagioObrigatorio == true ? 'Sim' : 'Não'}}</td>
+					<td md-cell>{{estagio.observacao ? estagio.observacao : 'N/A'}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</md-table-container>
 
+	<md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{estagios.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">
+	</md-table-pagination>
 </md-card>
 
-           <md-sidenav id="sidenav" md-component-id = "right" md-disable-backdrop  class = "md-sidenav-right">
-            		<div id= "titulo" >
-	            		<h2 id="tituloFiltro">Filtro</h2>		
-            		</div>
-            		<div layout="row" class="input-row layout-row" id="datas-filtro">
-						<md-input-container class="flex">
-							<label>Início 1</label>
-							<md-datepicker ng-model="dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
-						</md-input-container>
-						
-						<md-input-container class="flex">
-							<label>Fim</label>
-							<md-datepicker ng-model="dataFim" md-min-date="dataInicio" ng-required="true" ng-trim="false"></md-datepicker>										
-						</md-input-container>
-					</div>
-					<div layout="row" class="input-row layout-row">
-						<md-input-container class="flex">
-							<label>Curso</label>
-							<md-select ng-model="curso" >
-								<md-option ng-repeat="item in cursos" ng-value="item" >
-									{{item.nome}}
-								</md-option>
-							</md-select>
-						</md-input-container>					
-				    </div>
-				    
-					<div layout="row" class="input-row layout-row">
-						<md-input-container class="flex">
-							<label>Empresa</label>
-							<md-select ng-model="empresa" >
-								<md-option ng-repeat="item in empresas" ng-value="item" >
-									{{item.nome}}
-								</md-option>
-							</md-select>
-						</md-input-container>					
-				    </div>
+<md-sidenav id="sidenav" md-component-id = "right" md-disable-backdrop  class = "md-sidenav-right">
+	<div id= "titulo" >
+		<h2 id="tituloFiltro">Filtro</h2>		
+	</div>
+	<div layout="row" class="input-row layout-row" id="datas-filtro">
+		<md-input-container class="flex">
+			<label>Início 1</label>
+			<md-datepicker ng-model="dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
+		</md-input-container>
 
-				    <div class="md-actions" id="button-filtro">
-    					<button class="md-primary md-button md-ink-ripple" type="button"  ng-click="aplicarFiltro(dataInicio,dataFim,turma)"><span>Aplicar</span></button>
-    					<button class="md-primary md-button md-ink-ripple" type="button" ng-click="limparFiltro()"><span>Limpar</span></button>
-    					<button class="md-primary md-button md-ink-ripple" type="button" ng-click="closeRightMenu()" aria-label="Cancel"><span>Cancelar</span></button>
-  					</div>
-				    
-         </md-sidenav>
+		<md-input-container class="flex">
+			<label>Fim</label>
+			<md-datepicker ng-model="dataFim" md-min-date="dataInicio" ng-required="true" ng-trim="false"></md-datepicker>										
+		</md-input-container>
+	</div>
+	<div layout="row" class="input-row layout-row">
+		<md-input-container class="flex">
+			<label>Curso</label>
+			<md-select ng-model="curso" >
+				<md-option ng-repeat="item in cursos" ng-value="item" >
+					{{item.nome}}
+				</md-option>
+			</md-select>
+		</md-input-container>					
+	</div>
+
+	<div layout="row" class="input-row layout-row">
+		<md-input-container class="flex">
+			<label>Empresa</label>
+			<md-select ng-model="empresa" >
+				<md-option ng-repeat="item in empresas" ng-value="item" >
+					{{item.nome}}
+				</md-option>
+			</md-select>
+		</md-input-container>					
+	</div>
+
+	<div class="md-actions" id="button-filtro">
+		<button class="md-primary md-button md-ink-ripple" type="button"  ng-click="aplicarFiltro(dataInicio,dataFim,turma)"><span>Aplicar</span></button>
+		<button class="md-primary md-button md-ink-ripple" type="button" ng-click="limparFiltro()"><span>Limpar</span></button>
+		<button class="md-primary md-button md-ink-ripple" type="button" ng-click="closeRightMenu()" aria-label="Cancel"><span>Cancelar</span></button>
+	</div>
+
+</md-sidenav>
 

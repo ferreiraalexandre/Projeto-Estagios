@@ -1,175 +1,171 @@
- <meta charset="utf-8">
-    <md-card ng-style="cardCadastroEstagio">
-    	<h2 class="md-title">{{titleEstagio}}</h2>
-		<md-card >
-			<h2 class="md-title">{{titleEstudante}}</h2>
-			<form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
-				<md-grid-list md-cols="1"  md-row-height="64px" ng-show="buttons">
-					<md-grid-tile id="listaEsquerda">
-						<md-button ng-click="menuEstudante('adicionar')" ng-disabled="buttonAddDisabled">
-							<md-tooltip md-direction="top">Adicionar</md-tooltip>
-							<ng-md-icon id="add" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
-						</md-button>
+<meta charset="utf-8">
+<md-card ng-style="cardCadastroEstagio">
+	<h2 class="md-title">{{titleEstagio}}</h2>
+	<md-card>
+		<h2 class="md-title">{{titleEstudante}}</h2>
+		<form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
+			<md-grid-list md-cols="1"  md-row-height="64px" ng-show="buttons">
+				<md-grid-tile id="listaEsquerda">
+					<md-button ng-click="menuEstudante('adicionar')" ng-disabled="buttonAddDisabled">
+						<md-tooltip md-direction="top">Adicionar</md-tooltip>
+						<ng-md-icon id="add" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
+					</md-button>
 
-						<md-button ng-click="menuEstudante('listar')" ng-disabled="buttonListDisabled">
-							<md-tooltip md-direction="top">Listar</md-tooltip>
-							<ng-md-icon id="list" icon="list" style="fill: #abcdef" size="36"></ng-md-icon>
-						</md-button>
-							
-						<md-button ng-click="menuEstudante('editar', estagio.estudante)" id="buttonCreateDisabled" ng-disabled="!estagio.estudante">
-							<md-tooltip md-direction="top">Editar</md-tooltip>
-							<ng-md-icon id="editar" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
-						</md-button>
-				
-					</md-grid-tile>
-				</md-grid-list>
+					<md-button ng-click="menuEstudante('listar')" ng-disabled="buttonListDisabled">
+						<md-tooltip md-direction="top">Listar</md-tooltip>
+						<ng-md-icon id="list" icon="list" style="fill: #abcdef" size="36"></ng-md-icon>
+					</md-button>
 
-				<div layout-gt-xs="row" ng-show="adicionarEstudante">
-					<md-input-container class="md-block" flex-gt-xs="25">
-						<label>Turma</label>
-						<md-select ng-model="estagio.turma" ng-required="selectRequired">
-							<md-option ng-repeat="item in turmas" ng-selected="item.id == estagio.turma.id" ng-value="item" >
-								{{item.nome}}
-							</md-option>
-						</md-select>
-					</md-input-container>
+					<md-button ng-click="menuEstudante('editar', estagio.estudante)" id="buttonCreateDisabled" ng-disabled="!estagio.estudante">
+						<md-tooltip md-direction="top">Editar</md-tooltip>
+						<ng-md-icon id="editar" icon="create" style="fill: #abcdef" size="36"></ng-md-icon>
+					</md-button>
 
-					<md-input-container  class="md-block" flex-gt-xs="25">
-						<label for="input_55">Novo Estudante</label>
-						<input name="name" ng-model="estagio.novoEstudante"  ng-required="true" ng-trim="false">
-					</md-input-container>
-									
-					<md-input-container  class="md-block" flex-gt-xs="25">
-						<label for="input_55">CPF</label>
-						<input name="name" ng-model="estagio.cpf" ui-mask="999.999.999-99" ng-required="true" ng-trim="false">
-					</md-input-container>
-				</div>
+				</md-grid-tile>
+			</md-grid-list>
 
-		
-				<div layout-gt-xs="row" ng-show="listarEstudante">
-					<md-input-container id="inputsEstudnte" class="md-block" flex-gt-xs="25">
-						<label>Turma</label>
-						<md-select ng-model="estagio.turma" id="estagioTurma" ng-required="selectRequired">
-							<md-option ng-repeat="item in turmas" ng-value="item" >
-								{{item.nome}}
-							</md-option>
-						</md-select>
-					</md-input-container>
+			<div layout-gt-xs="row" ng-show="adicionarEstudante">
+				<md-input-container class="md-block" flex-gt-xs="25">
+					<label>Turma</label>
+					<md-select ng-model="estagio.turma" ng-required="selectRequired">
+						<md-option ng-repeat="item in turmas" ng-selected="item.id == estagio.turma.id" ng-value="item" >
+							{{item.nome}}
+						</md-option>
+					</md-select>
+				</md-input-container>
 
-					<md-input-container class="md-block" flex-gt-xs="25">
-						<label>Estudante</label>
-						<md-select ng-model="estagio.estudante" id="estagioEstudante" ng-required="selectRequired">
-							<md-option ng-if="estagio.turma && estagio.turma.id == item.turma.id" ng-repeat="item in estudantes"  ng-value="item" >
-								{{item.nome}}
-							</md-option>
-						</md-select>
-					</md-input-container>						
-				</div>
-				
-				<div layout-gt-xs="row" ng-show="editarEstudante">
-					<md-input-container class="md-block" flex-gt-xs="25">
-						<label>Turma</label>
-						<md-select ng-model="estagio.editTurma" ng-required="selectRequired" >
-							<md-option ng-repeat="item in turmas"  ng-value="item.id" ng-selected="turmaEditar == item.id">
-								{{item.nome}}
-							</md-option>
-						</md-select>
-					</md-input-container>
+				<md-input-container  class="md-block" flex-gt-xs="25">
+					<label for="input_55">Novo Estudante</label>
+					<input name="name" ng-model="estagio.novoEstudante"  ng-required="true" ng-trim="false">
+				</md-input-container>
 
-					<md-input-container  class="md-block" flex-gt-xs="25">
-						<label for="input_55">Novo Estudante</label>
-						<input name="name" ng-model="estagio.editEstudante.nome"  ng-required="true" ng-trim="false">
-					</md-input-container>
-									
-					<md-input-container  class="md-block" flex-gt-xs="25">
-						<label for="input_55">CPF</label>
-						<input name="name" ng-model="estagio.editEstudante.cpf" ui-mask="999.999.999-99" ng-required="true" ng-trim="false">
-					</md-input-container>
-				</div>
-				
-			</form>
-		</md-card>	
-	
-		<md-card >
-			<h2 class="md-title">Dados Do Estágio</h2>
-			<form name="formEstagio" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" >
-				<div layout="row" class="input-row layout-row">
-					<md-input-container class="flex">
-						<md-checkbox ng-model="estagio.cadastroSGN" aria-label="Checkbox 1">
-							Cadastro SGN
-						</md-checkbox>
-					</md-input-container>
-					
-					<md-input-container class="flex">
-						<md-checkbox ng-model="estagio.estagioObrigatorio" aria-label="Checkbox 1">
-							Estágio Obrigatorio
-						</md-checkbox>
-					</md-input-container>
-					
-					<md-input-container class="flex">
-						<label>Data Início</label>
-						<md-datepicker ng-model="estagio.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
-					</md-input-container>
-					
-					<md-input-container class="flex">
-						<label for="data">Data Fim</label>
-						<md-datepicker ng-model="estagio.dataFim" md-min-date="estagio.dataInicio" ng-disabled="!estagio.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>										
-					</md-input-container>
-				</div>						
-				
-				<div layout="row" class="input-row layout-row">
-					<md-input-container class="flex">
-						<label>Empresa</label>
-						<md-select ng-model="estagio.empresa" ng-required="selectRequired">
-							<md-option ng-repeat="item in empresas" ng-selected="item.id == estagio.empresa.id" ng-value="item" >
-								{{item.nome}}
-							</md-option>
-						</md-select>
-					</md-input-container>
-
-					<md-input-container class="flex">
-						<label>Instituição</label>
-						<md-select ng-model="estagio.instituicao" id="estagioInstituicao" ng-required="selectRequired">
-							<md-option ng-repeat="item in instituicoes" ng-selected="item.id == estagio.instituicao.id" ng-value="item" >
-								{{item.nome}}
-							</md-option>
-						</md-select>
-					</md-input-container>						
-
-					<md-input-container class="flex">
-						<label for="data">Rescisão</label>
-						<md-datepicker ng-model="estagio.dataRescisao" md-min-date="estagio.dataInicio" md-max-date="estagio.dataFim" ng-disabled="!estagio.dataFim"  ></md-datepicker>
-					</md-input-container>
-
-					<md-input-container class="flex">
-						<label for="data">Aditivo</label>
-						<md-datepicker ng-model="estagio.dataAditivo" md-min-date="estagio.dataFim" ></md-datepicker>
-					</md-input-container>
-										
-				</div>
-							
-				<div layout-gt-xs="row">
-					<md-input-container class="md-block" flex-gt-xs="25">
-						<label>Situação</label>
-						<md-select ng-model="estagio.situacao" ng-required="selectRequired">
-          					<md-option value="Matriculado">Matriculado</md-option>
-          					<md-option value="N/A">NA</md-option>
-						</md-select>
-					</md-input-container>	
-	
-					<md-input-container class="md-block" flex-gt-xs="75">
-						<label>Observação</label>
-						<input name="name" ng-model="estagio.observacao">
-					</md-input-container>
-					
-				</div>
-			</form>
-		
-			<div class="md-actions">
-    			<button class="md-primary md-button md-ink-ripple" type="button" ng-click="adicionarEstagio(estagio)" ng-show="novo" ng-disabled="formEstagio.$invalid"><span>Adicionar</span></button>
-   				<button class="md-primary md-button md-ink-ripple" type="button" ng-click="editarEstagio(estagio)" ng-show="editar" ng-disabled="formEmpresa.$invalid"><span>Salvar</span></button>
-   				<button class="md-primary md-button md-ink-ripple" type="button" ng-click="go('/')" aria-label="Cancel"><span>Cancelar</span></button>
+				<md-input-container  class="md-block" flex-gt-xs="25">
+					<label for="input_55">CPF</label>
+					<input name="name" ng-model="estagio.cpf" ui-mask="999.999.999-99" ng-required="true" ng-trim="false">
+				</md-input-container>
 			</div>
-		</md-card>
+
+			<div layout-gt-xs="row" ng-show="listarEstudante">
+				<md-input-container id="inputsEstudnte" class="md-block" flex-gt-xs="25">
+					<label>Turma</label>
+					<md-select ng-model="estagio.turma" id="estagioTurma" ng-required="selectRequired">
+						<md-option ng-repeat="item in turmas" ng-value="item" >
+							{{item.nome}}
+						</md-option>
+					</md-select>
+				</md-input-container>
+
+				<md-input-container class="md-block" flex-gt-xs="25">
+					<label>Estudante</label>
+					<md-select ng-model="estagio.estudante" id="estagioEstudante" ng-required="selectRequired">
+						<md-option ng-if="estagio.turma && estagio.turma.id == item.turma.id" ng-repeat="item in estudantes"  ng-value="item" >
+							{{item.nome}}
+						</md-option>
+					</md-select>
+				</md-input-container>						
+			</div>
+
+			<div layout-gt-xs="row" ng-show="editarEstudante">
+				<md-input-container class="md-block" flex-gt-xs="25">
+					<label>Turma</label>
+					<md-select ng-model="estagio.editTurma" ng-required="selectRequired" >
+						<md-option ng-repeat="item in turmas"  ng-value="item.id" ng-selected="turmaEditar == item.id">
+							{{item.nome}}
+						</md-option>
+					</md-select>
+				</md-input-container>
+
+				<md-input-container  class="md-block" flex-gt-xs="25">
+					<label for="input_55">Novo Estudante</label>
+					<input name="name" ng-model="estagio.editEstudante.nome"  ng-required="true" ng-trim="false">
+				</md-input-container>
+
+				<md-input-container  class="md-block" flex-gt-xs="25">
+					<label for="input_55">CPF</label>
+					<input name="name" ng-model="estagio.editEstudante.cpf" ui-mask="999.999.999-99" ng-required="true" ng-trim="false">
+				</md-input-container>
+			</div>
+		</form>
+	</md-card>	
+
+	<md-card>
+		<h2 class="md-title">Dados Do Estágio</h2>
+		<form name="formEstagio" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" >
+			<div layout="row" class="input-row layout-row">
+				<md-input-container class="flex">
+					<md-checkbox ng-model="estagio.cadastroSGN" aria-label="Checkbox 1">
+						Cadastro SGN
+					</md-checkbox>
+				</md-input-container>
+
+				<md-input-container class="flex">
+					<md-checkbox ng-model="estagio.estagioObrigatorio" aria-label="Checkbox 1">
+						Estágio Obrigatorio
+					</md-checkbox>
+				</md-input-container>
+
+				<md-input-container class="flex">
+					<label>Data Início</label>
+					<md-datepicker ng-model="estagio.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>
+				</md-input-container>
+
+				<md-input-container class="flex">
+					<label for="data">Data Fim</label>
+					<md-datepicker ng-model="estagio.dataFim" md-min-date="estagio.dataInicio" ng-disabled="!estagio.dataInicio" ng-required="true" ng-trim="false"></md-datepicker>										
+				</md-input-container>
+			</div>						
+
+			<div layout="row" class="input-row layout-row">
+				<md-input-container class="flex">
+					<label>Empresa</label>
+					<md-select ng-model="estagio.empresa" ng-required="selectRequired">
+						<md-option ng-repeat="item in empresas" ng-selected="item.id == estagio.empresa.id" ng-value="item" >
+							{{item.nome}}
+						</md-option>
+					</md-select>
+				</md-input-container>
+
+				<md-input-container class="flex">
+					<label>Instituição</label>
+					<md-select ng-model="estagio.instituicao" id="estagioInstituicao" ng-required="selectRequired">
+						<md-option ng-repeat="item in instituicoes" ng-selected="item.id == estagio.instituicao.id" ng-value="item" >
+							{{item.nome}}
+						</md-option>
+					</md-select>
+				</md-input-container>	
+				
+				<md-input-container class="flex">
+					<label for="data">Rescisão</label>
+					<md-datepicker ng-model="estagio.dataRescisao" md-min-date="estagio.dataInicio" md-max-date="estagio.dataFim" ng-disabled="!estagio.dataFim"  ></md-datepicker>
+				</md-input-container>
+
+				<md-input-container class="flex">
+					<label for="data">Aditivo</label>
+					<md-datepicker ng-model="estagio.dataAditivo" md-min-date="estagio.dataFim" ></md-datepicker>
+				</md-input-container>
+			</div>
+
+			<div layout-gt-xs="row">
+				<md-input-container class="md-block" flex-gt-xs="25">
+					<label>Situação</label>
+					<md-select ng-model="estagio.situacao" ng-required="selectRequired">
+						<md-option value="Matriculado">Matriculado</md-option>
+						<md-option value="N/A">NA</md-option>
+					</md-select>
+				</md-input-container>	
+
+				<md-input-container class="md-block" flex-gt-xs="75">
+					<label>Observação</label>
+					<input name="name" ng-model="estagio.observacao">
+				</md-input-container>
+			</div>
+		</form>
+
+		<div class="md-actions">
+			<button class="md-primary md-button md-ink-ripple" type="button" ng-click="adicionarEstagio(estagio)" ng-show="novo" ng-disabled="formEstagio.$invalid"><span>Adicionar</span></button>
+			<button class="md-primary md-button md-ink-ripple" type="button" ng-click="editarEstagio(estagio)" ng-show="editar" ng-disabled="formEmpresa.$invalid"><span>Salvar</span></button>
+			<button class="md-primary md-button md-ink-ripple" type="button" ng-click="go('/')" aria-label="Cancel"><span>Cancelar</span></button>
+		</div>
 	</md-card>
-  
+</md-card>
+

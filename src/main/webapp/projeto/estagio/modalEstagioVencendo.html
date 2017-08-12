@@ -1,42 +1,32 @@
 <meta charset="utf-8">
 
 <md-dialog add-item-dialog="" role="dialog" tabindex="-1" aria-describedby="dialog_63" class="md-transition-in" aria-label="Add Dessert ..." style="">
-  <md-dialog-content class="md-dialog-content" id="dialog_63">
-    
-    <h2 class="md-title">Estágio Vencendo</h2>
-    
-   
-     <md-table-container>
-     <div layout="row" layout-sm="column" layout-align="space-around">
-      	<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
-     </div>
- 
-    <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selecionados" md-progress="promise">
-      <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
-        <tr md-row>
-          <th md-column md-order-by="aluno"><span>Aluno</span></th>
-          <th md-column md-order-by="curso"><span>Curso</span></th>
-          <th md-column md-order-by="dataFim" md-desc><span>Data Fim</span></th>
-
-        </tr>
-      </thead>
-      <tbody md-body>
-        <tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagiosVencendo | filter: query.filter" class="md-row">
-          <td md-cell>{{estagio.estudante.nome}}</td>
-          <td md-cell>{{estagio.turma.curso.nome}}</td>
-          <td md-cell>{{estagio.dataFim | date:'dd/MM/yyyy' : 'UTC'}}</td>         
-        </tr>
-      </tbody>
-    </table>
-    
-     
-  </md-table-container>
-  
-        
-  </md-dialog-content>
-  
-  <div class="md-actions">
-    <button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
-  </div>
-  
-<div class="md-dialog-focus-trap" tabindex="0"></div></md-dialog>
+	<md-dialog-content class="md-dialog-content" id="dialog_63">
+		<h2 class="md-title">Estágio Vencendo</h2>
+		<md-table-container>
+			<div layout="row" layout-sm="column" layout-align="space-around">
+				<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
+			</div>
+			<table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selecionados" md-progress="promise">
+				<thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+					<tr md-row>
+					<th md-column md-order-by="aluno"><span>Aluno</span></th>
+					<th md-column md-order-by="curso"><span>Curso</span></th>
+					<th md-column md-order-by="dataFim" md-desc><span>Data Fim</span></th>
+					</tr>
+				</thead>
+				<tbody md-body>
+					<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagiosVencendo | filter: query.filter" class="md-row">
+					<td md-cell>{{estagio.estudante.nome}}</td>
+					<td md-cell>{{estagio.turma.curso.nome}}</td>
+					<td md-cell>{{estagio.dataFim | date:'dd/MM/yyyy' : 'UTC'}}</td>         
+					</tr>
+				</tbody>
+			</table>
+		</md-table-container>
+	</md-dialog-content>
+	<div class="md-actions">
+		<button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
+	</div>
+	<div class="md-dialog-focus-trap" tabindex="0"></div>
+</md-dialog>
