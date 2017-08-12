@@ -2,45 +2,42 @@
 <link rel="stylesheet" href="projeto/estagio/estagio.css">
 
 <md-dialog add-item-dialog="" role="dialog" tabindex="-1" aria-describedby="dialog_63" class="md-transition-in" aria-label="Add Dessert ..." style="">
-  	<md-dialog-content class="md-dialog-content" id="dialog_63">
-    
-    	<h2 class="md-title">{{title}}</h2>
-    
-    	<!-- ngIf: item.form.$submitted && item.form.$invalid -->
-    
-    	<form name="formEmpresa" ng-submit="empresa.addItem()">
-      		<div layout="row" class="input-row layout-row">
-        		<md-input-container flex="" class="flex">
-          			<label for="nome">Empresa</label>
-          			<input name="nome" ng-model="empresa.nome" ng-required="true" ng-trim="false">
-        		</md-input-container>
-      		</div>
-      		
-      		<div layout="row" class="input-row layout-row">
-        		<md-input-container>
-          			<label>Orientador</label>
-          			<md-select ng-model="empresa.usuario" ng-required="false">
-            			<md-option ng-repeat="item in usuarios" ng-selected="item.id == empresa.usuario.id" ng-value="item" >
-              				{{item.nome}}
-            			</md-option>
-          			</md-select>
-        		</md-input-container>
-        		
-        		<md-input-container flex="" class="flex">
-        			<label for="data">Data Visita</label>
-     			 	<md-datepicker name="data" ng-model="empresa.data" ng-required="false" ng-trim="false" md-open-on-focus></md-datepicker>
-        		</md-input-container>
-        		
-      		</div>
-      		
-    	</form>    
-  	</md-dialog-content>
-  
-  	<div class="md-actions">
-    	<button class="md-primary md-button md-ink-ripple" type="button"  ng-click="novaEmpresa(empresa)" ng-show="novo" ng-disabled="formEmpresa.$invalid"><span>Adicionar</span></button>
-    	<button class="md-primary md-button md-ink-ripple" type="button" ng-click="editarEmpresa(empresa)" ng-show="editar" ng-disabled="formEmpresa.$invalid"><span>Salvar</span></button>
-    	<button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
-  	</div>
-  
+	<md-dialog-content class="md-dialog-content" id="dialog_63">
+
+		<h2 class="md-title">{{title}}</h2>
+
+		<!-- ngIf: item.form.$submitted && item.form.$invalid -->
+
+		<form name="formEmpresa" ng-submit="empresa.addItem()">
+			<div layout="row" class="input-row layout-row">
+				<md-input-container flex="" class="flex">
+					<label for="nome">Empresa</label>
+					<input name="nome" ng-model="empresa.nome" ng-required="true" ng-trim="false">
+				</md-input-container>
+			</div>
+
+			<div layout="row" class="input-row layout-row">
+				<md-input-container>
+					<label>Orientador</label>
+					<md-select ng-model="empresa.usuario" ng-required="false">
+						<md-option ng-repeat="item in usuarios" ng-selected="item.id == empresa.usuario.id" ng-value="item" >
+							{{item.nome}}
+						</md-option>
+					</md-select>
+				</md-input-container>
+
+				<md-input-container flex="" class="flex">
+					<label for="data">Data Visita</label>
+					<md-datepicker name="data" ng-model="empresa.data" ng-required="false" ng-trim="false" md-open-on-focus></md-datepicker>
+				</md-input-container>
+			</div>
+		</form>    
+	</md-dialog-content>
+
+	<div class="md-actions">
+		<button class="md-primary md-button md-ink-ripple" type="button"  ng-click="novaEmpresa(empresa)" ng-show="novo" ng-disabled="formEmpresa.$invalid"><span>Adicionar</span></button>
+		<button class="md-primary md-button md-ink-ripple" type="button" ng-click="editarEmpresa(empresa)" ng-show="editar" ng-disabled="formEmpresa.$invalid"><span>Salvar</span></button>
+		<button class="md-primary md-button md-ink-ripple" type="button" ng-click="cancel()" aria-label="Cancel"><span>Cancelar</span></button>
+	</div>
 	<div class="md-dialog-focus-trap" tabindex="0"></div>
 </md-dialog>
