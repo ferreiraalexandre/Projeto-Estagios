@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Estudante;
@@ -98,6 +99,15 @@ public class EstagioService {
 		List<Estagio> result = jpa.estagioVencendo();
 
 		return result;
+	}
+	
+	public JSONObject relatorio() throws Exception{
+		JSONObject json = new JSONObject();
+		EstagioJPA jpa = new EstagioJPA();
+		
+		json.put("relatorio", jpa.buscarEmpresaComEstagiario());
+		return json;
+		
 	}
 
 }

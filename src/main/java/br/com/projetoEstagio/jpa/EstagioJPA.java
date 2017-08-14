@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.JSONObject;
+
 import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Usuario;
@@ -65,6 +67,14 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 		return this.list(hql);
 	
 
+	}
+
+	public JSONObject buscarEmpresaComEstagiario() {
+		//SELECT em.nome,count(es.empresaId) as total FROM empresa em left join estagio es on em.id = es.empresaId group by nome;
+		
+		String hql = "SELECT Em.nome, COUNT(Es.empresaId) as total FROM "+ Empresa.class.getName() +" Em LEFT JOIN " + Estagio.class.getName() + " Es on Em.id = Es.empresaId group by nome";
+		
+		return (JSONObject) this.list(hql);
 	}	
 
 }

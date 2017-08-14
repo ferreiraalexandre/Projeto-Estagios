@@ -76,6 +76,7 @@ app.factory('EstagioService',['$resource',  function ($resource) {
 		  deleteEstagio: { method: 'DELETE', params: {method: 'deletar'}, isArray: false, interceptor: {responseError : resultError}},
 		  filtroEstagio: {method: 'POST', params: {method: 'filtro'}},
 		  getEstagioVencendo: {method: 'GET', params: {method: 'vencendo'}, isArray: false},
+		  getRelatorio: {method: 'GET', params: {method: 'relatorio'}, isArray: false},
 	  })
 }]);
 

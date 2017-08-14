@@ -16,30 +16,14 @@ app.controller('relatorioEstagioController', ['$mdEditDialog', '$q', '$scope', '
   $scope.cardCadastroEstagio = {"margin-top" : "60px"};
   
   
-	 var data = [ {
-	      "empresa" : 32,
-	      "total" : "rrr",
-	    
-	  	},
-	  	{"empresa" : 32,
-	      "total" : "rrr",
-	    
-	  	}, 
-	  	{"empresa" : 32,
-		      "total" : "rrr",
-		    
-		  	}, 
-		  	{"empresa" : 32,
-			      "total" : "rrr",
-			    
-			  	}, 
-			  	{"empresa" : 32,
-				      "total" : "rrr",
-				    
-				  	}, 
-
-	 ]
+	//Gerar relatorio 
+	$scope.getRelatorio = function () {
+		EstagioService.getRelatorio(function (response) {
+			$scope.estagios = response.data;
+			
+		});		
+	};
 	
-  $scope.estagiosVencendo = data;
+  $scope.getRelatorio();
 	
 }]);
