@@ -14,6 +14,7 @@ import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.interfaces.EstagioInterface;
+import br.com.projetoEstagio.pojo.RelatorioPojo;
 
 public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInterface {
 	
@@ -70,10 +71,17 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 	}
 
 	public List<Object> buscarEmpresaComEstagiario() {
-		//SELECT em.nome,count(es.empresaId) as total FROM empresa em left join estagio es on em.id = es.empresaId group by nome;
 		
-		String hql = "SELECT new br.com.projetoEstagio.pojo.RelatorioEmpresaPojo(Em.nome, COUNT(Es)) FROM "+ Empresa.class.getSimpleName() +" Em JOIN " + Estagio.class.getSimpleName() + " Es group by nome";
+		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (em.nome, COUNT(*)as total)"
+				+ " FROM " + Empresa.class.getSimpleName() + " em"
+				+ " LEFT JOIN " + Estagio.class.getSimpleName() + " es"
+				+ " WHERE em.id = es.empresaId group by nome";
 		
+//		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (es.empresa.nome, COUNT(*)as total)"
+//				+ " FROM " + Estagio.class.getSimpleName() + " es"
+//				+ " WHERE es.empresa = es.empresa.id group by nome";
+
+				
 		return this.listObject(hql);
 	}	
 

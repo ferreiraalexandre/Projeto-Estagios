@@ -1,10 +1,11 @@
 package br.com.projetoEstagio.pojo;
 
-public class RelatorioEmpresaPojo {
+public class RelatorioPojo {
 	private String nome;
 	private long total;
 	
-	public RelatorioEmpresaPojo(String nome, long total){
+	public RelatorioPojo(String nome, long total){
+		super();
 		this.nome = nome;
 		this.total = total;
 	}

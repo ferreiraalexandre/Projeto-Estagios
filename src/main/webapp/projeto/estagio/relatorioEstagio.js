@@ -19,7 +19,7 @@ app.controller('relatorioEstagioController', ['$mdEditDialog', '$q', '$scope', '
 	//Gerar relatorio 
 	$scope.getRelatorio = function () {
 		EstagioService.getRelatorio(function (response) {
-			$scope.estagios = response.data;
+			$scope.relatorioEmpresa = response.data;
 			
 		});		
 	};
