@@ -43,19 +43,7 @@ public class UsuarioService {
 		UsuarioJPA listUsuario = new UsuarioJPA();
 		return listUsuario.listCoordenadores();
 	}
-	
-	/*public Object deleteUsuario(JSONArray usu) throws Exception{
-		UsuarioJPA uni = new UsuarioJPA();
-			
-		if(usu != null && usu.length() > 0){
-			for (int i = 0; i < usu.length(); i++) {
-				uni.deleteUsuario(usu.getLong(i));
-				System.out.println(usu.getLong(i));
-			}
-		}
-		return uni.list();
-	}*/
-	
+
 	public Object deleteUsuario(JSONArray users, RestResponse response) throws Exception{
 		UsuarioJPA use = new UsuarioJPA();
 		EmpresaJPA emp = new EmpresaJPA();
@@ -69,7 +57,12 @@ public class UsuarioService {
 					List<Turma> turma = tur.buscarPorUsuario(users.getLong(i));
 					
 					if(empresa.size() > 0 || turma.size() > 0){
-						usuarioEmUso.add(empresa.get(0).getUsuario());////////////////////////parei aqui, arrumar essa linha!!!!!!!!	
+						if(empresa.size() > 0){
+							usuarioEmUso.add(empresa.get(0).getUsuario());
+						}
+						if(turma.size() > 0){
+							usuarioEmUso.add(turma.get(0).getUsuario());
+						}
 					}else{
 						use.deleteUsuario(users.getLong(i));												
 					}
@@ -80,10 +73,10 @@ public class UsuarioService {
 				String nomeUsuario = "";
 				for (Usuario usuario : usuarioEmUso) {
 					if(!nomeUsuario.contains(usuario.getNome())){		
-						nomeUsuario += usuario.getNome() + "  ";						
+						nomeUsuario += usuario.getNome() + " - ";						
 					}
 				}
-				response.setDescription(nomeUsuario.replace(" * ", " "));
+				response.setDescription(nomeUsuario.replace(" * ", ", "));
 			}			
 	
 			List<Usuario> usuarios = use.list();

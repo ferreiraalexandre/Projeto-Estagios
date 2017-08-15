@@ -15,6 +15,7 @@ import javax.ws.rs.core.Response;
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.Turma;
+import br.com.projetoEstagio.restUtil.RestResponse;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.TurmaService;
 
@@ -67,10 +68,10 @@ public class TurmaRest extends UtilRest {
 	@Consumes("application/json")
 	@Produces("application/json")
 	public Response delete(@PathParam ("id") JSONArray id) {
-
 		try{
 			TurmaService service = new TurmaService(); 
-
+			this.response = new RestResponse();
+			//return getResponseRemove(service.deleteTurma(id, this.response));
 			return getResponseRemove(service.deleteTurma(id));
 		} catch (Exception e) {
 			return getResponseError(e);
@@ -83,7 +84,7 @@ public class TurmaRest extends UtilRest {
 	public Response editar(String json) {
 
 		try{
-			Turma tur = getObjectMapper().readValue(json, Turma.class);			
+			Turma tur = getObjectMapper().readValue(json, Turma.class);
 			TurmaService service = new TurmaService();
 			String msg = "Turma já cadastrada";
 

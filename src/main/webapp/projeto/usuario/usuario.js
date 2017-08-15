@@ -76,22 +76,6 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
   };
  
 //////////função de deletar
-  /*$scope.deleteUsuario = function(){	
-		var arrayId = []; 
-		for (var i = 0; i < $scope.selecionados.length; i++) {
-			arrayId.push($scope.selecionados[i].id);
-		}
-		var listId ={
-				data: JSON.stringify(arrayId),
-		};
-			UsuarioService.deleteUsuario(listId, function(response){
-			$scope.usuarios = response.data;
-			$scope.selecionados = []; 
-			$scope.buttonEnable();
-			toastr.success(response.message);
-		});
-	};*/
-  
   $scope.deleteUsuario = function(){	
 		var arrayId = []; 
 		for (var i = 0; i < $scope.selecionados.length; i++) {
@@ -113,10 +97,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		});
 		
 	};
-	
-	
 
-   
  //Abrir Modal
   $scope.abrirModal = function(event) {
 	    $mdDialog.show({
