@@ -28,7 +28,7 @@ public class UsuarioService {
 			return obj;
 		}else{
 			Crypt crypt = new Crypt();
-			usu.setSenha(crypt.decode(usu.getSenha()));
+			usu.setSenha(crypt.md5(usu.getSenha()));
 			usuario.addUsuario(usu);		
 			return  usuario.list();
 		}
@@ -84,7 +84,7 @@ public class UsuarioService {
 			return usuarios;
 	}
 
-	public Object editarUsuario(Usuario usu) {
+	public Object editarUsuario(Usuario usu) throws NoSuchAlgorithmException {
 		
 		UsuarioJPA user = new UsuarioJPA();		
 		Object obj = null;
@@ -97,6 +97,8 @@ public class UsuarioService {
 				}					
 			}				
 		}
+		Crypt crypt = new Crypt();
+		usu.setSenha(crypt.md5(usu.getSenha()));
 		user.editarUsuario(usu);
 		return user.list();
 	}
