@@ -34,7 +34,7 @@ public class UsuarioRest extends UtilRest {
 		try{
 			UsuarioService service = new UsuarioService(); 
 			Usuario usuario = getObjectMapper().readValue(json, Usuario.class);
-			String msg = "Email j√° cadastrado";
+			String msg = "Email j· cadastrado";
 			
 			Object result = service.addUsuario(usuario);
 			if(result == null){
@@ -103,7 +103,7 @@ public class UsuarioRest extends UtilRest {
 		try{
 			Usuario usu = getObjectMapper().readValue(json, Usuario.class);			
 			UsuarioService service = new UsuarioService(); 
-			String msg = "Email j√° cadastrado";
+			String msg = "Email j· cadastrado";
 			
 			Object result = service.editarUsuario(usu);
 			if(result == null){
