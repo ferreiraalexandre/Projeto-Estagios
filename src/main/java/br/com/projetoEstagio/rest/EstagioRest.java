@@ -264,7 +264,7 @@ public class EstagioRest extends UtilRest {
 		try {
 			EstagioService service = new EstagioService();
 			
-			JSONObject e = service.relatorio();
+			List<Object> e = service.relatorio();
 			return getResponseList(e);
 		} catch (Exception e) {
 			return getResponseError(e);
