@@ -69,12 +69,12 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 
 	}
 
-	public JSONObject buscarEmpresaComEstagiario() {
+	public List<Object> buscarEmpresaComEstagiario() {
 		//SELECT em.nome,count(es.empresaId) as total FROM empresa em left join estagio es on em.id = es.empresaId group by nome;
 		
-		String hql = "SELECT Em.nome, COUNT(Es.empresaId) as total FROM "+ Empresa.class.getName() +" Em LEFT JOIN " + Estagio.class.getName() + " Es on Em.id = Es.empresaId group by nome";
+		String hql = "SELECT new br.com.projetoEstagio.pojo.RelatorioEmpresaPojo(Em.nome, COUNT(Es)) FROM "+ Empresa.class.getSimpleName() +" Em JOIN " + Estagio.class.getSimpleName() + " Es group by nome";
 		
-		return (JSONObject) this.list(hql);
+		return this.listObject(hql);
 	}	
 
 }

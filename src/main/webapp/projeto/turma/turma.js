@@ -76,7 +76,7 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
   };
  
 //////////função de deletar
-  $scope.deleteTurma = function(){	
+  /*$scope.deleteTurma = function(){	
 		var arrayId = []; 
 		for (var i = 0; i < $scope.selecionados.length; i++) {
 			arrayId.push($scope.selecionados[i].id);
@@ -90,8 +90,29 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 			$scope.buttonEnable();
 			toastr.success(response.message);
 		});
-	};
+	};*/
 	
+  $scope.deleteTurma = function(){	
+		var arrayId = []; 
+		for (var i = 0; i < $scope.selecionados.length; i++) {
+			arrayId.push($scope.selecionados[i].id);
+		}
+		var listId ={
+				data: JSON.stringify(arrayId),
+		};
+		TurmaService.deleteTurma(listId, function(response){
+			$scope.turmas = response.data;
+			if(response.description != null){
+				toastr.warning(response.description, response.message );
+			}else{
+				toastr.success(response.message);				
+			}
+			$scope.selecionados = []; 
+			$scope.buttonEnable();
+			
+		});
+		
+	};
 
    
  //Abrir Modal

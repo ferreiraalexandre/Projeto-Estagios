@@ -101,13 +101,10 @@ public class EstagioService {
 		return result;
 	}
 	
-	public JSONObject relatorio() throws Exception{
-		JSONObject json = new JSONObject();
+	public List<Object> relatorio() throws Exception{
 		EstagioJPA jpa = new EstagioJPA();
 		
-		json.put("relatorio", jpa.buscarEmpresaComEstagiario());
-		return json;
-		
+		return jpa.buscarEmpresaComEstagiario();
 	}
 
 }

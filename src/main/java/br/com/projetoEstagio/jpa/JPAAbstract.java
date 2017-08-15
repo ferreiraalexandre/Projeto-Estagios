@@ -282,6 +282,21 @@ public class JPAAbstract<E, ID> extends JPAConnection {
 		return listentity;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Object> listObject(String jpql){
+
+		if(jpql == null || jpql.isEmpty()){
+			jpql = "SELECT E FROM " + this.getEntityName() + " E";
+		}
+		
+		EntityManager em = getEntityManager();
+
+		Query sql = em.createQuery(jpql);
+		
+		List<Object> listentity = sql.getResultList();
+
+		return listentity;
+	}
 	
 	@SuppressWarnings("unchecked")
 	public List<E> listNativeQuery(String sql){
