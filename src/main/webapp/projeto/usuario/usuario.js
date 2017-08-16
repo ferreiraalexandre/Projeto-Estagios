@@ -154,6 +154,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		    
 		//Função de adicionar novos usuario no Banco de Dados
 		$scope.novoUsuario = function (data) {
+			response.data = btoa(response.data);
 			UsuarioService.postUsuario(data, function (response) {
 			if(response.data != undefined){
 				$mdDialog.hide(data);
@@ -171,6 +172,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		
 		//Função de editar usuario no Banco de Dados
 		$scope.editarUsuario = function (data) {
+			data.senha = btoa(data.senha);
 			UsuarioService.putUsuario(data, function (response) {
 				if(response.data != undefined){
 					$mdDialog.hide(data);
