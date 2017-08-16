@@ -83,16 +83,23 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			arrayId.push($scope.selecionados[i].id);
 		}
 		var listId ={
-			data: JSON.stringify(arrayId),
+				data: JSON.stringify(arrayId),
 		};
 		EmpresaService.deleteEmpresa(listId, function(response){
+			if(response.description != null){
+				toastr.warning(response.description, response.message );
+			}else{
+				toastr.success(response.message);				
+			}
 			$scope.empresas = response.data;
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
-			toastr.success(response.message);
-		});
-	};
 		
+					
+		});
+		
+		
+	};
 
 	   
 	//Abrir Modal

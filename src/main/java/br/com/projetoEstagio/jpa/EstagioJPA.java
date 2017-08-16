@@ -97,5 +97,9 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 	public List<Estagio> buscarPorInstituicao(Long id) {
 		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.instituicao.id = '"+ id +"'");
 	}
+	
+	public List<Estagio> buscarPorEmpresa(Long id) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.empresa.id = '"+ id +"'");
+	}
 
 }

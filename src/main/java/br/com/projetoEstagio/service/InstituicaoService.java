@@ -46,7 +46,7 @@ public class InstituicaoService {
 					if(estagio.size() > 0){
 						instituicaoEmUso.add(estagio.get(0).getInstituicao());	
 					}else{
-						inst.deleteInstituicao(instituicao.getLong(i));												
+						inst.deleteInstituicao(instituicao.getLong(i));
 					}
 				}
 			}
@@ -55,10 +55,10 @@ public class InstituicaoService {
 				String nomeInstituicao = "";
 				for (Instituicao insti : instituicaoEmUso) {
 					if(!nomeInstituicao.contains(insti.getNome())){		
-						nomeInstituicao += insti.getNome() + "  ";						
+						nomeInstituicao += insti.getNome() + " - ";					
 					}
 				}
-				response.setDescription(nomeInstituicao.replace("  ", "; "));
+				response.setDescription(nomeInstituicao.replace(" * ", ", "));
 			}
 
 			return inst.list();

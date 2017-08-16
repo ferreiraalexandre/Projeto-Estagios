@@ -24,4 +24,6 @@ public interface EstagioInterface {
 	public List<Estagio> buscarPorTurma(Long id);
 	
 	public List<Estagio> buscarPorInstituicao(Long id);
+	
+	public List<Estagio> buscarPorEmpresa(Long id);
 }

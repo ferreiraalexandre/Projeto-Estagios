@@ -15,6 +15,7 @@ import javax.ws.rs.core.Response;
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.Instituicao;
+import br.com.projetoEstagio.restUtil.RestResponse;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.InstituicaoService;
 
@@ -68,7 +69,7 @@ public class InstituicaoRest extends UtilRest {
 
 		try{
 			InstituicaoService service = new InstituicaoService(); 
-
+			this.response = new RestResponse();
 			return getResponseRemove(service.deleteInstituicao(id, this.response));
 		} catch (Exception e) {
 			return getResponseError(e);
