@@ -71,17 +71,29 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 	}
 
 	public List<Object> buscarEmpresaComEstagiario() {
-		
-		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (em.nome, COUNT(*)as total)"
-				+ " FROM " + Empresa.class.getSimpleName() + " em"
-				+ " LEFT JOIN " + Estagio.class.getSimpleName() + " es"
-				+ " WHERE em.id = es.empresaId group by nome";
-		
-//		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (es.empresa.nome, COUNT(*)as total)"
-//				+ " FROM " + Estagio.class.getSimpleName() + " es"
-//				+ " WHERE es.empresa = es.empresa.id group by nome";
-
 				
+		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (es.empresa.nome, COUNT(*)as total)"
+				+ " FROM " + Estagio.class.getSimpleName() + " es"
+				+ " WHERE es.empresa = es.empresa.id group by nome";
+
+		return this.listObject(hql);
+	}	
+
+	public List<Object> buscarEstagioComRescisao() {
+		
+		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (COUNT(*)as totalEstagio, COUNT(es.dataRescisao)as total)"
+				+ " FROM " + Estagio.class.getSimpleName() + " es"
+				+ " WHERE es.dataRescisao is null";
+
+		return this.listObject(hql);
+	}	
+
+	public List<Object> buscarTurmaComEstagiario() {
+		
+		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (es.turma.nome, COUNT(*)as total)"
+				+ " FROM " + Estagio.class.getSimpleName() + " es"
+				+ " WHERE es.turma = es.turma.id group by nome";
+
 		return this.listObject(hql);
 	}	
 
