@@ -76,22 +76,6 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
   };
  
 //////////função de deletar
-  /*$scope.deleteTurma = function(){	
-		var arrayId = []; 
-		for (var i = 0; i < $scope.selecionados.length; i++) {
-			arrayId.push($scope.selecionados[i].id);
-		}
-		var listId ={
-				data: JSON.stringify(arrayId),
-		};
-		TurmaService.deleteTurma(listId, function(response){
-			$scope.turmas = response.data;
-			$scope.selecionados = []; 
-			$scope.buttonEnable();
-			toastr.success(response.message);
-		});
-	};*/
-	
   $scope.deleteTurma = function(){	
 		var arrayId = []; 
 		for (var i = 0; i < $scope.selecionados.length; i++) {

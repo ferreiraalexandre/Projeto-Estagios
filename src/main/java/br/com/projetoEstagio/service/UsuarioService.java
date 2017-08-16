@@ -77,11 +77,9 @@ public class UsuarioService {
 					}
 				}
 				response.setDescription(nomeUsuario.replace(" * ", ", "));
-			}			
-	
-			List<Usuario> usuarios = use.list();
+			}
 			
-			return usuarios;
+			return use.list();
 	}
 
 	public Object editarUsuario(Usuario usu) throws NoSuchAlgorithmException {

@@ -57,11 +57,9 @@ public class UnidadeEnsinoService {
 					}
 				}
 				response.setDescription(nomeUsuario.replace("* ", " "));
-			}			
-	
-			List<UnidadeEnsino> unidades = uni.list();
-			
-			return unidades;
+			}
+
+			return uni.list();
 	}
 	
 	public Object editarUnidade(UnidadeEnsino uni) {

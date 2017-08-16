@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.json.JSONArray;
 
-import br.com.projetoEstagio.entity.Empresa;
+import br.com.projetoEstagio.entity.Estagio;
+import br.com.projetoEstagio.entity.Estudante;
 import br.com.projetoEstagio.entity.Turma;
-import br.com.projetoEstagio.entity.Usuario;
-import br.com.projetoEstagio.jpa.EmpresaJPA;
+import br.com.projetoEstagio.jpa.EstagioJPA;
+import br.com.projetoEstagio.jpa.EstudanteJPA;
 import br.com.projetoEstagio.jpa.TurmaJPA;
-import br.com.projetoEstagio.jpa.UsuarioJPA;
 import br.com.projetoEstagio.restUtil.RestResponse;
 
 public class TurmaService {
@@ -33,57 +33,43 @@ public class TurmaService {
 		return listTurma.list();
 	}
 	
-	public Object deleteTurma(JSONArray tur) throws Exception{
+	public Object deleteTurma(JSONArray turmas, RestResponse response) throws Exception{
 		TurmaJPA turma = new TurmaJPA();
-			
-		if(tur != null && tur.length() > 0){
-			for (int i = 0; i < tur.length(); i++) {
-				turma.deleteTurma(tur.getLong(i));
-				System.out.println(tur.getLong(i));
-			}
-		}
-		return turma.list();
-	}
-	///////////PAREI AQUI, COMECAR ESSE METODO DO ZERO	
-	/*public Object deleteTurma(JSONArray users, RestResponse response) throws Exception{
-		UsuarioJPA use = new UsuarioJPA();
-		EmpresaJPA emp = new EmpresaJPA();
-		TurmaJPA tur = new TurmaJPA();
+		EstagioJPA estagio = new EstagioJPA();
+		EstudanteJPA estudante = new EstudanteJPA();
 		
-		List<Usuario> usuarioEmUso = new ArrayList<Usuario>();
+		List<Turma> turmaEmUso = new ArrayList<Turma>();
 			
-			if(users != null && users.length() > 0){
-				for (int i = 0; i < users.length(); i++) {
-					List<Empresa> empresa = emp.buscarPorUsuario(users.getLong(i));
-					List<Turma> turma = tur.buscarPorUsuario(users.getLong(i));
+			if(turmas != null && turmas.length() > 0){
+				for (int i = 0; i < turmas.length(); i++) {
+					List<Estagio> estagios = estagio.buscarPorTurma(turmas.getLong(i));
+					List<Estudante> estudantes = estudante.buscarPorTurma(turmas.getLong(i));
 					
-					if(empresa.size() > 0 || turma.size() > 0){
-						if(empresa.size() > 0){
-							usuarioEmUso.add(empresa.get(0).getUsuario());
+					if(estagios.size() > 0 || estudantes.size() > 0){
+						if(estagios.size() > 0){
+							turmaEmUso.add(estagios.get(0).getTurma());
 						}
-						if(turma.size() > 0){
-							usuarioEmUso.add(turma.get(0).getUsuario());
+						if(estudantes.size() > 0){
+							turmaEmUso.add(estudantes.get(0).getTurma());
 						}
 					}else{
-						use.deleteUsuario(users.getLong(i));												
+						turma.deleteTurma(turmas.getLong(i));												
 					}
 				}
 			}
 			
-			if(usuarioEmUso.size() > 0){
-				String nomeUsuario = "";
-				for (Usuario usuario : usuarioEmUso) {
-					if(!nomeUsuario.contains(usuario.getNome())){		
-						nomeUsuario += usuario.getNome() + " - ";						
+			if(turmaEmUso.size() > 0){
+				String nomeTurma = "";
+				for (Turma tur : turmaEmUso) {
+					if(!nomeTurma.contains(tur.getNome())){		
+						nomeTurma += tur.getNome() + " - ";						
 					}
 				}
-				response.setDescription(nomeUsuario.replace(" * ", ", "));
-			}			
-	
-			List<Usuario> usuarios = use.list();
-			
-			return usuarios;
-	}*/
+				response.setDescription(nomeTurma.replace(" * ", ", "));
+			}
+
+			return turma.list();
+	}
 
 	public Object editarTurma(Turma tur) {
 		TurmaJPA turma = new TurmaJPA();

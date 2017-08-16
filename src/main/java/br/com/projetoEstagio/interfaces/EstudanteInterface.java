@@ -12,4 +12,6 @@ public interface EstudanteInterface {
 	public Estudante addEstudante(Estudante estudante);
 	
 	public Estudante editarEstudante(Estudante estudante);
+	
+	public List<Estudante> buscarPorTurma(Long id);
 }
