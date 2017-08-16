@@ -42,33 +42,30 @@ public class CursoService {
 		CursoJPA curso = new CursoJPA();
 		TurmaJPA tur = new TurmaJPA();
 		
-		List<Turma> turmaEmUso = new ArrayList<Turma>();
+		List<Curso> cursoEmUso = new ArrayList<Curso>();
 			
 			if(cur != null && cur.length() > 0){
 				for (int i = 0; i < cur.length(); i++) {
-					List<Turma> turma = tur.buscarPorId(cur.getLong(i));
+					List<Turma> turma = tur.buscarPorCurso(cur.getLong(i));
 					
 					if(turma.size() > 0){
-						turmaEmUso.add(turma.get(0));	
+						cursoEmUso.add(turma.get(0).getCurso());	
 					}else{
 						curso.deleteCurso(cur.getLong(i));												
 					}
 				}
 			}
 			
-			if(turmaEmUso.size() > 0){
-				String nomeTurma = "";
-				for (Turma turma : turmaEmUso) {
-					if(!nomeTurma.contains(turma.getCurso().getNome())){		
-						nomeTurma += turma.getCurso().getNome() + "  ";						
+			if(cursoEmUso.size() > 0){
+				String nomeCurso = "";
+				for (Curso c : cursoEmUso) {
+					if(!nomeCurso.contains(c.getNome())){		
+						nomeCurso += c.getNome() + " - ";						
 					}
 				}
-				response.setDescription(nomeTurma.replace("  ", "; "));
-			}			
-	
-			List<Curso> cursos = curso.list();
-			
-			return cursos;
+				response.setDescription(nomeCurso.replace(" * ", "; "));
+			}
+			return curso.list();
 	}
 	
 	public Object editarCurso(Curso cur) {

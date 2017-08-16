@@ -90,19 +90,15 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 				data: JSON.stringify(arrayId),
 		};
 		CursoService.deleteCurso(listId, function(response){
-			$scope.cursos = response.data;
 			if(response.description != null){
 				toastr.warning(response.description, response.message );
 			}else{
 				toastr.success(response.message);				
 			}
+			$scope.cursos = response.data;
 			$scope.selecionados = []; 
-			$scope.buttonEnable();
-		
-					
-		});
-		
-		
+			$scope.buttonEnable();					
+		});		
 	};
 	
 	

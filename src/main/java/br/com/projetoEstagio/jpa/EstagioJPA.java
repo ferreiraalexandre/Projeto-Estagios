@@ -1,18 +1,11 @@
 package br.com.projetoEstagio.jpa;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.json.JSONObject;
-
-import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
-import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.interfaces.EstagioInterface;
 import br.com.projetoEstagio.pojo.RelatorioPojo;
 
@@ -71,18 +64,41 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 	}
 
 	public List<Object> buscarEmpresaComEstagiario() {
-		
-		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (em.nome, COUNT(*)as total)"
-				+ " FROM " + Empresa.class.getSimpleName() + " em"
-				+ " LEFT JOIN " + Estagio.class.getSimpleName() + " es"
-				+ " WHERE em.id = es.empresaId group by nome";
-		
-//		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (es.empresa.nome, COUNT(*)as total)"
-//				+ " FROM " + Estagio.class.getSimpleName() + " es"
-//				+ " WHERE es.empresa = es.empresa.id group by nome";
-
 				
+		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (es.empresa.nome, COUNT(*)as total)"
+				+ " FROM " + Estagio.class.getSimpleName() + " es"
+				+ " WHERE es.empresa = es.empresa.id group by nome";
+
 		return this.listObject(hql);
 	}	
+
+	public List<Object> buscarEstagioComRescisao() {
+		
+		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (COUNT(*)as totalEstagio, COUNT(es.dataRescisao)as total)"
+				+ " FROM " + Estagio.class.getSimpleName() + " es";
+
+		return this.listObject(hql);
+	}	
+
+	public List<Object> buscarTurmaComEstagiario() {
+		
+		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (es.turma.nome, COUNT(*)as total)"
+				+ " FROM " + Estagio.class.getSimpleName() + " es"
+				+ " WHERE es.turma = es.turma.id group by nome";
+
+		return this.listObject(hql);
+	}	
+	
+	public List<Estagio> buscarPorTurma(Long id) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.turma.id = '"+ id +"'");
+	}
+	
+	public List<Estagio> buscarPorInstituicao(Long id) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.instituicao.id = '"+ id +"'");
+	}
+	
+	public List<Estagio> buscarPorEmpresa(Long id) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.empresa.id = '"+ id +"'");
+	}
 
 }

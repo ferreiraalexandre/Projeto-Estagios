@@ -19,10 +19,20 @@ app.controller('relatorioEstagioController', ['$mdEditDialog', '$q', '$scope', '
 	//Gerar relatorio 
 	$scope.getRelatorio = function () {
 		EstagioService.getRelatorio(function (response) {
-			$scope.relatorioEmpresa = response.data;
+			var data = JSON.parse(response.data);
+			$scope.relatorioEmpresa = data.empresa;
+			$scope.relatorioRescisao = data.rescisao;
+			$scope.relatorioTurma = data.turma;
 			
 		});		
 	};
+	
+	// Função do botão "VOLTAR"
+	$scope.voltar = function () {
+		window.location.href="/projeto-estagios/home.html";
+		
+	};
+
 	
   $scope.getRelatorio();
 	

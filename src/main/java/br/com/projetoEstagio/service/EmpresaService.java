@@ -1,11 +1,15 @@
 package br.com.projetoEstagio.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.Empresa;
+import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.jpa.EmpresaJPA;
+import br.com.projetoEstagio.jpa.EstagioJPA;
+import br.com.projetoEstagio.restUtil.RestResponse;
 
 public class EmpresaService {
 
@@ -28,16 +32,35 @@ public class EmpresaService {
 		return listEmpresa.list();
 	}
 	
-	public Object deleteEmpresa(JSONArray emp) throws Exception{
+	public Object deleteEmpresa(JSONArray emp, RestResponse response) throws Exception{
 		EmpresaJPA empresa = new EmpresaJPA();
+		EstagioJPA estagio = new EstagioJPA();
+		
+		List<Empresa> empresaEmUso = new ArrayList<Empresa>();
 			
-		if(emp != null && emp.length() > 0){
-			for (int i = 0; i < emp.length(); i++) {
-				empresa.deleteEmpresa(emp.getLong(i));
-				System.out.println(emp.getLong(i));
+			if(emp != null && emp.length() > 0){
+				for (int i = 0; i < emp.length(); i++) {
+					List<Estagio> estagios = estagio.buscarPorEmpresa(emp.getLong(i));
+					
+					if(estagios.size() > 0){
+						empresaEmUso.add(estagios.get(0).getEmpresa());	
+					}else{
+						empresa.deleteEmpresa(emp.getLong(i));
+					}
+				}
 			}
-		}
-		return empresa.list();
+			
+			if(empresaEmUso.size() > 0){
+				String nomeEmpresa = "";
+				for (Empresa e: empresaEmUso) {
+					if(!nomeEmpresa.contains(e.getNome())){		
+						nomeEmpresa += e.getNome() + " - ";					
+					}
+				}
+				response.setDescription(nomeEmpresa.replace(" * ", ", "));
+			}
+
+			return empresa.list();
 	}
 	
 	public Object editarEmpresa(Empresa emp) {

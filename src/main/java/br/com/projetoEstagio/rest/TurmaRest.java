@@ -71,8 +71,7 @@ public class TurmaRest extends UtilRest {
 		try{
 			TurmaService service = new TurmaService(); 
 			this.response = new RestResponse();
-			//return getResponseRemove(service.deleteTurma(id, this.response));
-			return getResponseRemove(service.deleteTurma(id));
+			return getResponseRemove(service.deleteTurma(id, this.response));
 		} catch (Exception e) {
 			return getResponseError(e);
 		}

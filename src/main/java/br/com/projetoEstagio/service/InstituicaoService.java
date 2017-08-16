@@ -1,10 +1,13 @@
 package br.com.projetoEstagio.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
 
+import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Instituicao;
+import br.com.projetoEstagio.jpa.EstagioJPA;
 import br.com.projetoEstagio.jpa.InstituicaoJPA;
 import br.com.projetoEstagio.restUtil.RestResponse;
 
@@ -32,35 +35,32 @@ public class InstituicaoService {
 	
 	public Object deleteInstituicao(JSONArray instituicao, RestResponse response) throws Exception{
 		InstituicaoJPA inst = new InstituicaoJPA();
-		//EstagioJPA esta = new EstagioJPA();
+		EstagioJPA esta = new EstagioJPA();
 		
-		//List<Estagio> estagioEmUso = new ArrayList<Estagio>();
+		List<Instituicao> instituicaoEmUso = new ArrayList<Instituicao>();
 			
 			if(instituicao != null && instituicao.length() > 0){
 				for (int i = 0; i < instituicao.length(); i++) {
-					/*List<Estagio> estagio = esta.buscarPorId(instituicao.getLong(i));
+					List<Estagio> estagio = esta.buscarPorInstituicao(instituicao.getLong(i));
 					
 					if(estagio.size() > 0){
-						estagioEmUso.add(estagio.get(0));	
-					}else{*/
-						inst.deleteInstituicao(instituicao.getLong(i));												
-					//}
+						instituicaoEmUso.add(estagio.get(0).getInstituicao());	
+					}else{
+						inst.deleteInstituicao(instituicao.getLong(i));
+					}
 				}
 			}
 			
-			/*if(estagioEmUso.size() > 0){
-				String nomeEstagio = "";
-				for (Estagio estagio : estagioEmUso) {
-					if(!nomeEstagio.contains(estagio.getInstituicao().getNome())){		
-						nomeEstagio += estagio.getInstituicao().getNome() + "  ";						
+			if(instituicaoEmUso.size() > 0){
+				String nomeInstituicao = "";
+				for (Instituicao insti : instituicaoEmUso) {
+					if(!nomeInstituicao.contains(insti.getNome())){		
+						nomeInstituicao += insti.getNome() + " - ";					
 					}
 				}
-				response.setDescription(nomeEstagio.replace("  ", "; "));
-			}			
-	
-			List<Estagio> listEstagios = inst.list();
-			
-			return listEstagios;*/
+				response.setDescription(nomeInstituicao.replace(" * ", ", "));
+			}
+
 			return inst.list();
 	}
 	

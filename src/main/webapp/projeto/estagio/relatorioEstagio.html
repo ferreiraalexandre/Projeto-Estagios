@@ -29,21 +29,21 @@
 		<md-card md-theme="{{'default' }}" md-theme-watch>
 			<md-card-title>
 				<md-card-title-text>
-					<span class="md-headline">Recisão De Estagio</span>
+					<span class="md-headline">Rescisão De Estagio</span>
 				</md-card-title-text>
 			</md-card-title>
 		
 			<table md-table md-progress="promise">
 				<thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
 					<tr md-row>
-						<th md-column md-order-by="empresa"><span>Empresa</span></th>
+						<th md-column md-order-by="totalEstagio"><span>Total Estágio</span></th>
 						<th md-column md-order-by="total"><span>Total</span></th>						
 					</tr>
 				</thead>
 				<tbody md-body>
-					<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagiosVencendo | filter: query.filter" class="md-row">
-						<td md-cell>{{estagio.empresa}}</td>
-						<td md-cell>{{estagio.total}}</td>         
+					<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="rescisao in relatorioRescisao | filter: query.filter" class="md-row">
+						<td md-cell>{{rescisao.totalEstagio}}</td>
+						<td md-cell>{{rescisao.total}}</td>         
 					</tr>
 				</tbody>
 			 </table>
@@ -61,17 +61,22 @@
 			<table md-table md-progress="promise">
 				<thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
 					<tr md-row>
-						<th md-column md-order-by="empresa"><span>Empresa</span></th>
+						<th md-column md-order-by="nome"><span>Turma</span></th>
 						<th md-column md-order-by="total"><span>Total</span></th>						
 					</tr>
 				</thead>
 				<tbody md-body>
-					<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagiosVencendo | filter: query.filter" class="md-row">
-						<td md-cell>{{estagio.empresa}}</td>
-						<td md-cell>{{estagio.total}}</td>         
+					<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="turma in relatorioTurma | filter: query.filter" class="md-row">
+						<td md-cell>{{turma.nome}}</td>
+						<td md-cell>{{turma.total}}</td>         
 					</tr>
 				</tbody>
 			 </table>
 		</md-card>
 	</div>
+	
 </md-content>
+
+<div class="md-actions">
+	<md-button class="md-raised md-primary" id="buttonVoltar" ng-click="voltar()">VOLTAR</md-button>
+</div>
