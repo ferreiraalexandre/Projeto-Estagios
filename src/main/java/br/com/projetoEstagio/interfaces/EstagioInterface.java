@@ -20,4 +20,8 @@ public interface EstagioInterface {
 	public List<Object> buscarEstagioComRescisao();
 	
 	public List<Object> buscarTurmaComEstagiario();
+	
+	public List<Estagio> buscarPorTurma(Long id);
+	
+	public List<Estagio> buscarPorInstituicao(Long id);
 }

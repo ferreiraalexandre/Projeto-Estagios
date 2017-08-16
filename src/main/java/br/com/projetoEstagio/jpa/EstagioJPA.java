@@ -1,18 +1,11 @@
 package br.com.projetoEstagio.jpa;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.json.JSONObject;
-
-import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
-import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.interfaces.EstagioInterface;
 import br.com.projetoEstagio.pojo.RelatorioPojo;
 
@@ -96,5 +89,13 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 
 		return this.listObject(hql);
 	}	
+	
+	public List<Estagio> buscarPorTurma(Long id) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.turma.id = '"+ id +"'");
+	}
+	
+	public List<Estagio> buscarPorInstituicao(Long id) {
+		return this.findAllByIds("SELECT U FROM "+ this.getEntityName() +" U WHERE U.instituicao.id = '"+ id +"'");
+	}
 
 }
