@@ -3,6 +3,7 @@ package br.com.projetoEstagio.pojo;
 public class RelatorioPojo {
 	private String nome;
 	private long total;
+	private long totalEstagio;
 	
 	public RelatorioPojo(String nome, long total){
 		super();
@@ -10,6 +11,12 @@ public class RelatorioPojo {
 		this.total = total;
 	}
 	
+	public RelatorioPojo(long totalEstagio, long total){
+		super();
+		this.totalEstagio = totalEstagio;
+		this.total = total;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -23,4 +30,11 @@ public class RelatorioPojo {
 		this.total = total;
 	}
 
+	public long getTotalEstagio() {
+		return totalEstagio;
+	}
+	
+	public void setTotalEstagio(long totalEstagio) {
+		this.totalEstagio = totalEstagio;
+	}
 }
