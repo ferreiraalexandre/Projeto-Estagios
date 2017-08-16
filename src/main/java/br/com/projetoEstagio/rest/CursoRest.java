@@ -15,6 +15,7 @@ import javax.ws.rs.core.Response;
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.Curso;
+import br.com.projetoEstagio.restUtil.RestResponse;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.CursoService;
 
@@ -68,7 +69,7 @@ public class CursoRest extends UtilRest {
 
 		try{
 			CursoService service = new CursoService(); 
-
+			this.response = new RestResponse();
 			return getResponseRemove(service.deleteCurso(id, this.response));
 		} catch (Exception e) {
 			return getResponseError(e);

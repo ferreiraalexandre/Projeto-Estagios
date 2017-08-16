@@ -16,7 +16,7 @@ public interface TurmaInterface {
 	
 	public List<Turma> buscarSemId(Turma turma);
 
-	public List<Turma> buscarPorId(Long id);
+	public List<Turma> buscarPorCurso(Long id);
 	
 	public Turma findById(Long id);
 	
