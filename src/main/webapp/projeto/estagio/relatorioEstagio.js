@@ -27,6 +27,13 @@ app.controller('relatorioEstagioController', ['$mdEditDialog', '$q', '$scope', '
 		});		
 	};
 	
+	// Função do botão "VOLTAR"
+	$scope.voltar = function () {
+		window.location.href="/projeto-estagios/home.html";
+		
+	};
+
+	
   $scope.getRelatorio();
 	
 }]);

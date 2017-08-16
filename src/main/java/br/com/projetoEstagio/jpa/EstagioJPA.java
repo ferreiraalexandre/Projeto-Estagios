@@ -75,8 +75,7 @@ public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInt
 	public List<Object> buscarEstagioComRescisao() {
 		
 		String hql = "SELECT new " + RelatorioPojo.class.getName() + " (COUNT(*)as totalEstagio, COUNT(es.dataRescisao)as total)"
-				+ " FROM " + Estagio.class.getSimpleName() + " es"
-				+ " WHERE es.dataRescisao is null";
+				+ " FROM " + Estagio.class.getSimpleName() + " es";
 
 		return this.listObject(hql);
 	}	
