@@ -28,7 +28,7 @@ public class UsuarioService {
 			return obj;
 		}else{
 			Crypt crypt = new Crypt();
-			usu.setSenha(crypt.md5(usu.getSenha()));
+			usu.setSenha(crypt.md5(crypt.bs64d(usu.getSenha())));
 			usuario.addUsuario(usu);		
 			return  usuario.list();
 		}
@@ -36,12 +36,22 @@ public class UsuarioService {
 	
 	public List<Usuario> listUsuario() throws Exception {
 		UsuarioJPA listUsuario = new UsuarioJPA();
-		return listUsuario.list();
+		List<Usuario> usuarios = listUsuario.list();
+		
+		for (Usuario u : usuarios) {
+			u.setSenha(null);
+		}
+		return usuarios;
 	}
 	
 	public List<Usuario> listCoordenadores() throws Exception {
 		UsuarioJPA listUsuario = new UsuarioJPA();
-		return listUsuario.listCoordenadores();
+		List<Usuario> coordenadores = listUsuario.listCoordenadores();
+	
+		for (Usuario u : coordenadores) {
+			u.setSenha(null);
+		}
+		return coordenadores;
 	}
 
 	public Object deleteUsuario(JSONArray users, RestResponse response) throws Exception{
@@ -96,7 +106,7 @@ public class UsuarioService {
 			}				
 		}
 		Crypt crypt = new Crypt();
-		usu.setSenha(crypt.md5(usu.getSenha()));
+		usu.setSenha(crypt.md5(crypt.bs64d(usu.getSenha())));
 		user.editarUsuario(usu);
 		return user.list();
 	}

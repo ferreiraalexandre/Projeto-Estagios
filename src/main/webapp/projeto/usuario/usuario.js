@@ -154,7 +154,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		    
 		//Função de adicionar novos usuario no Banco de Dados
 		$scope.novoUsuario = function (data) {
-			response.data = btoa(response.data);
+			data.senha = btoa(data.senha);
 			UsuarioService.postUsuario(data, function (response) {
 			if(response.data != undefined){
 				$mdDialog.hide(data);
