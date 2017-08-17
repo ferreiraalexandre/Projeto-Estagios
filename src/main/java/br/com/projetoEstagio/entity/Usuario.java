@@ -25,13 +25,13 @@ public class Usuario {
 	@Column(name = "email", nullable = false)
 	private String email;
 	
-	@Column(name = "senha", nullable = true)
+	@Column(name = "senha", nullable = false)
 	private String senha;
 	
 	@Column(name = "tipo", nullable = false)
 	private String tipo;
 	
-	@ManyToOne(cascade = CascadeType.REFRESH)
+	@ManyToOne(cascade = {CascadeType.REFRESH})
 	@JoinColumn(name = "UnidadeEnsinoId", nullable = false)
 	private UnidadeEnsino unidadeEnsino;
 	
