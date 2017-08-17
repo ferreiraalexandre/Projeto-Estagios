@@ -47,7 +47,7 @@
 			<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
 		</div>
 		<table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selecionados" md-progress="promise">
-			<thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
+			<thead ng-if="!estagio.decapitate" md-head md-order="estagio.order" md-on-reorder="logOrder">
 				<tr md-row>
 					<th md-column md-order-by="nome"><span>Nome</span></th>
 					<th md-column md-order-by="curso" md-desc><span>Curso</span></th>
@@ -66,7 +66,7 @@
 				</tr>
 			</thead>
 			<tbody md-body>
-				<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagios | filter: query.filter" class="md-row">
+				<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagios | filter: query.filter | orderBy: estagio.order" class="md-row">
 					<td md-cell>{{estagio.estudante.nome}}</td>
 					<td md-cell>{{estagio.turma.curso.nome}}</td>
 					<td md-cell>{{estagio.empresa.nome}}</td>
