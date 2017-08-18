@@ -18,6 +18,10 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
   $scope.buttonRemoveDisabled = true;
   $scope.isLoading = true;
     
+  if($localStorage.currentUser.tipo == "Orientador") {
+	  $scope.autorizacao = true;
+  }
+  
   $scope.options = {
     rowSelection: true,
     multiSelect: true,

@@ -5,8 +5,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
       .primaryPalette('blue');
 }])
 
-app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'TurmaService', 'CursoService', 'UsuarioService', 'toastr',  
-                          function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   TurmaService,   CursoService,   UsuarioService,   toastr) {
+app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'TurmaService', 'CursoService', 'UsuarioService', 'toastr', '$localStorage',  
+                          function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   TurmaService,   CursoService,   UsuarioService,   toastr, $localStorage) {
 
   $scope.selecionados = [];
   $scope.limitOptions = [5, 10, 15];
@@ -17,6 +17,10 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;
   $scope.isLoading = true;
+  
+  if($localStorage.currentUser.tipo == "Orientador") {
+	  $scope.autorizacao = true;
+  }
     
   $scope.options = {
     rowSelection: true,

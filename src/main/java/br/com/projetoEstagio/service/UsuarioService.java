@@ -8,6 +8,7 @@ import java.util.List;
 import org.json.JSONArray;
 
 import br.com.projeto.help.Crypt;
+import br.com.projetoEstagio.connection.EntityManagerUtil;
 import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Turma;
 import br.com.projetoEstagio.entity.Usuario;
@@ -39,6 +40,7 @@ public class UsuarioService {
 		List<Usuario> usuarios = listUsuario.list();
 		
 		for (Usuario u : usuarios) {
+			EntityManagerUtil.getEMIntance().detach(u);
 			u.setSenha(null);
 		}
 		return usuarios;
