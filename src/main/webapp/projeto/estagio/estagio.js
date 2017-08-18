@@ -29,6 +29,10 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.estagioVencendo;
   $scope.usuario = $localStorage.currentUser.user;
   
+  if($localStorage.currentUser.tipo == "Orientador") {
+	  $scope.autorizacao = true;
+  }
+  
   $scope.options = {
     rowSelection: true,
     multiSelect: true,
@@ -61,15 +65,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
       // loading
     }, 2000);
   }
-  
-  $scope.logItem = function (item) {
-	    console.log(item.name, 'was selected');
-	  };
-	  
-	  $scope.logOrder = function (order) {
-	    console.log('order: ', order);
-	  };
-
+   
   $scope.buttonEnable = function () {
 	$scope.buttonAddDisabled = $scope.selecionados.length > 0;
 	$scope.buttonEditDisabled = !($scope.selecionados.length == 1);
