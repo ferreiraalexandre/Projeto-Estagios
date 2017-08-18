@@ -6,6 +6,11 @@ body{
 	width: 100%;
 	height: 100%;
 }
+.buttonLogin:disabled{
+	background-color:black;
+	opacity:0.6;
+	color:white;
+}
 body > div > md-content{
 background-color: transparent !important;
 }
