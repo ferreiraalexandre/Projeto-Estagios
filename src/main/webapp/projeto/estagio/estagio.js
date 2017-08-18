@@ -29,6 +29,10 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.estagioVencendo;
   $scope.usuario = $localStorage.currentUser.user;
   
+  if($localStorage.currentUser.tipo == "Orientador") {
+	  $scope.autorizacao = true;
+  }
+  
   $scope.options = {
     rowSelection: true,
     multiSelect: true,

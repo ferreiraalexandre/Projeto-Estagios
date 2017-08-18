@@ -6,8 +6,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 }])
 
 
-app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UnidadeEnsinoService', 'toastr',
-                                function ($mdEditDialog, $q, $scope,  $timeout, $mdDialog, UnidadeEnsinoService, toastr) {
+app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'UnidadeEnsinoService', 'toastr', '$localStorage',
+                                function ($mdEditDialog, $q, $scope,  $timeout, $mdDialog, UnidadeEnsinoService, toastr, $localStorage) {
   
   $scope.selecionados = [];  
   $scope.limitOptions = [5, 10, 15];
@@ -18,6 +18,10 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;
   $scope.isLoading = true;
+  
+  if($localStorage.currentUser.tipo == "Orientador") {
+	  $scope.autorizacao = true;
+  }
     
   $scope.options = {
     rowSelection: true,

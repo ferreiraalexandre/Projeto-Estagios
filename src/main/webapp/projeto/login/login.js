@@ -35,7 +35,7 @@ app.controller('LoginController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 		LoginService.auth(data, function (response) {
 			$scope.isLoading = false;
 			if (response.data) {
-				$localStorage.currentUser = {token: response.data.token, pemission: response.data.permission, user: response.data.nome };
+				$localStorage.currentUser = {token: response.data.token, pemission: response.data.permission, user: response.data.nome, tipo: response.data.tipo};
 				//$http.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.token;
 				//$scope.getData();
 				$localStorage.login = true;

@@ -3,7 +3,7 @@
 <md-card>
 
 	<md-grid-list md-cols="2"  md-row-height="64px">
-		<md-grid-tile>
+		<md-grid-tile ng-show="autorizacao">
 			<md-button  ng-click="menuClick('/cadastroEstagio')" ng-disabled="buttonAddDisabled" >
 				<md-tooltip md-direction="top">Adicionar</md-tooltip>
 				<ng-md-icon id="iconAdd" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>

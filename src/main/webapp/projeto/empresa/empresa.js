@@ -6,8 +6,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 }])
 
 
-app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'EmpresaService', 'UsuarioService' , 'toastr', '$location',  
-                            function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   EmpresaService,   UsuarioService,    toastr, $location) {
+app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout', '$mdDialog', 'EmpresaService', 'UsuarioService' , 'toastr', '$location', '$localStorage',  
+                            function ($mdEditDialog,   $q,  $scope,   $timeout,   $mdDialog,   EmpresaService,   UsuarioService,    toastr, $location, $localStorage) {
 	
 	$scope.selecionados = [];
 	$scope.limitOptions = [5, 10, 15];
@@ -18,6 +18,10 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 	$scope.buttonEditDisabled = true;
 	$scope.buttonRemoveDisabled = true;
 	$scope.isLoading = true;
+	
+	if($localStorage.currentUser.tipo == "Orientador") {
+		  $scope.autorizacao = true;
+	  }
 	    
 	$scope.options = {
 		rowSelection: true,

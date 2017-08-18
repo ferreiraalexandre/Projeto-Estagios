@@ -6,8 +6,8 @@ app.config(['$mdThemingProvider', '$mdIconProvider' , function ($mdThemingProvid
 }])
 
 
-app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'CursoService', 'toastr',
-                                function ($mdEditDialog, $q, $scope,  $timeout, $mdDialog, CursoService, toastr) {
+app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', '$mdDialog', 'CursoService', 'toastr', '$localStorage',
+                                function ($mdEditDialog, $q, $scope,  $timeout, $mdDialog, CursoService, toastr, $localStorage) {
   
   $scope.selecionados = [];  
   $scope.limitOptions = [5, 10, 15];
@@ -17,7 +17,11 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;
   $scope.isLoading = true;
-    
+   
+  if($localStorage.currentUser.tipo == "Orientador") {
+	  $scope.autorizacao = true;
+  }
+  
   $scope.options = {
     rowSelection: true,
     multiSelect: true,
