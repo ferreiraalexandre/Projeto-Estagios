@@ -15,21 +15,21 @@
 <div>
     <md-content style="" ng-controller="LoginController" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
       <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33" id="login">
-        <md-toolbar>
+        <!-- <md-toolbar>
           <div class="md-toolbar-tools">
             <h2><span>Login</span></h2>
           </div>
-        </md-toolbar>
+        </md-toolbar> -->
         <md-card-content>
-          <form name="Form">
+          <form name="Form" class="formLogin">
             <md-input-container class="md-block inputs">
-            <label></label>
+            <label>Email</label>
               <input type="text" id="inputEmail" name="email" ng-model="usuario.email" ng-pattern="/^.+@.+\..+$/" placeholder="E-mail" required="required" ng-trim="false"/>
-              <div ng-messages="Form.email.$error" role="alert">
+              <!-- <div ng-messages="Form.email.$error" role="alert">
                 <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
 	            	Email incorreto.
 	            </div>
-              </div>
+              </div> -->
               
               <div layout="row" layout-sm="column" layout-align="space-around">
 				<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
@@ -37,13 +37,13 @@
             
             </md-input-container>              
             <md-input-container class="md-block">
-              <label></label>
-              <input type="password" id="inputSenha" name="password" ng-model="usuario.password" placeholder="Senha" required="required" md-maxlength="16"/>
-              <div ng-messages="Form.password.$error" role="alert" multiple="">
+              <label>Senha</label>
+              <input type="password" id="inputSenha" name="password" ng-model="usuario.password" placeholder="Senha" required="required"/>
+             <!--  <div ng-messages="Form.password.$error" role="alert" multiple="">
                 <div ng-message-exp="['required']">
 	            	Senha incorreta.
 	            </div>
-              </div>
+              </div> -->
             </md-input-container>
             <md-button type="submit" class="btn btn-primary buttonLogin" ng-disabled="!Form.$valid" ng-click="auth(usuario)" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
           </form>

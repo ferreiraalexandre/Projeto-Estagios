@@ -36,7 +36,7 @@ background-color: transparent !important;
   width: 100%
 }
 #login{
-	background: rgba(4, 4, 4, 0.3);
+	background: rgba(4, 4, 4, 0.5);
 }
 #inputSenha, #inputEmail{
 	padding: 20px;
@@ -52,6 +52,13 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolb
 }
 .inputs{
 	margin = 1px 1px;	
+}
+.formLogin label{
+	color: white;
+	font-size: 20px; 
+}
+md-toolbar .md-toolbar-tools{
+	font-size: 25px; 
 }
 
 
