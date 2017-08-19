@@ -29,10 +29,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
   $scope.estagioVencendo;
   $scope.usuario = $localStorage.currentUser.user;
   
-  if($localStorage.currentUser.tipo == "Orientador") {
-	  $scope.autorizacao = true;
-  }
-  
+////////////////////FUNÇÃO DE CONFIGURAÇÃO DA TABELA   
   $scope.options = {
     rowSelection: true,
     multiSelect: true,
@@ -44,33 +41,46 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
     pageSelect: true
   };
   
-
-	$scope.logout = function(){
-		$localStorage.$reset();
-		window.location.href="/projeto-estagios/index.html";
-	}
-  
   $scope.query = {
     order: 'name',
     limit: 10,
     page: 1
   };
-    
+      
   $scope.toggleLimitOptions = function () {
     $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
   };
   
-  $scope.loadStuff = function () {
-    $scope.promise = $timeout(function () {
-      // loading
-    }, 2000);
+  $scope.getOpcao = function () {
+	    return ['Sim', 'Não'];
+	  };
+    
+  
+  $scope.logOrder = function (order) {
+    console.log('order: ', order);
+  };
+  
+  $scope.logPagination = function (page, limit) {
+    console.log('page: ', page);
+    console.log('limit: ', limit);
   }
-   
+  
+////////////////////Controla Permisão de Cada Tipo de Usuario
+  if($localStorage.currentUser.tipo == "Orientador") {
+	  $scope.autorizacao = true;
+  }
+  
+	$scope.logout = function(){
+		$localStorage.$reset();
+		window.location.href="/projeto-estagios/index.html";
+	}
+     
   $scope.buttonEnable = function () {
 	$scope.buttonAddDisabled = $scope.selecionados.length > 0;
 	$scope.buttonEditDisabled = !($scope.selecionados.length == 1);
 	$scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
   };
+  
 ////////////////////função de confirm pra deletar
   $scope.showConfirm = function(ev) {
 	  var confirm = $mdDialog.confirm()
@@ -112,7 +122,10 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			data: JSON.stringify(arrayId),
 		};
 		EstagioService.deleteEstagio(listId, function(response){
-			$scope.estagios = response.data;
+			$scope.data = {
+					count : response.data.length,
+					estagios:response.data,
+			}
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
 		});
@@ -122,9 +135,11 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	//Busca estagios do banco e lista na tabela
 	$scope.getEstagio = function () {
 		EstagioService.getList(function (response) {
-			$scope.estagios = response.data;
+			$scope.data = {
+					count : response.data.length,
+					estagios:response.data,
+			}
 			$scope.isLoading = false;
-			
 		});		
 	};
 	

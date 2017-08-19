@@ -17,11 +17,8 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;
   $scope.isLoading = true;
-    
-  if($localStorage.currentUser.tipo == "Orientador") {
-	  $scope.autorizacao = true;
-  }
-  
+     
+////////////////////FUNÇÃO DE CONFIGURAÇÃO DA TABELA   
   $scope.options = {
     rowSelection: true,
     multiSelect: true,
@@ -47,11 +44,6 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 	    return ['Sim', 'Não'];
 	  };
     
-  $scope.buttonEnable = function () {
-    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
-    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
-    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
-  };
   
   $scope.logOrder = function (order) {
     console.log('order: ', order);
@@ -61,6 +53,19 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
     console.log('page: ', page);
     console.log('limit: ', limit);
   }
+
+////////////////////Controla Permisão de Cada Tipo de Usuario
+  if($localStorage.currentUser.tipo == "Orientador") {
+	  $scope.autorizacao = true;
+  }
+
+////////////////////Função para Desabilitar botões 
+  $scope.buttonEnable = function () {
+	  $scope.buttonAddDisabled = $scope.selecionados.length > 0;
+	  $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
+	  $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
+  };
+
   
 ////////////////////função de confirm pra deletar
   $scope.showConfirm = function(ev) {
@@ -79,7 +84,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 	  });
   };
  
-//////////função de deletar
+////////////////////função de deletar
   $scope.deleteUsuario = function(){	
 		var arrayId = []; 
 		for (var i = 0; i < $scope.selecionados.length; i++) {
@@ -89,7 +94,10 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 				data: JSON.stringify(arrayId),
 		};
 		UsuarioService.deleteUsuario(listId, function(response){
-			$scope.usuarios = response.data;
+			$scope.data = {
+					count : response.data.length,
+					usuarios:response.data,
+			}
 			if(response.description != null){
 				toastr.warning(response.description, response.message );
 			}else{
@@ -102,7 +110,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		
 	};
 
- //Abrir Modal
+////////////////////Abrir Modal
   $scope.abrirModal = function(event) {
 	    $mdDialog.show({
 	      controller: ModalController,
@@ -121,10 +129,13 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
         });
   };
     	
-	//Busca usuários do banco e lista na tabela
+////////////////////Busca usuários do banco e lista na tabela
 	$scope.getUsuario = function () {
 		UsuarioService.getList(function (response) {
-			$scope.usuarios = response.data;
+			$scope.data = {
+					count : response.data.length,
+					usuarios:response.data,
+			}
 			$scope.isLoading = false;
 		});
 		UnidadeEnsinoService.getList(function (response) {
@@ -133,7 +144,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		
 	};
 		
-	//Controller da modal
+////////////////////Controller da modal
 	function ModalController($scope, $mdDialog,retornoModal) {
 		if(retornoModal.selecionados.length==1){
 			$scope.editar = true;
@@ -156,14 +167,17 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 	      $mdDialog.cancel();
 	    };
 		    
-		//Função de adicionar novos usuario no Banco de Dados
+////////////////////Função de adicionar novos usuario no Banco de Dados
 		$scope.novoUsuario = function (data) {
 			data.senha = btoa(data.senha);
 			UsuarioService.postUsuario(data, function (response) {
 			if(response.cause != undefined){
 				$mdDialog.hide(data);
 				toastr.success(response.message);
-				retornoModal.usuarios = response.data;				
+				retornoModal.data = {
+						count : response.data.length,
+						usuarios: response.data,
+				}
 			}else{
 				toastr.warning(response.message );
 			}
@@ -174,14 +188,17 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 				};
 		};
 		
-		//Função de editar usuario no Banco de Dados
+////////////////////Função de editar usuario no Banco de Dados
 		$scope.editarUsuario = function (data) {
 			data.senha = btoa(data.senha);
 			UsuarioService.putUsuario(data, function (response) {
 				if(response.data != undefined){
 					$mdDialog.hide(data);
 					toastr.success(response.message);
-					retornoModal.usuarios = response.data;				
+					retornoModal.data = {
+							count : response.data.length,
+							usuarios: response.data,
+					}
 				}else{
 					toastr.warning(response.message );
 				}
@@ -194,7 +211,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 
 	  }
 
-	//Chama função para buscar usuarios
+////////////////////Chama função para buscar usuarios
 	$scope.getUsuario();
 	
 

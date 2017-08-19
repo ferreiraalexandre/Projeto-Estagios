@@ -38,7 +38,6 @@
      <div layout="row" layout-sm="column" layout-align="space-around">
       	<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
     </div>
-  
     <table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selecionados" md-progress="promise">
       <thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
         <tr md-row>
@@ -46,15 +45,14 @@
             <th md-column md-order-by="sigla"><span>Sigla</span></th>
         </tr>
       </thead>
-      <tbody md-body>
-        <tr md-row="" md-select="curso" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="curso in cursos | filter: query.filter" class="md-row">
+      <tbody md-body>      
+        <tr md-row="" md-select="curso" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="curso in data.cursos | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          
           <td md-cell >{{curso.nome }}</td>
           <td md-cell >{{curso.sigla }}</td>
         </tr>
       </tbody>
     </table>
   </md-table-container>
-
-  <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{cursos.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">
+  <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{data.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">  
   </md-table-pagination>
 </md-card>

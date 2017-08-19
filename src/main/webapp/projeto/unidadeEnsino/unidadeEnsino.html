@@ -47,14 +47,13 @@
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row="" md-select="unidadeEnsino" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="unidadeEnsino in unidades | filter: query.filter" class="md-row">
+        <tr md-row="" md-select="unidadeEnsino" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="unidadeEnsino in data.unidades | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">                
           <td md-cell >{{unidadeEnsino.nome }}</td>
           <td md-cell>{{unidadeEnsino.cnpj |brCnpj}}</td>
         </tr>
       </tbody>
     </table>
   </md-table-container>
-
-  <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{unidades.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">
+  <md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{data.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">  
   </md-table-pagination>
 </md-card>

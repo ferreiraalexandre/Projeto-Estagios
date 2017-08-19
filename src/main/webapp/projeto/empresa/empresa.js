@@ -19,50 +19,53 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 	$scope.buttonRemoveDisabled = true;
 	$scope.isLoading = true;
 	
-	if($localStorage.currentUser.tipo == "Orientador") {
-		  $scope.autorizacao = true;
-	  }
-	    
-	$scope.options = {
-		rowSelection: true,
-		multiSelect: true,
+////////////////////FUNÇÃO DE CONFIGURAÇÃO DA TABELA   
+	  $scope.options = {
+	    rowSelection: true,
+	    multiSelect: true,
 	    autoSelect: true,
 	    decapitate: false,
 	    largeEditDialog: false,
 	    boundaryLinks: false,
 	    limitSelect: true,
 	    pageSelect: true
-	};
+	  };
 	  
-	$scope.query = {
+	  $scope.query = {
 	    order: 'name',
 	    limit: 10,
 	    page: 1
-	};
+	  };
 	      
-	$scope.toggleLimitOptions = function () {
+	  $scope.toggleLimitOptions = function () {
 	    $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
-	};
+	  };
 	  
-	$scope.getOpcao = function () {
-		return ['Sim', 'Não'];
-	};
+	  $scope.getOpcao = function () {
+		    return ['Sim', 'Não'];
+		  };
 	    
+	  
+	  $scope.logOrder = function (order) {
+	    console.log('order: ', order);
+	  };
+	  
+	  $scope.logPagination = function (page, limit) {
+	    console.log('page: ', page);
+	    console.log('limit: ', limit);
+	  }
+
+	////////////////////Controla Permisão de Cada Tipo de Usuario
+	  if($localStorage.currentUser.tipo == "Orientador") {
+		  $scope.autorizacao = true;
+	  }
+
 	$scope.buttonEnable = function () {
 	    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
 	    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
 	    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
 	};
-	  
-	$scope.logOrder = function (order) {
-	    console.log('order: ', order);
-	};
-	  
-	$scope.logPagination = function (page, limit) {
-	    console.log('page: ', page);
-	    console.log('limit: ', limit);
-	}
-	  
+	  	  
 	////////////////////função de confirm pra deletar
 	$scope.showConfirm = function(ev) {
 		var confirm = $mdDialog.confirm()
@@ -95,17 +98,17 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 			}else{
 				toastr.success(response.message);				
 			}
-			$scope.empresas = response.data;
+			$scope.data = {
+					count : response.data.length,
+					empresas: response.data,
+			}
 			$scope.selecionados = []; 
 			$scope.buttonEnable();
 		
 					
-		});
-		
-		
+		});	
 	};
 
-	   
 	//Abrir Modal
 	$scope.abrirModal = function(event) {
 		$mdDialog.show({
@@ -128,7 +131,10 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 	//Busca empresas do banco e lista na tabela
 	$scope.getEmpresa = function () {
 		EmpresaService.getList(function (response) {
-			$scope.empresas = response.data;
+			$scope.data = {
+					count : response.data.length,
+					empresas: response.data,
+			}
 			$scope.isLoading = false;
 		});
 		UsuarioService.getList(function (response) {
@@ -164,7 +170,10 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 				if(response.data != undefined){
 					$mdDialog.hide(data);
 					toastr.success(response.message);
-					retornoModal.empresas = response.data;				
+					retornoModal.data = {
+							count : response.data.length,
+							empresas: response.data,
+					}
 				}else{
 					toastr.warning(response.message );
 				}
@@ -180,7 +189,10 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 				if(response.data != undefined){
 					$mdDialog.hide(data);
 					toastr.success(response.message);
-					retornoModal.empresas = response.data;				
+					retornoModal.data = {
+							count : response.data.length,
+							empresas: response.data,
+					}
 				}else{
 					toastr.warning(response.message );
 				}

@@ -17,11 +17,8 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;
   $scope.isLoading = true;
-   
-  if($localStorage.currentUser.tipo == "Orientador") {
-	  $scope.autorizacao = true;
-  }
   
+////////////////////FUNÇÃO DE CONFIGURAÇÃO DA TABELA   
   $scope.options = {
     rowSelection: true,
     multiSelect: true,
@@ -38,16 +35,15 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
     limit: 10,
     page: 1
   };
-  
+      
   $scope.toggleLimitOptions = function () {
     $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
   };
-        
-  $scope.buttonEnable = function () {
-	    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
-	    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
-	    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
+  
+  $scope.getOpcao = function () {
+	    return ['Sim', 'Não'];
 	  };
+    
   
   $scope.logOrder = function (order) {
     console.log('order: ', order);
@@ -58,15 +54,27 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
     console.log('limit: ', limit);
   }
 
+////////////////////Controla Permisão de Cada Tipo de Usuario
+  if($localStorage.currentUser.tipo == "Orientador") {
+	  $scope.autorizacao = true;
+  }
+        
+  $scope.buttonEnable = function () {
+	    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
+	    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
+	    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
+	  };
+  
 ///////////////////////////////////////////Busca curso do banco e lista na tabela
   $scope.getCurso = function(){;  
 		CursoService.getList(function (response) {
-			$scope.cursos = response.data;
+			$scope.data = {
+					count : response.data.length,
+					cursos: response.data,
+			}
 			$scope.isLoading = false;
 		});
   }
-	
-
   
 ////////////////////função de confirm pra deletar
   $scope.showConfirm = function(ev) {
@@ -99,7 +107,10 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 			}else{
 				toastr.success(response.message);				
 			}
-			$scope.cursos = response.data;
+			$scope.data = {
+					count : response.data.length,
+					cursos: response.data,
+			}
 			$scope.selecionados = []; 
 			$scope.buttonEnable();					
 		});		
@@ -153,7 +164,10 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 				if(response.data != undefined){
 					$mdDialog.hide(data);
 					toastr.success(response.message);
-					retornoModal.cursos = response.data;				
+					retornoModal.data = {
+							count : response.data.length,
+							cursos: response.data,
+					}				
 				}else{
 					toastr.warning(response.message );
 				}
@@ -170,7 +184,10 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 				if(response.data != undefined){
 					$mdDialog.hide(data);
 					toastr.success(response.message);
-					retornoModal.cursos = response.data;				
+					retornoModal.data = {
+							count : response.data.length,
+							cursos: response.data,
+					}				
 				}else{
 					toastr.warning(response.message );
 				}

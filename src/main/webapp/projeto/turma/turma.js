@@ -17,11 +17,8 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
   $scope.buttonEditDisabled = true;
   $scope.buttonRemoveDisabled = true;
   $scope.isLoading = true;
-  
-  if($localStorage.currentUser.tipo == "Orientador") {
-	  $scope.autorizacao = true;
-  }
-    
+ 
+////////////////////FUNÇÃO DE CONFIGURAÇÃO DA TABELA   
   $scope.options = {
     rowSelection: true,
     multiSelect: true,
@@ -47,11 +44,6 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 	    return ['Sim', 'Não'];
 	  };
     
-  $scope.buttonEnable = function () {
-    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
-    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
-    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
-  };
   
   $scope.logOrder = function (order) {
     console.log('order: ', order);
@@ -61,7 +53,18 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
     console.log('page: ', page);
     console.log('limit: ', limit);
   }
-  
+
+////////////////////Controla Permisão de Cada Tipo de Usuario
+  if($localStorage.currentUser.tipo == "Orientador") {
+	  $scope.autorizacao = true;
+  }
+        
+  $scope.buttonEnable = function () {
+    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
+    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
+    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
+  };
+    
 ////////////////////função de confirm pra deletar
   $scope.showConfirm = function(ev) {
 	  var confirm = $mdDialog.confirm()
@@ -89,7 +92,11 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 				data: JSON.stringify(arrayId),
 		};
 		TurmaService.deleteTurma(listId, function(response){
-			$scope.turmas = response.data;
+			$scope.data = {
+					count : response.data.length,
+					turmas: response.data,
+			}
+
 			if(response.description != null){
 				toastr.warning(response.description, response.message );
 			}else{
@@ -122,10 +129,14 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
         });
   };
     	
-  //Busca usuários do banco e lista na tabela  
+  //Busca turmas do banco e lista na tabela  
   $scope.getTurma = function () {
 		TurmaService.getList(function (response) {
-			$scope.turmas = response.data;
+			$scope.data = {
+					count : response.data.length,
+					turmas: response.data,
+			}
+
 			$scope.isLoading = false;
 		});
 		CursoService.getList(function (response) {
@@ -167,7 +178,10 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 			if(response.data != undefined){
 				$mdDialog.hide(data);
 				toastr.success(response.message);
-				retornoModal.turmas = response.data;				
+				retornoModal.data = {
+						count : response.data.length,
+						turmas: response.data,
+				}
 			}else{
 				toastr.warning(response.message );
 			}
@@ -183,7 +197,10 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 				if(response.data != undefined){
 					$mdDialog.hide(data);
 					toastr.success(response.message);
-					retornoModal.turmas = response.data;				
+					retornoModal.data = {
+							count : response.data.length,
+							turmas: response.data,
+					}
 				}else{
 					toastr.warning(response.message );
 				}			

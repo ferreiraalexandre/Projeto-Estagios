@@ -19,10 +19,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
   $scope.buttonRemoveDisabled = true;
   $scope.isLoading = true;
   
-  if($localStorage.currentUser.tipo == "Orientador") {
-	  $scope.autorizacao = true;
-  }
-    
+////////////////////FUNÇÃO DE CONFIGURAÇÃO DA TABELA   
   $scope.options = {
     rowSelection: true,
     multiSelect: true,
@@ -39,16 +36,15 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
     limit: 10,
     page: 1
   };
-  
+      
   $scope.toggleLimitOptions = function () {
     $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
   };
-        
-  $scope.buttonEnable = function () {
-	    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
-	    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
-	    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
+  
+  $scope.getOpcao = function () {
+	    return ['Sim', 'Não'];
 	  };
+    
   
   $scope.logOrder = function (order) {
     console.log('order: ', order);
@@ -59,16 +55,29 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
     console.log('limit: ', limit);
   }
 
-///////////////////////////////////////////Busca unidade do banco e lista na tabela
+////////////////////Controla Permisão de Cada Tipo de Usuario
+  if($localStorage.currentUser.tipo == "Orientador") {
+	  $scope.autorizacao = true;
+  }
+        
+  $scope.buttonEnable = function () {
+	    $scope.buttonAddDisabled = $scope.selecionados.length > 0;
+	    $scope.buttonEditDisabled = !($scope.selecionados.length == 1);
+	    $scope.buttonRemoveDisabled = $scope.selecionados.length == 0;
+	  };
+  
+
+//////////////////////Busca unidade do banco e lista na tabela
   $scope.getUnidadeEnsino = function(){;  
 		UnidadeEnsinoService.getList(function (response) {
-			$scope.unidades = response.data;
+			$scope.data = {
+					count : response.data.length,
+					unidades: response.data,
+			}
 			$scope.isLoading = false;
 		});
   }
 	
-
-  
 ////////////////////função de confirm pra deletar
   $scope.showConfirm = function(ev) {
 	  var confirm = $mdDialog.confirm()
@@ -95,7 +104,10 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 				data: JSON.stringify(arrayId),
 		};
 		UnidadeEnsinoService.deleteUnidade(listId, function(response){
-			$scope.unidades = response.data;
+			$scope.data = {
+					count : response.data.length,
+					unidades: response.data,
+			}
 			if(response.description != null){
 				toastr.warning(response.description, response.message );
 			}else{
@@ -156,7 +168,10 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 			if(response.data != undefined){
 				$mdDialog.hide(data);
 				toastr.success(response.message);
-				retornoModal.unidades = response.data;				
+				retornoModal.data = {
+						count : response.data.length,
+						unidades: response.data,
+				}
 			}else{
 				toastr.warning(response.message );
 			}
@@ -173,7 +188,10 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 				if(response.data != undefined){
 					$mdDialog.hide(data);
 					toastr.success(response.message);
-					retornoModal.unidades = response.data;				
+					retornoModal.data = {
+							count : response.data.length,
+							unidades: response.data,
+					}
 				}else{
 					toastr.warning(response.message );
 				}
@@ -184,7 +202,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		};	
 	}
 			
-//////////////////////////////////////////////////////////////////////////////Chama função para buscar unidades de ensino
-			$scope.getUnidadeEnsino();  			
+///////////////////////////////////Chama função para buscar unidades de ensino
+	$scope.getUnidadeEnsino();  			
   
 }]);

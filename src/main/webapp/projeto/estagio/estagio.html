@@ -46,27 +46,28 @@
 		<div layout="row" layout-sm="column" layout-align="space-around">
 			<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
 		</div>
+		
 		<table md-table md-row-select="options.rowSelection" multiple="{{options.multiSelect}}" ng-model="selecionados" md-progress="promise">
 			<thead ng-if="!options.decapitate" md-head md-order="query.order" md-on-reorder="logOrder">
 				<tr md-row>
-					<th md-column md-order-by="nome"><span>Nome</span></th>
-					<th md-column md-order-by="curso" md-desc><span>Curso</span></th>
-					<th md-column md-order-by="empresa"><span>Empresa</span></th>
+					<th md-column md-order-by="estudante.nome" ><span>Nome</span></th>
+					<th md-column md-order-by="turma.curso.nome" ><span>Curso</span></th>
+					<th md-column md-order-by="empresa.nome"><span>Empresa</span></th>
 					<th md-column md-order-by="dataInicio"><span>Data Início</span></th>
 					<th md-column md-order-by="dataFim"><span>Data Fim</span></th>
-					<th md-column md-order-by="rescisao"><span>Rescisão</span></th>
-					<th md-column md-order-by="aditivo"><span>Aditivo</span></th>
-					<th md-column md-order-by="visita"><span>Visita Empresa</span></th>
-					<th md-column md-order-by="orientador"><span>Orientador</span></th>
+					<th md-column md-order-by="dataRescisao"><span>Rescisão</span></th>
+					<th md-column md-order-by="dataAditivo"><span>Aditivo</span></th>
+					<th md-column md-order-by="empresa.data"><span>Visita Empresa</span></th>
+					<th md-column md-order-by="empresa.usuario.nome"><span>Orientador</span></th>
 					<th md-column md-order-by="situacao"><span>Situação</span></th>
-					<th md-column md-order-by="sgn"><span>SGN</span></th>
-					<th md-column md-order-by="instituicao"><span>Instituição</span></th>
-					<th md-column md-order-by="obrigatorio"><span>Obrigatorio</span></th>
+					<th md-column md-order-by="cadastroSGN"><span>SGN</span></th>
+					<th md-column md-order-by="instituicao.nome"><span>Instituição</span></th>
+					<th md-column md-order-by="estagioObrigatorio"><span>Obrigatorio</span></th>
 					<th md-column md-order-by="observacao"><md-icon>comments</md-icon><span>Observação</span></th>
 				</tr>
 			</thead>
 			<tbody md-body>
-				<tr md-row="" md-select="estagio" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="estagio in estagios | filter: query.filter" class="md-row">
+			   	<tr md-row md-select="estagio" md-auto-select="options.autoSelect" md-on-select="buttonEnable" md-on-deselect="buttonEnable" ng-repeat="estagio in data.estagios | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          			
 					<td md-cell>{{estagio.estudante.nome}}</td>
 					<td md-cell>{{estagio.turma.curso.nome}}</td>
 					<td md-cell>{{estagio.empresa.nome}}</td>
@@ -86,8 +87,9 @@
 		</table>
 	</md-table-container>
 
-	<md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{estagios.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">
-	</md-table-pagination>
+	<md-table-pagination md-limit="query.limit" md-limit-options="limitOptions" md-page="query.page" md-total="{{data.count}}" md-page-select="options.pageSelect" md-boundary-links="options.boundaryLinks" md-on-paginate="logPagination">  
+  	</md-table-pagination>
+	
 </md-card>
 
 <md-sidenav id="sidenav" md-component-id = "right" md-disable-backdrop  class = "md-sidenav-right">
