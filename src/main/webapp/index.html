@@ -31,9 +31,7 @@
 	            </div>
               </div> -->
               
-              <div layout="row" layout-sm="column" layout-align="space-around">
-				<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
-		  	 </div>
+              
             
             </md-input-container>              
             <md-input-container class="md-block">
@@ -45,7 +43,10 @@
 	            </div>
               </div> -->
             </md-input-container>
-            <md-button type="submit" class="btn btn-primary buttonLogin" ng-disabled="!Form.$valid" ng-click="auth(usuario)" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
+            <md-button type="submit" class="btn btn-primary buttonLogin buttonLgin" ng-disabled="!Form.$valid" ng-click="auth(usuario)" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
+          	<div layout="row" layout-sm="column" layout-align="space-around">
+				<md-progress-circular md-mode="indeterminate"  ng-show="isLoading"></md-progress-circular>
+		  	 </div>
           </form>
         </md-card-content>
       </md-card>
