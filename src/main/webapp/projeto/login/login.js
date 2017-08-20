@@ -42,8 +42,6 @@ app.controller('LoginController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 				window.location.href='/projeto-estagios/home.html';
 				//$location.path('/home');
 				
-				
-				
 			}
 		}, function (err) {
 			data.password = "";
