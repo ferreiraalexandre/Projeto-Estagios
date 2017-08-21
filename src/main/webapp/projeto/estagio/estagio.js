@@ -123,7 +123,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 		};
 		EstagioService.deleteEstagio(listId, function(response){
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					estagios:response.data,
 			}
 			$scope.selecionados = []; 
@@ -136,7 +136,7 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	$scope.getEstagio = function () {
 		EstagioService.getList(function (response) {
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					estagios:response.data,
 			}
 			$scope.isLoading = false;
@@ -150,24 +150,26 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
        dataFim.setDate($scope.dataInicio.getDate() + 10);
        $scope.dataFim = dataFim;
        
-       var idsCurso = [];
-       var cursos = [];
-       for (var int = 0; int < $scope.estagios.length; int++) {
-    	   if(idsCurso.indexOf($scope.estagios[int].turma.curso.id) == -1){
-    		   idsCurso.push($scope.estagios[int].turma.curso.id);
-    		   cursos.push($scope.estagios[int].turma.curso);
-    		   $scope.cursos = cursos;
+       if($scope.estagios.length > 0){
+    	   var idsCurso = [];
+    	   var cursos = [];
+    	   for (var int = 0; int < $scope.estagios.length; int++) {
+    		   if(idsCurso.indexOf($scope.estagios[int].turma.curso.id) == -1){
+    			   idsCurso.push($scope.estagios[int].turma.curso.id);
+    			   cursos.push($scope.estagios[int].turma.curso);
+    			   $scope.cursos = cursos;
+    		   }
     	   }
-       }
-       
-       var idsEmpresa = [];
-       var empresas = [];
-       for (var int = 0; int < $scope.estagios.length; int++) {
-    	   if(idsEmpresa.indexOf($scope.estagios[int].empresa.id) == -1){
-    		   idsEmpresa.push($scope.estagios[int].empresa.id);
-    		   empresas.push($scope.estagios[int].empresa);
-    		   $scope.empresas = empresas;
-    	   }
+    	   
+    	   var idsEmpresa = [];
+    	   var empresas = [];
+    	   for (var int = 0; int < $scope.estagios.length; int++) {
+    		   if(idsEmpresa.indexOf($scope.estagios[int].empresa.id) == -1){
+    			   idsEmpresa.push($scope.estagios[int].empresa.id);
+    			   empresas.push($scope.estagios[int].empresa);
+    			   $scope.empresas = empresas;
+    		   }
+    	   }   
        }
 
     };

@@ -95,7 +95,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		};
 		UsuarioService.deleteUsuario(listId, function(response){
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					usuarios:response.data,
 			}
 			if(response.description != null){
@@ -133,7 +133,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 	$scope.getUsuario = function () {
 		UsuarioService.getList(function (response) {
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					usuarios:response.data,
 			}
 			$scope.isLoading = false;
@@ -171,16 +171,17 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 		$scope.novoUsuario = function (data) {
 			data.senha = btoa(data.senha);
 			UsuarioService.postUsuario(data, function (response) {
-			if(response.cause != undefined){
-				$mdDialog.hide(data);
-				toastr.success(response.message);
-				retornoModal.data = {
-						count : response.data.length,
-						usuarios: response.data,
+				if(response.cause != undefined){
+					toastr.warning(response.message );
+					
+				}else{
+					$mdDialog.hide(data);
+					toastr.success(response.message);
+					retornoModal.data = {
+							count : response.data != undefined ? response.data.length : null,
+									usuarios: response.data,
+					}
 				}
-			}else{
-				toastr.warning(response.message );
-			}
 				
 			}),
 				function (error) {
@@ -196,7 +197,7 @@ app.controller('usuarioController', ['$mdEditDialog', '$q','$scope', '$timeout',
 					$mdDialog.hide(data);
 					toastr.success(response.message);
 					retornoModal.data = {
-							count : response.data.length,
+							count : response.data != undefined ? response.data.length : null,
 							usuarios: response.data,
 					}
 				}else{

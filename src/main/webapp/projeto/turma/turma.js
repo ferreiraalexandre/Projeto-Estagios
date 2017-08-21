@@ -93,7 +93,7 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 		};
 		TurmaService.deleteTurma(listId, function(response){
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					turmas: response.data,
 			}
 
@@ -133,7 +133,7 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
   $scope.getTurma = function () {
 		TurmaService.getList(function (response) {
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					turmas: response.data,
 			}
 
@@ -179,7 +179,7 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 				$mdDialog.hide(data);
 				toastr.success(response.message);
 				retornoModal.data = {
-						count : response.data.length,
+						count : response.data != undefined ? response.data.length : null,
 						turmas: response.data,
 				}
 			}else{
@@ -198,7 +198,7 @@ app.controller('turmaController', ['$mdEditDialog', '$q','$scope', '$timeout', '
 					$mdDialog.hide(data);
 					toastr.success(response.message);
 					retornoModal.data = {
-							count : response.data.length,
+							count : response.data != undefined ? response.data.length : null,
 							turmas: response.data,
 					}
 				}else{

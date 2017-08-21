@@ -99,7 +99,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 				toastr.success(response.message);				
 			}
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					empresas: response.data,
 			}
 			$scope.selecionados = []; 
@@ -132,7 +132,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 	$scope.getEmpresa = function () {
 		EmpresaService.getList(function (response) {
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					empresas: response.data,
 			}
 			$scope.isLoading = false;
@@ -171,7 +171,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 					$mdDialog.hide(data);
 					toastr.success(response.message);
 					retornoModal.data = {
-							count : response.data.length,
+							count : response.data != undefined ? response.data.length : null,
 							empresas: response.data,
 					}
 				}else{
@@ -190,7 +190,7 @@ app.controller('empresaController', ['$mdEditDialog', '$q','$scope', '$timeout',
 					$mdDialog.hide(data);
 					toastr.success(response.message);
 					retornoModal.data = {
-							count : response.data.length,
+							count : response.data != undefined ? response.data.length : null,
 							empresas: response.data,
 					}
 				}else{

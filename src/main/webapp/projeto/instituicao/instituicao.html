@@ -47,7 +47,7 @@
         </tr>
       </thead>
       <tbody md-body>
-        <tr md-row="" md-select="instituicao" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="instituicao in data.instituicoes | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">                
+        <tr md-row="" md-select="instituicao" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="instituicao in data.instituicoes | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">                
           <td md-cell >{{instituicao.nome }}</td>
           <td md-cell >{{instituicao.sigla }}</td>
         </tr>

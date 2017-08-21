@@ -15,15 +15,56 @@ app.controller('relatorioEstagioController', ['$mdEditDialog', '$q', '$scope', '
   $scope.$parent.links = false;
   $scope.cardCadastroEstagio = {"margin-top" : "60px"};
   
+////////////////////FUNÇÃO DE CONFIGURAÇÃO DA TABELA   
+  $scope.options = {
+    rowSelection: true,
+    multiSelect: true,
+    autoSelect: true,
+    decapitate: false,
+    largeEditDialog: false,
+    boundaryLinks: false,
+    limitSelect: true,
+    pageSelect: true
+  };
+  
+  $scope.query = {
+    order: 'name',
+    limit: 10,
+    page: 1
+  };
+      
+  $scope.toggleLimitOptions = function () {
+    $scope.limitOptions = $scope.limitOptions ? undefined : [5, 10, 15];
+  };
+  
+  $scope.getOpcao = function () {
+	    return ['Sim', 'Não'];
+	  };
+    
+  
+  $scope.logOrder = function (order) {
+    console.log('order: ', order);
+  };
+  
+  $scope.logPagination = function (page, limit) {
+    console.log('page: ', page);
+    console.log('limit: ', limit);
+  }
+
   
 	//Gerar relatorio 
 	$scope.getRelatorio = function () {
 		EstagioService.getRelatorio(function (response) {
 			var data = JSON.parse(response.data);
-			$scope.relatorioEmpresa = data.empresa;
+			$scope.relatorioEmpresa = {
+					count : data.empresa != undefined ? data.empresa.length : null,
+					estagios: data.empresa,
+			}
+			$scope.relatorioTurma = {
+					count : data.turma != undefined ? data.turma.length : null,
+					estagios: data.turma,
+			}
 			$scope.relatorioRescisao = data.rescisao;
-			$scope.relatorioTurma = data.turma;
-			
 		});		
 	};
 	

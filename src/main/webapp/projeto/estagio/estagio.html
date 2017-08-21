@@ -67,7 +67,7 @@
 				</tr>
 			</thead>
 			<tbody md-body>
-			   	<tr md-row md-select="estagio" md-auto-select="options.autoSelect" md-on-select="buttonEnable" md-on-deselect="buttonEnable" ng-repeat="estagio in data.estagios | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          			
+			   	<tr md-row md-select="estagio" md-auto-select="options.autoSelect" md-on-select="buttonEnable" md-on-deselect="buttonEnable" ng-repeat="estagio in data.estagios | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          			
 					<td md-cell>{{estagio.estudante.nome}}</td>
 					<td md-cell>{{estagio.turma.curso.nome}}</td>
 					<td md-cell>{{estagio.empresa.nome}}</td>

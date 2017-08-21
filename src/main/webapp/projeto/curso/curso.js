@@ -69,7 +69,7 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
   $scope.getCurso = function(){;  
 		CursoService.getList(function (response) {
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					cursos: response.data,
 			}
 			$scope.isLoading = false;
@@ -108,7 +108,7 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 				toastr.success(response.message);				
 			}
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					cursos: response.data,
 			}
 			$scope.selecionados = []; 
@@ -165,7 +165,7 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 					$mdDialog.hide(data);
 					toastr.success(response.message);
 					retornoModal.data = {
-							count : response.data.length,
+							count : response.data != undefined ? response.data.length : null,
 							cursos: response.data,
 					}				
 				}else{
@@ -185,7 +185,7 @@ app.controller('cursoController', ['$mdEditDialog', '$q', '$scope', '$timeout', 
 					$mdDialog.hide(data);
 					toastr.success(response.message);
 					retornoModal.data = {
-							count : response.data.length,
+							count : response.data != undefined ? response.data.length : null,
 							cursos: response.data,
 					}				
 				}else{

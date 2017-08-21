@@ -41,7 +41,7 @@
 				</tr>
 			</thead>
 			<tbody md-body>
-			   	<tr md-row="" md-select="empresa" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="empresa in data.empresas | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          			
+			   	<tr md-row="" md-select="empresa" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="empresa in data.empresas | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          			
 					<td md-cell>{{empresa.nome}}</td>
 					<td md-cell>{{empresa.data | date:'dd/MM/yyyy' : 'UTC'}}</td>
 					<td md-cell>{{empresa.usuario.nome}}</td>

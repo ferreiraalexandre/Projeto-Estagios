@@ -71,7 +71,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
   $scope.getUnidadeEnsino = function(){;  
 		UnidadeEnsinoService.getList(function (response) {
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					unidades: response.data,
 			}
 			$scope.isLoading = false;
@@ -105,7 +105,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 		};
 		UnidadeEnsinoService.deleteUnidade(listId, function(response){
 			$scope.data = {
-					count : response.data.length,
+					count : response.data != undefined ? response.data.length : null,
 					unidades: response.data,
 			}
 			if(response.description != null){
@@ -169,7 +169,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 				$mdDialog.hide(data);
 				toastr.success(response.message);
 				retornoModal.data = {
-						count : response.data.length,
+						count : response.data != undefined ? response.data.length : null,
 						unidades: response.data,
 				}
 			}else{
@@ -189,7 +189,7 @@ app.controller('unidadeEnsinoController', ['$mdEditDialog', '$q', '$scope', '$ti
 					$mdDialog.hide(data);
 					toastr.success(response.message);
 					retornoModal.data = {
-							count : response.data.length,
+							count : response.data != undefined ? response.data.length : null,
 							unidades: response.data,
 					}
 				}else{

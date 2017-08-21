@@ -46,7 +46,7 @@
         </tr>
       </thead>
       <tbody md-body>      
-        <tr md-row="" md-select="curso" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="curso in data.cursos | filter: filter.search | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          
+        <tr md-row="" md-select="curso" md-select-id="name" md-on-select="buttonEnable" md-on-deselect="buttonEnable" md-auto-select="options.autoSelect" ng-repeat="curso in data.cursos | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          
           <td md-cell >{{curso.nome }}</td>
           <td md-cell >{{curso.sigla }}</td>
         </tr>
