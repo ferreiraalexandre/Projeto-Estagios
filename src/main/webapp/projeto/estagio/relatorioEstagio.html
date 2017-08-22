@@ -16,7 +16,7 @@
 					</tr>
 				</thead>
 				<tbody md-body>
-					<tr md-row md-select="empresa" md-auto-select="options.autoSelect" md-on-select="buttonEnable" md-on-deselect="buttonEnable" ng-repeat="empresa in data.relatorioEmpresa | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          			
+					<tr md-row md-select="empresa" md-auto-select="options.autoSelect" md-on-select="buttonEnable" md-on-deselect="buttonEnable" ng-repeat="empresa in relatorioEmpresa.empresas | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          			
 						<td md-cell>{{empresa.nome}}</td>
 						<td md-cell>{{empresa.total}}</td>         
 					</tr>
@@ -68,7 +68,7 @@
 					</tr>
 				</thead>
 				<tbody md-body>
-					<tr md-row md-select="turma" md-auto-select="options.autoSelect" md-on-select="buttonEnable" md-on-deselect="buttonEnable" ng-repeat="turma in data.relatorioTurma | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          			
+					<tr md-row md-select="turma" md-auto-select="options.autoSelect" md-on-select="buttonEnable" md-on-deselect="buttonEnable" ng-repeat="turma in relatorioTurma.turmas | filter: query.filter | orderBy: query.order | limitTo: query.limit : (query.page -1) * query.limit">          			
 						<td md-cell>{{turma.nome}}</td>
 						<td md-cell>{{turma.total}}</td>         
 					</tr>

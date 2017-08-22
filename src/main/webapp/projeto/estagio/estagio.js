@@ -150,23 +150,23 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
        dataFim.setDate($scope.dataInicio.getDate() + 10);
        $scope.dataFim = dataFim;
        
-       if($scope.estagios.length > 0){
+       if($scope.data.estagios.length > 0){
     	   var idsCurso = [];
     	   var cursos = [];
-    	   for (var int = 0; int < $scope.estagios.length; int++) {
-    		   if(idsCurso.indexOf($scope.estagios[int].turma.curso.id) == -1){
-    			   idsCurso.push($scope.estagios[int].turma.curso.id);
-    			   cursos.push($scope.estagios[int].turma.curso);
+    	   for (var int = 0; int < $scope.data.estagios.length; int++) {
+    		   if(idsCurso.indexOf($scope.data.estagios[int].turma.curso.id) == -1){
+    			   idsCurso.push($scope.data.estagios[int].turma.curso.id);
+    			   cursos.push($scope.data.estagios[int].turma.curso);
     			   $scope.cursos = cursos;
     		   }
     	   }
     	   
     	   var idsEmpresa = [];
     	   var empresas = [];
-    	   for (var int = 0; int < $scope.estagios.length; int++) {
-    		   if(idsEmpresa.indexOf($scope.estagios[int].empresa.id) == -1){
-    			   idsEmpresa.push($scope.estagios[int].empresa.id);
-    			   empresas.push($scope.estagios[int].empresa);
+    	   for (var int = 0; int < $scope.data.estagios.length; int++) {
+    		   if(idsEmpresa.indexOf($scope.data.estagios[int].empresa.id) == -1){
+    			   idsEmpresa.push($scope.data.estagios[int].empresa.id);
+    			   empresas.push($scope.data.estagios[int].empresa);
     			   $scope.empresas = empresas;
     		   }
     	   }   

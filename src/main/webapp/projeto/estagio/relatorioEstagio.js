@@ -58,11 +58,11 @@ app.controller('relatorioEstagioController', ['$mdEditDialog', '$q', '$scope', '
 			var data = JSON.parse(response.data);
 			$scope.relatorioEmpresa = {
 					count : data.empresa != undefined ? data.empresa.length : null,
-					estagios: data.empresa,
+					empresas: data.empresa,
 			}
 			$scope.relatorioTurma = {
 					count : data.turma != undefined ? data.turma.length : null,
-					estagios: data.turma,
+					turmas: data.turma,
 			}
 			$scope.relatorioRescisao = data.rescisao;
 		});		
