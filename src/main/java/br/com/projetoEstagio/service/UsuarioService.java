@@ -57,8 +57,10 @@ public class UsuarioService {
 		List<Usuario> coordenadores = listUsuario.listCoordenadores();
 	
 		for (Usuario u : coordenadores) {
+			EntityManagerUtil.getEMIntance().detach(u);
 			u.setSenha(null);
 		}
+
 		return coordenadores;
 	}
 
