@@ -24,7 +24,7 @@ app.controller('relatorioEstagioController', ['$mdEditDialog', '$q', '$scope', '
     largeEditDialog: false,
     boundaryLinks: false,
     limitSelect: true,
-    pageSelect: true
+    pageSelect: false
   };
   
   $scope.query = {

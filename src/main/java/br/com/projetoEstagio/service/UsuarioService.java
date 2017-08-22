@@ -30,8 +30,14 @@ public class UsuarioService {
 		}else{
 			Crypt crypt = new Crypt();
 			usu.setSenha(crypt.md5(crypt.bs64d(usu.getSenha())));
-			usuario.addUsuario(usu);		
-			return  usuario.list();
+			usuario.addUsuario(usu);	
+			
+			List<Usuario> usuarios = usuario.list();
+			for (Usuario u : usuarios) {
+				EntityManagerUtil.getEMIntance().detach(u);
+				u.setSenha(null);
+			}
+			return  usuarios;
 		}
 	}
 	
@@ -91,7 +97,14 @@ public class UsuarioService {
 				response.setDescription(nomeUsuario.replace(" * ", ", "));
 			}
 			
-			return use.list();
+			List<Usuario> usuarios = use.list();
+			
+			for (Usuario u : usuarios) {
+				EntityManagerUtil.getEMIntance().detach(u);
+				u.setSenha(null);
+			}
+
+			return usuarios;
 	}
 
 	public Object editarUsuario(Usuario usu) throws NoSuchAlgorithmException {
@@ -110,7 +123,15 @@ public class UsuarioService {
 		Crypt crypt = new Crypt();
 		usu.setSenha(crypt.md5(crypt.bs64d(usu.getSenha())));
 		user.editarUsuario(usu);
-		return user.list();
+		
+		List<Usuario> usuarios = user.list();
+		
+		for (Usuario u : usuarios) {
+			EntityManagerUtil.getEMIntance().detach(u);
+			u.setSenha(null);
+		}
+
+		return usuarios;
 	}
 	
 }
