@@ -9,12 +9,18 @@
 
 
 		<properties>
-			<!-- dados da conexao -->
+			<!-- Dados Conexão Servidor -->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/projetoestagio" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="root" />
 
+			<!-- Dados Conexão Servidor -->
+<!--  		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.3.79.235:3306/projetoestagio" />
+			<property name="javax.persistence.jdbc.user" value="estagio_user" />
+			<property name="javax.persistence.jdbc.password" value="est09*123a" />
+-->
 			<!-- propriedades do hibernate -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.show_sql" value="true" />

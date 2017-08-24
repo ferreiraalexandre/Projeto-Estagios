@@ -190,6 +190,10 @@ a{
 #buttonVoltar{
 	float: right;
 	margin-right: 25px;
+}
+
+#titleDadosEstagio, #titleEstudante, #titleEstagio{
+	margin-left: 10px;
 } 
 
  

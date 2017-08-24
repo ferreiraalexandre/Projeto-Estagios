@@ -1,8 +1,8 @@
 <meta charset="utf-8">
 <md-card ng-style="cardCadastroEstagio">
-	<h2 class="md-title">{{titleEstagio}}</h2>
+	<h2 class="md-title" id="titleEstagio">{{titleEstagio}}</h2>
 	<md-card>
-		<h2 class="md-title">{{titleEstudante}}</h2>
+		<h2 class="md-title" id="titleEstudante">{{titleEstudante}}</h2>
 		<form name="item.form" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" style="">
 			<md-grid-list md-cols="1"  md-row-height="64px" ng-show="buttons">
 				<md-grid-tile id="listaEsquerda">
@@ -89,7 +89,7 @@
 	</md-card>	
 
 	<md-card>
-		<h2 class="md-title">Dados Do Estágio</h2>
+		<h2 class="md-title" id="titleDadosEstagio">Dados Do Estágio</h2>
 		<form name="formEstagio" ng-submit="ctrl.addItem()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-min ng-valid-max" >
 			<div layout="row" class="input-row layout-row">
 				<md-input-container class="flex">
