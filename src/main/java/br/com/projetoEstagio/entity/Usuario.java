@@ -34,17 +34,17 @@ public class Usuario {
 	private String tipo;
 	
 	@ManyToOne(cascade = {CascadeType.REFRESH})
-	@JoinColumn(name = "UnidadeEnsinoId", nullable = false)
+	@JoinColumn(name = "unidadeEnsinoId", nullable = false)
 	private UnidadeEnsino unidadeEnsino;
 	
-	private String Token;
+	private String token;
 
 	public String getToken() {
-		return Token;
+		return token;
 	}
 
 	public void setToken(String token) {
-		Token = token;
+		this.token = token;
 	}
 
 	public Long getId() {
