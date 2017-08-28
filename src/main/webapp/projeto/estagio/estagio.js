@@ -180,15 +180,19 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 
    
 	//Função de Aplicar Filtro 
-	$scope.aplicarFiltro = function (dataInicio, dataFim, turma) {
+	$scope.aplicarFiltro = function (dataInicio, dataFim, turma, empresa) {
 		 var data = {
 				 dataInicio : dataInicio,
 				 dataFim : dataFim,
-				 turma : turma != null ? turma : null
+				 turma : turma != null ? turma : null,
+				 empresa : empresa != null ? empresa : null
 		 };
 		
 		EstagioService.filtroEstagio(data, function (response) {
-			$scope.estagios = response.data;
+			$scope.data = {
+					count : response.data != undefined ? response.data.length : null,
+					estagios:response.data,
+			}
 			$mdSidenav('right').close();
 		}),
 			function (error) {
@@ -198,7 +202,11 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	//Limpar Filtro
 	$scope.limparFiltro = function () {
 		EstagioService.getList(function (response) {
-			$scope.estagios = response.data;
+			$scope.data = {
+					count : response.data != undefined ? response.data.length : null,
+					estagios:response.data,
+			}
+
 			$mdSidenav('right').close();
 			
 		});		
