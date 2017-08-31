@@ -2,12 +2,14 @@ package br.com.projetoEstagio.restUtil;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.TimeZone;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
+
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -18,7 +20,7 @@ public class UtilRest {
 	@Context
 	private HttpHeaders headers;
 	protected RestResponse response;
-	
+	final static Logger logger = Logger.getLogger(UtilRest.class);
 	
 	public ObjectMapper getObjectMapper() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
@@ -111,4 +113,26 @@ public class UtilRest {
 
 	public void filter(ContainerRequestContext requestContext) throws IOException{}
 	
+	 public void callMeInAppInfo(String parameter) {
+		  if (logger.isInfoEnabled()) {
+		   logger.info("This is info : " + parameter);
+		  }
+		 }
+		 public void callMeInAppWarn(String parameter) {
+		   logger.warn("This is warn : " + parameter);
+		 }
+		 
+		 public void callMeInAppDebug(String parameter) {
+		   logger.debug("This is Debug : " + parameter);
+		 }
+		 
+		 public void callMeInAppError(String parameter) {
+		   logger.error("This is error : " + parameter);
+		 }
+		 
+		 public void callMeInAppFatal(String parameter) {
+		   logger.fatal("This is fatal : " + parameter);
+		  
+		 }
+
 }

@@ -21,11 +21,40 @@
 					<a class="navbar-brand" href="">
 					<h1  id="logo">Controle Estágio</h1>
 					</a>
-					<ul class="nav navbar-nav navbar-right">
+
+
+					<md-menu md-offset="0 -7">
+							<md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+						  	<h2 class="md-title">{{usuario}}</h2>
+      							<md-tooltip md-direction="top">Adicionar</md-tooltip>
+      							<ng-md-icon id="editar" icon="more_vert" style="fill: #abcdef" size="36"></ng-md-icon>
+							</md-button>
+							<md-menu-content width="2">
+								<md-menu-item>
+									<md-button ng-click="showEdit(item,$index)">
+									    <md-tooltip md-direction="top">Adicionar</md-tooltip>
+      									<ng-md-icon id="adicionar" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
+									</md-button>
+								</md-menu-item>
+								<md-menu-item>
+									<md-button ng-click="removeStock(item.id,$index)">
+									    <md-tooltip md-direction="top">Adicionar</md-tooltip>
+      									<ng-md-icon id="adicionar" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
+									</md-button>
+								</md-menu-item>
+							</md-menu-content>
+						</md-menu>
+
+
+
+
+
+<!--  				<ul class="nav navbar-nav navbar-right">
 						<li class="nome-logado" ng-click="logout()">
 							{{usuario}}<i class="glyphicon glyphicon-log-out" aria-hidden="true"></i>
 						</li>
 					</ul>
+-->
 				</div>
 			</div>
 			<div class="container-fluid" ng-show="links" id="menu" style="color:#313b3f;">

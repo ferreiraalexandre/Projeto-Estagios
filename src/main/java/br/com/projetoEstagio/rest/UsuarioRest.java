@@ -18,7 +18,6 @@ import javax.ws.rs.core.Response;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 
-import br.com.projeto.exception.Log4JCoreJavaSample;
 import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.restUtil.RestResponse;
 import br.com.projetoEstagio.restUtil.UtilRest;
@@ -26,7 +25,7 @@ import br.com.projetoEstagio.service.UsuarioService;
 
 @Path("/usuario")
 public class UsuarioRest extends UtilRest {
-	final static Logger logger = Logger.getLogger(UsuarioRest.class);
+	
 	public UsuarioRest() {
 	}
 	
@@ -60,26 +59,24 @@ public class UsuarioRest extends UtilRest {
 
 		try{
 			UsuarioService service = new UsuarioService(); 
-//			Log4JCoreJavaSample logteste = new Log4JCoreJavaSample();
-//			logteste.callMeInAppInfo("Log pela class Log4JCoreJavaSample");
-//			
-//			logger.info("Log na class Uusario Rest");
-//
-//			String teste = System.getProperty("catalina.base") + "//logs";
-//			File file = new File(teste);
-//			File afile[] = file.listFiles();
-//			int i = 0;
-//			for (int j = afile.length; i < j; i++) {
-//				File arquivos = afile[i];
-//				System.out.println(arquivos.getName());
-//				
-//				FileReader ler = new FileReader(arquivos);
-//	            BufferedReader reader = new BufferedReader(ler);  
-//	            String linha;
-//	            while( (linha = reader.readLine()) != null ){
-//	                System.out.println(linha);
-//	            }
-//			}
+			
+			this.callMeInAppError("TESTE ERROR");
+			
+			String teste = System.getProperty("catalina.home") + "//logs";
+			File file = new File(teste);
+			File afile[] = file.listFiles();
+			int i = 0;
+			for (int j = afile.length; i < j; i++) {
+				File arquivos = afile[i];
+				System.out.println(arquivos.getName());
+				
+				FileReader ler = new FileReader(arquivos);
+	            BufferedReader reader = new BufferedReader(ler);  
+	            String linha;
+	            while( (linha = reader.readLine()) != null ){
+	                System.out.println(linha);
+	            }
+			}
 
 			List<Usuario> e = service.listUsuario();
 
