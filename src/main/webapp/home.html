@@ -16,30 +16,29 @@
 	<body layout="column">
 		<md-content laout="column" ng-controller="estagioController">
 			<div class="navbar navbar-default navbar-fixed-top" id="navbarMenu" role="navigation">
-				<div class="container"> 
+				<div class="container" > 
 					<!--a class="navbar-brand" href=""><img src="projeto/img/Logo.png"></a-->
 					<a class="navbar-brand" href="">
 					<h1  id="logo">Controle Estágio</h1>
 					</a>
 
-
-					<md-menu md-offset="0 -7">
+					<md-menu   class="nav navbar-nav navbar-right">
+							{{usuario}}
 							<md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-						  	<h2 class="md-title">{{usuario}}</h2>
       							<md-tooltip md-direction="top">Adicionar</md-tooltip>
       							<ng-md-icon id="editar" icon="more_vert" style="fill: #abcdef" size="36"></ng-md-icon>
 							</md-button>
-							<md-menu-content width="2">
+							<md-menu-content  width="2">
 								<md-menu-item>
-									<md-button ng-click="showEdit(item,$index)">
-									    <md-tooltip md-direction="top">Adicionar</md-tooltip>
-      									<ng-md-icon id="adicionar" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
+									<md-button ng-click="logout()">
+      									<ng-md-icon id="adicionar" icon="logout" style="fill: #abcdef" size="36"></ng-md-icon>
+      									Saír
 									</md-button>
 								</md-menu-item>
 								<md-menu-item>
-									<md-button ng-click="removeStock(item.id,$index)">
-									    <md-tooltip md-direction="top">Adicionar</md-tooltip>
-      									<ng-md-icon id="adicionar" icon="add_circle" style="fill: #abcdef" size="36"></ng-md-icon>
+									<md-button ng-click="log()">
+      									<ng-md-icon id="adicionar" icon="file_download" style="fill: #abcdef" size="36"></ng-md-icon>
+      									Log
 									</md-button>
 								</md-menu-item>
 							</md-menu-content>
