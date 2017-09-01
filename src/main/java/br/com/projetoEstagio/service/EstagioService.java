@@ -1,5 +1,9 @@
 package br.com.projetoEstagio.service;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -111,5 +115,31 @@ public class EstagioService {
 		
 		return relatorio.toString();
 	}
+	
+	public Boolean log() throws Exception {
+		String teste = System.getProperty("catalina.home") + "//logs";
+		File file = new File(teste);
+		File afile[] = file.listFiles();
+		int i = 0;
+		for (int j = afile.length; i < j; i++) {
+			File arquivos = afile[i];
+			System.out.println(arquivos.getName());
+			
+			FileReader ler = new FileReader(arquivos);
+            BufferedReader reader = new BufferedReader(ler);  
+            String linha;
+          
+         
+            while( (linha = reader.readLine()) != null ){
+               
+            	System.out.println(linha);
+            }
+            
+		}
+
+
+		return true;
+	}
+
 
 }

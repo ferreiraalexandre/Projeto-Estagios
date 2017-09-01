@@ -49,6 +49,7 @@ md-input-container{
 
 #navbarMenu{
   background-color: #267ED5 !important;	
+  z-index: auto;
 }
 
 #menu{
@@ -170,8 +171,9 @@ a{
 }
 
 .nome-logado{
-	margin-top: 7px;
+	margin-top: 13px;
 	color: white;
+	float: left;
 }
 
 #button-filtro > .md-button{
@@ -196,8 +198,8 @@ a{
 	margin-left: 10px;
 } 
 
-#menu_container_0{
-	z-index: 1030px !important;
+#divLogout{
+	float: right;
 }
 
  

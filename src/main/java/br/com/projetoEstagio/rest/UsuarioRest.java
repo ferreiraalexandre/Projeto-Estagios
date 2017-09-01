@@ -1,8 +1,5 @@
 package br.com.projetoEstagio.rest;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -14,8 +11,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
-
-import org.apache.log4j.Logger;
 import org.json.JSONArray;
 
 import br.com.projetoEstagio.entity.Usuario;
@@ -60,24 +55,6 @@ public class UsuarioRest extends UtilRest {
 		try{
 			UsuarioService service = new UsuarioService(); 
 			
-			this.callMeInAppError("TESTE ERROR");
-			
-			String teste = System.getProperty("catalina.home") + "//logs";
-			File file = new File(teste);
-			File afile[] = file.listFiles();
-			int i = 0;
-			for (int j = afile.length; i < j; i++) {
-				File arquivos = afile[i];
-				System.out.println(arquivos.getName());
-				
-				FileReader ler = new FileReader(arquivos);
-	            BufferedReader reader = new BufferedReader(ler);  
-	            String linha;
-	            while( (linha = reader.readLine()) != null ){
-	                System.out.println(linha);
-	            }
-			}
-
 			List<Usuario> e = service.listUsuario();
 
 			return getResponseList(e);

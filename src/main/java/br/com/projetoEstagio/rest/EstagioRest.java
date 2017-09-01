@@ -271,5 +271,20 @@ public class EstagioRest extends UtilRest {
 		}
 	}
 
+	@GET
+	@Path("/log")
+	@Produces("application/json")
+	public Response log(){
+		
+		try {
+			EstagioService service = new EstagioService();
+			
+			Boolean e = service.log();
+			return getResponseList(e);
+		} catch (Exception e) {
+			return getResponseError(e);
+		}
+	}
+
 
 }

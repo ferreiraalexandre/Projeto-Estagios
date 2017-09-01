@@ -77,6 +77,8 @@ app.factory('EstagioService',['$resource',  function ($resource) {
 		  filtroEstagio: {method: 'POST', params: {method: 'filtro'}},
 		  getEstagioVencendo: {method: 'GET', params: {method: 'vencendo'}, isArray: false},
 		  getRelatorio: {method: 'GET', params: {method: 'relatorio'}, isArray: false},
+		  getLog: {method: 'GET', params: {method: 'log'}, isArray: false},
+
 	  })
 }]);
 

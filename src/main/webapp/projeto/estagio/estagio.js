@@ -223,6 +223,19 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 			
 		});		
 	};
+	
+	//Gerar Log
+	$scope.getLog = function () {
+		EstagioService.getLog(function (response) {	
+			var file = new Blob([$scope.data.estagios], {type: 'application/txt'});
+			var fileURL = URL.createObjectURL(file);
+			var a = document.createElement('a');
+			a.href = fileURL;
+			a.download = 'document_name';
+			a.target = '_blank';
+			a.click();
+		});		
+	};
 
 //////////////////////////////////////Abrir Modal
 	  $scope.abrirModal = function(event) {

@@ -22,38 +22,29 @@
 					<h1  id="logo">Controle Estágio</h1>
 					</a>
 
-					<md-menu   class="nav navbar-nav navbar-right">
-							{{usuario}}
-							<md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-      							<md-tooltip md-direction="top">Adicionar</md-tooltip>
-      							<ng-md-icon id="editar" icon="more_vert" style="fill: #abcdef" size="36"></ng-md-icon>
-							</md-button>
-							<md-menu-content  width="2">
-								<md-menu-item>
-									<md-button ng-click="logout()">
-      									<ng-md-icon id="adicionar" icon="logout" style="fill: #abcdef" size="36"></ng-md-icon>
-      									Saír
-									</md-button>
-								</md-menu-item>
-								<md-menu-item>
-									<md-button ng-click="log()">
-      									<ng-md-icon id="adicionar" icon="file_download" style="fill: #abcdef" size="36"></ng-md-icon>
-      									Log
-									</md-button>
-								</md-menu-item>
-							</md-menu-content>
+					<div id="divLogout">
+						<span class="nome-logado">{{usuario}}</span>
+						<md-menu   class="nav navbar-nav navbar-right">	
+								<md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+	      							<ng-md-icon id="editar" icon="more_vert" style="fill: #abcdef" size="36"></ng-md-icon>
+								</md-button>
+								<md-menu-content  width="2">
+									<md-menu-item>
+										<md-button ng-click="logout()">
+	      									<ng-md-icon id="adicionar" icon="logout" style="fill: #abcdef; float:left;" size="28"></ng-md-icon>
+	      									Saír
+										</md-button>
+									</md-menu-item>
+									<md-menu-item>
+										<md-button ng-click="getLog(document)" target="_blank">
+	      									<ng-md-icon id="adicionar" icon="file_download" style="fill: #abcdef; float:left;" size="28"></ng-md-icon>
+	      									Log
+										</md-button>
+									</md-menu-item>
+								</md-menu-content>
 						</md-menu>
+					</div>
 
-
-
-
-
-<!--  				<ul class="nav navbar-nav navbar-right">
-						<li class="nome-logado" ng-click="logout()">
-							{{usuario}}<i class="glyphicon glyphicon-log-out" aria-hidden="true"></i>
-						</li>
-					</ul>
--->
 				</div>
 			</div>
 			<div class="container-fluid" ng-show="links" id="menu" style="color:#313b3f;">
