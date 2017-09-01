@@ -1,11 +1,19 @@
 package br.com.projetoEstagio.rest;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
@@ -15,6 +23,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 
 import org.json.JSONArray;
@@ -271,20 +280,57 @@ public class EstagioRest extends UtilRest {
 		}
 	}
 
+//	@GET
+//	@Path("/log")
+//	@Produces("application/json")
+//	public Response log(){
+//		
+//		try {
+//			EstagioService service = new EstagioService();
+//			
+//			Boolean e = service.log();
+//			return getResponseList(e);
+//		} catch (Exception e) {
+//			return getResponseError(e);
+//		}
+//	}
+	
+	
 	@GET
 	@Path("/log")
-	@Produces("application/json")
-	public Response log(){
-		
-		try {
-			EstagioService service = new EstagioService();
-			
-			Boolean e = service.log();
-			return getResponseList(e);
-		} catch (Exception e) {
-			return getResponseError(e);
-		}
+	public void log(@Context HttpServletRequest request, @Context HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
+
+		ByteArrayOutputStream result = new ByteArrayOutputStream();
+		ZipOutputStream zip = new ZipOutputStream(result);
+
+		String code = "logging.log";
+		byte[] log = Files.readAllBytes(Paths.get("C:/dev/tools/apache-tomcat-8.0.39/logs", code));
+//		byte[] log = Files.readAllBytes(Paths.get(System.getProperty("catalina.home") + File.separator + code));
+
+		ZipEntry entry = new ZipEntry(code);
+		entry.setSize(log.length);
+		zip.putNextEntry(entry);
+		zip.write(log);
+		zip.closeEntry();
+
+		zip.flush();
+		result.flush();
+
+		zip.close();
+		result.close();
+
+		response.setCharacterEncoding("UTF-8");
+		response.addHeader("Content-Type", "application/octet-stream");
+		response.addIntHeader("Content-Length", result.toByteArray().length);
+		response.addHeader("Content-Disposition", "attachment; charset=UTF-8; filename=\"" + code + ".zip\"");
+		response.addHeader("Cache-Control", "max-age=1, must-revalidate");
+		response.getOutputStream().write(result.toByteArray());
+
+		response.getOutputStream().flush();
+		response.getOutputStream().close();
 	}
+
 
 
 }

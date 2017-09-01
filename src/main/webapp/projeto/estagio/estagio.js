@@ -227,7 +227,9 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	//Gerar Log
 	$scope.getLog = function () {
 		EstagioService.getLog(function (response) {	
-			var file = new Blob([$scope.data.estagios], {type: 'application/txt'});
+			//window.location.href = "/logs";
+			
+			var file = new Blob([response], {type: 'application/txt'});
 			var fileURL = URL.createObjectURL(file);
 			var a = document.createElement('a');
 			a.href = fileURL;
