@@ -227,17 +227,16 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	//Gerar Log
 	$scope.getLog = function () {
 		EstagioService.getLog(function (response) {	
-			//window.location.href = "/logs";
-			
-			var file = new Blob([response], {type: 'application/txt'});
-			var fileURL = URL.createObjectURL(file);
+			var file = new Blob([response.data], {type: 'plain/text'});
+			var fileURL = window.URL.createObjectURL(file);
 			var a = document.createElement('a');
 			a.href = fileURL;
-			a.download = 'document_name';
+			a.download = 'teste.txt';
 			a.target = '_blank';
 			a.click();
 		});		
 	};
+	
 
 //////////////////////////////////////Abrir Modal
 	  $scope.abrirModal = function(event) {
