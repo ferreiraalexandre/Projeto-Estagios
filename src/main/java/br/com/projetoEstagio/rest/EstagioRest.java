@@ -284,34 +284,36 @@ public class EstagioRest extends UtilRest {
 		}
 	}
 
-	@GET
-	@Path("/log")
-	@Produces("text/plain")
-	public Response log(){
-		
-		try {
-			EstagioService service = new EstagioService();
-			
-			Response e = service.log();
-			return getResponseList(e);
-		} catch (Exception e) {
-			return getResponseError(e);
-		}
-	}
-	
-	
 //	@GET
 //	@Path("/log")
-//	public void log(@Context HttpServletRequest request, @Context HttpServletResponse response) throws Exception {
-//		request.setCharacterEncoding("UTF-8");
-//
-//		ByteArrayOutputStream result = new ByteArrayOutputStream();
-//		ZipOutputStream zip = new ZipOutputStream(result);
-//
-//		String code = "logging.log";
-//		byte[] log = Files.readAllBytes(Paths.get("C:/Program Files/apache-tomcat-9.0.0.M17/logs", code));
-////		byte[] log = Files.readAllBytes(Paths.get(System.getProperty("catalina.home") + File.separator + code));
-//
+//	@Produces("text/plain")
+//	public Response log(){
+//		
+//		try {
+//			EstagioService service = new EstagioService();
+//			
+//			Response e = service.log();
+//			return getResponseList(e);
+//		} catch (Exception e) {
+//			return getResponseError(e);
+//		}
+//	}
+	
+	
+	@GET
+	@Path("/log")
+	public Response log(@Context HttpServletRequest request, @Context HttpServletResponse response) throws Exception {
+		request.setCharacterEncoding("UTF-8");
+
+		ByteArrayOutputStream result = new ByteArrayOutputStream();
+		ZipOutputStream zip = new ZipOutputStream(result);
+
+		String code = "logging.log";
+		byte[] log = Files.readAllBytes(Paths.get("C:/dev/tools/apache-tomcat-8.0.39/logs", code));
+//		byte[] log = Files.readAllBytes(Paths.get(System.getProperty("catalina.home") + File.separator + code));
+
+
+		return getResponseList(log);	
 //		ZipEntry entry = new ZipEntry(code);
 //		entry.setSize(log.length);
 //		zip.putNextEntry(entry);
@@ -333,6 +335,6 @@ public class EstagioRest extends UtilRest {
 //
 //		response.getOutputStream().flush();
 //		response.getOutputStream().close();
-//	}
+	}
 
 }

@@ -124,8 +124,8 @@ public class EstagioService {
 		String teste = System.getProperty("catalina.home") + "//logs//teste.txt";
 		File file = new File(teste);
 		
-		ResponseBuilder response = Response.ok((Object) file);
-		response.header("Content-Disposition", "attachment; filename=DisplayName-teste.txt");
+		ResponseBuilder response = Response.ok(file);
+		response.header("Content-Disposition", "attachment; filename=\"teste.txt\"");
 		return response.build();
 	}
 //		File arquivos = null;

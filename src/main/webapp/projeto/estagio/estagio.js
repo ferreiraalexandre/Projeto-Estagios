@@ -226,18 +226,33 @@ app.controller('estagioController', ['$mdEditDialog', '$q', '$scope', '$timeout'
 	
 	//Gerar Log
 	$scope.getLog = function () {
-		EstagioService.getLog(function (response) {	
-			var file = new Blob([response.data], {type: 'plain/text'});
-			var fileURL = window.URL.createObjectURL(file);
-			var a = document.createElement('a');
-			a.href = fileURL;
-			a.download = 'teste.txt';
-			a.target = '_blank';
-			a.click();
+		EstagioService.getLog(function (data) {
+			var sampleArr = base64ToArrayBuffer(data.data);
+			saveByteArray("teste",sampleArr);	
 		});		
 	};
 	
+	function base64ToArrayBuffer(base64) {
+	    var binaryString = window.atob(base64);
+	    var binaryLen = binaryString.length;
+	    var bytes = new Uint8Array(binaryLen);
+	    for (var i = 0; i < binaryLen; i++) {
+	       var ascii = binaryString.charCodeAt(i);
+	       bytes[i] = ascii;
+	    }
+	    return bytes;
+	 }
 
+	function saveByteArray(reportName, byte) {
+	    var blob = new Blob([byte]);
+	    var link = document.createElement('a');
+	    link.href = window.URL.createObjectURL(blob);
+	    var fileName = reportName + ".txt";
+	    link.download = fileName;
+	    link.click();
+	};
+
+	
 //////////////////////////////////////Abrir Modal
 	  $scope.abrirModal = function(event) {
 		    $mdDialog.show({
