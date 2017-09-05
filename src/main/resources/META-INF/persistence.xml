@@ -13,7 +13,7 @@
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/projetoestagio" />
 			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="root" />
+			<property name="javax.persistence.jdbc.password" value="" />
 
 			<!-- Dados Conexão Servidor -->
 <!--  		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
@@ -28,6 +28,12 @@
 
 			<!-- atualiza o banco, gera as tabelas se for preciso -->
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+		
+			<property name="hibernate.c3p0.min_size" value="1" />
+			<property name="hibernate.c3p0.max_size" value="10" />
+			<property name="hibernate.c3p0.timeout" value="100" />
+			<property name="hibernate.c3p0.maxIdleTime" value="100" />
+			
 
 		</properties>
 	</persistence-unit>

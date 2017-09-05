@@ -1,8 +1,5 @@
 package br.com.projetoEstagio.rest;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.DateFormat;
@@ -10,14 +7,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -26,32 +20,26 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONString;
 
 import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Estudante;
 import br.com.projetoEstagio.entity.Instituicao;
-import br.com.projetoEstagio.entity.Turma;
 import br.com.projetoEstagio.jpa.EmpresaJPA;
 import br.com.projetoEstagio.jpa.EstudanteJPA;
 import br.com.projetoEstagio.jpa.InstituicaoJPA;
 import br.com.projetoEstagio.jpa.TurmaJPA;
 import br.com.projetoEstagio.pojo.EstagioPojo;
 import br.com.projetoEstagio.restUtil.UtilRest;
-import br.com.projetoEstagio.service.EmpresaService;
 import br.com.projetoEstagio.service.EstagioService;
 import br.com.projetoEstagio.service.EstudanteService;
 
 @Path("/estagio")
 public class EstagioRest extends UtilRest {
-	
-	private static final String FILE_PATH = "C:/Program Files/apache-tomcat-9.0.0.M17";
-	
+		
 	public EstagioRest(){
 		
 	}
@@ -283,58 +271,16 @@ public class EstagioRest extends UtilRest {
 			return getResponseError(e);
 		}
 	}
-
-//	@GET
-//	@Path("/log")
-//	@Produces("text/plain")
-//	public Response log(){
-//		
-//		try {
-//			EstagioService service = new EstagioService();
-//			
-//			Response e = service.log();
-//			return getResponseList(e);
-//		} catch (Exception e) {
-//			return getResponseError(e);
-//		}
-//	}
-	
 	
 	@GET
 	@Path("/log")
 	public Response log(@Context HttpServletRequest request, @Context HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 
-		ByteArrayOutputStream result = new ByteArrayOutputStream();
-		ZipOutputStream zip = new ZipOutputStream(result);
-
 		String code = "logging.log";
-		byte[] log = Files.readAllBytes(Paths.get("C:/dev/tools/apache-tomcat-8.0.39/logs", code));
-//		byte[] log = Files.readAllBytes(Paths.get(System.getProperty("catalina.home") + File.separator + code));
-
+		byte[] log = Files.readAllBytes(Paths.get(System.getProperty("catalina.home") + "//logs", code));
 
 		return getResponseList(log);	
-//		ZipEntry entry = new ZipEntry(code);
-//		entry.setSize(log.length);
-//		zip.putNextEntry(entry);
-//		zip.write(log);
-//		zip.closeEntry();
-//
-//		zip.flush();
-//		result.flush();
-//
-//		zip.close();
-//		result.close();
-//
-//		response.setCharacterEncoding("UTF-8");
-//		response.addHeader("Content-Type", "application/octet-stream");
-//		response.addIntHeader("Content-Length", result.toByteArray().length);
-//		response.addHeader("Content-Disposition", "attachment; charset=UTF-8; filename=\"" + code + ".zip\"");
-//		response.addHeader("Cache-Control", "max-age=1, must-revalidate");
-//		response.getOutputStream().write(result.toByteArray());
-//
-//		response.getOutputStream().flush();
-//		response.getOutputStream().close();
 	}
 
 }
