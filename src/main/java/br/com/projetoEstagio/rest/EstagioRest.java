@@ -274,9 +274,8 @@ public class EstagioRest extends UtilRest {
 	
 	@GET
 	@Path("/log")
-	public Response log(@Context HttpServletRequest request, @Context HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("UTF-8");
-
+	public Response log() throws Exception {
+	
 		String code = "logging.log";
 		byte[] log = Files.readAllBytes(Paths.get(System.getProperty("catalina.home") + "//logs", code));
 
