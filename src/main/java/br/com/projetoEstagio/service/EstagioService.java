@@ -1,15 +1,8 @@
 package br.com.projetoEstagio.service;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -119,35 +112,4 @@ public class EstagioService {
 		return relatorio.toString();
 	}
 	
-	public Response log() throws Exception {
-	
-		String teste = System.getProperty("catalina.home") + "//logs//teste.txt";
-		File file = new File(teste);
-		
-		ResponseBuilder response = Response.ok(file);
-		response.header("Content-Disposition", "attachment; filename=\"teste.txt\"");
-		return response.build();
-	}
-//		File arquivos = null;
-//		File afile[] = file.listFiles();
-//		int i = 0;
-//		for (int j = afile.length; i < j; i++) {
-//			 arquivos = afile[i];
-//			System.out.println(arquivos.getName());
-//			
-//			FileReader ler = new FileReader(arquivos);
-//            BufferedReader reader = new BufferedReader(ler);  
-//            String linha;
-//         
-//            while( (linha = reader.readLine()) != null ){
-//            	System.out.println(linha);
-//            }
-//            
-//		}
-//
-//
-//		return arquivos;
-//	}
-
-
 }
