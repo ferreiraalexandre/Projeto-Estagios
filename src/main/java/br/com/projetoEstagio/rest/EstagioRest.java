@@ -1,5 +1,6 @@
 package br.com.projetoEstagio.rest;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.DateFormat;
@@ -277,7 +278,7 @@ public class EstagioRest extends UtilRest {
 	public Response log() throws Exception {
 	
 		String code = "logging.log";
-		byte[] log = Files.readAllBytes(Paths.get(System.getProperty("catalina.home") + "//logs", code));
+		byte[] log = Files.readAllBytes(Paths.get(System.getProperty("catalina.home") + File.separator + "logs" + File.separator + code));
 
 		return getResponseList(log);	
 	}
