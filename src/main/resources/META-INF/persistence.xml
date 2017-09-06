@@ -9,14 +9,14 @@
 
 
 		<properties>
-			<!-- Dados Conexão Servidor -->
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<!-- Dados Conexão Local -->
+	  		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/projetoestagio" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
 
 			<!-- Dados Conexão Servidor -->
-<!--  		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+<!--   		<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://10.3.79.235:3306/projetoestagio" />
 			<property name="javax.persistence.jdbc.user" value="estagio_user" />
 			<property name="javax.persistence.jdbc.password" value="est09*123a" />
@@ -28,11 +28,12 @@
 
 			<!-- atualiza o banco, gera as tabelas se for preciso -->
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.connection.provider_class" value="org.hibernate.c3p0.internal.C3P0ConnectionProvider"/>
 		
-			<property name="hibernate.c3p0.min_size" value="1" />
+	  		<property name="hibernate.c3p0.min_size" value="1" />
 			<property name="hibernate.c3p0.max_size" value="10" />
-			<property name="hibernate.c3p0.timeout" value="100" />
-			<property name="hibernate.c3p0.maxIdleTime" value="100" />
+			<property name="hibernate.c3p0.timeout" value="3600" />
+			<property name="hibernate.c3p0.maxIdleTime" value="3600" />
 			
 
 		</properties>
