@@ -278,7 +278,7 @@ public class EstagioRest extends UtilRest {
 	public Response log() throws Exception {
 	
 		String code = "logging.log";
-		byte[] log = Files.readAllBytes(Paths.get(System.getProperty("catalina.home") + File.separator + "logs" + File.separator + code));
+		byte[] log = Files.readAllBytes(Paths.get(System.getProperty("catalina.base") + File.separator + "logs" + File.separator + code));
 
 		return getResponseList(log);	
 	}
