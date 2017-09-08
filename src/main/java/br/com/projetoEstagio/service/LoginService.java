@@ -2,12 +2,9 @@ package br.com.projetoEstagio.service;
 
 import java.security.NoSuchAlgorithmException;
 
-import javax.persistence.NoResultException;
-
 import br.com.projeto.help.Crypt;
 import br.com.projetoEstagio.auth.Auth;
 import br.com.projetoEstagio.entity.Usuario;
-import br.com.projetoEstagio.jpa.LoginJPA;
 import br.com.projetoEstagio.jpa.UsuarioJPA;
 
 

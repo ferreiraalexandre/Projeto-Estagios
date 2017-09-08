@@ -1,6 +1,5 @@
 package br.com.projetoEstagio.rest;
 
-import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -10,7 +9,6 @@ import javax.ws.rs.core.Response;
 
 import org.json.JSONObject;
 
-import br.com.projetoEstagio.entity.Usuario;
 import br.com.projetoEstagio.restUtil.UtilRest;
 import br.com.projetoEstagio.service.LoginService;
 

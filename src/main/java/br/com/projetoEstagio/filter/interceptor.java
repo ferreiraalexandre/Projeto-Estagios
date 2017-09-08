@@ -1,18 +1,12 @@
 package br.com.projetoEstagio.filter;
 import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SignatureException;
 
 import javax.annotation.Priority;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.PreMatching;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
-
-import com.auth0.jwt.JWTExpiredException;
 
 import br.com.projetoEstagio.auth.Auth;
 import br.com.projetoEstagio.restUtil.UtilRest;
