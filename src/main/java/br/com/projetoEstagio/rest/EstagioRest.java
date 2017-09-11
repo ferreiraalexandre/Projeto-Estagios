@@ -165,7 +165,6 @@ public class EstagioRest extends UtilRest {
 				
 				estudante = getObjectMapper().readValue(jsonObject.optJSONObject("editEstudante").toString(), Estudante.class);
 				
-				
 				estagio.setId(jsonObject.optLong("id"));
 				estagio.setCadastroSGN(jsonObject.optBoolean("cadastroSGN"));
 				estagio.setDataAditivo(formataData(jsonObject.optString("dataAditivo")));
