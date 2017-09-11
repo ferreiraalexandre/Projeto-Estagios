@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -26,7 +28,9 @@ import br.com.projetoEstagio.entity.Empresa;
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.entity.Estudante;
 import br.com.projetoEstagio.entity.Instituicao;
+import br.com.projetoEstagio.interfaces.EstagioInterface;
 import br.com.projetoEstagio.jpa.EmpresaJPA;
+import br.com.projetoEstagio.jpa.EstagioJPA;
 import br.com.projetoEstagio.jpa.EstudanteJPA;
 import br.com.projetoEstagio.jpa.InstituicaoJPA;
 import br.com.projetoEstagio.jpa.TurmaJPA;
@@ -36,7 +40,11 @@ import br.com.projetoEstagio.service.EstagioService;
 import br.com.projetoEstagio.service.EstudanteService;
 
 @Path("/estagio")
+@Named
 public class EstagioRest extends UtilRest {
+	
+	@Inject
+	private EstagioInterface estagioInterface;
 		
 	public EstagioRest(){
 		
@@ -50,7 +58,7 @@ public class EstagioRest extends UtilRest {
 		try {
 			EstagioService service = new EstagioService();
 			
-			List<Estagio> e = service.listEstagio();
+			List<Estagio> e = estagioInterface.list();
 			return getResponseList(e);
 		} catch (Exception e) {
 			return getResponseError(e);
