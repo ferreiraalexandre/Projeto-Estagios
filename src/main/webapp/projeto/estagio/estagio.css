@@ -49,7 +49,10 @@ md-input-container{
 
 #navbarMenu{
   background-color: #267ED5 !important;	
-  z-index: auto;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 100;
 }
 
 #menu{
