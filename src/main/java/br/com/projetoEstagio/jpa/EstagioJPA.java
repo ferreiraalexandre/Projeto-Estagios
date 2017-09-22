@@ -5,13 +5,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.inject.Named;
-
 import br.com.projetoEstagio.entity.Estagio;
 import br.com.projetoEstagio.interfaces.EstagioInterface;
 import br.com.projetoEstagio.pojo.RelatorioPojo;
 
-@Named
+
 public class EstagioJPA extends JPAAbstract<Estagio, Long> implements EstagioInterface {
 	
 	public List<Estagio> list(){

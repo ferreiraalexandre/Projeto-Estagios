@@ -40,11 +40,11 @@ import br.com.projetoEstagio.service.EstagioService;
 import br.com.projetoEstagio.service.EstudanteService;
 
 @Path("/estagio")
-@Named
+
 public class EstagioRest extends UtilRest {
 	
 	@Inject
-	private EstagioInterface estagioInterface;
+	private EstagioService estagioService;
 		
 	public EstagioRest(){
 		
@@ -58,7 +58,7 @@ public class EstagioRest extends UtilRest {
 		try {
 			EstagioService service = new EstagioService();
 			
-			List<Estagio> e = estagioInterface.list();
+			List<Estagio> e = estagioService.listEstagio();
 			return getResponseList(e);
 		} catch (Exception e) {
 			return getResponseError(e);

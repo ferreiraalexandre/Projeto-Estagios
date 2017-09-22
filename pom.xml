@@ -80,17 +80,18 @@
 		</dependency>
 		
 		<dependency>
-    		<groupId>org.jboss.weld.servlet</groupId>
-    		<artifactId>weld-servlet</artifactId>
-    		<version>2.4.1.Final</version>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+			<version>2.2.4.Final</version>
+			<scope>compile</scope>
 		</dependency>
 		
-		
 		<dependency>
-    <groupId>com.auth0</groupId>
-    <artifactId>java-jwt</artifactId>
-    <version>2.2.1</version>
-	</dependency>
+    		<groupId>com.auth0</groupId>
+    		<artifactId>java-jwt</artifactId>
+    		<version>2.2.1</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<!-- if your container implements Servlet API older than 3.0, use "jersey-container-servlet-core" -->
@@ -109,7 +110,6 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
 
 	</dependencies>
 	
